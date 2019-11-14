@@ -10,34 +10,34 @@ Team Members and Roles:
 * Jerry Rogers (Developer, Software Maintainer)
 * Rick Newman (Developer, DBA)
 
-## Overview
+### Overview
 
 Volunteer Connection Platform
 
-## Description
+### Description
 
 (how it works and what the user can do)
 (screenshot, etc)
 (login/registration instructions)
 
-## Implementation
+### Implementation
 
 (overall project structure)
 (ERDiagram)
 
-## Technologies and Methodologies Used
+### Technologies and Methodologies Used
 
 * Agile
 
-## Lessons Learned
+### Lessons Learned
 
-## Stretch Goals
+### Stretch Goals
 
 * Implemented
 
 
 * Not Implemented
 
-## How to Download and Run (developer)
+### How to Download and Run (developer)
 
-# Resources
+### Resources
