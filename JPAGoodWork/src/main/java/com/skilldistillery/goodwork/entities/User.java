@@ -1,5 +1,6 @@
 package com.skilldistillery.goodwork.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,19 +14,21 @@ public class User {
 	private String userName;
 	private String password;
 	private boolean active;
+	@Column(name = "first_name")
+	private String firstName;
 
-	public User() {
-		super();
-	}
-
-	public User(int id, String userName, String password, boolean active) {
+	public User(int id, String userName, String password, boolean active, String firstName) {
 		super();
 		this.id = id;
 		this.userName = userName;
 		this.password = password;
 		this.active = active;
+		this.firstName = firstName;
 	}
 
+	public User() {
+		super();
+	}
 
 	public int getId() {
 		return id;
@@ -59,9 +62,18 @@ public class User {
 		this.active = active;
 	}
 
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", userName=" + userName + ", password=" + password + ", active=" + active + "]";
+		return "User [id=" + id + ", userName=" + userName + ", password=" + password + ", active=" + active
+				+ ", firstName=" + firstName + "]";
 	}
 
 	@Override
@@ -69,6 +81,7 @@ public class User {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + (active ? 1231 : 1237);
+		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
@@ -85,6 +98,11 @@ public class User {
 			return false;
 		User other = (User) obj;
 		if (active != other.active)
+			return false;
+		if (firstName == null) {
+			if (other.firstName != null)
+				return false;
+		} else if (!firstName.equals(other.firstName))
 			return false;
 		if (id != other.id)
 			return false;
