@@ -3,7 +3,7 @@ package com.skilldistillery.goodwork.entities;
 import javax.persistence.*;
 
 @Entity
-public class location {
+public class Location {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
