@@ -64,8 +64,16 @@ public class Event {
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, mappedBy = "events")
 	private List<Category> categories;
 	
-	@OneToMany(mappedBy = "event")
+	@OneToMany(mappedBy = "event", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	private List<MessageBoard> messBoards;
+
+	public List<MessageBoard> getMessBoards() {
+		return messBoards;
+	}
+
+	public void setMessBoards(List<MessageBoard> messBoards) {
+		this.messBoards = messBoards;
+	}
 
 	public List<Category> getCategories() {
 		return categories;
@@ -319,6 +327,26 @@ public class Event {
 		if (categories != null && categories.contains(cat)) {
 			categories.remove(cat);
 			cat.removeEvent(this);
+		}
+	}
+	public void addMessageBoard(MessageBoard messBoard) {
+		if (messBoards == null) {
+			messBoards = new ArrayList<>();
+		}
+
+		if (!messBoards.contains(messBoard)) {
+			messBoards.add(messBoard);
+			if (messBoard.getEvent() != null) {
+				messBoard.getEvent().getMessBoards().remove(messBoard);
+			}
+			messBoard.setEvent(this);
+		}
+	}
+
+	public void removeMessageBoard(MessageBoard messBoard) {
+		messBoard.setEvent(null);
+		if (messBoards != null) {
+			messBoards.remove(messBoard);
 		}
 	}
 
