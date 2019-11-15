@@ -56,7 +56,7 @@ class EventTest {
 	@DisplayName("Testing Event entity getLocationId")
 	void test2() {
 		assertNotNull(event);
-		assertEquals(1, event.getLocationId());
+		assertEquals("FL", event.getLocation().getState());
 		
 	}
 	@Test
