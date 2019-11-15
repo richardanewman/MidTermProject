@@ -67,17 +67,3 @@ class LocationTest {
 
 }
 
-//@Id
-//@GeneratedValue(strategy = GenerationType.IDENTITY)
-//private int id;
-//
-//private String address;
-//
-//private String address2;
-//
-//private String city;
-//
-//private String state;
-//
-//@Column(name = "zip_code")
-//private int zipCode;
