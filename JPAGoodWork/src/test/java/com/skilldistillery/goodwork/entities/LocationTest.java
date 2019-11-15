@@ -14,7 +14,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class LocationTest {
-	
+
 	private static EntityManagerFactory emf;
 	private static EntityManager em;
 	private Location location;
@@ -42,9 +42,42 @@ class LocationTest {
 	}
 
 	@Test
-	@DisplayName("Testing Location entity")
-	void test() {
+	@DisplayName("Testing Location entity state")
+	void state() {
 		assertEquals("FL", location.getState());
 	}
 
+	@Test
+	@DisplayName("Testing Location entity city")
+	void city() {
+		assertEquals("Tallahassee", location.getCity());
+	}
+
+	@Test
+	@DisplayName("Testing Location entity zipcode")
+	void zipCode() {
+		assertEquals(32301, location.getZipCode());
+	}
+
+	@Test
+	@DisplayName("Testing Location entity address ")
+	void address() {
+		assertEquals("1255 Crocodile Lane", location.getAddress());
+	}
+
 }
+
+//@Id
+//@GeneratedValue(strategy = GenerationType.IDENTITY)
+//private int id;
+//
+//private String address;
+//
+//private String address2;
+//
+//private String city;
+//
+//private String state;
+//
+//@Column(name = "zip_code")
+//private int zipCode;
