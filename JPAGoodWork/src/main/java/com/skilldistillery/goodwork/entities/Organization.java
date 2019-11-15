@@ -1,5 +1,8 @@
 package com.skilldistillery.goodwork.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -27,6 +32,10 @@ public class Organization {
 	@Column(name = "logo_url")
 	private String logoURL;
 	private String website;
+	
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@JoinTable(name = "organization_has_user", joinColumns = @JoinColumn(name = "organization_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+	private List<User> users;
 
 	public int getId() {
 		return id;
@@ -156,6 +165,24 @@ public class Organization {
 	public String toString() {
 		return "Organization [id=" + id + ", orgName=" + orgName + ", orgType=" + orgType + ", orgNum=" + orgNum
 				+ ", logoURL=" + logoURL + ", website=" + website + "]";
+	}
+	
+	public void addUser(User user) {
+		if (users == null) {
+			users = new ArrayList<>();
+		}
+
+		if (!users.contains(user)) {
+			users.add(user);
+			user.addOrganization(this);
+		}
+	}
+
+	public void removeUser(User user) {
+		if (users != null && users.contains(user)) {
+			users.remove(user);
+			user.removeOrganization(this);
+		}
 	}
 
 }

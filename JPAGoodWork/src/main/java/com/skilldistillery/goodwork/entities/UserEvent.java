@@ -9,13 +9,8 @@ import javax.persistence.*;
 public class UserEvent {
 	
 	
-	@Column(name = "user_id")
-	private int userId;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "event_id")
-	private int eventId;
+	@EmbeddedId
+	private UserEventId id;
 
 	private int active;
 
@@ -32,18 +27,42 @@ public class UserEvent {
 	@Column(name = "review_description")
 	private String review;
 	
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@JoinColumn(name = "user_id")
+	@MapsId(value = "userId")
+	private User user;
 	
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@JoinColumn(name = "event_id")
+	@MapsId(value = "eventId")
+	private Event event;
 
 	public UserEvent() {
 		super();
 	}
 
-	public int getUserId() {
-		return userId;
+	public User getUser() {
+		return user;
 	}
 
-	public int getEventId() {
-		return eventId;
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Event getEvent() {
+		return event;
+	}
+
+	public void setEvent(Event event) {
+		this.event = event;
+	}
+
+	public UserEventId getId() {
+		return id;
+	}
+
+	public void setId(UserEventId id) {
+		this.id = id;
 	}
 
 	public int getActive() {
@@ -96,9 +115,9 @@ public class UserEvent {
 
 	@Override
 	public String toString() {
-		return "UserEvent [userId=" + userId + ", eventId=" + eventId + ", active=" + active + ", dateSignedUp="
-				+ dateSignedUp + ", role=" + role + ", attended=" + attended + ", rating=" + rating + ", review="
-				+ review + "]";
+		return "UserEvent [id=" + id + ", active=" + active + ", dateSignedUp=" + dateSignedUp + ", role=" + role
+				+ ", attended=" + attended + ", rating=" + rating + ", review=" + review + ", user=" + user + ", event="
+				+ event + "]";
 	}
 
 	@Override
@@ -108,11 +127,12 @@ public class UserEvent {
 		result = prime * result + active;
 		result = prime * result + attended;
 		result = prime * result + ((dateSignedUp == null) ? 0 : dateSignedUp.hashCode());
-		result = prime * result + eventId;
+		result = prime * result + ((event == null) ? 0 : event.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + rating;
 		result = prime * result + ((review == null) ? 0 : review.hashCode());
 		result = prime * result + ((role == null) ? 0 : role.hashCode());
-		result = prime * result + userId;
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
 
@@ -134,7 +154,15 @@ public class UserEvent {
 				return false;
 		} else if (!dateSignedUp.equals(other.dateSignedUp))
 			return false;
-		if (eventId != other.eventId)
+		if (event == null) {
+			if (other.event != null)
+				return false;
+		} else if (!event.equals(other.event))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
 			return false;
 		if (rating != other.rating)
 			return false;
@@ -148,7 +176,10 @@ public class UserEvent {
 				return false;
 		} else if (!role.equals(other.role))
 			return false;
-		if (userId != other.userId)
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
 			return false;
 		return true;
 	}
