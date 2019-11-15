@@ -27,6 +27,12 @@ public class UserEvent {
 
 	@Column(name = "review_description")
 	private String review;
+	
+	
+
+	public UserEvent() {
+		super();
+	}
 
 	public int getUserId() {
 		return userId;
