@@ -69,5 +69,12 @@ class UserTest {
 		assertEquals("bobbyB@gmail.com", user.getEmail());
 		assertTrue(user.getActive());
 	}
+	
+	@Test
+	@DisplayName("Testing for correct bio and photo url pulled from the database")
+	void testPhotoAndBio() {
+		assertEquals("https://miro.medium.com/max/1914/1*nPRQgbNeVv1PqgXV-HibXg.jpeg", user.getPhotoURL());
+		assertEquals("Serving drinks and kicking ass.", user.getBio());
+	}
 
 }
