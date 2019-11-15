@@ -21,7 +21,7 @@ public class MessageBoard {
 	@Column(name="user_id")
 	private int userId;
 	
-	@Column(name="date_posterd")
+	@Column(name="date_posted")
 	private LocalDate datePosted;
 	
 	private String content;
