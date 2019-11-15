@@ -49,7 +49,7 @@ class UserEventTest {
 	@Test
 	@DisplayName("Test UserEvent entity connection")
 	void test2() {
-		// standing by for entity update
+		assertEquals(2019-11-15, userEvent.getDateSignedUp());
 	}
 
 }
