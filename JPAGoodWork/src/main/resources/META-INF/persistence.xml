@@ -9,7 +9,13 @@
     </provider>
 	
 	<!-- Class Definitions -->
+	<class>com.skilldistillery.goodwork.entities.Category</class>
+	<class>com.skilldistillery.goodwork.entities.Event</class>
+	<class>com.skilldistillery.goodwork.entities.Location</class>
+	<class>com.skilldistillery.goodwork.entities.MessageBoard</class>
+	<class>com.skilldistillery.goodwork.entities.Organization</class>
 	<class>com.skilldistillery.goodwork.entities.User</class>
+	<class>com.skilldistillery.goodwork.entities.UserEvent</class>
 	
 	
     <properties>
