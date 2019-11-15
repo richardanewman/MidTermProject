@@ -19,10 +19,8 @@ public class Location {
 
 	@Column(name = "zip_code")
 	private int zipCode;
-	
-	
 
-	public location() {
+	public Location() {
 		super();
 	}
 
@@ -76,7 +74,7 @@ public class Location {
 
 	@Override
 	public String toString() {
-		return "location [id=" + id + ", address=" + address + ", address2=" + address2 + ", city=" + city + ", state="
+		return "Location [id=" + id + ", address=" + address + ", address2=" + address2 + ", city=" + city + ", state="
 				+ state + ", zipCode=" + zipCode + "]";
 	}
 
@@ -101,7 +99,7 @@ public class Location {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		location other = (location) obj;
+		Location other = (Location) obj;
 		if (address == null) {
 			if (other.address != null)
 				return false;
