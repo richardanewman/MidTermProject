@@ -47,5 +47,13 @@ class CategoryTest {
 		assertEquals("Community", cat.getName());
 		assertEquals(1, cat.getId());
 	}
+	
+	@Test
+	@DisplayName("Testing for correct information being pulled for category from the database for its event relationship")
+	void testEventsForCat() {
+		assertEquals("Help Bobby Bushay clean up all the trash around 5th and Central Ave this Saturday.", cat.getEvents().get(0).getDescription());
+		assertEquals("Neighborhood Clean-Up", cat.getEvents().get(0).getEventName());
+		assertEquals("Mamma Bushay", cat.getEvents().get(0).getPointOfContact());
+	}
 
 }
