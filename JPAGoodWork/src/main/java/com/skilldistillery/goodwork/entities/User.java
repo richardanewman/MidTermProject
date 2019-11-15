@@ -8,22 +8,35 @@ import javax.persistence.Id;
 
 @Entity
 public class User {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@Column(name = "username")
 	private String userName;
 	private String password;
-	private boolean active;
+	private Boolean active;
 	@Column(name = "first_name")
 	private String firstName;
+	@Column(name = "last_name")
+	private String lastName;
+	private String email;
+	private String bio;
+	@Column(name = "photo_url")
+	private String photoURL;
 
-	public User(int id, String userName, String password, boolean active, String firstName) {
+	public User(int id, String userName, String password, Boolean active, String firstName, String lastName,
+			String email, String bio, String photoURL) {
 		super();
 		this.id = id;
 		this.userName = userName;
 		this.password = password;
 		this.active = active;
 		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.bio = bio;
+		this.photoURL = photoURL;
 	}
 
 	public User() {
@@ -54,11 +67,11 @@ public class User {
 		this.password = password;
 	}
 
-	public boolean isActive() {
+	public Boolean getActive() {
 		return active;
 	}
 
-	public void setActive(boolean active) {
+	public void setActive(Boolean active) {
 		this.active = active;
 	}
 
@@ -70,20 +83,50 @@ public class User {
 		this.firstName = firstName;
 	}
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", userName=" + userName + ", password=" + password + ", active=" + active
-				+ ", firstName=" + firstName + "]";
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getBio() {
+		return bio;
+	}
+
+	public void setBio(String bio) {
+		this.bio = bio;
+	}
+
+	public String getPhotoURL() {
+		return photoURL;
+	}
+
+	public void setPhotoURL(String photoURL) {
+		this.photoURL = photoURL;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (active ? 1231 : 1237);
+		result = prime * result + ((active == null) ? 0 : active.hashCode());
+		result = prime * result + ((bio == null) ? 0 : bio.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + id;
+		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + ((photoURL == null) ? 0 : photoURL.hashCode());
 		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
 		return result;
 	}
@@ -97,7 +140,20 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		if (active != other.active)
+		if (active == null) {
+			if (other.active != null)
+				return false;
+		} else if (!active.equals(other.active))
+			return false;
+		if (bio == null) {
+			if (other.bio != null)
+				return false;
+		} else if (!bio.equals(other.bio))
+			return false;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
 			return false;
 		if (firstName == null) {
 			if (other.firstName != null)
@@ -106,10 +162,20 @@ public class User {
 			return false;
 		if (id != other.id)
 			return false;
+		if (lastName == null) {
+			if (other.lastName != null)
+				return false;
+		} else if (!lastName.equals(other.lastName))
+			return false;
 		if (password == null) {
 			if (other.password != null)
 				return false;
 		} else if (!password.equals(other.password))
+			return false;
+		if (photoURL == null) {
+			if (other.photoURL != null)
+				return false;
+		} else if (!photoURL.equals(other.photoURL))
 			return false;
 		if (userName == null) {
 			if (other.userName != null)
@@ -117,6 +183,13 @@ public class User {
 		} else if (!userName.equals(other.userName))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", userName=" + userName + ", password=" + password + ", active=" + active
+				+ ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", bio=" + bio
+				+ ", photoURL=" + photoURL + "]";
 	}
 
 }
