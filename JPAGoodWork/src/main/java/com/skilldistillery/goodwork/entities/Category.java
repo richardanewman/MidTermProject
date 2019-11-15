@@ -1,9 +1,15 @@
 package com.skilldistillery.goodwork.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Category {
@@ -12,6 +18,9 @@ public class Category {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
+	@ManyToMany
+	@JoinTable(name = "event_has_category", joinColumns = @JoinColumn(name = "category_id"), inverseJoinColumns = @JoinColumn(name = "event_id"))
+	private List<Event> events;
 
 	public Category(int id, String name) {
 		super();
@@ -21,6 +30,14 @@ public class Category {
 
 	public Category() {
 		super();
+	}
+
+	public List<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(List<Event> events) {
+		this.events = events;
 	}
 
 	public int getId() {
@@ -43,6 +60,7 @@ public class Category {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((events == null) ? 0 : events.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
@@ -57,6 +75,11 @@ public class Category {
 		if (getClass() != obj.getClass())
 			return false;
 		Category other = (Category) obj;
+		if (events == null) {
+			if (other.events != null)
+				return false;
+		} else if (!events.equals(other.events))
+			return false;
 		if (id != other.id)
 			return false;
 		if (name == null) {
@@ -72,4 +95,21 @@ public class Category {
 		return "Category [id=" + id + ", name=" + name + "]";
 	}
 
+	public void addEvent(Event event) {
+		if (events == null) {
+			events = new ArrayList<>();
+		}
+
+		if (!events.contains(event)) {
+			events.add(event);
+			event.addCategory(this);
+		}
+	}
+
+	public void removeEvent(Event event) {
+		if (events != null && events.contains(event)) {
+			events.remove(event);
+			event.removeCategory(this);
+		}
+	}
 }
