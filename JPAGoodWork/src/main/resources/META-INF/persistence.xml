@@ -8,6 +8,7 @@
     <provider>org.hibernate.jpa.HibernatePersistenceProvider
     </provider>
 	
+	
 	<!-- Class Definitions -->
 	<class>com.skilldistillery.goodwork.entities.Category</class>
 	<class>com.skilldistillery.goodwork.entities.Event</class>
