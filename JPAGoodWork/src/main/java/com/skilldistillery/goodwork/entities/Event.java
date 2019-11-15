@@ -66,6 +66,17 @@ public class Event {
 	
 	@OneToMany(mappedBy = "event", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	private List<MessageBoard> messBoards;
+	
+	@OneToMany(mappedBy= "event", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	private List<UserEvent> users;
+
+	public List<UserEvent> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<UserEvent> users) {
+		this.users = users;
+	}
 
 	public List<MessageBoard> getMessBoards() {
 		return messBoards;
@@ -225,12 +236,14 @@ public class Event {
 		result = prime * result + hostId;
 		result = prime * result + id;
 		result = prime * result + ((location == null) ? 0 : location.hashCode());
+		result = prime * result + ((messBoards == null) ? 0 : messBoards.hashCode());
 		result = prime * result + peopleNeeded;
 		result = prime * result + ((photoUrl == null) ? 0 : photoUrl.hashCode());
 		result = prime * result + ((pocEmail == null) ? 0 : pocEmail.hashCode());
 		result = prime * result + ((pocPhone == null) ? 0 : pocPhone.hashCode());
 		result = prime * result + ((pointOfContact == null) ? 0 : pointOfContact.hashCode());
 		result = prime * result + ((startTime == null) ? 0 : startTime.hashCode());
+		result = prime * result + ((users == null) ? 0 : users.hashCode());
 		return result;
 	}
 
@@ -282,6 +295,11 @@ public class Event {
 				return false;
 		} else if (!location.equals(other.location))
 			return false;
+		if (messBoards == null) {
+			if (other.messBoards != null)
+				return false;
+		} else if (!messBoards.equals(other.messBoards))
+			return false;
 		if (peopleNeeded != other.peopleNeeded)
 			return false;
 		if (photoUrl == null) {
@@ -308,6 +326,11 @@ public class Event {
 			if (other.startTime != null)
 				return false;
 		} else if (!startTime.equals(other.startTime))
+			return false;
+		if (users == null) {
+			if (other.users != null)
+				return false;
+		} else if (!users.equals(other.users))
 			return false;
 		return true;
 	}
@@ -347,6 +370,27 @@ public class Event {
 		messBoard.setEvent(null);
 		if (messBoards != null) {
 			messBoards.remove(messBoard);
+		}
+	}
+	
+	public void addUserEvent(UserEvent userEvent) {
+		if(users == null) {
+			users = new ArrayList<>();
+		}
+		
+		if(!users.contains(userEvent)) {
+			users.add(userEvent);
+			if(userEvent.getUser() != null) {
+				userEvent.getEvent().getUsers().remove(userEvent);
+			}
+			userEvent.setEvent(this);
+		}
+	}
+	
+	public void removeUserEvent(UserEvent userEvent) {
+		userEvent.setUser(null);
+		if(users != null) {
+			users.remove(userEvent);
 		}
 	}
 
