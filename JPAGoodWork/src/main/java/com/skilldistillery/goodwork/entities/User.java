@@ -3,6 +3,7 @@ package com.skilldistillery.goodwork.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,7 +29,7 @@ public class User {
 	private String bio;
 	@Column(name = "photo_url")
 	private String photoURL;
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	private List<MessageBoard> messBoards;
 
 	public User(int id, String userName, String password, Boolean active, String firstName, String lastName,
@@ -212,7 +213,7 @@ public class User {
 				+ ", photoURL=" + photoURL + "]";
 	}
 	
-	public void addStaff(MessageBoard messBoard) {
+	public void addMessageBoard(MessageBoard messBoard) {
 		if (messBoards == null) {
 			messBoards = new ArrayList<>();
 		}
@@ -226,10 +227,10 @@ public class User {
 		}
 	}
 
-	public void removeStaff(Staff staff) {
-		staff.setStore(null);
-		if (staffs != null) {
-			staffs.remove(staff);
+	public void removeMessageBoard(MessageBoard messBoard) {
+		messBoard.setUser(null);
+		if (messBoards != null) {
+			messBoards.remove(messBoard);
 		}
 	}
 
