@@ -6,7 +6,9 @@ import javax.persistence.*;
 
 @Entity
 public class UserEvent {
-
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "user_id")
 	private int userId;
 
