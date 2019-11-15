@@ -28,7 +28,7 @@ public class MessageBoard {
 	@JoinColumn(name="user_id")
 	private User user;
 	
-	@Column(name="date_posterd")
+	@Column(name="date_posted")
 	private LocalDate datePosted;
 	
 	private String content;

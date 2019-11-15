@@ -75,7 +75,7 @@ class MessageBoardTest {
 	@DisplayName("Testing MessageBoard entity getContent")
 	void test5() {
 		assertNotNull(mb);
-		assertEquals("Somebody better sign up and me clean. Please.", mb.getContent());
+		assertEquals("Somebody better sign up and help me clean. Please.", mb.getContent());
 		
 	}
 	
