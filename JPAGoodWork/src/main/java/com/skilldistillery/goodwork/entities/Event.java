@@ -1,12 +1,19 @@
 package com.skilldistillery.goodwork.entities;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Event {
@@ -14,8 +21,10 @@ public class Event {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@Column(name = "location_id")
-	private int locationId;
+
+	@OneToOne
+	@JoinColumn(name = "location_id")
+	private Location location;
 
 	@Column(name = "host_id")
 	private int hostId;
@@ -52,6 +61,28 @@ public class Event {
 	@Column(name = "poc_email")
 	private String pocEmail;
 
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, mappedBy = "events")
+	private List<Category> categories;
+	
+	@OneToMany(mappedBy = "event", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	private List<MessageBoard> messBoards;
+
+	public List<MessageBoard> getMessBoards() {
+		return messBoards;
+	}
+
+	public void setMessBoards(List<MessageBoard> messBoards) {
+		this.messBoards = messBoards;
+	}
+
+	public List<Category> getCategories() {
+		return categories;
+	}
+
+	public void setCategories(List<Category> categories) {
+		this.categories = categories;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -60,12 +91,12 @@ public class Event {
 		this.id = id;
 	}
 
-	public int getLocationId() {
-		return locationId;
+	public Location getLocation() {
+		return location;
 	}
 
-	public void setLocationId(int locationId) {
-		this.locationId = locationId;
+	public void setLocation(Location location) {
+		this.location = location;
 	}
 
 	public int getHostId() {
@@ -171,7 +202,7 @@ public class Event {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Event [id=").append(id).append(", locationId=").append(locationId).append(", hostId=")
+		builder.append("Event [id=").append(id).append(", locationId=").append(location).append(", hostId=")
 				.append(hostId).append(", eventName=").append(eventName).append(", description=").append(description)
 				.append(", eventDate=").append(eventDate).append(", startTime=").append(startTime).append(", endTime=")
 				.append(endTime).append(", peopleNeeded=").append(peopleNeeded).append(", dateCreated=")
@@ -185,6 +216,7 @@ public class Event {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((categories == null) ? 0 : categories.hashCode());
 		result = prime * result + ((dateCreated == null) ? 0 : dateCreated.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((endTime == null) ? 0 : endTime.hashCode());
@@ -192,7 +224,7 @@ public class Event {
 		result = prime * result + ((eventName == null) ? 0 : eventName.hashCode());
 		result = prime * result + hostId;
 		result = prime * result + id;
-		result = prime * result + locationId;
+		result = prime * result + ((location == null) ? 0 : location.hashCode());
 		result = prime * result + peopleNeeded;
 		result = prime * result + ((photoUrl == null) ? 0 : photoUrl.hashCode());
 		result = prime * result + ((pocEmail == null) ? 0 : pocEmail.hashCode());
@@ -211,6 +243,11 @@ public class Event {
 		if (getClass() != obj.getClass())
 			return false;
 		Event other = (Event) obj;
+		if (categories == null) {
+			if (other.categories != null)
+				return false;
+		} else if (!categories.equals(other.categories))
+			return false;
 		if (dateCreated == null) {
 			if (other.dateCreated != null)
 				return false;
@@ -240,7 +277,10 @@ public class Event {
 			return false;
 		if (id != other.id)
 			return false;
-		if (locationId != other.locationId)
+		if (location == null) {
+			if (other.location != null)
+				return false;
+		} else if (!location.equals(other.location))
 			return false;
 		if (peopleNeeded != other.peopleNeeded)
 			return false;
@@ -271,9 +311,43 @@ public class Event {
 			return false;
 		return true;
 	}
-	
-	
-	
-	
+
+	public void addCategory(Category cat) {
+		if (categories == null) {
+			categories = new ArrayList<>();
+		}
+
+		if (!categories.contains(cat)) {
+			categories.add(cat);
+			cat.addEvent(this);
+		}
+	}
+
+	public void removeCategory(Category cat) {
+		if (categories != null && categories.contains(cat)) {
+			categories.remove(cat);
+			cat.removeEvent(this);
+		}
+	}
+	public void addMessageBoard(MessageBoard messBoard) {
+		if (messBoards == null) {
+			messBoards = new ArrayList<>();
+		}
+
+		if (!messBoards.contains(messBoard)) {
+			messBoards.add(messBoard);
+			if (messBoard.getEvent() != null) {
+				messBoard.getEvent().getMessBoards().remove(messBoard);
+			}
+			messBoard.setEvent(this);
+		}
+	}
+
+	public void removeMessageBoard(MessageBoard messBoard) {
+		messBoard.setEvent(null);
+		if (messBoards != null) {
+			messBoards.remove(messBoard);
+		}
+	}
 
 }

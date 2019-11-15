@@ -1,10 +1,15 @@
 package com.skilldistillery.goodwork.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class User {
@@ -24,6 +29,8 @@ public class User {
 	private String bio;
 	@Column(name = "photo_url")
 	private String photoURL;
+	@OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	private List<MessageBoard> messBoards;
 
 	public User(int id, String userName, String password, Boolean active, String firstName, String lastName,
 			String email, String bio, String photoURL) {
@@ -45,6 +52,14 @@ public class User {
 
 	public int getId() {
 		return id;
+	}
+
+	public List<MessageBoard> getMessBoards() {
+		return messBoards;
+	}
+
+	public void setMessBoards(List<MessageBoard> messBoards) {
+		this.messBoards = messBoards;
 	}
 
 	public void setId(int id) {
@@ -125,6 +140,7 @@ public class User {
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
+		result = prime * result + ((messBoards == null) ? 0 : messBoards.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((photoURL == null) ? 0 : photoURL.hashCode());
 		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
@@ -167,6 +183,11 @@ public class User {
 				return false;
 		} else if (!lastName.equals(other.lastName))
 			return false;
+		if (messBoards == null) {
+			if (other.messBoards != null)
+				return false;
+		} else if (!messBoards.equals(other.messBoards))
+			return false;
 		if (password == null) {
 			if (other.password != null)
 				return false;
@@ -190,6 +211,27 @@ public class User {
 		return "User [id=" + id + ", userName=" + userName + ", password=" + password + ", active=" + active
 				+ ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", bio=" + bio
 				+ ", photoURL=" + photoURL + "]";
+	}
+	
+	public void addMessageBoard(MessageBoard messBoard) {
+		if (messBoards == null) {
+			messBoards = new ArrayList<>();
+		}
+
+		if (!messBoards.contains(messBoard)) {
+			messBoards.add(messBoard);
+			if (messBoard.getUser() != null) {
+				messBoard.getUser().getMessBoards().remove(messBoard);
+			}
+			messBoard.setUser(this);
+		}
+	}
+
+	public void removeMessageBoard(MessageBoard messBoard) {
+		messBoard.setUser(null);
+		if (messBoards != null) {
+			messBoards.remove(messBoard);
+		}
 	}
 
 }

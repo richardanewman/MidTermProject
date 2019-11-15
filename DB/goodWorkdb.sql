@@ -160,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `message_board` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `event_id` INT NOT NULL,
   `user_id` INT NOT NULL,
-  `date_posterd` DATETIME NOT NULL,
+  `date_posted` DATETIME NOT NULL,
   `content` TEXT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_event_message_user_idx` (`user_id` ASC),
@@ -197,6 +197,30 @@ CREATE TABLE IF NOT EXISTS `event_has_category` (
   CONSTRAINT `fk_event_has_category_category1`
     FOREIGN KEY (`category_id`)
     REFERENCES `category` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `organization_has_user`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `organization_has_user` ;
+
+CREATE TABLE IF NOT EXISTS `organization_has_user` (
+  `organization_id` INT NOT NULL,
+  `user_id` INT NOT NULL,
+  PRIMARY KEY (`organization_id`, `user_id`),
+  INDEX `fk_organization_has_user_user1_idx` (`user_id` ASC),
+  INDEX `fk_organization_has_user_organization1_idx` (`organization_id` ASC),
+  CONSTRAINT `fk_organization_has_user_organization1`
+    FOREIGN KEY (`organization_id`)
+    REFERENCES `organization` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_organization_has_user_user1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -278,7 +302,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `goodWorkdb`;
-INSERT INTO `message_board` (`id`, `event_id`, `user_id`, `date_posterd`, `content`) VALUES (1, 1, 1, '2019-11-14-17-33-00', 'Somebody better sign up and me clean. Please.');
+INSERT INTO `message_board` (`id`, `event_id`, `user_id`, `date_posted`, `content`) VALUES (1, 1, 1, '2019-11-14-17-33-00', 'Somebody better sign up and help me clean. Please.');
 
 COMMIT;
 
