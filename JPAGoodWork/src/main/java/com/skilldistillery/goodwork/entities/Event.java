@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -62,6 +63,9 @@ public class Event {
 
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, mappedBy = "events")
 	private List<Category> categories;
+	
+	@OneToMany(mappedBy = "event")
+	private List<MessageBoard> messBoards;
 
 	public List<Category> getCategories() {
 		return categories;
