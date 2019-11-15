@@ -1,5 +1,6 @@
 package com.skilldistillery.goodwork.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +15,7 @@ public class Organization {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@OneToOne
+	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	@JoinColumn(name = "location_id")
 	private Location location;
 	@Column(name = "org_name")

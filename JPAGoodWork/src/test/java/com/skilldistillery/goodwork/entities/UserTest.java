@@ -2,6 +2,7 @@ package com.skilldistillery.goodwork.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -45,7 +46,35 @@ class UserTest {
 	@DisplayName("Testing for any kind of information pulled back from the database")
 	void test() {
 		assertNotNull(user);
-		assertEquals("bobDobbs", user.getUserName());
+		assertEquals("waterboy", user.getUserName());
+	}
+	
+	@Test
+	@DisplayName("Testing for correct login info is pulled from the database")
+	void testLogin() {
+		assertEquals("waterboy", user.getUserName());
+		assertEquals("12345", user.getPassword());
+	}
+	
+	@Test
+	@DisplayName("Testing for correct user name pulled from the database")
+	void testUserName() {
+		assertEquals("Bobby", user.getFirstName());
+		assertEquals("Bushay", user.getLastName());
+	}
+	
+	@Test
+	@DisplayName("Testing for correct user email and active state pulled from the data base")
+	void testActiveAndEmail() {
+		assertEquals("bobbyB@gmail.com", user.getEmail());
+		assertTrue(user.getActive());
+	}
+	
+	@Test
+	@DisplayName("Testing for correct bio and photo url pulled from the database")
+	void testPhotoAndBio() {
+		assertEquals("https://miro.medium.com/max/1914/1*nPRQgbNeVv1PqgXV-HibXg.jpeg", user.getPhotoURL());
+		assertEquals("Serving drinks and kicking ass.", user.getBio());
 	}
 
 }

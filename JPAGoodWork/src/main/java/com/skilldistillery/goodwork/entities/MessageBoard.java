@@ -2,29 +2,52 @@ package com.skilldistillery.goodwork.entities;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "message_board")
 public class MessageBoard {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="event_id")
-	private int eventId;
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@JoinColumn(name = "event_id")
+	private Event event;
 	
-	@Column(name="user_id")
-	private int userId;
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@JoinColumn(name="user_id")
+	private User user;
 	
 	@Column(name="date_posted")
 	private LocalDate datePosted;
 	
 	private String content;
+
+	public Event getEvent() {
+		return event;
+	}
+
+	public void setEvent(Event event) {
+		this.event = event;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	public int getId() {
 		return id;
@@ -32,22 +55,6 @@ public class MessageBoard {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public int getEventId() {
-		return eventId;
-	}
-
-	public void setEventId(int eventId) {
-		this.eventId = eventId;
-	}
-
-	public int getUserId() {
-		return userId;
-	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
 	}
 
 	public LocalDate getDatePosted() {
@@ -72,11 +79,8 @@ public class MessageBoard {
 
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("MessageBoard [id=").append(id).append(", eventId=").append(eventId).append(", userId=")
-				.append(userId).append(", datePosted=").append(datePosted).append(", content=").append(content)
-				.append("]");
-		return builder.toString();
+		return "MessageBoard [id=" + id + ", event=" + event + ", user=" + user + ", datePosted=" + datePosted
+				+ ", content=" + content + "]";
 	}
 
 	@Override
@@ -85,9 +89,9 @@ public class MessageBoard {
 		int result = 1;
 		result = prime * result + ((content == null) ? 0 : content.hashCode());
 		result = prime * result + ((datePosted == null) ? 0 : datePosted.hashCode());
-		result = prime * result + eventId;
+		result = prime * result + ((event == null) ? 0 : event.hashCode());
 		result = prime * result + id;
-		result = prime * result + userId;
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
 
@@ -110,11 +114,17 @@ public class MessageBoard {
 				return false;
 		} else if (!datePosted.equals(other.datePosted))
 			return false;
-		if (eventId != other.eventId)
+		if (event == null) {
+			if (other.event != null)
+				return false;
+		} else if (!event.equals(other.event))
 			return false;
 		if (id != other.id)
 			return false;
-		if (userId != other.userId)
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
 			return false;
 		return true;
 	}

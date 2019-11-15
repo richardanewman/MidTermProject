@@ -5,11 +5,15 @@ import java.time.LocalDate;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "user_event")
 public class UserEvent {
-
+	
+	
 	@Column(name = "user_id")
 	private int userId;
-
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "event_id")
 	private int eventId;
 
