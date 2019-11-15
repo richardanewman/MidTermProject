@@ -59,21 +59,20 @@ CREATE TABLE IF NOT EXISTS `event` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `location_id` INT NOT NULL,
   `host_id` INT NOT NULL,
-  `volunteer_id` INT NULL,
   `event_name` VARCHAR(100) NOT NULL,
   `description` TEXT NOT NULL,
   `event_date` DATE NOT NULL,
   `start_time` VARCHAR(45) NOT NULL,
   `end_time` VARCHAR(45) NOT NULL,
-  `people_needed` INT NOT NULL DEFAULT 1,
-  `time_stamp` TIMESTAMP NOT NULL,
-  `point_of_contact` VARCHAR(100) NOT NULL,
-  `poc_phone` VARCHAR(45) NOT NULL,
-  `poc_email` VARCHAR(45) NOT NULL,
+  `people_needed` INT NULL DEFAULT 1,
+  `date_created` DATETIME NOT NULL,
+  `photo_url` TEXT NULL,
+  `point_of_contact` VARCHAR(100) NULL,
+  `poc_phone` VARCHAR(45) NULL,
+  `poc_email` VARCHAR(200) NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_event_location1_idx` (`location_id` ASC),
   INDEX `fk_event_host_user_idx` (`host_id` ASC),
-  INDEX `fk_event_volunteer_user_idx` (`volunteer_id` ASC),
   CONSTRAINT `fk_event_location`
     FOREIGN KEY (`location_id`)
     REFERENCES `location` (`id`)
@@ -81,11 +80,6 @@ CREATE TABLE IF NOT EXISTS `event` (
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_event_host_user`
     FOREIGN KEY (`host_id`)
-    REFERENCES `user` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_event_volunteer_user`
-    FOREIGN KEY (`volunteer_id`)
     REFERENCES `user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -134,7 +128,7 @@ CREATE TABLE IF NOT EXISTS `organization` (
   `org_type` VARCHAR(45) NOT NULL,
   `org_number` VARCHAR(45) NULL,
   `logo_url` TEXT NULL,
-  `website` VARCHAR(200) NULL,
+  `website` VARCHAR(2000) NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_organization_location1_idx` (`location_id` ASC),
   CONSTRAINT `fk_organization_location1`
@@ -166,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `message_board` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `event_id` INT NOT NULL,
   `user_id` INT NOT NULL,
-  `timestamp` TIMESTAMP NOT NULL,
+  `date_posterd` DATETIME NOT NULL,
   `content` TEXT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_event_message_user_idx` (`user_id` ASC),
@@ -244,7 +238,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `goodWorkdb`;
-INSERT INTO `event` (`id`, `location_id`, `host_id`, `volunteer_id`, `event_name`, `description`, `event_date`, `start_time`, `end_time`, `people_needed`, `time_stamp`, `point_of_contact`, `poc_phone`, `poc_email`) VALUES (1, 1, 1, NULL, 'Neighborhood Clean-Up', 'Help Bobby Bushay clean up all the trash around 5th and Central Ave this Saturday.', '2019-11-16', '12:00:00', '14:00:00', 5, '2019-11-14-17-33-00', 'Mamma Bushay', '850-334-9876', 'mammasemail@gmail.com');
+INSERT INTO `event` (`id`, `location_id`, `host_id`, `event_name`, `description`, `event_date`, `start_time`, `end_time`, `people_needed`, `date_created`, `photo_url`, `point_of_contact`, `poc_phone`, `poc_email`) VALUES (1, 1, 1, 'Neighborhood Clean-Up', 'Help Bobby Bushay clean up all the trash around 5th and Central Ave this Saturday.', '2019-11-16', '12:00:00', '14:00:00', 5, '2019-11-14-17-33-00', NULL, 'Mamma Bushay', '850-334-9876', 'mammasemail@gmail.com');
 
 COMMIT;
 
@@ -284,7 +278,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `goodWorkdb`;
-INSERT INTO `message_board` (`id`, `event_id`, `user_id`, `timestamp`, `content`) VALUES (1, 1, 1, '2019-11-14-17-33-00', 'Somebody better sign up and me clean. Please.');
+INSERT INTO `message_board` (`id`, `event_id`, `user_id`, `date_posterd`, `content`) VALUES (1, 1, 1, '2019-11-14-17-33-00', 'Somebody better sign up and me clean. Please.');
 
 COMMIT;
 
