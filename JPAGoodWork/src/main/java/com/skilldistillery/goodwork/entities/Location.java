@@ -18,7 +18,7 @@ public class Location {
 	private String state;
 
 	@Column(name = "zip_code")
-	private int zipCode;
+	private Integer zipCode;
 
 	public Location() {
 		super();
@@ -64,7 +64,7 @@ public class Location {
 		this.state = state;
 	}
 
-	public int getZipCode() {
+	public Integer getZipCode() {
 		return zipCode;
 	}
 
@@ -87,7 +87,7 @@ public class Location {
 		result = prime * result + ((city == null) ? 0 : city.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((state == null) ? 0 : state.hashCode());
-		result = prime * result + zipCode;
+		result = prime * result + ((zipCode == null) ? 0 : zipCode.hashCode());
 		return result;
 	}
 
@@ -122,9 +122,11 @@ public class Location {
 				return false;
 		} else if (!state.equals(other.state))
 			return false;
-		if (zipCode != other.zipCode)
+		if (zipCode == null) {
+			if (other.zipCode != null)
+				return false;
+		} else if (!zipCode.equals(other.zipCode))
 			return false;
 		return true;
 	}
-//comment
 }
