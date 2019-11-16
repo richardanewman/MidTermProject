@@ -43,9 +43,7 @@ ${successfulDelete}
 </c:if>
 
 <br>
-
-	<c:choose>
-		<c:when test="${not empty event }">
+<c:if test="${not empty event}">
 
 			<h3>
 				<strong>Event</strong>
@@ -69,10 +67,7 @@ ${successfulDelete}
 			<li>Description: ${event.description }
 			<li>${event.photoUrl}</li>
 			</ul>
-</c:when>
-		<c:otherwise>
-			<h4 align="center">Event Not Found</h4>
-		</c:otherwise>
-		</c:choose>
+
+		</c:if>
 </body>
 </html>
