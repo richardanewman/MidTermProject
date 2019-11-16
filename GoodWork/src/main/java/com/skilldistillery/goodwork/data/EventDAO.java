@@ -6,7 +6,7 @@ import com.skilldistillery.goodwork.entities.Event;
 
 public interface EventDAO {
 		
-	public Event findEventById(int eid);
+	public Event findEventById(int id);
 	
 	public List<Event> findAll();
 	

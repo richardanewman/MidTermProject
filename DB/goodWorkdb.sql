@@ -129,6 +129,7 @@ CREATE TABLE IF NOT EXISTS `organization` (
   `org_number` VARCHAR(45) NULL,
   `logo_url` TEXT NULL,
   `website` VARCHAR(2000) NULL,
+  `active` TINYINT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
   INDEX `fk_organization_location1_idx` (`location_id` ASC),
   CONSTRAINT `fk_organization_location1`
@@ -282,7 +283,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `goodWorkdb`;
-INSERT INTO `organization` (`id`, `location_id`, `org_name`, `org_type`, `org_number`, `logo_url`, `website`) VALUES (1, 2, 'Mamma\'s Helpers', 'Group', NULL, NULL, NULL);
+INSERT INTO `organization` (`id`, `location_id`, `org_name`, `org_type`, `org_number`, `logo_url`, `website`, `active`) VALUES (1, 2, 'Mamma\'s Helpers', 'Group', '12345', 'None', 'Nope', 1);
 
 COMMIT;
 
