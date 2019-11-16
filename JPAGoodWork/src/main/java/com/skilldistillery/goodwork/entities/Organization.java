@@ -25,6 +25,8 @@ public class Organization {
 	private Location location;
 	@Column(name = "org_name")
 	private String orgName;
+	@Column(name="description")
+	private String orgDescription;
 	@Column(name = "org_type")
 	private String orgType;
 	@Column(name = "org_number")
