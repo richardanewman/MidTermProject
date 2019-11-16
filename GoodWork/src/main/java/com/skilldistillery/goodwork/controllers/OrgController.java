@@ -2,6 +2,8 @@ package com.skilldistillery.goodwork.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,6 +40,26 @@ public class OrgController {
 		
 		return "result";
 		}
+	}
+	
+///////////////////////////////////////////////////////////////////////
+	
+//Add new organization to database //////////////////////////////////
+
+	@RequestMapping(path="createOrgForm.do", method = RequestMethod.GET)
+	public String getOrgForm(Model model){
+		Organization newOrg = new Organization();
+		model.addAttribute("newOrg", newOrg);
+		return "newOrg";
+
+}
+
+	@RequestMapping(path="addNewOrg.do", method = RequestMethod.POST)
+	public String addOrg(@Valid Organization newOrg, Model model) {
+		model.addAttribute("newOrg", orgDAO.addNewOrg(newOrg));
+
+		return "org";
+
 	}
 
 }
