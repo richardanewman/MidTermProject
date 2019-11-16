@@ -9,7 +9,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.goodwork.entities.Organization;
-import com.sun.xml.bind.v2.TODO;
+
 
 @Service
 @Transactional
@@ -20,7 +20,7 @@ public class OrgDAOImpl implements OrgDAO {
 
 	@Override
 	public List<Organization> getAll() {
-		List<Organization> organizationList = em.createQuery("select o from Organization o", Organization.class)
+		List<Organization> organizationList = em.createQuery("select o from Organization o where active= 1", Organization.class)
 				.getResultList();
 		em.flush();
 		return organizationList;
@@ -33,6 +33,7 @@ public class OrgDAOImpl implements OrgDAO {
 
 	@Override
 	public Organization addNewOrg(Organization org) {
+		org.setActive(true);
 		em.persist(org);
 		em.flush();
 		return org;
@@ -43,7 +44,7 @@ public class OrgDAOImpl implements OrgDAO {
 	public boolean disableOrganization(int id) {
 		if (em.find(Organization.class, id) != null) {
 			Organization disableOrg = em.find(Organization.class, id);
-//		TODO
+			disableOrg.setActive(false);
 			
 
 			return true;
