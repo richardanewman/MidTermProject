@@ -73,7 +73,6 @@ class UserEventTest {
 		assertFalse(userEvent.getAttended());
 		assertEquals(LocalDate.parse("2019-11-15"), userEvent.getDateSignedUp());
 		assertNull(userEvent.getRating());
-		assertEquals(0, userEvent.getAttended());
 		assertEquals("host", userEvent.getRole());
 	}
 }
