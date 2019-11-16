@@ -32,6 +32,7 @@ public class Organization {
 	@Column(name = "logo_url")
 	private String logoURL;
 	private String website;
+	private boolean active;
 	
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	@JoinTable(name = "organization_has_user", joinColumns = @JoinColumn(name = "organization_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
@@ -101,6 +102,14 @@ public class Organization {
 		this.website = website;
 	}
 
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
 	public Organization(int id, Location location, String orgName, String orgType, String orgNum, String logoURL,
 			String website) {
 		super();
@@ -117,24 +126,12 @@ public class Organization {
 		super();
 	}
 
-	public Organization(String orgName, String address, String address2, String city, String state, Integer zipCode,
-			String orgType, String logoURL, String website) {
-		this.orgName = orgName;
-		Location newLoc = new Location();
-		newLoc.setAddress(address);
-		newLoc.setAddress2(address2);
-		newLoc.setCity(city);
-		newLoc.setState(state);
-		newLoc.setZipCode(zipCode);
-		this.orgType = orgType;
-		this.logoURL = logoURL;
-		this.website = website;
-	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + (active ? 1231 : 1237);
 		result = prime * result + id;
 		result = prime * result + ((location == null) ? 0 : location.hashCode());
 		result = prime * result + ((logoURL == null) ? 0 : logoURL.hashCode());
@@ -155,6 +152,8 @@ public class Organization {
 		if (getClass() != obj.getClass())
 			return false;
 		Organization other = (Organization) obj;
+		if (active != other.active)
+			return false;
 		if (id != other.id)
 			return false;
 		if (location == null) {
@@ -197,8 +196,12 @@ public class Organization {
 
 	@Override
 	public String toString() {
-		return "Organization [id=" + id + ", location=" + location + ", orgName=" + orgName + ", orgType=" + orgType
-				+ ", orgNum=" + orgNum + ", logoURL=" + logoURL + ", website=" + website + ", users=" + users + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("Organization [id=").append(id).append(", location=").append(location).append(", orgName=")
+				.append(orgName).append(", orgType=").append(orgType).append(", orgNum=").append(orgNum)
+				.append(", logoURL=").append(logoURL).append(", website=").append(website).append(", active=")
+				.append(active).append(", users=").append(users).append("]");
+		return builder.toString();
 	}
 	
 	public void addUser(User user) {

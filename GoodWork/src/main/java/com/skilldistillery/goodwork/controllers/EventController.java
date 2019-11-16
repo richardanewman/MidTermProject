@@ -28,7 +28,7 @@ public class EventController {
 	public String eventList(Model model) {
 		List<Event> events = eventDAO.findAll();
 		model.addAttribute("eventList", events);
-		return "result";
+		return "eventList";
 	}
 
 	@RequestMapping(path = "createEvent.do", method = RequestMethod.GET)
