@@ -15,6 +15,14 @@
 <body>
 Viewing, take me out of here!
 
+<form action="getAllOrgs.do" method="GET">
+  <input class="submit" type="submit" value="List All Organizations" />
+</form>
+
+<form action="findById.do" method="GET" >
+		<input class="form-control" type="number"  min="0" required="required" name="id" placeholder="Enter ID"/> 
+ 		 <input class="btn btn-dark btn-lg btn-block" type="submit" value="Find By ID" />
+		</form>
 
 
 	<!-- js files for bootstap -->
