@@ -22,11 +22,6 @@
 		<input class="submit" type="submit" value="List All Organizations" />
 	</form>
 
-
-	<form action="createOrg.do" method="GET">
-		<input class="submit" type="submit" value="Create Organization" />
-	</form>
-
 <form action="createOrgForm.do" method="GET">
   <input class="submit" type="submit" value="Create Organization" />
 </form>
