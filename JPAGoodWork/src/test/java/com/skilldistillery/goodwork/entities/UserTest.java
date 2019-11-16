@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.time.LocalDate;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -75,6 +77,35 @@ class UserTest {
 	void testPhotoAndBio() {
 		assertEquals("https://miro.medium.com/max/1914/1*nPRQgbNeVv1PqgXV-HibXg.jpeg", user.getPhotoURL());
 		assertEquals("Serving drinks and kicking ass.", user.getBio());
+	}
+	
+	@Test
+	@DisplayName("Testing for entity connection between messageBoard")
+	void testMessage() {
+		assertNotNull(user.getMessBoards().get(0));
+		assertEquals("Somebody better sign up and help me clean. Please.", user.getMessBoards().get(0).getContent());
+	}
+	
+	@Test
+	@DisplayName("Testing for entity connection between Organization and user")
+	void testOrg() {
+		assertNotNull(user.getOrgs().get(0));
+		assertEquals("Mamma's Helpers", user.getOrgs().get(0).getOrgName());
+	}
+	
+	@Test
+	@DisplayName("Testing for entity connection between UserEvent and User")
+	void testUserEvent() {
+		assertTrue(user.getEvents().get(0).getActive());
+		assertEquals(LocalDate.parse("2019-11-15"), user.getEvents().get(0).getDateSignedUp());
+	}
+	
+	@Test
+	@DisplayName("Testing for entity connection between user and event")
+	void testEvent() {
+		assertNotNull(user.getEvents().get(0).getEvent());
+		assertEquals("Help Bobby Bushay clean up all the trash around 5th and Central Ave this Saturday.", user.getEvents().get(0).getEvent().getDescription());
+		assertEquals("Neighborhood Clean-Up", user.getEvents().get(0).getEvent().getEventName());
 	}
 
 }

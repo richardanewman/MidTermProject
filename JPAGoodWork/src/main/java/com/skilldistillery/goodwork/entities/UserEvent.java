@@ -12,7 +12,7 @@ public class UserEvent {
 	@EmbeddedId
 	private UserEventId id;
 
-	private int active;
+	private boolean active;
 
 	@Column(name = "date_signed_up")
 	private LocalDate dateSignedUp;
@@ -20,9 +20,9 @@ public class UserEvent {
 	@Column(name = "event_role")
 	private String role;
 
-	private int attended;
+	private boolean attended;
 
-	private int rating;
+	private Integer rating;
 
 	@Column(name = "review_description")
 	private String review;
@@ -65,11 +65,11 @@ public class UserEvent {
 		this.id = id;
 	}
 
-	public int getActive() {
+	public boolean getActive() {
 		return active;
 	}
 
-	public void setActive(int active) {
+	public void setActive(boolean active) {
 		this.active = active;
 	}
 
@@ -89,11 +89,11 @@ public class UserEvent {
 		this.role = role;
 	}
 
-	public int getAttended() {
+	public boolean getAttended() {
 		return attended;
 	}
 
-	public void setAttended(int attended) {
+	public void setAttended(boolean attended) {
 		this.attended = attended;
 	}
 
@@ -124,12 +124,12 @@ public class UserEvent {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + active;
-		result = prime * result + attended;
+		result = prime * result + (active ? 1231 : 1237);
+		result = prime * result + (attended ? 1231 : 1237);
 		result = prime * result + ((dateSignedUp == null) ? 0 : dateSignedUp.hashCode());
 		result = prime * result + ((event == null) ? 0 : event.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + rating;
+		result = prime * result + ((rating == null) ? 0 : rating.hashCode());
 		result = prime * result + ((review == null) ? 0 : review.hashCode());
 		result = prime * result + ((role == null) ? 0 : role.hashCode());
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
@@ -164,7 +164,10 @@ public class UserEvent {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (rating != other.rating)
+		if (rating == null) {
+			if (other.rating != null)
+				return false;
+		} else if (!rating.equals(other.rating))
 			return false;
 		if (review == null) {
 			if (other.review != null)

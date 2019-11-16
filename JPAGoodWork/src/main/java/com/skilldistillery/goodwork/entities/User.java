@@ -30,13 +30,13 @@ public class User {
 	private String bio;
 	@Column(name = "photo_url")
 	private String photoURL;
-	@OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@OneToMany(mappedBy = "user", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	private List<MessageBoard> messBoards;
-	@OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@OneToMany(mappedBy = "user", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	private List<UserEvent> events;
-	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	private List<Organization> orgs;
-	
+
 	public User(int id, String userName, String password, Boolean active, String firstName, String lastName,
 			String email, String bio, String photoURL) {
 		super();
@@ -73,6 +73,14 @@ public class User {
 
 	public void setMessBoards(List<MessageBoard> messBoards) {
 		this.messBoards = messBoards;
+	}
+
+	public List<Organization> getOrgs() {
+		return orgs;
+	}
+
+	public void setOrgs(List<Organization> orgs) {
+		this.orgs = orgs;
 	}
 
 	public void setId(int id) {
@@ -237,7 +245,7 @@ public class User {
 				+ ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", bio=" + bio
 				+ ", photoURL=" + photoURL + "]";
 	}
-	
+
 	public void addMessageBoard(MessageBoard messBoard) {
 		if (messBoards == null) {
 			messBoards = new ArrayList<>();
@@ -258,28 +266,28 @@ public class User {
 			messBoards.remove(messBoard);
 		}
 	}
-	
+
 	public void addUserEvent(UserEvent userEvent) {
-		if(events == null) {
+		if (events == null) {
 			events = new ArrayList<>();
 		}
-		
-		if(!events.contains(userEvent)) {
+
+		if (!events.contains(userEvent)) {
 			events.add(userEvent);
-			if(userEvent.getUser() != null) {
+			if (userEvent.getUser() != null) {
 				userEvent.getUser().getEvents().remove(userEvent);
 			}
 			userEvent.setUser(this);
 		}
 	}
-	
+
 	public void removeUserEvent(UserEvent userEvent) {
 		userEvent.setUser(null);
-		if(events != null) {
+		if (events != null) {
 			events.remove(userEvent);
 		}
 	}
-	
+
 	public void addOrganization(Organization org) {
 		if (orgs == null) {
 			orgs = new ArrayList<>();
