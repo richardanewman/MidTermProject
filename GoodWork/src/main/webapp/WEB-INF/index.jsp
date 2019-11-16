@@ -37,7 +37,12 @@
 			required="required" /> <input type="submit"
 			value="Show Event" />
 	</form>
+<br>
 
+				<form action="getEventList.do" method="GET">
+					<input type="submit" class="btn btn-primary" value="List Events" />
+				</form>
+				<br>
 
 	<form action="findById.do" method="GET">
 		<input class="form-control" type="number" min="0" required="required"

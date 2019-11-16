@@ -25,7 +25,7 @@ public class EventDAOImpl implements EventDAO {
 	@Override
 	public List<Event> findAll() {
 		return em.createQuery(
-				"SELECT events.eventName, events.description, events.eventDate FROM Event events ORDER BY events.eventDate",
+				"SELECT events FROM Event events ORDER BY events.eventDate",
 				Event.class).getResultList();
 	}
 
