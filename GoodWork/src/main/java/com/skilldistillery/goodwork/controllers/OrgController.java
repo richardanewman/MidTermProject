@@ -62,4 +62,21 @@ public class OrgController {
 
 	}
 
+///////////////////////////////////////////////////////////////////////
+	
+//Disable organization   //////////////////////////////////////////////
+
+	@RequestMapping(path="disableOrg.do", method = RequestMethod.POST)
+	public String disableOrg(@Valid int id, Model model) {
+		if (orgDAO.disableOrganization(id)) {
+			model.addAttribute("successfulDelete", "Looks like we successfully deleted your organization!");
+			return "result";
+		}else {
+			model.addAttribute("oops", "Looks like something went wrong. Please check your ID number and try again.");
+			return "fail";
+			
+		}
+		
+	}
+	
 }

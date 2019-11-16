@@ -13,45 +13,38 @@
 <title>Event</title>
 </head>
 <body>
-	<br>
-	<c:choose>
-		<c:when test="${not empty event }">
-
-			<h3>
-				<strong>Event</strong>
-			</h3>
-
-			<table class="table">
-				<thead>
-					<tr>
-						<th scope="col">ID</th>
-						<th scope="col">Event Title</th>
-
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<th scope="row">${event.id}</th>
-						<td>${event.eventName}</td>
-						<td>${event.eventName}</td>
-						<td>${event.eventName}</td>
-						<td>${event.eventName}</td>
-						<td>${event.eventName}</td>
-						<td>${event.eventName}</td>
-						<td>${event.eventName}</td>
-						<td>${event.eventName}</td>
-						<td>${event.eventName}</td>
-						<td>${event.eventName}</td>
-						<td>${event.eventName}</td>
+	<div>
+			<c:choose>
+			<c:when test="${not empty eventList}">
+				<h2 align="center">
+					<strong><em>List of Events</em></strong>
+				</h2>
+				<table class="table table-hover table-bordered table-dark">
+					<thead>
+						<tr>
+							<th scope="col">Title</th>
+							<th scope="col">Description</th>
+							<th scope="col">Event Date</th>
 						
-					</tr>
-				</tbody>
-			</table>
-		</c:when>
-		<c:otherwise>
-			<h4 align="center">Event Not Found</h4>
-		</c:otherwise>
-	</c:choose>
+						</tr>
+					</thead>
+					<c:forEach var="eventList" items="${eventList}">
+						<tbody>
+							<tr>
+								<th scope="row">${eventList.id}</th>
+								<td><a href="getEvent.do?id=${eventList.id}">${eventList.eventName}</a></td>
+								<td>${eventList.description}</td>
+								<td>${eventList.eventDate}</td>
+							
+							</tr>
+						</tbody>
+					</c:forEach>
+				</table>
+			</c:when>
+		</c:choose>
+	
+	</div>
+
 	<br>
 
 	<!-- js files for bootstap -->
