@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.goodwork.entities.Organization;
+import com.sun.xml.bind.v2.TODO;
 
 @Service
 @Transactional
@@ -36,6 +37,19 @@ public class OrgDAOImpl implements OrgDAO {
 		em.flush();
 		return org;
 
+	}
+	
+	@Override
+	public boolean disableOrganization(int id) {
+		if (em.find(Organization.class, id) != null) {
+			Organization disableOrg = em.find(Organization.class, id);
+//		TODO
+			
+
+			return true;
+		} else
+
+			return false;
 	}
 
 }
