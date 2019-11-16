@@ -10,7 +10,7 @@
 </head>
 <body>
 <form:form action="addNewUser.do" method="POST" modelAttribute="newUser">
-		<form:label path="userName">User Name:</form:label><br>
+		<form:label path="userName">User Name:</form:label><br>${username }
 		<form:input class="input" path="userName" required="required" type="text" placeholder="User name"/>
 		<form:errors path="userName" />
 		<br />
