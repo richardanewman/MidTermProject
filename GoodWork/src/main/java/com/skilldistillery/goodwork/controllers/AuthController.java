@@ -26,7 +26,7 @@ public class AuthController {
 	
 	@RequestMapping(path="enter.do", method = RequestMethod.GET)
 	public String loginUser(@RequestParam("userName") String userName, @RequestParam("password") String password, Model model) {
-		model.addAttribute("user", dao.loginUser(userName, password));
+		model.addAttribute("newUser", dao.loginUser(userName, password));
 		return "profile";
 	}
 	
@@ -40,6 +40,7 @@ public class AuthController {
 	public String addUser(@Valid User newUser, Model model) {
 		if(!dao.validUserName(newUser.getUserName())) {
 			model.addAttribute("newUser", new User());
+//			model.addAttribute("userName", "Looks like that username is already in use, try again");
 			return "registerForm";
 		}
 		model.addAttribute("newUser", dao.registerUser(newUser));
