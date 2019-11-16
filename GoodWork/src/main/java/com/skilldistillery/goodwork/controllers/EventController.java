@@ -18,9 +18,9 @@ public class EventController {
 	private EventDAO eventDAO;
 
 	@RequestMapping(path = "getEvent.do", method = RequestMethod.GET)
-	public String getEvent(Model model, int eid) {
-		model.addAttribute("id", eventDAO.findEventById(eid));
-		return "event";
+	public String getEvent(Model model, int id) {
+		model.addAttribute("event", eventDAO.findEventById(id));
+		return "event"; // will change this to result
 
 	}
 
@@ -33,7 +33,7 @@ public class EventController {
 
 	@RequestMapping(path = "createEvent.do", method = RequestMethod.GET)
 	public String addEvent() {
-		return "createEvent";
+		return "event";
 	}
 
 	@RequestMapping(path = "updateEvent.do", method = RequestMethod.POST)
