@@ -1,5 +1,12 @@
 package com.skilldistillery.goodwork.data;
 
-public interface AuthDAO {
+import com.skilldistillery.goodwork.entities.User;
 
+public interface AuthDAO {
+	
+	public boolean validUserName(String userName);
+	public boolean validPassword(String password);
+	public User loginUser(String userName, String password);
+	public User registerUser(User user);
+	
 }
