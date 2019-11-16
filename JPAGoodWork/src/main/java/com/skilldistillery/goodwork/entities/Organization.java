@@ -20,17 +20,23 @@ public class Organization {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
 	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	@JoinColumn(name = "location_id")
 	private Location location;
+	
 	@Column(name = "org_name")
 	private String orgName;
+
 	@Column(name="description")
 	private String orgDescription;
+	
 	@Column(name = "org_type")
 	private String orgType;
+	
 	@Column(name = "org_number")
 	private String orgNum;
+	
 	@Column(name = "logo_url")
 	private String logoURL;
 	private String website;
@@ -70,6 +76,14 @@ public class Organization {
 
 	public void setOrgName(String orgName) {
 		this.orgName = orgName;
+	}
+	
+	public String getOrgDescription() {
+		return orgDescription;
+	}
+
+	public void setOrgDescription(String orgDescription) {
+		this.orgDescription = orgDescription;
 	}
 
 	public String getOrgType() {
@@ -137,6 +151,7 @@ public class Organization {
 		result = prime * result + id;
 		result = prime * result + ((location == null) ? 0 : location.hashCode());
 		result = prime * result + ((logoURL == null) ? 0 : logoURL.hashCode());
+		result = prime * result + ((orgDescription == null) ? 0 : orgDescription.hashCode());
 		result = prime * result + ((orgName == null) ? 0 : orgName.hashCode());
 		result = prime * result + ((orgNum == null) ? 0 : orgNum.hashCode());
 		result = prime * result + ((orgType == null) ? 0 : orgType.hashCode());
@@ -167,6 +182,11 @@ public class Organization {
 			if (other.logoURL != null)
 				return false;
 		} else if (!logoURL.equals(other.logoURL))
+			return false;
+		if (orgDescription == null) {
+			if (other.orgDescription != null)
+				return false;
+		} else if (!orgDescription.equals(other.orgDescription))
 			return false;
 		if (orgName == null) {
 			if (other.orgName != null)
@@ -200,9 +220,9 @@ public class Organization {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Organization [id=").append(id).append(", location=").append(location).append(", orgName=")
-				.append(orgName).append(", orgType=").append(orgType).append(", orgNum=").append(orgNum)
-				.append(", logoURL=").append(logoURL).append(", website=").append(website).append(", active=")
-				.append(active).append(", users=").append(users).append("]");
+				.append(orgName).append(", orgDescription=").append(orgDescription).append(", orgType=").append(orgType)
+				.append(", orgNum=").append(orgNum).append(", logoURL=").append(logoURL).append(", website=")
+				.append(website).append(", active=").append(active).append(", users=").append(users).append("]");
 		return builder.toString();
 	}
 	
