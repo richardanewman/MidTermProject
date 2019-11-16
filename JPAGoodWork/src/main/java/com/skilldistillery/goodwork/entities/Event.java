@@ -44,7 +44,7 @@ public class Event {
 	private String endTime;
 
 	@Column(name = "people_needed")
-	private int peopleNeeded;
+	private Integer peopleNeeded;
 
 	@Column(name = "date_created")
 	private LocalDate dateCreated;
@@ -158,7 +158,7 @@ public class Event {
 		this.endTime = endTime;
 	}
 
-	public int getPeopleNeeded() {
+	public Integer getPeopleNeeded() {
 		return peopleNeeded;
 	}
 
