@@ -62,8 +62,8 @@ CREATE TABLE IF NOT EXISTS `event` (
   `event_name` VARCHAR(100) NOT NULL,
   `description` TEXT NOT NULL,
   `event_date` DATE NOT NULL,
-  `start_time` VARCHAR(45) NOT NULL,
-  `end_time` VARCHAR(45) NOT NULL,
+  `start_time` VARCHAR(45) NULL,
+  `end_time` VARCHAR(45) NULL,
   `people_needed` INT NULL DEFAULT 1,
   `date_created` DATETIME NOT NULL,
   `photo_url` TEXT NULL,
@@ -313,6 +313,16 @@ COMMIT;
 START TRANSACTION;
 USE `goodWorkdb`;
 INSERT INTO `event_has_category` (`event_id`, `category_id`) VALUES (1, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `organization_has_user`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `goodWorkdb`;
+INSERT INTO `organization_has_user` (`organization_id`, `user_id`) VALUES (1, 1);
 
 COMMIT;
 
