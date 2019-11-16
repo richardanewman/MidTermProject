@@ -13,20 +13,20 @@ import com.skilldistillery.goodwork.entities.Event;
 @Transactional // Spring automatically start a transaction for each DAO method
 @Service // allow Spring Boot to create the D A O bean
 public class EventDAOImpl implements EventDAO {
-	
+
 	@PersistenceContext // allows Spring Boot to a u to wire this EntityManager
 	private EntityManager em;
-	
+
 	@Override
 	public Event findEventById(int eid) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.find(Event.class, eid);
 	}
 
 	@Override
 	public List<Event> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return em.createQuery(
+				"SELECT events.eventName, events.description, events.eventDate FROM Event events ORDER BY events.eventDate",
+				Event.class).getResultList();
 	}
 
 	@Override
@@ -37,7 +37,7 @@ public class EventDAOImpl implements EventDAO {
 
 	@Override
 	public Event addEvent(Event event) {
-		// TODO Auto-generated method stub
+		em.persist(event);
 		return null;
 	}
 

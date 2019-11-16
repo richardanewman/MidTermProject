@@ -13,31 +13,40 @@ import com.skilldistillery.goodwork.entities.Event;
 
 @Controller
 public class EventController {
-	
+
 	@Autowired
 	private EventDAO eventDAO;
-	
-	@RequestMapping(path="getEvent.do", method = RequestMethod.GET)
+
+	@RequestMapping(path = "getEvent.do", method = RequestMethod.GET)
 	public String getEvent(Model model, int eid) {
 		model.addAttribute("id", eventDAO.findEventById(eid));
 		return "event";
-		
+
 	}
-	
-	@RequestMapping(path="getEventList.do", method = RequestMethod.GET)
+
+	@RequestMapping(path = "getEventList.do", method = RequestMethod.GET)
 	public String eventList(Model model) {
 		List<Event> events = eventDAO.findAll();
 		model.addAttribute("eventList", events);
-		return "eventList";
+		return "result";
 	}
-	
-	@RequestMapping(path="createEvent.do", method = RequestMethod.GET)
+
+	@RequestMapping(path = "createEvent.do", method = RequestMethod.GET)
 	public String addEvent() {
 		return "createEvent";
 	}
-	
-	@RequestMapping(path="updateEvent.do", method = RequestMethod.POST)
-	public String updateEvent(Model model) {
+
+	@RequestMapping(path = "updateEvent.do", method = RequestMethod.POST)
+	public String updateEvent(Model model, Event updatedEvent, Integer id) {
+		model.addAttribute("event", eventDAO.updateEvent(updatedEvent, id));
 		return "result";
 	}
+
+	@RequestMapping(path = "deleteEvent.do", method = RequestMethod.POST)
+	public String deleteEvent(Model model, int id) {
+		eventDAO.deleteEvent(id);
+		return "result";
+
+	}
+
 }
