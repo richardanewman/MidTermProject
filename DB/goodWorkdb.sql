@@ -125,6 +125,7 @@ CREATE TABLE IF NOT EXISTS `organization` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `location_id` INT NULL,
   `org_name` VARCHAR(45) NOT NULL,
+  `description` TEXT NULL,
   `org_type` VARCHAR(45) NOT NULL,
   `org_number` VARCHAR(45) NULL,
   `logo_url` TEXT NULL,
@@ -283,7 +284,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `goodWorkdb`;
-INSERT INTO `organization` (`id`, `location_id`, `org_name`, `org_type`, `org_number`, `logo_url`, `website`, `active`) VALUES (1, 2, 'Mamma\'s Helpers', 'Group', '12345', 'None', 'Nope', 1);
+INSERT INTO `organization` (`id`, `location_id`, `org_name`, `description`, `org_type`, `org_number`, `logo_url`, `website`, `active`) VALUES (1, 2, 'Mamma\'s Helpers', 'Big Mamma\'s merry group of helpers.', 'Group', '12345', 'None', 'Nope', 1);
 
 COMMIT;
 
