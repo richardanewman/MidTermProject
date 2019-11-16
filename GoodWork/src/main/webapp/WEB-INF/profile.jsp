@@ -22,5 +22,14 @@ ${newUser}
 		<input type="submit" value="Delete Profile"/> 
 		<br />
 </form:form>
+
+<form:form action="updateUserForm.do" method="GET" modelAttribute="newUser">
+					<form:label path="id" value="${newUser.id}"></form:label>
+					<form:hidden path="id" value="${newUser.id}" />
+					<form:errors path="id" value="${newUser.id}" />
+					<input type="submit" value="Update Profile" style="color:BLUE;"/>
+				</form:form>
+${newUser.events}
+${newUser.orgs}
 </body>
 </html>
