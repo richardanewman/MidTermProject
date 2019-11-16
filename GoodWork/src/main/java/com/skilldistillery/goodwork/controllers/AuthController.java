@@ -1,5 +1,7 @@
 package com.skilldistillery.goodwork.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,4 +29,21 @@ public class AuthController {
 		model.addAttribute("user", dao.loginUser(userName, password));
 		return "profile";
 	}
+	
+	@RequestMapping(path="register.do", method = RequestMethod.GET)
+	public String registerUser(Model model) {
+		model.addAttribute("newUser", new User());
+		return "registerForm";
+	}
+	
+	@RequestMapping(path="addNewUser.do", method = RequestMethod.POST)
+	public String addUser(@Valid User newUser, Model model) {
+		if(!dao.validUserName(newUser.getUserName())) {
+			model.addAttribute("newUser", new User());
+			return "registerForm";
+		}
+		model.addAttribute("newUser", dao.registerUser(newUser));
+		return "profile";
+	}
+
 }
