@@ -43,7 +43,7 @@ public class OrgDAOImpl implements OrgDAO {
 	public boolean disableOrganization(int id) {
 		if (em.find(Organization.class, id) != null) {
 			Organization disableOrg = em.find(Organization.class, id);
-//		TODO
+			disableOrg.setActive(false);
 			
 
 			return true;
