@@ -13,24 +13,38 @@
 <%@include file="/WEB-INF/nav.jsp"%>
 </head>
 <body>
-Viewing, take me out of here!
-<form action="login.do" method="GET">
-  <input class="submit" type="submit" value="Login" />
-</form>
+	Viewing, take me out of here!
+	<form action="login.do" method="GET">
+		<input class="submit" type="submit" value="Login" />
+	</form>
 
-<form action="getAllOrgs.do" method="GET">
-  <input class="submit" type="submit" value="List All Organizations" />
-</form>
+	<form action="getAllOrgs.do" method="GET">
+		<input class="submit" type="submit" value="List All Organizations" />
+	</form>
+
+
+	<form action="createOrg.do" method="GET">
+		<input class="submit" type="submit" value="Create Organization" />
+	</form>
 
 <form action="createOrgForm.do" method="GET">
   <input class="submit" type="submit" value="Create Organization" />
 </form>
 
 
-<form action="findById.do" method="GET" >
-		<input class="form-control" type="number"  min="0" required="required" name="id" placeholder="Enter ID"/> 
- 		 <input class="btn btn-dark btn-lg btn-block" type="submit" value="Find By ID" />
-		</form>
+	<form action="getEvent.do" method="GET">
+		<input type="number" name="id" placeholder="enter event ID"
+			required="required" /> <input type="submit"
+			value="Show Event" />
+	</form>
+
+
+	<form action="findById.do" method="GET">
+		<input class="form-control" type="number" min="0" required="required"
+			name="id" placeholder="Enter ID" /> <input
+			class="btn btn-dark btn-lg btn-block" type="submit"
+			value="Find By ID" />
+	</form>
 
 
 	<!-- js files for bootstap -->
