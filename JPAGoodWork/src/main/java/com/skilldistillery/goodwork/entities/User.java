@@ -34,7 +34,7 @@ public class User {
 	private List<MessageBoard> messBoards;
 	@OneToMany(mappedBy = "user", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	private List<UserEvent> events;
-	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, mappedBy="users")
 	private List<Organization> orgs;
 
 	public User(int id, String userName, String password, Boolean active, String firstName, String lastName,
