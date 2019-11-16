@@ -8,5 +8,12 @@
 </head>
 <body>
 ${newOrg}
+<h5 class="card-title">Delete Your Organization</h5>
+      <p class="card-text">Please enter your organizaiton's goodWork ID number.</p>
+      <form action="disableOrg.do" method="POST" >
+		<input class="form-control" type="number"  min="1" required="required" name="id" placeholder="Enter ID Number"/> 
+ 		 <input class="btn btn-dark btn-lg btn-block" type="submit" value="Delete Transaction" />
+		</form>
+
 </body>
 </html>
