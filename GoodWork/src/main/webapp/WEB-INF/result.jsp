@@ -35,5 +35,44 @@ ${org.orgNum}<br><br>
 ${org.logoURL}<br><br>
 ${org.website}<br><br>
 </c:if>
+<br>
+
+<c:if test="${! empty successfulDelete}">
+<h1>Success!</h1>
+${successfulDelete}
+</c:if>
+
+<br>
+
+	<c:choose>
+		<c:when test="${not empty event }">
+
+			<h3>
+				<strong>Event</strong>
+			</h3>
+			<ul style="list-style: none">
+			<li>Event Id: ${event.id}</li>
+			<li>Event Name: ${event.eventName}</li>
+			<li>Host: ${event.hostId}</li>
+			<li>${event.location.address}</li>
+			<li>${event.location.address2}</li>
+			<li>${event.location.city}</li>
+			<li>${event.location.state}</li>
+			<li>${event.location.zipCode}</li>
+			<li>Event Date: ${event.eventDate}</li>
+			<li>Start Time: ${event.startTime}</li>
+			<li>End Time: ${event.endTime}</li>
+			<li>People Needed: ${event.peopleNeeded}</li>
+			<li>Date Created: ${event.dateCreated}</li>
+			<li>POC Phone: ${event.pocPhone}
+			<li>POC Email: ${event.pocEmail }
+			<li>Description: ${event.description }
+			<li>${event.photoUrl}</li>
+			</ul>
+</c:when>
+		<c:otherwise>
+			<h4 align="center">Event Not Found</h4>
+		</c:otherwise>
+		</c:choose>
 </body>
 </html>
