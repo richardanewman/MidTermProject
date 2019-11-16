@@ -47,7 +47,7 @@ class OrganizationTest {
 	void testNull() {
 		assertNotNull(org);
 	}
-	
+
 	@Test
 	@DisplayName("Testing for correct org name and type and number pulled from the database")
 	void testNameAndType() {
@@ -55,11 +55,25 @@ class OrganizationTest {
 		assertEquals("Group", org.getOrgType());
 		assertEquals(null, org.getOrgNum());
 	}
-	
+
 	@Test
 	@DisplayName("Testing for correct id and website pulled from the database")
 	void testIdAndWeb() {
 		assertEquals(1, org.getId());
 		assertEquals(null, org.getWebsite());
+	}
+
+	@Test
+	@DisplayName("Testing location from org one to one")
+	void testOneToOneLocation() {
+		assertEquals("FL", org.getLocation().getState());
+	}
+
+	@Test
+	@DisplayName("Testing users from org many to many")
+	void testManyToMany() {
+//		assertEquals(0, org.getUsers().size());
+		assertEquals("Bobby", org.getUsers().get(0).getFirstName());
+		
 	}
 }
