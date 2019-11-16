@@ -20,7 +20,7 @@ public class EventController {
 	@RequestMapping(path = "getEvent.do", method = RequestMethod.GET)
 	public String getEvent(Model model, int id) {
 		model.addAttribute("event", eventDAO.findEventById(id));
-		return "event"; // will change this to result
+		return "result"; 
 
 	}
 

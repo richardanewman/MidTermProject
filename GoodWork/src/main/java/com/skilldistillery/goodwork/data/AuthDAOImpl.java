@@ -22,7 +22,7 @@ public class AuthDAOImpl implements AuthDAO {
 		List<User> users = null;
 		String sql = "SELECT user FROM User user WHERE user.userName = :uName";
 		users = em.createQuery(sql, User.class).setParameter("uName", userName).getResultList();
-		if (users != null) {
+		if (users == null || users.size() > 0) {
 			return false;
 		}
 		return true;
@@ -55,6 +55,7 @@ public class AuthDAOImpl implements AuthDAO {
 
 	@Override
 	public User registerUser(User user) {
+		user.setActive(true);
 		em.persist(user);
 		em.flush();
 		return user;

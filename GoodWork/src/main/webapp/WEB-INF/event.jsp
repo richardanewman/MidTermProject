@@ -33,7 +33,17 @@
 					<tr>
 						<th scope="row">${event.id}</th>
 						<td>${event.eventName}</td>
-
+						<td>${event.eventName}</td>
+						<td>${event.eventName}</td>
+						<td>${event.eventName}</td>
+						<td>${event.eventName}</td>
+						<td>${event.eventName}</td>
+						<td>${event.eventName}</td>
+						<td>${event.eventName}</td>
+						<td>${event.eventName}</td>
+						<td>${event.eventName}</td>
+						<td>${event.eventName}</td>
+						
 					</tr>
 				</tbody>
 			</table>
