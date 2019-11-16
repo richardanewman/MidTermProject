@@ -22,7 +22,7 @@ Viewing, take me out of here!
   <input class="submit" type="submit" value="List All Organizations" />
 </form>
 
-<form action="createOrg.do" method="GET">
+<form action="createOrgForm.do" method="GET">
   <input class="submit" type="submit" value="Create Organization" />
 </form>
 

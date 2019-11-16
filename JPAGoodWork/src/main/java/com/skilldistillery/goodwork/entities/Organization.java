@@ -117,6 +117,20 @@ public class Organization {
 		super();
 	}
 
+	public Organization(String orgName, String address, String address2, String city, String state, Integer zipCode,
+			String orgType, String logoURL, String website) {
+		this.orgName = orgName;
+		Location newLoc = new Location();
+		newLoc.setAddress(address);
+		newLoc.setAddress2(address2);
+		newLoc.setCity(city);
+		newLoc.setState(state);
+		newLoc.setZipCode(zipCode);
+		this.orgType = orgType;
+		this.logoURL = logoURL;
+		this.website = website;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
