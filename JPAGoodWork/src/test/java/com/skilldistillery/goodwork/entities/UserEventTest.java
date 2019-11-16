@@ -2,6 +2,8 @@ package com.skilldistillery.goodwork.entities;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.LocalDate;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -32,7 +34,10 @@ class UserEventTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		userEvent = em.find(UserEvent.class, 1);
+		Event e = em.find(Event.class, 1);
+		User u = em.find(User.class, 1);
+		UserEventId id = new UserEventId(u.getId(), e.getId());
+		userEvent = em.find(UserEvent.class, id);
 	}
 
 	@AfterEach
@@ -42,14 +47,33 @@ class UserEventTest {
 	}
 	
 	@Test
+	@DisplayName("Test UserEvent entity connection")
 	void test() {
-		fail("Not yet implemented");
+		assertEquals(LocalDate.parse("2019-11-15"), userEvent.getDateSignedUp());
 	}
 	
 	@Test
-	@DisplayName("Test UserEvent entity connection")
-	void test2() {
-		assertEquals(2019-11-15, userEvent.getDateSignedUp());
+	@DisplayName("Testing for entity connection to user")
+	void testUser() {
+		assertEquals("Bobby", userEvent.getUser().getFirstName());
+		assertTrue(userEvent.getUser().getActive());
 	}
-
+	
+	@Test
+	@DisplayName("Testing for entity connection to event")
+	void testEvent() {
+		assertEquals("Neighborhood Clean-Up", userEvent.getEvent().getEventName());
+		assertEquals("Help Bobby Bushay clean up all the trash around 5th and Central Ave this Saturday.", userEvent.getEvent().getDescription());
+	}
+	
+	@Test
+	@DisplayName("Testing UserEvent specific fields")
+	void testUserEvent() {
+		assertTrue(userEvent.getActive());
+		assertFalse(userEvent.getAttended());
+		assertEquals(LocalDate.parse("2019-11-15"), userEvent.getDateSignedUp());
+		assertNull(userEvent.getRating());
+		assertEquals(0, userEvent.getAttended());
+		assertEquals("host", userEvent.getRole());
+	}
 }
