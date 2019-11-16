@@ -143,6 +143,34 @@ class EventTest {
 		assertEquals("mammasemail@gmail.com", event.getPocEmail());
 		
 	}
+	@Test
+	@DisplayName("Testing Event entity OneToOne on location_id")
+	void test15() {
+		assertNotNull(event);
+		assertEquals("FL", event.getLocation().getState());
+		
+	}
+	@Test
+	@DisplayName("Testing Event entity ManyToMany on categories")
+	void test16() {
+		assertNotNull(event);
+		assertEquals("Community", event.getCategories().get(0).getName());
+		
+	}
+	@Test
+	@DisplayName("Testing Event entity OneToMany on message boards")
+	void test17() {
+		assertNotNull(event);
+		assertEquals("Somebody better sign up and help me clean. Please.", event.getMessBoards().get(0).getContent());
+		
+	}
+	@Test
+	@DisplayName("Testing Event entity OneToMany on users")
+	void test18() {
+		assertNotNull(event);
+		assertEquals("Bobby", event.getUsers().get(0).getUser().getFirstName());
+		
+	}
 
 
 }

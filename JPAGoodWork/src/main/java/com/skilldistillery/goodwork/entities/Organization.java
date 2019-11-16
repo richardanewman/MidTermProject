@@ -41,6 +41,14 @@ public class Organization {
 		return id;
 	}
 
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -114,10 +122,12 @@ public class Organization {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + id;
+		result = prime * result + ((location == null) ? 0 : location.hashCode());
 		result = prime * result + ((logoURL == null) ? 0 : logoURL.hashCode());
 		result = prime * result + ((orgName == null) ? 0 : orgName.hashCode());
 		result = prime * result + ((orgNum == null) ? 0 : orgNum.hashCode());
 		result = prime * result + ((orgType == null) ? 0 : orgType.hashCode());
+		result = prime * result + ((users == null) ? 0 : users.hashCode());
 		result = prime * result + ((website == null) ? 0 : website.hashCode());
 		return result;
 	}
@@ -132,6 +142,11 @@ public class Organization {
 			return false;
 		Organization other = (Organization) obj;
 		if (id != other.id)
+			return false;
+		if (location == null) {
+			if (other.location != null)
+				return false;
+		} else if (!location.equals(other.location))
 			return false;
 		if (logoURL == null) {
 			if (other.logoURL != null)
@@ -153,6 +168,11 @@ public class Organization {
 				return false;
 		} else if (!orgType.equals(other.orgType))
 			return false;
+		if (users == null) {
+			if (other.users != null)
+				return false;
+		} else if (!users.equals(other.users))
+			return false;
 		if (website == null) {
 			if (other.website != null)
 				return false;
@@ -163,8 +183,8 @@ public class Organization {
 
 	@Override
 	public String toString() {
-		return "Organization [id=" + id + ", orgName=" + orgName + ", orgType=" + orgType + ", orgNum=" + orgNum
-				+ ", logoURL=" + logoURL + ", website=" + website + "]";
+		return "Organization [id=" + id + ", location=" + location + ", orgName=" + orgName + ", orgType=" + orgType
+				+ ", orgNum=" + orgNum + ", logoURL=" + logoURL + ", website=" + website + ", users=" + users + "]";
 	}
 	
 	public void addUser(User user) {
