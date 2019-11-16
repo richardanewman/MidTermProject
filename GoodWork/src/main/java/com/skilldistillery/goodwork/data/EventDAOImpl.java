@@ -18,8 +18,8 @@ public class EventDAOImpl implements EventDAO {
 	private EntityManager em;
 
 	@Override
-	public Event findEventById(int eid) {
-		return em.find(Event.class, eid);
+	public Event findEventById(int id) {
+		return em.find(Event.class, id);
 	}
 
 	@Override
