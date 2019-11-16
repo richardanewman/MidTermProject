@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<div class="displayResults">
+<h1><strong>Oops!</strong></h1>
+${oops}
 </body>
 </html>
