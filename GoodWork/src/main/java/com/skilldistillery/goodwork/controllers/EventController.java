@@ -31,9 +31,9 @@ public class EventController {
 		return "eventList";
 	}
 
-	@RequestMapping(path = "createEvent.do", method = RequestMethod.GET)
+	@RequestMapping(path = "createEvent.do", method = RequestMethod.POST)
 	public String addEvent() {
-		return "event";
+		return "createEvent";
 	}
 
 	@RequestMapping(path = "updateEvent.do", method = RequestMethod.POST)
