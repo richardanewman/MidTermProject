@@ -48,4 +48,13 @@ public class UserController {
 		model.addAttribute("user", new User());
 		return "userJSP/profile";
 	}
+	
+	@RequestMapping(path="logout.do", method = RequestMethod.GET)
+	public String logoutUser(Model model, HttpSession session) {
+		if(session.getAttribute("newUser") != null) {
+			session.removeAttribute("newUser");
+			return "index";
+		}
+		return "index";
+	}
 }
