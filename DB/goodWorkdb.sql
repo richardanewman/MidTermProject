@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `event` (
   `host_id` INT NOT NULL,
   `event_name` VARCHAR(100) NOT NULL,
   `description` TEXT NOT NULL,
-  `event_date` DATE NOT NULL,
+  `event_date` VARCHAR(45) NOT NULL,
   `start_time` VARCHAR(45) NULL,
   `end_time` VARCHAR(45) NULL,
   `people_needed` INT NULL DEFAULT 1,
