@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -22,12 +23,21 @@ public class Event {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@OneToOne
+	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	@JoinColumn(name = "location_id")
 	private Location location;
 
-	@Column(name = "host_id")
-	private int hostId;
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+	@JoinColumn(name = "host_id")
+	private User host;
+
+	public User getHost() {
+		return host;
+	}
+
+	public void setHost(User host) {
+		this.host = host;
+	}
 
 	@Column(name = "event_name")
 	private String eventName;
@@ -107,14 +117,6 @@ public class Event {
 
 	public void setLocation(Location location) {
 		this.location = location;
-	}
-
-	public int getHostId() {
-		return hostId;
-	}
-
-	public void setHostId(int hostId) {
-		this.hostId = hostId;
 	}
 
 	public String getEventName() {
@@ -213,15 +215,15 @@ public class Event {
 		super();
 	}
 
-//	@Override
-//	public String toString() {
-//		return "Event [id=" + id + ", location=" + location + ", hostId=" + hostId + ", eventName=" + eventName
-//				+ ", description=" + description + ", eventDate=" + eventDate + ", startTime=" + startTime
-//				+ ", endTime=" + endTime + ", peopleNeeded=" + peopleNeeded + ", dateCreated=" + dateCreated
-//				+ ", photoUrl=" + photoUrl + ", pointOfContact=" + pointOfContact + ", pocPhone=" + pocPhone
-//				+ ", pocEmail=" + pocEmail + ", categories=" + categories + ", messBoards=" + messBoards + ", users="
-//				+ users + "]";
-//	}
+	@Override
+	public String toString() {
+		return "Event [id=" + id + ", location=" + location + ", host=" + host + ", eventName=" + eventName
+				+ ", description=" + description + ", eventDate=" + eventDate + ", startTime=" + startTime
+				+ ", endTime=" + endTime + ", peopleNeeded=" + peopleNeeded + ", dateCreated=" + dateCreated
+				+ ", photoUrl=" + photoUrl + ", pointOfContact=" + pointOfContact + ", pocPhone=" + pocPhone
+				+ ", pocEmail=" + pocEmail + ", categories=" + categories + ", messBoards=" + messBoards + ", users="
+				+ users + "]";
+	}
 
 	@Override
 	public int hashCode() {
@@ -233,7 +235,7 @@ public class Event {
 		result = prime * result + ((endTime == null) ? 0 : endTime.hashCode());
 		result = prime * result + ((eventDate == null) ? 0 : eventDate.hashCode());
 		result = prime * result + ((eventName == null) ? 0 : eventName.hashCode());
-		result = prime * result + hostId;
+		result = prime * result + ((host == null) ? 0 : host.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((location == null) ? 0 : location.hashCode());
 		result = prime * result + ((messBoards == null) ? 0 : messBoards.hashCode());
@@ -286,7 +288,10 @@ public class Event {
 				return false;
 		} else if (!eventName.equals(other.eventName))
 			return false;
-		if (hostId != other.hostId)
+		if (host == null) {
+			if (other.host != null)
+				return false;
+		} else if (!host.equals(other.host))
 			return false;
 		if (id != other.id)
 			return false;

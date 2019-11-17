@@ -9,12 +9,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-${newUser}
+${sessionScope.newUser}
 <h5 class="card-title">Delete Your Profile</h5>
-	<form:form action="disableUser.do" method="POST" modelAttribute="newUser">
-		<form:label path="id" value="${newUser.id}"></form:label><br>
-		<form:hidden path="id" value="${newUser.id}"/>
-		<form:errors path="id" value="${newUser.id}"/>
+	<form:form action="disableUser.do" method="POST" modelAttribute="user">
+		<form:label path="id" value="${sessionScope.newUser.id}"></form:label><br>
+		<form:hidden path="id" value="${sessionScope.newUser.id}"/>
+		<form:errors path="id" value="${sessionScope.newUser.id}"/>
 		<br />
 		<form:label path="password" value="Enter Password">Password:</form:label><br>
 		<form:input class="input" path="password" value="Enter Password" required="required" type="text" placeholder="Enter Password"/>
@@ -23,13 +23,14 @@ ${newUser}
 		<br />
 </form:form>
 
-<form:form action="updateUserForm.do" method="GET" modelAttribute="newUser">
-					<form:label path="id" value="${newUser.id}"></form:label>
-					<form:hidden path="id" value="${newUser.id}" />
-					<form:errors path="id" value="${newUser.id}" />
+<form:form action="updateUserForm.do" method="GET" modelAttribute="user">
+					<form:label path="id" value="${sessionScope.newUser.id}"></form:label>
+					<form:hidden path="id" value="${sessionScope.newUser.id}" />
+					<form:errors path="id" value="${sessionScope.newUser.id}" />
 					<input type="submit" value="Update Profile" style="color:BLUE;"/>
 				</form:form>
-${newUser.events}
-${newUser.orgs}
+${sessionScope.newUser.events}
+${sessionScope.newUser.orgs}
+<a href="http://localhost:8090/">Home</a>
 </body>
 </html>

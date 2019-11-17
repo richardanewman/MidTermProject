@@ -57,8 +57,8 @@ DROP TABLE IF EXISTS `event` ;
 
 CREATE TABLE IF NOT EXISTS `event` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `location_id` INT NOT NULL,
-  `host_id` INT NOT NULL,
+  `location_id` INT NULL,
+  `host_id` INT NULL,
   `event_name` VARCHAR(100) NOT NULL,
   `description` TEXT NOT NULL,
   `event_date` VARCHAR(45) NOT NULL,
