@@ -26,9 +26,9 @@
 			<li class="nav-item"><a class="nav-link" href="getEventList.do">Events</a></li>
 			<li class="nav-item"><a class="nav-link" href="contact.do">Contact</a></li>
 		</ul>
-		<form class="form-inline my-2 my-lg-0">
-			<input class="form-control mr-sm-2" type="search"
-				placeholder="Search" aria-label="Search">
+		<form action="search.do" class="form-inline my-2 my-lg-0" method="GET">
+			<input class="form-control mr-sm-2" type="text"
+				name="keyword" placeholder="Search" aria-label="Search">
 			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 			<ul class="navbar-nav mr-auto">
 			<li class="nav-item"><a class="nav-link" href="logout.do">Log Out</a></li>
@@ -55,13 +55,12 @@
 			<li class="nav-item"><a class="nav-link" href="getEventList.do">Events</a></li>
 			<li class="nav-item"><a class="nav-link" href="contact.do">Contact</a></li>
 		</ul>
-		<form class="form-inline my-2 my-lg-0">
-			<input class="form-control mr-sm-2" type="search"
-				placeholder="Search" aria-label="Search">
+		<form action="search.do" class="form-inline my-2 my-lg-0" method="GET">
+			<input class="form-control mr-sm-2" type="text"
+				name="keyword" placeholder="Search" aria-label="Search">
 			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 			<ul class="navbar-nav mr-auto">
-			<li class="nav-item"><a class="nav-link" href="login.do">Login</a></li>
-			<li class="nav-item"><a class="nav-link" href="register.do">Register</a></li>
+			<li class="nav-item"><a class="nav-link" href="logout.do">Log Out</a></li>
 			</ul>
 		</form>
 	</div>

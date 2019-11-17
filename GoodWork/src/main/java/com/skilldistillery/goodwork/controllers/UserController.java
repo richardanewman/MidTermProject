@@ -71,18 +71,24 @@ public class UserController {
 	
 	@RequestMapping(path="search.do", method = RequestMethod.GET)
 	public String navSearch(Model model, @RequestParam("keyword") String keyword) {
-		List<User> users = dao.getAllUsersByKeyword(keyword);
-		List<Organization> orgs = orgDAO.searchByKeyword(keyword);
-		List<Event> events = eventDAO.findByKeyword(keyword);
-		if(users.size() > 0) {
+		if (keyword == null | keyword.equals("")){
+			model.addAttribute("oops", "Looks like we didn't find anything. Please try anothe keyword.");
+			return "fail";
+		} else {
+			List<User> users = dao.getAllUsersByKeyword(keyword);
+			List<Organization> orgs = orgDAO.searchByKeyword(keyword);
+			List<Event> events = eventDAO.findByKeyword(keyword);
+			if(users != null) {
 			model.addAttribute("users", users);
-		}
-		if(orgs.size() > 0) {
+			}
+			if(orgs != null) {
 			model.addAttribute("displayAll", orgs);
-		}
-		if(events.size() > 0) {
+			}
+			if(events != null) {
 			model.addAttribute("events", events);
+			}
+		return "result";
+			
 		}
-		return "results";
  	}
 }
