@@ -58,18 +58,19 @@ public class OrgDAOImpl implements OrgDAO {
 	}
 	
 	@Override
-	public Organization updateOrganization(Organization orgData) {
-		Organization updateData = em.find(Organization.class, orgData.getId());
+	public Organization updateOrganization(Organization orgData, int orgId) {
+		Organization updateData = em.find(Organization.class, orgId);
+		updateData.setOrgName(orgData.getOrgName());
+		updateData.setOrgDescription(orgData.getOrgDescription());
 		updateData.getLocation().setAddress(orgData.getLocation().getAddress());
 		updateData.getLocation().setAddress2(orgData.getLocation().getAddress2());
 		updateData.getLocation().setCity(orgData.getLocation().getCity());
 		updateData.getLocation().setState(orgData.getLocation().getState());
 		updateData.getLocation().setZipCode(orgData.getLocation().getZipCode());
-		updateData.setOrgName(orgData.getOrgName());
 		updateData.setOrgType(orgData.getOrgType());
 		updateData.setOrgNum(orgData.getOrgNum());
+		updateData.setLogoURL(orgData.getLogoURL());
 		updateData.setWebsite(orgData.getWebsite());
-//		updateData.setDescription(orgData.getDescription));
 		return updateData;
 
 	}
