@@ -1,5 +1,6 @@
 package com.skilldistillery.goodwork.data;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -24,9 +25,7 @@ public class EventDAOImpl implements EventDAO {
 
 	@Override
 	public List<Event> findAll() {
-		return em.createQuery(
-				"SELECT events FROM Event events ORDER BY events.eventDate",
-				Event.class).getResultList();
+		return em.createQuery("SELECT events FROM Event events ORDER BY events.eventDate", Event.class).getResultList();
 	}
 
 	@Override
@@ -38,13 +37,31 @@ public class EventDAOImpl implements EventDAO {
 	@Override
 	public Event addEvent(Event event) {
 		em.persist(event);
-		return null;
+		return event;
 	}
 
 	@Override
-	public Event updateEvent(Event event, int eventId) {
-		// TODO Auto-generated method stub
-		return null;
+	public Event updateEvent(Event updatedEvent, int eventId) {
+		Event managed = em.find(Event.class, eventId);
+		System.err.println("******************************");
+		System.out.println("updated event");
+		System.out.println(managed);
+
+		managed.setLocation(updatedEvent.getLocation());
+		managed.setHostId(updatedEvent.getHostId());
+		managed.setEventName(updatedEvent.getEventName());
+		managed.setDescription(updatedEvent.getDescription());
+		managed.setEventDate(updatedEvent.getEventDate());
+		managed.setStartTime(updatedEvent.getStartTime());
+		managed.setEndTime(updatedEvent.getEndTime());
+		managed.setPeopleNeeded(updatedEvent.getPeopleNeeded());
+		managed.setDateCreated(updatedEvent.getDateCreated());
+		managed.setPhotoUrl(updatedEvent.getPhotoUrl());
+		managed.setPointOfContact(updatedEvent.getPointOfContact());
+		managed.setPocPhone(updatedEvent.getPocPhone());
+		managed.setPocEmail(updatedEvent.getPocEmail());
+
+		return managed;
 	}
 
 	@Override

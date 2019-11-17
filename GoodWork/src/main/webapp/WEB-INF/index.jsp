@@ -22,22 +22,25 @@
 		<input class="submit" type="submit" value="List All Organizations" />
 	</form>
 
-<form action="createOrgForm.do" method="GET">
-  <input class="submit" type="submit" value="Create Organization" />
-</form>
+	<form action="createOrgForm.do" method="GET">
+		<input class="submit" type="submit" value="Create Organization" />
+	</form>
 
-
+	<br>
 	<form action="getEvent.do" method="GET">
 		<input type="number" name="id" placeholder="enter event ID"
-			required="required" /> <input type="submit"
-			value="Show Event" />
+			required="required" /> <input type="submit" value="Show Event" />
 	</form>
-<br>
+	<br>
+	<form action="createEventForm.do" method="GET">
+		<input type="submit" value="Create Event" />
+	</form>
+	<br>
 
-				<form action="getEventList.do" method="GET">
-					<input type="submit" class="btn btn-primary" value="List Events" />
-				</form>
-				<br>
+	<form action="getEventList.do" method="GET">
+		<input type="submit" class="btn btn-primary" value="List Events" />
+	</form>
+	<br>
 
 	<form action="findById.do" method="GET">
 		<input class="form-control" type="number" min="0" required="required"

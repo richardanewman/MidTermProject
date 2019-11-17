@@ -1,5 +1,6 @@
 package com.skilldistillery.goodwork.controllers;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +32,19 @@ public class EventController {
 		return "eventList";
 	}
 
-	@RequestMapping(path = "createEvent.do", method = RequestMethod.GET)
-	public String addEvent() {
-		return "event";
+	@RequestMapping(path = "createEventForm.do", method = RequestMethod.GET)
+	public String addEventForm() {
+//		Event newEvent = new Event();
+//		model.addAttribute("newEvent", newEvent);
+		return "createEvent";
+	}
+
+	@RequestMapping(path = "createEvent.do", method = RequestMethod.POST)
+	public String addEvent(Event event, Model model) {
+		System.err.println("createEvent.do in controller ************" + event);
+//		event.setEventDate(LocalDate.parse(event.getDateString())); // trying to work with date rejection from jsp
+		model.addAttribute("newEvent", eventDAO.addEvent(event));
+		return "result";
 	}
 
 	@RequestMapping(path = "updateEvent.do", method = RequestMethod.POST)

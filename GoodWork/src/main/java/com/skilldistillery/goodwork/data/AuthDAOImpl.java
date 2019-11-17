@@ -29,14 +29,12 @@ public class AuthDAOImpl implements AuthDAO {
 	}
 
 	@Override
-	public boolean validPassword(String password) {
-		List<User> users = null;
-		String sql = "SELECT user FROM User user WHERE user.password = :uPass";
-		users = em.createQuery(sql, User.class).setParameter("uPass", password).getResultList();
-		if (users != null) {
-			return false;
+	public boolean validPassword(int userId, String password) {
+		User user = em.find(User.class, userId);
+		if(user.getPassword().equals(password)) {
+			return true;
 		}
-		return true;
+		return false;
 	}
 
 	@Override
@@ -46,7 +44,7 @@ public class AuthDAOImpl implements AuthDAO {
 		String sql = "SELECT user FROM User user WHERE user.userName = :uName AND user.password = :uPass";
 		user = em.createQuery(sql, User.class).setParameter("uName", userName).setParameter("uPass", password).getResultList();
 		
-		if(user != null && user.size() < 2) {
+		if((user != null && user.size() == 1) && user.get(0).getActive()) {
 			u = user.get(0);
 			return u;
 		}

@@ -15,46 +15,46 @@ import com.skilldistillery.goodwork.entities.Organization;
 
 @Controller
 public class OrgController {
-	
+
 	@Autowired
 	private OrgDAO orgDAO;
-	
-		
-	@RequestMapping(path="getAllOrgs.do", method = RequestMethod.GET)
+	private int orgId;
+
+	@RequestMapping(path = "getAllOrgs.do", method = RequestMethod.GET)
 	public String diplayAllOrgs(Model model) {
 		List<Organization> organizationList = orgDAO.getAll();
 		model.addAttribute("displayAll", organizationList);
-		
+
 		return "result";
-		
+
 	}
-	
-	@RequestMapping(path="findById.do", method = RequestMethod.GET)
+
+	@RequestMapping(path = "findById.do", method = RequestMethod.GET)
 	public String diplayOrg(int id, Model model) {
 		if (orgDAO.findById(id) == null) {
 			model.addAttribute("oops", "Looks like something went wrong. Please check your ID number and try again.");
 			return "fail";
-		}else {
-			
-		model.addAttribute("org", orgDAO.findById(id));
-		
-		return "result";
+		} else {
+
+			model.addAttribute("org", orgDAO.findById(id));
+
+			return "result";
 		}
 	}
-	
+
 ///////////////////////////////////////////////////////////////////////
-	
+
 //Add new organization to database //////////////////////////////////
 
-	@RequestMapping(path="createOrgForm.do", method = RequestMethod.GET)
-	public String getOrgForm(Model model){
+	@RequestMapping(path = "createOrgForm.do", method = RequestMethod.GET)
+	public String getOrgForm(Model model) {
 		Organization newOrg = new Organization();
 		model.addAttribute("newOrg", newOrg);
 		return "newOrg";
 
-}
+	}
 
-	@RequestMapping(path="addNewOrg.do", method = RequestMethod.POST)
+	@RequestMapping(path = "addNewOrg.do", method = RequestMethod.POST)
 	public String addOrg(@Valid Organization newOrg, Model model) {
 		model.addAttribute("newOrg", orgDAO.addNewOrg(newOrg));
 
@@ -63,20 +63,56 @@ public class OrgController {
 	}
 
 ///////////////////////////////////////////////////////////////////////
-	
+
 //Disable organization   //////////////////////////////////////////////
 
-	@RequestMapping(path="disableOrg.do", method = RequestMethod.POST)
+	@RequestMapping(path = "disableOrg.do", method = RequestMethod.POST)
 	public String disableOrg(@Valid int id, Model model) {
 		if (orgDAO.disableOrganization(id)) {
 			model.addAttribute("successfulDelete", "Looks like we successfully deleted your organization!");
 			return "result";
-		}else {
+		} else {
 			model.addAttribute("oops", "Looks like something went wrong. Please check your ID number and try again.");
 			return "fail";
-			
+
 		}
-		
+
 	}
-	
+///////////////////////////////////////////////////////////////////////
+
+//Update organization  ////////////////////////////////////////////////
+
+	@RequestMapping(path = "updateOrgForm.do", method = RequestMethod.GET)
+	public String updateOrgForm(@Valid int id, Model model) {
+		if (orgDAO.findById(id) == null) {
+			model.addAttribute("oops", "Looks like something went wrong. Please check your ID number and try again.");
+			return "fail";
+		} else {
+			Organization orgData = orgDAO.findById(id);
+			model.addAttribute("orgData", orgData);
+			orgId= id;
+//orgId = id;
+
+			return "updateOrg";
+		}
+
+	}
+
+	@RequestMapping(path = "updateOrg.do", method = RequestMethod.POST)
+	public String updateOrg(@Valid Organization orgData, Model model) {
+		try {
+			System.out.println(orgData);
+			Organization updatedOrg = orgDAO.updateOrganization(orgData, orgId);
+			model.addAttribute("successfulUpdate", updatedOrg);
+			model.addAttribute("successful", "You successfully updated your organization!");
+
+			return "org";
+		} catch (Exception e) {
+			model.addAttribute("oops", "Looks like we had some trouble. Please try again.");
+			e.printStackTrace();
+			return "fail";
+		}
+
+	}
+
 }
