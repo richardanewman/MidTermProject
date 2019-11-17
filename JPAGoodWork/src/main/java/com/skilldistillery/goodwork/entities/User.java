@@ -61,11 +61,19 @@ public class User {
 		return id;
 	}
 
-	public List<UserEvent> getEvents() {
+	public List<Event> getHostedEvents() {
+		return hostedEvents;
+	}
+
+	public void setHostedEvents(List<Event> hostedEvents) {
+		this.hostedEvents = hostedEvents;
+	}
+
+	public List<UserEvent> getAttendedEvents() {
 		return attendedEvents;
 	}
 
-	public void setEvents(List<UserEvent> events) {
+	public void setAttendedEvents(List<UserEvent> events) {
 		this.attendedEvents = events;
 	}
 
@@ -158,10 +166,11 @@ public class User {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((active == null) ? 0 : active.hashCode());
+		result = prime * result + ((attendedEvents == null) ? 0 : attendedEvents.hashCode());
 		result = prime * result + ((bio == null) ? 0 : bio.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + ((attendedEvents == null) ? 0 : attendedEvents.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
+		result = prime * result + ((hostedEvents == null) ? 0 : hostedEvents.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((messBoards == null) ? 0 : messBoards.hashCode());
@@ -186,6 +195,11 @@ public class User {
 				return false;
 		} else if (!active.equals(other.active))
 			return false;
+		if (attendedEvents == null) {
+			if (other.attendedEvents != null)
+				return false;
+		} else if (!attendedEvents.equals(other.attendedEvents))
+			return false;
 		if (bio == null) {
 			if (other.bio != null)
 				return false;
@@ -196,15 +210,15 @@ public class User {
 				return false;
 		} else if (!email.equals(other.email))
 			return false;
-		if (attendedEvents == null) {
-			if (other.attendedEvents != null)
-				return false;
-		} else if (!attendedEvents.equals(other.attendedEvents))
-			return false;
 		if (firstName == null) {
 			if (other.firstName != null)
 				return false;
 		} else if (!firstName.equals(other.firstName))
+			return false;
+		if (hostedEvents == null) {
+			if (other.hostedEvents != null)
+				return false;
+		} else if (!hostedEvents.equals(other.hostedEvents))
 			return false;
 		if (id != other.id)
 			return false;
@@ -277,7 +291,7 @@ public class User {
 		if (!attendedEvents.contains(userEvent)) {
 			attendedEvents.add(userEvent);
 			if (userEvent.getUser() != null) {
-				userEvent.getUser().getEvents().remove(userEvent);
+				userEvent.getUser().getAttendedEvents().remove(userEvent);
 			}
 			userEvent.setUser(this);
 		}
@@ -316,7 +330,7 @@ public class User {
 		if (!hostedEvents.contains(event)) {
 			hostedEvents.add(event);
 			if (event.getHost() != null) {
-				event.getHost().getEvent().remove(event);
+				event.getHost().getHostedEvents().remove(event);
 			}
 			event.setHost(this);
 		}
