@@ -33,7 +33,6 @@ public class Event {
 	private String eventName;
 
 	private String description;
-
 	@Column(name = "event_date")
 	private LocalDate eventDate;
 
@@ -63,11 +62,11 @@ public class Event {
 
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, mappedBy = "events")
 	private List<Category> categories;
-	
-	@OneToMany(mappedBy = "event", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+
+	@OneToMany(mappedBy = "event", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	private List<MessageBoard> messBoards;
-	
-	@OneToMany(mappedBy= "event", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+
+	@OneToMany(mappedBy = "event", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	private List<UserEvent> users;
 
 	public List<UserEvent> getUsers() {
@@ -166,6 +165,10 @@ public class Event {
 		this.peopleNeeded = peopleNeeded;
 	}
 
+//	public void setPeopleNeeded(Integer peopleNeeded) {
+//		this.peopleNeeded = peopleNeeded;
+//	}
+
 	public LocalDate getDateCreated() {
 		return dateCreated;
 	}
@@ -212,15 +215,12 @@ public class Event {
 
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Event [id=").append(id).append(", locationId=").append(location).append(", hostId=")
-				.append(hostId).append(", eventName=").append(eventName).append(", description=").append(description)
-				.append(", eventDate=").append(eventDate).append(", startTime=").append(startTime).append(", endTime=")
-				.append(endTime).append(", peopleNeeded=").append(peopleNeeded).append(", dateCreated=")
-				.append(dateCreated).append(", photoUrl=").append(photoUrl).append(", pointOfContact=")
-				.append(pointOfContact).append(", pocPhone=").append(pocPhone).append(", pocEmail=").append(pocEmail)
-				.append("]");
-		return builder.toString();
+		return "Event [id=" + id + ", location=" + location + ", hostId=" + hostId + ", eventName=" + eventName
+				+ ", description=" + description + ", eventDate=" + eventDate + ", startTime=" + startTime
+				+ ", endTime=" + endTime + ", peopleNeeded=" + peopleNeeded + ", dateCreated=" + dateCreated
+				+ ", photoUrl=" + photoUrl + ", pointOfContact=" + pointOfContact + ", pocPhone=" + pocPhone
+				+ ", pocEmail=" + pocEmail + ", categories=" + categories + ", messBoards=" + messBoards + ", users="
+				+ users + "]";
 	}
 
 	@Override
@@ -237,7 +237,7 @@ public class Event {
 		result = prime * result + id;
 		result = prime * result + ((location == null) ? 0 : location.hashCode());
 		result = prime * result + ((messBoards == null) ? 0 : messBoards.hashCode());
-		result = prime * result + peopleNeeded;
+		result = prime * result + ((peopleNeeded == null) ? 0 : peopleNeeded.hashCode());
 		result = prime * result + ((photoUrl == null) ? 0 : photoUrl.hashCode());
 		result = prime * result + ((pocEmail == null) ? 0 : pocEmail.hashCode());
 		result = prime * result + ((pocPhone == null) ? 0 : pocPhone.hashCode());
@@ -300,7 +300,10 @@ public class Event {
 				return false;
 		} else if (!messBoards.equals(other.messBoards))
 			return false;
-		if (peopleNeeded != other.peopleNeeded)
+		if (peopleNeeded == null) {
+			if (other.peopleNeeded != null)
+				return false;
+		} else if (!peopleNeeded.equals(other.peopleNeeded))
 			return false;
 		if (photoUrl == null) {
 			if (other.photoUrl != null)
@@ -352,6 +355,7 @@ public class Event {
 			cat.removeEvent(this);
 		}
 	}
+
 	public void addMessageBoard(MessageBoard messBoard) {
 		if (messBoards == null) {
 			messBoards = new ArrayList<>();
@@ -372,24 +376,24 @@ public class Event {
 			messBoards.remove(messBoard);
 		}
 	}
-	
+
 	public void addUserEvent(UserEvent userEvent) {
-		if(users == null) {
+		if (users == null) {
 			users = new ArrayList<>();
 		}
-		
-		if(!users.contains(userEvent)) {
+
+		if (!users.contains(userEvent)) {
 			users.add(userEvent);
-			if(userEvent.getUser() != null) {
+			if (userEvent.getUser() != null) {
 				userEvent.getEvent().getUsers().remove(userEvent);
 			}
 			userEvent.setEvent(this);
 		}
 	}
-	
+
 	public void removeUserEvent(UserEvent userEvent) {
 		userEvent.setUser(null);
-		if(users != null) {
+		if (users != null) {
 			users.remove(userEvent);
 		}
 	}
