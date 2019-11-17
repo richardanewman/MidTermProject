@@ -35,7 +35,9 @@ public class EventDAOImpl implements EventDAO {
 	}
 
 	@Override
-	public Event addEvent(Event event) {
+	public Event addEvent(Event event) { // issue with location id coming in Null
+		event.setDateCreated(LocalDate.now());
+		event.setLocation(event.getLocation());
 		em.persist(event);
 		return event;
 	}
@@ -47,7 +49,10 @@ public class EventDAOImpl implements EventDAO {
 		System.out.println("updated event");
 		System.out.println(managed);
 
-		managed.setLocation(updatedEvent.getLocation());
+		managed.getLocation().setAddress(updatedEvent.getLocation().getAddress());
+		managed.getLocation().setAddress(updatedEvent.getLocation().getAddress2());
+		managed.getLocation().setCity(updatedEvent.getLocation().getCity());
+		managed.getLocation().setState(updatedEvent.getLocation().getState());
 		managed.setHostId(updatedEvent.getHostId());
 		managed.setEventName(updatedEvent.getEventName());
 		managed.setDescription(updatedEvent.getDescription());
@@ -65,9 +70,10 @@ public class EventDAOImpl implements EventDAO {
 	}
 
 	@Override
-	public Boolean deleteEvent(int eid) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean deleteEvent(int id) {
+		Event deleteEvent = em.find(Event.class, id);
+		em.remove(deleteEvent);
+		return (em.find(Event.class, id) == null);
 	}
 
 }

@@ -11,6 +11,7 @@
 	href="https://cdn.jsdelivr.net/webjars/org.webjars/bootstrap/4.3.1/css/bootstrap.css"
 	rel="stylesheet">
 <title>Event</title>
+<%@include file="/WEB-INF/nav.jsp"%>
 </head>
 <body>
 	<div>
@@ -45,8 +46,16 @@
 		</c:choose>
 
 	</div>
-
-	<br>
+	<hr>
+	<footer class="text-center">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<p>Copyright © FluffyCarnage. All rights reserved.</p>
+				</div>
+			</div>
+		</div>
+	</footer>
 
 	<!-- js files for bootstap -->
 	<script
