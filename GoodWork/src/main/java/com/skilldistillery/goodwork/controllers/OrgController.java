@@ -18,6 +18,7 @@ public class OrgController {
 
 	@Autowired
 	private OrgDAO orgDAO;
+	private int orgId;
 
 	@RequestMapping(path = "getAllOrgs.do", method = RequestMethod.GET)
 	public String diplayAllOrgs(Model model) {
@@ -82,27 +83,35 @@ public class OrgController {
 //Update organization  ////////////////////////////////////////////////
 
 	@RequestMapping(path = "updateOrgForm.do", method = RequestMethod.GET)
-	public String updateTxForm(@Valid int id, Model model) {
+	public String updateOrgForm(@Valid int id, Model model) {
 		if (orgDAO.findById(id) == null) {
 			model.addAttribute("oops", "Looks like something went wrong. Please check your ID number and try again.");
 			return "fail";
 		} else {
 			Organization orgData = orgDAO.findById(id);
 			model.addAttribute("orgData", orgData);
+			orgId= id;
 //orgId = id;
 
-			return "updateOrgForm";
+			return "updateOrg";
 		}
 
 	}
 
 	@RequestMapping(path = "updateOrg.do", method = RequestMethod.POST)
-	public String updateTx(@Valid Organization orgData, Model model) {
-		Organization updatedOrg = orgDAO.updateOrganization(orgData);
-		model.addAttribute("successfulUpdate", updatedOrg);
-		model.addAttribute("successful", "You successfully updated your organization!");
+	public String updateOrg(@Valid Organization orgData, Model model) {
+		try {
+			System.out.println(orgData);
+			Organization updatedOrg = orgDAO.updateOrganization(orgData, orgId);
+			model.addAttribute("successfulUpdate", updatedOrg);
+			model.addAttribute("successful", "You successfully updated your organization!");
 
-		return "org";
+			return "org";
+		} catch (Exception e) {
+			model.addAttribute("oops", "Looks like we had some trouble. Please try again.");
+			e.printStackTrace();
+			return "fail";
+		}
 
 	}
 
