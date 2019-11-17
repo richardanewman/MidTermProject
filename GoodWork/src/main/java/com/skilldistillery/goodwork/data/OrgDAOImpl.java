@@ -74,6 +74,15 @@ public class OrgDAOImpl implements OrgDAO {
 		return updateData;
 
 	}
+	
+	@Override
+	public List<Organization> searchByKeyword(String keyword) {
+		String sql = "select o from Organization o where o.orgDescription like :keyword or o.orgName like :keyword";
+		List<Organization> orgList = em.createQuery(sql, Organization.class).setParameter("keyword", "%" + keyword + "%")
+				.getResultList();
+
+		return orgList;
+	}
 
 
 }
