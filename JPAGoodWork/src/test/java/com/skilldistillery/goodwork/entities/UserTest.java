@@ -99,14 +99,16 @@ class UserTest {
 	void testUserEvent() {
 		assertTrue(user.getAttendedEvents().get(0).getActive());
 		assertEquals(LocalDate.parse("2019-11-15"), user.getAttendedEvents().get(0).getDateSignedUp());
+
 	}
-	
+
 	@Test
 	@DisplayName("Testing for entity connection between user and event")
 	void testEvent() {
 		assertNotNull(user.getAttendedEvents().get(0).getEvent());
 		assertEquals("Help Bobby Bushay clean up all the trash around 5th and Central Ave this Saturday.", user.getAttendedEvents().get(0).getEvent().getDescription());
 		assertEquals("Neighborhood Clean-Up", user.getAttendedEvents().get(0).getEvent().getEventName());
+
 	}
 
 }
