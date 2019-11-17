@@ -32,7 +32,7 @@
 			required="required" /> <input type="submit" value="Show Event" />
 	</form>
 	<br>
-	<form action="createEvent.do" method="POST">
+	<form action="createEventForm.do" method="GET">
 		<input type="submit" value="Create Event" />
 	</form>
 	<br>

@@ -4,16 +4,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+	href="https://cdn.jsdelivr.net/webjars/org.webjars/bootstrap/4.3.1/css/bootstrap.css"
+	rel="stylesheet">
 <title>Create Event</title>
 </head>
 <body>
 	<br>
 	<div>
-		<h2 align="center">Add an Event to the List</h2>
+		<h2 align="center">Create an Event to the List</h2>
 		<br>
 
 		<div class=" container form-goup jumbotron">
-			<form action="createEvent.do" method="POST">
+			<form action="createEvent.do" method="POST" modelAttribute="newEvent">
 				<div>
 					<label for="eventName">Event Title</label> <input type="text"
 						class="form-control" name="eventName"
@@ -22,10 +27,9 @@
 						class="form-control" name="description"
 						placeholder="enter description of event" required="required" /><br>
 					<label for="eventDate">Event Date</label> <input type="text"
-						class="form-control" name="eventDate"
-						placeholder="enter event date" required="required" /><br> <label
-						for="startTime">Start Time</label> <input type="text"
-						class="form-control" name="startTime"
+						class="form-control" name="eventDate" placeholder="enter event date"
+						required="required" /><br> <label for="eventDate">Start
+						Time</label> <input type="text" class="form-control" name="startTime"
 						placeholder="enter start time" required="required" /><br> <label
 						for="endTime">End Time</label> <input type="text"
 						class="form-control" name="endTime" placeholder="enter end time"
