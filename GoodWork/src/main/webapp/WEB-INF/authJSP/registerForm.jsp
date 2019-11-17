@@ -6,7 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Register</title>
+<%@include file="/WEB-INF/nav.jsp"%>
 </head>
 <body>
 <form:form action="addNewUser.do" method="POST" modelAttribute="newUser">

@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <link href="css/styles.css" rel="stylesheet" type="text/css">
 <title>Create New Organization</title>
+<%@include file="/WEB-INF/nav.jsp"%>
 </head>
 <body>
 <div class="newTxForm">

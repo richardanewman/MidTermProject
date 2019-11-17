@@ -6,7 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Hello, ${sessionScope.newUser.firstName}</title>
+<%@include file="/WEB-INF/nav.jsp"%>
 </head>
 <body>
 	${sessionScope.newUser}
