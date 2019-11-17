@@ -60,7 +60,66 @@ ${org.website}<br>
 			<br>
 		</c:if>
 		<br>
+	
+	<c:if test="${! empty users}">
+			<h1>All Users:</h1>
+			<c:forEach items="${users}" var="user">
+${user.firstName}<br>
+				<br>
+${user.lastName}<br>
+				<br>
+${user.userName}<br>
+			<br>
+			</c:forEach>
+		</c:if>
 
+
+		<c:if test="${! empty user}">
+			<h1>Found it!</h1>
+${user.firstName}<br>
+			<br>
+${user.lastName}<br>
+			<br>
+${user.userName}<br>
+			<br>
+		</c:if>
+		<br>
+		
+		<c:if test="${! empty events}">
+			<h1>All Organizations:</h1>
+			<c:forEach items="${events}" var="event">
+${event.eventName}<br>
+				<br>
+${event.description}<br>
+				<br>
+${event.eventDate}<br>
+				<br>
+${event.startTime}<br>
+				<br>
+${event.endTime}<br>
+				<br>
+${event.peopleNeeded}<br>
+				<br>
+			</c:forEach>
+		</c:if>
+
+
+		<c:if test="${! empty event}">
+			<h1>Found it!</h1>
+${event.eventName}<br>
+			<br>
+${event.description}<br>
+			<br>
+${event.eventDate}<br>
+			<br>
+${event.startTime}<br>
+			<br>
+${event.endTime}<br>
+			<br>
+${event.peopleNeeded}<br>
+			<br>
+		</c:if>
+		<br>
 		<c:if test="${! empty successfulDelete}">
 			<h1>Success!</h1>
 ${successfulDelete}

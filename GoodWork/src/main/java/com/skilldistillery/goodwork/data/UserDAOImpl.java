@@ -68,12 +68,22 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public User getUserByEmail(String email) {
 		User u = null;
-		String sql = "SELECT user FROM User user WHERE user.email LIKE :userMail";
+		String sql = "SELECT user FROM User user WHERE user.email = :userMail";
 		List<User> user = em.createQuery(sql, User.class).setParameter("userMail", email).getResultList();
 		if (user != null && user.size() > 0) {
 			u = user.get(0);
 		}
 		return u;
+	}
+
+	@Override
+	public List<User> getAllUsersByKeyword(String keyword) {
+		List<User> users = null;
+		String sql = "SELECT user FROM User user WHERE user.userName LIKE :keyword";
+		
+		users = em.createQuery(sql, User.class).setParameter("keyword", "%" + keyword + "%").getResultList();
+		
+		return users;
 	}
 	
 
