@@ -17,32 +17,36 @@ public class EventController {
 
 	@Autowired
 	private EventDAO eventDAO;
+	
+	@RequestMapping(path = "/", method = RequestMethod.GET)
+	public String index(Model model) {
+		return "index";
+	}
 
 	@RequestMapping(path = "getEvent.do", method = RequestMethod.GET)
 	public String getEvent(Model model, int id) {
 		model.addAttribute("event", eventDAO.findEventById(id));
-		return "result"; 
+		return "events/event"; 
 
 	}
 
 	@RequestMapping(path = "getEventList.do", method = RequestMethod.GET)
 	public String eventList(Model model) {
+		System.err.println("getEventList.do in controller");
 		List<Event> events = eventDAO.findAll();
+		System.err.println(events);
 		model.addAttribute("eventList", events);
-		return "eventList";
+		return "events/eventList";
 	}
 
 	@RequestMapping(path = "createEventForm.do", method = RequestMethod.GET)
 	public String addEventForm() {
-//		Event newEvent = new Event();
-//		model.addAttribute("newEvent", newEvent);
-		return "createEvent";
+		return "events/createEvent";
 	}
 
 	@RequestMapping(path = "createEvent.do", method = RequestMethod.POST)
 	public String addEvent(Event event, Model model) {
 		System.err.println("createEvent.do in controller ************" + event);
-//		event.setEventDate(LocalDate.parse(event.getDateString())); // trying to work with date rejection from jsp
 		model.addAttribute("newEvent", eventDAO.addEvent(event));
 		return "result";
 	}
@@ -54,9 +58,9 @@ public class EventController {
 	}
 
 	@RequestMapping(path = "deleteEvent.do", method = RequestMethod.POST)
-	public String deleteEvent(Model model, int id) {
+	public String deleteEvent(int id) {
 		eventDAO.deleteEvent(id);
-		return "result";
+		return "index";
 
 	}
 

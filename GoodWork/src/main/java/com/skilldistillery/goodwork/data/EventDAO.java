@@ -16,7 +16,7 @@ public interface EventDAO {
 	
 	public Event updateEvent(Event event, int eventId);
 	
-	public Boolean deleteEvent(int eid);
+	public boolean deleteEvent(int id);
 	
 	
 }
