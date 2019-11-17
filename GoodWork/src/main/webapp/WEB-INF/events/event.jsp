@@ -26,7 +26,7 @@
 				<ul style="list-style: none">
 					<li>Event Id: ${event.id}</li>
 					<li>Event Name: ${event.eventName}</li>
-					<li>Host: ${event.hostId}</li>
+					<%-- <li>Host: ${event.user}</li> --%>
 					<li>${event.location.address}</li>
 					<li>${event.location.address2}</li>
 					<li>${event.location.city}</li>
