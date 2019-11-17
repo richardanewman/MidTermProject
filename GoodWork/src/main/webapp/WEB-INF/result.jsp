@@ -13,6 +13,7 @@
 <h1>All Organizations:</h1>
 <c:forEach items="${displayAll}" var="org">
 ${org.orgName}<br><br>
+${org.orgDescription}<br><br>
 ${org.location.address}<br><br>
 ${org.location.city}<br><br>
 ${org.location.state}<br><br>

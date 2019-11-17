@@ -26,6 +26,10 @@ public class AuthController {
 	
 	@RequestMapping(path="enter.do", method = RequestMethod.GET)
 	public String loginUser(@RequestParam("userName") String userName, @RequestParam("password") String password, Model model) {
+		User user = dao.loginUser(userName, password);
+		if(user == null) {
+			return "index";
+		}
 		model.addAttribute("newUser", dao.loginUser(userName, password));
 		return "profile";
 	}

@@ -10,7 +10,7 @@ public interface OrgDAO {
 	Organization findById(int id);
 	Organization addNewOrg(Organization org);
 	boolean disableOrganization(int id);
-	Organization updateOrganization(Organization orgData);
+	Organization updateOrganization(Organization orgData, int orgId);
 	
 
 }

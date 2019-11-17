@@ -21,18 +21,15 @@ public class UserController {
 	private AuthDAO auth;
 	
 	@RequestMapping(path="updateUserForm.do", method = RequestMethod.GET)
-	public String updateUserGet(Model model) {
-		model.addAttribute("userForm", new User());
+	public String updateUserGet(@Valid User newUser, Model model) {
+		model.addAttribute("newUser", dao.getUserById(newUser.getId()));
 		return "updateUserForm";
 	}
 	
 	@RequestMapping(path="updateUser.do", method = RequestMethod.POST)
-	public String updateUserPost(@Valid User user, Model model) {
-		User upUser = dao.updateUser(user);
-		if(upUser == null) {
-			return "fail";
-		}
-		model.addAttribute("user", upUser);
+	public String updateUserPost(@Valid User newUser, Model model) {
+		System.out.println(newUser);
+		model.addAttribute("newUser", dao.updateUser(newUser));
 		return "profile";
 	}
 	
@@ -42,6 +39,8 @@ public class UserController {
 			dao.deleteUser(newUser.getId());
 			return "index";
 		}
+		newUser = dao.getUserById(newUser.getId());
+		model.addAttribute("newUser", newUser);
 		return "profile";
 	}
 }

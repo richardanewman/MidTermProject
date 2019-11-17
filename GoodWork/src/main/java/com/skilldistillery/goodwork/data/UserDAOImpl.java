@@ -24,7 +24,6 @@ public class UserDAOImpl implements UserDAO {
 	
 	public User updateUser(User user) {
 		User upUser = em.find(User.class, user.getId());
-		upUser.setActive(user.getActive());
 		upUser.setBio(user.getBio());
 		upUser.setEmail(user.getEmail());
 		upUser.setFirstName(user.getFirstName());
@@ -32,6 +31,8 @@ public class UserDAOImpl implements UserDAO {
 		upUser.setPassword(user.getPassword());
 		upUser.setPhotoURL(user.getPhotoURL());
 		upUser.setUserName(user.getUserName());
+		em.persist(upUser);
+		em.flush();
 		return upUser;
 	}
 
@@ -41,10 +42,11 @@ public class UserDAOImpl implements UserDAO {
 		boolean success = false;
 
 		if (!user.equals(null)) {
-			em.remove(user);
+			user.setActive(false);
+			em.persist(user);
 			em.flush();
 		}
-		success = !em.contains(user);
+		success = user.getActive();
 		return success;
 	}
 
