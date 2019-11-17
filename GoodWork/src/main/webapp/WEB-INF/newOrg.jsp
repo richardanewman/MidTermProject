@@ -17,6 +17,10 @@
 		<form:input class="input" path="orgName" required="required" type="text" placeholder="Organization's Name"/>
 		<form:errors path="orgName" />
 		<br />
+		<form:label path="orgDescription">Organization Description:</form:label><br>
+		<form:input class="input" path="orgDescription" required="required" type="textarea" placeholder="Organization's Description"/>
+		<form:errors path="orgDescription" />
+		<br />
 		<form:label path="location.address" >Address:</form:label><br>
 		<form:input class="input" path="location.address" required="required" type="text" placeholder="Street Address"/>
 		<form:errors path="location.address" />
@@ -40,6 +44,10 @@
 		<form:label path="orgType">Organizaton Type:</form:label><br>
 		<form:input class="input" path="orgType" type="text" required="required" placeholder="Non-Profit, LLC, Private Group" />
 		<form:errors path="orgType" />
+		<br />
+		<form:label path="orgNum">Organizaton Number:</form:label><br>
+		<form:input class="input" path="orgNum" type="text" required="required" placeholder="Non-Profit 503c, TaxID Number" />
+		<form:errors path="orgNum" />
 		<br />
 		<form:label path="logoURL">Logo URL:</form:label><br>
 		<form:input class="input" path="logoURL" type="text" required="required" placeholder="Please enter your logo URL" />
