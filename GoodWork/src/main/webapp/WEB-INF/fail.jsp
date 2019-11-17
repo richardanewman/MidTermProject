@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Looks like trouble!</title>
+<%@include file="/WEB-INF/nav.jsp"%>
 </head>
 <body>
 <div class="displayResults">

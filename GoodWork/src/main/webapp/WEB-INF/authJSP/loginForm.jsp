@@ -6,7 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title></title>
+<title>Login</title>
+<%@include file="/WEB-INF/nav.jsp"%>
 </head>
 <body>
 	<form:form action="enter.do" method="GET" modelAttribute="user">

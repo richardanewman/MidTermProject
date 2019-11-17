@@ -11,6 +11,7 @@
 	href="https://cdn.jsdelivr.net/webjars/org.webjars/bootstrap/4.3.1/css/bootstrap.css"
 	rel="stylesheet">
 <title>Result</title>
+<%@include file="/WEB-INF/nav.jsp"%>
 </head>
 <body>
 	<div class="displayResults">
