@@ -43,11 +43,17 @@
 	</form>
 	<br>
 
-	<form action="findById.do" method="GET">
+	<form action="findOrgById.do" method="GET">
 		<input class="form-control" type="number" min="0" required="required"
 			name="id" placeholder="Enter ID" /> <input
 			class="btn btn-dark btn-lg btn-block" type="submit"
-			value="Find By ID" />
+			value="Find Organization By ID" />
+	</form>
+	<form action="searchOrgs.do" method="GET">
+		<input class="form-control" type="text" required="required"
+			name="keyword" placeholder="Enter A Keyword" /> <input
+			class="btn btn-dark btn-lg btn-block" type="submit"
+			value="Search Organizations By Keyword" />
 	</form>
 
 	<hr>

@@ -28,8 +28,10 @@ public class OrgController {
 		return "result";
 
 	}
+	
+	
 
-	@RequestMapping(path = "findById.do", method = RequestMethod.GET)
+	@RequestMapping(path = "findOrgById.do", method = RequestMethod.GET)
 	public String diplayOrg(int id, Model model) {
 		if (orgDAO.findById(id) == null) {
 			model.addAttribute("oops", "Looks like something went wrong. Please check your ID number and try again.");
@@ -41,6 +43,13 @@ public class OrgController {
 			return "result";
 		}
 	}
+	
+	@RequestMapping(path="searchOrgs.do")
+	public String searchOrgs(@Valid String keyword, Model model) {
+		List<Organization> orgList =  orgDAO.searchByKeyword(keyword);
+		model.addAttribute("displayAll", orgList);
+		return "result";
+	}
 
 ///////////////////////////////////////////////////////////////////////
 
@@ -50,7 +59,7 @@ public class OrgController {
 	public String getOrgForm(Model model) {
 		Organization newOrg = new Organization();
 		model.addAttribute("newOrg", newOrg);
-		return "newOrg";
+		return "orgs/newOrg";
 
 	}
 
@@ -58,7 +67,7 @@ public class OrgController {
 	public String addOrg(@Valid Organization newOrg, Model model) {
 		model.addAttribute("newOrg", orgDAO.addNewOrg(newOrg));
 
-		return "org";
+		return "orgs/org";
 
 	}
 
@@ -93,7 +102,7 @@ public class OrgController {
 			orgId= id;
 //orgId = id;
 
-			return "updateOrg";
+			return "orgs/updateOrg";
 		}
 
 	}
@@ -106,7 +115,7 @@ public class OrgController {
 			model.addAttribute("successfulUpdate", updatedOrg);
 			model.addAttribute("successful", "You successfully updated your organization!");
 
-			return "org";
+			return "orgs/org";
 		} catch (Exception e) {
 			model.addAttribute("oops", "Looks like we had some trouble. Please try again.");
 			e.printStackTrace();

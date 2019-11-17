@@ -11,6 +11,7 @@ public interface OrgDAO {
 	Organization addNewOrg(Organization org);
 	boolean disableOrganization(int id);
 	Organization updateOrganization(Organization orgData, int orgId);
+	List<Organization> searchByKeyword(String keyword);
 	
 
 }
