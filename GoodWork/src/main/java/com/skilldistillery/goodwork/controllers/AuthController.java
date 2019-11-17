@@ -1,5 +1,6 @@
 package com.skilldistillery.goodwork.controllers;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.skilldistillery.goodwork.data.AuthDAO;
 import com.skilldistillery.goodwork.entities.User;
@@ -19,36 +19,43 @@ public class AuthController {
 	private AuthDAO dao;
 	
 	@RequestMapping(path="login.do", method = RequestMethod.GET)
-	public String loginForm(Model model) {
+	public String loginForm(Model model, HttpSession session) {
+		if(session.getAttribute("newUser") != null) {
+			model.addAttribute("user", new User());
+			return "userJSP/profile";
+		}
 		model.addAttribute("user", new User());
-		return "loginForm";
+		return "authJSP/loginForm";
 	}
 	
 	@RequestMapping(path="enter.do", method = RequestMethod.GET)
-	public String loginUser(@RequestParam("userName") String userName, @RequestParam("password") String password, Model model) {
-		User user = dao.loginUser(userName, password);
-		if(user == null) {
+	public String loginUser(User user, Model model, HttpSession session) {
+		User userLog = dao.loginUser(user.getUserName(), user.getPassword());
+		if(userLog == null) {
 			return "index";
 		}
-		model.addAttribute("newUser", dao.loginUser(userName, password));
-		return "profile";
+		model.addAttribute("user", new User());
+		session.setAttribute("newUser", userLog);
+		return "userJSP/profile";
 	}
 	
 	@RequestMapping(path="register.do", method = RequestMethod.GET)
 	public String registerUser(Model model) {
 		model.addAttribute("newUser", new User());
-		return "registerForm";
+		return "authJSP/registerForm";
 	}
 	
 	@RequestMapping(path="addNewUser.do", method = RequestMethod.POST)
-	public String addUser(@Valid User newUser, Model model) {
+	public String addUser(@Valid User newUser, Model model, HttpSession session) {
 		if(!dao.validUserName(newUser.getUserName())) {
 			model.addAttribute("newUser", new User());
 //			model.addAttribute("userName", "Looks like that username is already in use, try again");
-			return "registerForm";
+			return "authJSP/registerForm";
 		}
-		model.addAttribute("newUser", dao.registerUser(newUser));
-		return "profile";
+		User u = dao.registerUser(newUser);
+		session.setAttribute("newUser", u);
+		model.addAttribute("user", new User());
+		return "userJSP/profile";
 	}
 
 }
