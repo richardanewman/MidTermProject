@@ -53,7 +53,6 @@ public class EventDAOImpl implements EventDAO {
 		managed.getLocation().setAddress(updatedEvent.getLocation().getAddress2());
 		managed.getLocation().setCity(updatedEvent.getLocation().getCity());
 		managed.getLocation().setState(updatedEvent.getLocation().getState());
-		managed.setHostId(updatedEvent.getHostId());
 		managed.setEventName(updatedEvent.getEventName());
 		managed.setDescription(updatedEvent.getDescription());
 		managed.setEventDate(updatedEvent.getEventDate());
@@ -70,10 +69,11 @@ public class EventDAOImpl implements EventDAO {
 	}
 
 	@Override
-	public boolean deleteEvent(int id) {
+	public boolean deleteEvent(int id, Event event) {
 		Event deleteEvent = em.find(Event.class, id);
 		em.remove(deleteEvent);
 		return (em.find(Event.class, id) == null);
+		
 	}
 
 }
