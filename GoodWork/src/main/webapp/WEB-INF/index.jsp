@@ -21,22 +21,23 @@
 	<form action="getAllOrgs.do" method="GET">
 		<input class="submit" type="submit" value="List All Organizations" />
 	</form>
-
 	<form action="createOrgForm.do" method="GET">
 		<input class="submit" type="submit" value="Create Organization" />
 	</form>
 
+	<!-- Event By Id -->
 	<br>
 	<form action="getEvent.do" method="GET">
 		<input type="number" name="id" placeholder="enter event ID"
 			required="required" /> <input type="submit" value="Show Event" />
 	</form>
+	<!-- Create New Event -->
 	<br>
 	<form action="createEventForm.do" method="GET">
 		<input type="submit" value="Create Event" />
 	</form>
 	<br>
-
+	<!-- List of Events -->
 	<form action="getEventList.do" method="GET">
 		<input type="submit" class="btn btn-primary" value="List Events" />
 	</form>
@@ -49,7 +50,16 @@
 			value="Find By ID" />
 	</form>
 
-
+	<hr>
+			<footer class="text-center">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<p>Copyright © FluffyCarnage. All rights reserved.</p>
+					</div>
+				</div>
+			</div>
+		</footer>
 	<!-- js files for bootstap -->
 	<script
 		src="https://cdn.jsdelivr.net/webjars/org.webjars.bower/jquery/3.3.1/dist/jquery.min.js"></script>

@@ -34,7 +34,7 @@ public class Event {
 
 	private String description;
 	@Column(name = "event_date")
-	private LocalDate eventDate;
+	private String eventDate; // localDate
 
 	@Column(name = "start_time")
 	private String startTime;
@@ -133,11 +133,11 @@ public class Event {
 		this.description = description;
 	}
 
-	public LocalDate getEventDate() {
+	public String getEventDate() {
 		return eventDate;
 	}
 
-	public void setEventDate(LocalDate eventDate) {
+	public void setEventDate(String eventDate) {
 		this.eventDate = eventDate;
 	}
 
@@ -165,9 +165,9 @@ public class Event {
 		this.peopleNeeded = peopleNeeded;
 	}
 
-//	public void setPeopleNeeded(Integer peopleNeeded) {
-//		this.peopleNeeded = peopleNeeded;
-//	}
+	public void setPeopleNeeded(Integer peopleNeeded) {
+		this.peopleNeeded = peopleNeeded;
+	}
 
 	public LocalDate getDateCreated() {
 		return dateCreated;
@@ -213,15 +213,15 @@ public class Event {
 		super();
 	}
 
-	@Override
-	public String toString() {
-		return "Event [id=" + id + ", location=" + location + ", hostId=" + hostId + ", eventName=" + eventName
-				+ ", description=" + description + ", eventDate=" + eventDate + ", startTime=" + startTime
-				+ ", endTime=" + endTime + ", peopleNeeded=" + peopleNeeded + ", dateCreated=" + dateCreated
-				+ ", photoUrl=" + photoUrl + ", pointOfContact=" + pointOfContact + ", pocPhone=" + pocPhone
-				+ ", pocEmail=" + pocEmail + ", categories=" + categories + ", messBoards=" + messBoards + ", users="
-				+ users + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Event [id=" + id + ", location=" + location + ", hostId=" + hostId + ", eventName=" + eventName
+//				+ ", description=" + description + ", eventDate=" + eventDate + ", startTime=" + startTime
+//				+ ", endTime=" + endTime + ", peopleNeeded=" + peopleNeeded + ", dateCreated=" + dateCreated
+//				+ ", photoUrl=" + photoUrl + ", pointOfContact=" + pointOfContact + ", pocPhone=" + pocPhone
+//				+ ", pocEmail=" + pocEmail + ", categories=" + categories + ", messBoards=" + messBoards + ", users="
+//				+ users + "]";
+//	}
 
 	@Override
 	public int hashCode() {
