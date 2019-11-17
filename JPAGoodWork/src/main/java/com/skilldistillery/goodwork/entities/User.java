@@ -33,9 +33,11 @@ public class User {
 	@OneToMany(mappedBy = "user", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	private List<MessageBoard> messBoards;
 	@OneToMany(mappedBy = "user", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
-	private List<UserEvent> events;
+	private List<UserEvent> attendedEvents;
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, mappedBy="users")
 	private List<Organization> orgs;
+	@OneToMany(mappedBy = "host", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	private List<Event> hostedEvents;
 
 	public User(int id, String userName, String password, Boolean active, String firstName, String lastName,
 			String email, String bio, String photoURL) {
@@ -60,11 +62,11 @@ public class User {
 	}
 
 	public List<UserEvent> getEvents() {
-		return events;
+		return attendedEvents;
 	}
 
 	public void setEvents(List<UserEvent> events) {
-		this.events = events;
+		this.attendedEvents = events;
 	}
 
 	public List<MessageBoard> getMessBoards() {
@@ -158,7 +160,7 @@ public class User {
 		result = prime * result + ((active == null) ? 0 : active.hashCode());
 		result = prime * result + ((bio == null) ? 0 : bio.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + ((events == null) ? 0 : events.hashCode());
+		result = prime * result + ((attendedEvents == null) ? 0 : attendedEvents.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
@@ -194,10 +196,10 @@ public class User {
 				return false;
 		} else if (!email.equals(other.email))
 			return false;
-		if (events == null) {
-			if (other.events != null)
+		if (attendedEvents == null) {
+			if (other.attendedEvents != null)
 				return false;
-		} else if (!events.equals(other.events))
+		} else if (!attendedEvents.equals(other.attendedEvents))
 			return false;
 		if (firstName == null) {
 			if (other.firstName != null)
@@ -268,12 +270,12 @@ public class User {
 	}
 
 	public void addUserEvent(UserEvent userEvent) {
-		if (events == null) {
-			events = new ArrayList<>();
+		if (attendedEvents == null) {
+			attendedEvents = new ArrayList<>();
 		}
 
-		if (!events.contains(userEvent)) {
-			events.add(userEvent);
+		if (!attendedEvents.contains(userEvent)) {
+			attendedEvents.add(userEvent);
 			if (userEvent.getUser() != null) {
 				userEvent.getUser().getEvents().remove(userEvent);
 			}
@@ -283,8 +285,8 @@ public class User {
 
 	public void removeUserEvent(UserEvent userEvent) {
 		userEvent.setUser(null);
-		if (events != null) {
-			events.remove(userEvent);
+		if (attendedEvents != null) {
+			attendedEvents.remove(userEvent);
 		}
 	}
 
@@ -303,6 +305,27 @@ public class User {
 		if (orgs != null && orgs.contains(org)) {
 			orgs.remove(org);
 			org.removeUser(this);
+		}
+	}
+	
+	public void addHostedEvent(Event event) {
+		if (hostedEvents == null) {
+			hostedEvents = new ArrayList<>();
+		}
+
+		if (!hostedEvents.contains(event)) {
+			hostedEvents.add(event);
+			if (event.getHost() != null) {
+				event.getHost().getEvent().remove(event);
+			}
+			event.setHost(this);
+		}
+	}
+
+	public void removeHostedEvent(MessageBoard messBoard) {
+		messBoard.setUser(null);
+		if (messBoards != null) {
+			messBoards.remove(messBoard);
 		}
 	}
 }
