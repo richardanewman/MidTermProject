@@ -39,6 +39,8 @@ public class UserController {
 			dao.deleteUser(newUser.getId());
 			return "index";
 		}
+		newUser = dao.getUserById(newUser.getId());
+		model.addAttribute("newUser", newUser);
 		return "profile";
 	}
 }

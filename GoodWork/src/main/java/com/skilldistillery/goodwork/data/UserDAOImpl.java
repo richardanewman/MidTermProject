@@ -42,10 +42,11 @@ public class UserDAOImpl implements UserDAO {
 		boolean success = false;
 
 		if (!user.equals(null)) {
-			em.remove(user);
+			user.setActive(false);
+			em.persist(user);
 			em.flush();
 		}
-		success = !em.contains(user);
+		success = user.getActive();
 		return success;
 	}
 

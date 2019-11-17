@@ -13,7 +13,7 @@ ${newUser}
 <h5 class="card-title">Delete Your Profile</h5>
 	<form:form action="disableUser.do" method="POST" modelAttribute="newUser">
 		<form:label path="id" value="${newUser.id}"></form:label><br>
-		<form:hidden class="input" path="id" value="${newUser.id}"/>
+		<form:hidden path="id" value="${newUser.id}"/>
 		<form:errors path="id" value="${newUser.id}"/>
 		<br />
 		<form:label path="password" value="Enter Password">Password:</form:label><br>

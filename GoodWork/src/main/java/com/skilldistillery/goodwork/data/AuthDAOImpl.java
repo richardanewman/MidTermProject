@@ -44,7 +44,7 @@ public class AuthDAOImpl implements AuthDAO {
 		String sql = "SELECT user FROM User user WHERE user.userName = :uName AND user.password = :uPass";
 		user = em.createQuery(sql, User.class).setParameter("uName", userName).setParameter("uPass", password).getResultList();
 		
-		if(user != null && user.size() < 2) {
+		if((user != null && user.size() == 1) && user.get(0).getActive()) {
 			u = user.get(0);
 			return u;
 		}
