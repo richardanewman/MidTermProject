@@ -60,7 +60,8 @@
 				name="keyword" placeholder="Search" aria-label="Search">
 			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 			<ul class="navbar-nav mr-auto">
-			<li class="nav-item"><a class="nav-link" href="logout.do">Log Out</a></li>
+			<li class="nav-item"><a class="nav-link" href="login.do">Log In</a></li>
+			<li class="nav-item"><a class="nav-link" href="register.do">Register</a></li>
 			</ul>
 		</form>
 	</div>
