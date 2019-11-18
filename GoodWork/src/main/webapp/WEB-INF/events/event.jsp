@@ -57,17 +57,19 @@
 					<div class=" container form-goup jumbotron">
 						<form action="updateEvent.do" method="POST">
 							<!-- modelAttribute="event" -->
-							<!--  -->
 							<label for="eventId" value="${event.id }">Editing
 								${event.eventName}</label> <input type="hidden" value="${event.id }"
 								name="id" />
 							<!--  -->
-							<label for="dateCreated" value="${event.dateCreated }"></label>
-							<input type="text" value="${event.dateCreated }" name="dateCreated" disabled="disabled"/>
-							<!--  -->
 							<label for="eventId">Event Id</label> <input type="text"
-								value="${event.id }" name="eventID" disabled="disabled" /> <label
-								for="eventName">Event Title</label> <input type="text"
+								value="${event.id }" name="eventID" disabled="disabled" />
+							<!-- //////////////////////////DATE///////////////////////////////// -->
+							 
+							<%-- <label for="dateCreated">Date Created</label> <input type="datetime"
+								value="${event.dateCreated}" name="dateCreated"
+								/> --%>
+							<!-- ///////////////////////////////DATE/////////////////////////////////////// -->
+							<label for="eventName">Event Title</label> <input type="text"
 								class="form-control" name="eventName" value="${event.eventName}" /><br>
 							<!--  -->
 							<label for="description">Event Description</label> <input

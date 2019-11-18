@@ -31,26 +31,26 @@
 						placeholder="enter description of event" required="required" /><br>
 					<!--  -->
 					<label for="event.location.address">Event Address</label> <input
-						type="text" class="form-control" name="event.location.address"
+						type="text" class="form-control" name="location.address"
 						<%-- value="${event.location.address }"  --%>
 						placeholder="enter address of event" /><br>
 					<!--  -->
 					<label for="event.location.address2">Event Address 2</label> <input
-						type="text" class="form-control" name="event.location.address2"
+						type="text" class="form-control" name="location.address2"
 						<%-- value="${event.location.address2 }" --%>
 						placeholder="enter address 2 of event" /><br>
 					<!--  -->
 					<label for="event.location.city">Event City</label> <input type="text"
-						class="form-control" name="event.location.city"
+						class="form-control" name="location.city"
 						<%-- value="${event.location.city }" --%> placeholder="enter city of event" /><br>
 					<!--  -->
 					<label for="event.location.state">Event State</label> <input type="text"
-						class="form-control" name="event.location.state"
+						class="form-control" name="location.state"
 						<%-- value="${event.location.state }" --%>
 						placeholder="enter state of event" /><br>
 					<!--  -->
 					<label for="event.location.zipCode">Event Zip Code</label> <input
-						type="text" class="form-control" name="event.location.zipCode"
+						type="text" class="form-control" name="location.zipCode"
 						value="${event.location.zipCode }"
 						placeholder="enter zip code of event" /><br>
 					<!--  -->
