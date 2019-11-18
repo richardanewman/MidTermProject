@@ -18,7 +18,7 @@ public class EventController {
 	@Autowired
 	private EventDAO eventDAO;
 //	private int eventId;
-	
+
 	@RequestMapping(path = "/", method = RequestMethod.GET)
 	public String index(Model model) {
 		return "index";
@@ -27,7 +27,7 @@ public class EventController {
 	@RequestMapping(path = "getEvent.do", method = RequestMethod.GET)
 	public String getEvent(Model model, int id) {
 		model.addAttribute("event", eventDAO.findEventById(id));
-		return "events/event"; 
+		return "events/event";
 
 	}
 
@@ -53,13 +53,11 @@ public class EventController {
 		return "events/createEvent";
 	}
 
-
-
 	@RequestMapping(path = "updateEvent.do", method = RequestMethod.POST)
 	public String updateEvent(Model model, Event updatedEvent, Integer id) {
-		System.err.println("In controller************"+id+ " " + updatedEvent);
+		System.err.println("In controller************" + id + " " + updatedEvent);
 		Event originalEventForDate = eventDAO.findEventById(id);
-		updatedEvent.setDateCreated(originalEventForDate.getDateCreated());
+		updatedEvent.setDateCreated(originalEventForDate.getDateCreated()); // passing date issues works
 		System.out.println("GIVE ME THE DATESSSSS" + originalEventForDate);
 		System.err.println();
 //		LocalDate date = updatedEvent.getDateCreated();
