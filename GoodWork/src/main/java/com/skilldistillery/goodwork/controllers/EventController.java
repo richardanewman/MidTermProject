@@ -50,13 +50,13 @@ public class EventController {
 	public String addEvent(Event event, Model model) {
 		System.err.println("createEvent.do in controller ************" + event);
 		model.addAttribute("newEvent", eventDAO.addEvent(event));
-		return "event";
+		return "result";
 	}
 
 	@RequestMapping(path = "updateEvent.do", method = RequestMethod.POST)
 	public ModelAndView updateEvent(Event updatedEvent, Integer id) {
-//		System.err.println("In controller************");
-//		System.out.println(event);
+		System.err.println("In controller************");
+		System.out.println(updatedEvent);
 //		eventId = id;
 //		Event updatedE = eventDAO.updateEvent(event, eventId);
 //		model.addAttribute("event", updatedE);
