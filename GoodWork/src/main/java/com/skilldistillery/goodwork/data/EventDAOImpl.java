@@ -1,7 +1,6 @@
 package com.skilldistillery.goodwork.data;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -11,8 +10,6 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.goodwork.entities.Event;
-import com.skilldistillery.goodwork.entities.Location;
-import com.skilldistillery.goodwork.entities.Organization;
 import com.skilldistillery.goodwork.entities.User;
 
 @Transactional // Spring automatically start a transaction for each DAO method
