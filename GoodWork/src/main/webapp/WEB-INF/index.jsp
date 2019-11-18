@@ -6,21 +6,55 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://cdn.jsdelivr.net/webjars/org.webjars/bootstrap/4.3.1/css/bootstrap.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet" type="text/css">
 <title>Home</title>
 <%@include file="/WEB-INF/nav.jsp"%>
 </head>
 <header>
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">Fluid jumbotron</h1>
-    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    <h1 class="display-4">goodWork</h1>
+    <h3 class="motto">Helping people help each other.</h3>
   </div>
 </div>
 </header>
 <body>
-	<form action="login.do" method="GET">
-		<input class="submit" type="submit" value="Login" />
-	</form>
+<div class="card-deck">
+  <div class="card">
+    <span class="feather-card" data-feather="search"></span>
+    <div class="card-body">
+      <h5 class="card-title">Search Events By Keyword</h5>
+      <p class="card-text">Search event titles and descriptions by keyword.</p>
+      <form action="eventKeyword.do" method="GET" >
+		<input class="form-control" type="text" required="required" name="keyword" placeholder="Enter Keyword"/> 
+  		<input class="btn btn-dark btn-lg btn-block" type="submit" value="Search Keyword" />
+		</form>
+    </div>
+  </div>
+  <div class="card">
+     <span class="feather-card" data-feather="hash"></span>
+    <div class="card-body">
+      <h5 class="card-title">Create An Organization</h5>
+      <p class="card-text">Register an existing organization or create a community group.</p>
+      <form action="findById.do" method="GET" >
+		<input class="form-control" type="number"  min="0" required="required" name="id" placeholder="Enter ID"/> 
+ 		 <input class="btn btn-dark btn-lg btn-block" type="submit" value="Find By ID" />
+		</form>
+    </div>
+  </div>
+  <div class="card">
+    <span class="feather-card" data-feather="search"></span>
+    <div class="card-body">
+      <h5 class="card-title">Search By Keyword</h5>
+      <p class="card-text">Search transaction descriptions by a single keyword</p>
+      <form action="searchKeyword.do" method="GET" >
+		<input class="form-control" type="text" required="required" name="keyword" placeholder="Enter Keyword"/> 
+  		<input class="btn btn-dark btn-lg btn-block" type="submit" value="Search Keyword" />
+		</form>
+    </div>
+  </div>
+</div>
+
 
 	<form action="getAllOrgs.do" method="GET">
 		<input class="submit" type="submit" value="List All Organizations" />

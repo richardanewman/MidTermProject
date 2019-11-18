@@ -15,7 +15,6 @@ import com.skilldistillery.goodwork.data.EventDAO;
 import com.skilldistillery.goodwork.data.UserDAO;
 import com.skilldistillery.goodwork.entities.Event;
 import com.skilldistillery.goodwork.entities.Location;
-import com.skilldistillery.goodwork.entities.Organization;
 import com.skilldistillery.goodwork.entities.User;
 
 @Controller
