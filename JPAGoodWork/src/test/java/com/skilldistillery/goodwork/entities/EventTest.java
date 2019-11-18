@@ -178,6 +178,8 @@ class EventTest {
 	void test19() {
 		assertNotNull(event);
 		assertEquals("FL", event.getLocation().getState());
+		assertEquals("1255 Crocodile Lane", event.getLocation().getAddress());
+		
 		// need to test setters...event doesn't seem to map setting location fields
 	}
 

@@ -30,57 +30,58 @@
 						type="text" class="form-control" name="description"
 						placeholder="enter description of event" required="required" /><br>
 					<!--  -->
-					<label for="address">Event Address</label> <input type="text"
-						class="form-control" name="address"
-						placeholder="enter address of event"  /><br>
+					<label for="event.location.address">Event Address</label> <input
+						type="text" class="form-control" name="event.location.address"
+						<%-- value="${event.location.address }"  --%>
+						placeholder="enter address of event" /><br>
 					<!--  -->
-					<label for="address2">Event Address 2</label> <input type="text"
-						class="form-control" name="address2"
-						placeholder="enter address 2 of event"  /><br>
+					<label for="event.location.address2">Event Address 2</label> <input
+						type="text" class="form-control" name="event.location.address2"
+						<%-- value="${event.location.address2 }" --%>
+						placeholder="enter address 2 of event" /><br>
 					<!--  -->
-					<label for="city">Event City</label> <input type="text"
-						class="form-control" name="city" placeholder="enter city of event"
-						 /><br>
+					<label for="event.location.city">Event City</label> <input type="text"
+						class="form-control" name="event.location.city"
+						<%-- value="${event.location.city }" --%> placeholder="enter city of event" /><br>
 					<!--  -->
-					<label for="state">Event State</label> <input type="text"
-						class="form-control" name="state"
-						placeholder="enter state of event"  /><br>
+					<label for="event.location.state">Event State</label> <input type="text"
+						class="form-control" name="event.location.state"
+						<%-- value="${event.location.state }" --%>
+						placeholder="enter state of event" /><br>
 					<!--  -->
-					<label for="zipCode">Event Zip Code</label> <input type="text"
-						class="form-control" name="zipCode"
-						placeholder="enter zip code of event"  /><br>
+					<label for="event.location.zipCode">Event Zip Code</label> <input
+						type="text" class="form-control" name="event.location.zipCode"
+						value="${event.location.zipCode }"
+						placeholder="enter zip code of event" /><br>
 					<!--  -->
 					<label for="eventDate">Event Date</label> <input type="text"
 						class="form-control" name="eventDate"
-						placeholder="enter event date"  /><br>
+						placeholder="enter event date" /><br>
 					<!--  -->
 					<label for="eventDate">Start Time</label> <input type="text"
 						class="form-control" name="startTime"
-						placeholder="enter start time"  /><br>
+						placeholder="enter start time" /><br>
 					<!--  -->
 					<label for="endTime">End Time</label> <input type="text"
-						class="form-control" name="endTime" placeholder="enter end time"
-						 /><br>
+						class="form-control" name="endTime" placeholder="enter end time" /><br>
 					<!--  -->
 					<label for="peopleNeeded">Number of people needed</label> <input
 						type="number" class="form-control" name="peopleNeeded"
-						placeholder="enter number of people needed"  /><br>
+						placeholder="enter number of people needed" /><br>
 					<!--  -->
 					<label for="pointOfContact">Point of Contact</label> <input
 						type="text" class="form-control" name="pointOfContact"
-						placeholder="enter point of contact"  /><br>
+						placeholder="enter point of contact" /><br>
 					<!--  -->
 					<label for="pocPhone">POC Phone Number</label> <input type="number"
 						class="form-control" name="pocPhone"
-						placeholder="enter phone number"  /><br>
+						placeholder="enter phone number" /><br>
 					<!--  -->
 					<label for="pocEmail">POC Email</label> <input type="text"
-						class="form-control" name="pocEmail" placeholder="enter email"
-						 /><br>
-						<!--  -->
+						class="form-control" name="pocEmail" placeholder="enter email" /><br>
+					<!--  -->
 					<label for="photoUrl">Photo URL</label> <input type="text"
-						class="form-control" name="photoUrl" placeholder="enter photo url"
-						 /><br>
+						class="form-control" name="photoUrl" placeholder="enter photo url" /><br>
 				</div>
 				<button type="submit" class="btn btn-primary">Submit</button>
 			</form>

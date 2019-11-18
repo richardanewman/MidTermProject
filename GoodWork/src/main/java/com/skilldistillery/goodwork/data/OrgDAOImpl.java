@@ -5,14 +5,11 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
-import javax.validation.Valid;
 
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.skilldistillery.goodwork.entities.Organization;
+import com.skilldistillery.goodwork.entities.User;
 
 
 @Service
@@ -36,8 +33,11 @@ public class OrgDAOImpl implements OrgDAO {
 	}
 
 	@Override
-	public Organization addNewOrg(Organization org) {
+	public Organization addNewOrg(Organization org, User user) {
+		user = em.find(User.class, user.getId());
 		org.setActive(true);
+		user.addOrganization(org);
+		em.persist(user);
 		em.persist(org);
 		em.flush();
 		return org;

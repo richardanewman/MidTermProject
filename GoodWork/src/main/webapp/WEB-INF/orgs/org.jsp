@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Hello, ${newOrg.orgName}</title>
+<title>Hello, ${successfulUpdate.orgName}</title>
 <%@include file="/WEB-INF/nav.jsp"%>
 </head>
 <body>
