@@ -10,7 +10,7 @@
 <%@include file="/WEB-INF/nav.jsp"%>
 </head>
 <body>
-<form:form action="addNewUser.do" method="POST" modelAttribute="newUser">
+<form:form action="addNewUser.do" method="POST" modelAttribute="user">
 		<form:label path="userName">User Name:</form:label><br>${username }
 		<form:input class="input" path="userName" required="required" type="text" placeholder="User name"/>
 		<form:errors path="userName" />

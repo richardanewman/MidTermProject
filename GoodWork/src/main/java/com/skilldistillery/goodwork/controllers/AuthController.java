@@ -42,7 +42,7 @@ public class AuthController {
 
 	@RequestMapping(path = "register.do", method = RequestMethod.GET)
 	public String registerUser(Model model) {
-		model.addAttribute("newUser", new User());
+		model.addAttribute("user", new User());
 		return "authJSP/registerForm";
 	}
 
