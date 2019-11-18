@@ -54,11 +54,13 @@
 					<br>
 
 					<div class=" container form-goup jumbotron">
-						<form action="updateEvent.do" method="POST" modelAttribute="event">
-							<label for="event" value="${event.id }">Editing ${event.eventName}</label>
-							<div>
-
-								<label for="eventName">Event Title</label> <input type="text"
+						<form action="updateEvent.do" method="POST" ><!-- modelAttribute="event" -->
+							<!--  -->
+							<label for="eventId" value="${event.id }">Editing ${event.eventName}</label>
+								<input type="hidden" value="${event.id }" name="id"/>
+								<!--  -->
+								<label for="eventId">Event Id</label> <input type="text" value="${event.id }" name="eventID"
+								disabled="disabled" /> <label for="eventName">Event Title</label> <input type="text"
 									class="form-control" name="eventName"
 									value="${event.eventName}"  /><br>
 								<!--  -->
@@ -122,8 +124,8 @@
 								<!--  -->
 								<label for="photoUrl">POC Email</label> <input type="text"
 									value="${event.photoUrl }" class="form-control" name="photoUrl"
-									 /><br>
-							</div>
+									 /><br><br>
+							
 							<button type="submit" class="btn btn-primary">Submit</button>
 						</form>
 					</div>
