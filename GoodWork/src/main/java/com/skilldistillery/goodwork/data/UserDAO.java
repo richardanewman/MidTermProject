@@ -12,4 +12,5 @@ public interface UserDAO {
 	public List<User> getAllUsers();
 	public List<User> getActiveUsers();
 	public User getUserByEmail(String email);
+	public List<User> getAllUsersByKeyword(String keyword);
 }

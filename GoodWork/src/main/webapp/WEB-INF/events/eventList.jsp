@@ -10,7 +10,7 @@
 <link
 	href="https://cdn.jsdelivr.net/webjars/org.webjars/bootstrap/4.3.1/css/bootstrap.css"
 	rel="stylesheet">
-<title>Event</title>
+<title>Event List</title>
 <%@include file="/WEB-INF/nav.jsp"%>
 </head>
 <body>

@@ -6,7 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Hello, ${sessionScope.newUser.firstName}</title>
+<%@include file="/WEB-INF/nav.jsp"%>
 </head>
 <body>
 	${sessionScope.newUser}
@@ -33,7 +34,7 @@
 		<form:errors path="id" value="${sessionScope.newUser.id}" />
 		<input type="submit" value="Update Profile" style="color: BLUE;" />
 	</form:form>
-	${sessionScope.newUser.events} ${sessionScope.newUser.orgs}
+	${sessionScope.newUser.orgs}
 	<br>
 	<a href="http://localhost:8090/">Home</a>
 	<br>
@@ -43,6 +44,10 @@
 	<br>
 	<form action="createOrgForm.do" method="GET">
 		<input class="submit" type="submit" value="Create Organization" />
+	</form>
+	<br>
+	<form action="logout.do" method="GET">
+		<input class="submit" type="submit" value="Logout" />
 	</form>
 </body>
 </html>
