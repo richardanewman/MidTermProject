@@ -1,8 +1,6 @@
 package com.skilldistillery.goodwork.controllers;
 
-import java.time.LocalDate;
 import java.util.List;
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.skilldistillery.goodwork.data.EventDAO;
 import com.skilldistillery.goodwork.entities.Event;
+import com.skilldistillery.goodwork.entities.Location;
 
 @Controller
 public class EventController {
@@ -42,8 +41,9 @@ public class EventController {
 	}
 
 	@RequestMapping(path = "createEvent.do", method = RequestMethod.POST)
-	public String addEvent(Event event, Model model) {
-		System.err.println("createEvent.do in controller ************" + event);
+	public String addEvent(Event event, Model model, Location location) {
+		System.out.println(event);
+		System.out.println(location);
 		model.addAttribute("newEvent", eventDAO.addEvent(event));
 		return "result";
 	}
@@ -58,7 +58,12 @@ public class EventController {
 	@RequestMapping(path = "updateEvent.do", method = RequestMethod.POST)
 	public String updateEvent(Model model, Event updatedEvent, Integer id) {
 		System.err.println("In controller************"+id+ " " + updatedEvent);
+		Event originalEventForDate = eventDAO.findEventById(id);
+		updatedEvent.setDateCreated(originalEventForDate.getDateCreated());
+		System.out.println("GIVE ME THE DATESSSSS" + originalEventForDate);
 		System.err.println();
+//		LocalDate date = updatedEvent.getDateCreated();
+//		updatedEvent.setDateCreated(date);
 		Event event = eventDAO.updateEvent(updatedEvent, id);
 		model.addAttribute("updateEvent", event);
 		return "events/event";

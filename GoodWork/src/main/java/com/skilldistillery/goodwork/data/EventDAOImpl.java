@@ -1,6 +1,7 @@
 package com.skilldistillery.goodwork.data;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -41,8 +42,12 @@ public class EventDAOImpl implements EventDAO {
 	@Override
 	public Event addEvent(Event event) { // issue with location id coming in Null
 		event.setDateCreated(LocalDate.now());
+		System.err.println("In event creation " + event);
+		Location eventsLocation = new Location();
+//		eventsLocation.setAddress(address);
 //		event.setLocation(event.getLocation());
 		em.persist(event);
+		em.flush();
 		return event;
 	}
 
@@ -54,7 +59,9 @@ public class EventDAOImpl implements EventDAO {
 		System.err.println("In method******************************" + updatedEvent);
 		System.out.println("updated event");
 		System.out.println(managed);
+		System.out.println(managed.getLocation());
 		managed.getLocation().setAddress(updatedEvent.getLocation().getAddress());
+
 		managed.getLocation().setAddress(updatedEvent.getLocation().getAddress2());
 		managed.getLocation().setCity(updatedEvent.getLocation().getCity());
 		managed.getLocation().setState(updatedEvent.getLocation().getState());
@@ -69,6 +76,7 @@ public class EventDAOImpl implements EventDAO {
 		managed.setPointOfContact(updatedEvent.getPointOfContact());
 		managed.setPocPhone(updatedEvent.getPocPhone());
 		managed.setPocEmail(updatedEvent.getPocEmail());
+		em.persist(managed);
 		em.flush();
 		return managed;
 	}
