@@ -68,7 +68,6 @@ public class EventDAOImpl implements EventDAO {
 		managed.setPointOfContact(updatedEvent.getPointOfContact());
 		managed.setPocPhone(updatedEvent.getPocPhone());
 		managed.setPocEmail(updatedEvent.getPocEmail());
-		em.persist(managed);
 		em.flush();
 		return managed;
 	}
