@@ -32,7 +32,8 @@ public class AuthController {
 	public String loginUser(User user, Model model, HttpSession session) {
 		User userLog = dao.loginUser(user.getUserName(), user.getPassword());
 		if(userLog == null) {
-			return "index";
+			model.addAttribute("oops", "Invalid Username or Password, please try again");
+			return "fail";
 		}
 		model.addAttribute("user", new User());
 		session.setAttribute("newUser", userLog);
@@ -48,9 +49,8 @@ public class AuthController {
 	@RequestMapping(path="addNewUser.do", method = RequestMethod.POST)
 	public String addUser(@Valid User newUser, Model model, HttpSession session) {
 		if(!dao.validUserName(newUser.getUserName())) {
-			model.addAttribute("newUser", new User());
-//			model.addAttribute("userName", "Looks like that username is already in use, try again");
-			return "authJSP/registerForm";
+			model.addAttribute("oops", "Looks like that username is already taken, sorry for the inconvenience.");
+			return "fail";
 		}
 		User u = dao.registerUser(newUser);
 		session.setAttribute("newUser", u);

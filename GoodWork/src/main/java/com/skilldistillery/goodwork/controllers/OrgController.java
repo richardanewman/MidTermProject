@@ -2,6 +2,7 @@ package com.skilldistillery.goodwork.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.skilldistillery.goodwork.data.OrgDAO;
 import com.skilldistillery.goodwork.entities.Organization;
+import com.skilldistillery.goodwork.entities.User;
 
 @Controller
 public class OrgController {
@@ -64,8 +66,10 @@ public class OrgController {
 	}
 
 	@RequestMapping(path = "addNewOrg.do", method = RequestMethod.POST)
-	public String addOrg(@Valid Organization newOrg, Model model) {
-		model.addAttribute("newOrg", orgDAO.addNewOrg(newOrg));
+	public String addOrg(@Valid Organization newOrg, Model model, HttpSession session) {
+		User newUser = (User) session.getAttribute("newUser");
+		model.addAttribute("newOrg", orgDAO.addNewOrg(newOrg, newUser));
+	
 
 		return "orgs/org";
 
