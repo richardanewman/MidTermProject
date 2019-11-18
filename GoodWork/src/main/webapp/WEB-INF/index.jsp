@@ -27,73 +27,33 @@
       <p class="card-text">Search event titles and descriptions by keyword.</p>
       <form action="eventKeyword.do" method="GET" >
 		<input class="form-control" type="text" required="required" name="keyword" placeholder="Enter Keyword"/> 
-  		<input class="btn btn-dark btn-lg btn-block" type="submit" value="Search Keyword" />
+  		<input class="btn-lg btn-block btn btn-green" type="submit" value="Search Keyword" />
 		</form>
     </div>
   </div>
   <div class="card">
      <span class="feather-card" data-feather="hash"></span>
     <div class="card-body">
-      <h5 class="card-title">Create An Organization</h5>
-      <p class="card-text">Register an existing organization or create a community group.</p>
-      <form action="findById.do" method="GET" >
-		<input class="form-control" type="number"  min="0" required="required" name="id" placeholder="Enter ID"/> 
- 		 <input class="btn btn-dark btn-lg btn-block" type="submit" value="Find By ID" />
+      <h5 class="card-title">Search Organizations By Keyword</h5>
+      <p class="card-text">Search organization names and descriptions by keyword.</p>
+      <form action="searchOrgs.do" method="GET" >
+		<input class="form-control" type="text" required="required" name="keyword" placeholder="Enter A Keyword" />
+ 		 <input class="btn btn-brown btn-lg btn-block" type="submit" value="Create Organization" />
 		</form>
     </div>
   </div>
   <div class="card">
     <span class="feather-card" data-feather="search"></span>
     <div class="card-body">
-      <h5 class="card-title">Search By Keyword</h5>
-      <p class="card-text">Search transaction descriptions by a single keyword</p>
-      <form action="searchKeyword.do" method="GET" >
+      <h5 class="card-title">Recent Events</h5>
+      <p class="card-text">Extra! Extra! Read all about our recent events.</p>
+      <form action="recentEvents.do" method="GET" >
 		<input class="form-control" type="text" required="required" name="keyword" placeholder="Enter Keyword"/> 
-  		<input class="btn btn-dark btn-lg btn-block" type="submit" value="Search Keyword" />
+  		<input class="btn btn-dark btn-lg btn-block" type="submit" value="Recent Events" />
 		</form>
     </div>
   </div>
 </div>
-
-
-	<form action="getAllOrgs.do" method="GET">
-		<input class="submit" type="submit" value="List All Organizations" />
-	</form>
-	<form action="createOrgForm.do" method="GET">
-		<input class="submit" type="submit" value="Create Organization" />
-	</form>
-
-	<!-- Event By Id -->
-	<br>
-	<form action="getEvent.do" method="GET">
-		<input type="number" name="id" placeholder="enter event ID"
-			required="required" /> <input type="submit" value="Show Event" />
-	</form>
-	<!-- Create New Event -->
-	<br>
-	<form action="createEventForm.do" method="GET">
-		<input type="submit" value="Create Event" />
-	</form>
-	<br>
-	<!-- List of Events -->
-	<form action="getEventList.do" method="GET">
-		<input type="submit" class="btn btn-primary" value="List Events" />
-	</form>
-	<br>
-
-
-	<form action="findOrgById.do" method="GET">
-		<input class="form-control" type="number" min="0" required="required"
-			name="id" placeholder="Enter ID" /> <input
-			class="btn btn-dark btn-lg btn-block" type="submit"
-			value="Find Organization By ID" />
-	</form>
-	<form action="searchOrgs.do" method="GET">
-		<input class="form-control" type="text" required="required"
-			name="keyword" placeholder="Enter A Keyword" /> <input
-			class="btn btn-dark btn-lg btn-block" type="submit"
-			value="Search Organizations By Keyword" />
-	</form>
 
 	<hr>
 			<footer class="text-center">
