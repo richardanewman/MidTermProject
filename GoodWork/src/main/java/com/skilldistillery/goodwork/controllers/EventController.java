@@ -42,7 +42,7 @@ public class EventController {
 	@RequestMapping(path = "eventKeyword.do")
 	public String findByKeyword(@Valid String keyword, Model model) {
 		List<Event> eventSearch = eventDAO.findByKeyword(keyword);
-		model.addAttribute("eventSearch", eventSearch);
+		model.addAttribute("events", eventSearch);
 		return "result";
 	}
 
