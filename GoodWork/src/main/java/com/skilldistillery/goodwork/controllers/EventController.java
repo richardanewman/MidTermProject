@@ -39,8 +39,8 @@ public class EventController {
 
 	}
 
-	@RequestMapping(path = "keyword.do")
-	public String searchOrgs(@Valid String keyword, Model model) {
+	@RequestMapping(path = "eventKeyword.do")
+	public String findByKeyword(@Valid String keyword, Model model) {
 		List<Event> eventSearch = eventDAO.findByKeyword(keyword);
 		model.addAttribute("displayAll", eventSearch);
 		return "result";
@@ -59,7 +59,7 @@ public class EventController {
 	public String addEvent(Event event, Model model, Location location, HttpSession session) {
 		System.out.println(event);
 		System.out.println(location);
-		// session code for create event 
+		// session code for create event
 		User newUser = (User) session.getAttribute("newUser");
 		model.addAttribute("newEvent", eventDAO.addEvent(event, newUser));
 		newUser = userDAO.getUserById(newUser.getId());
