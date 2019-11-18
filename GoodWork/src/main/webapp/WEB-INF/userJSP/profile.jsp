@@ -34,7 +34,34 @@
 		<form:errors path="id" value="${sessionScope.newUser.id}" />
 		<input type="submit" value="Update Profile" style="color: BLUE;" />
 	</form:form>
-	${sessionScope.newUser.orgs}
+	<h1>Organizations</h1>
+	<c:forEach var="org" items="${sessionScope.newUser.orgs}">
+		<h3>${org.orgName}</h3><br>
+		<p>${org.orgDescription}</p><br>
+		<p>${org.orgType}</p><br>
+		<br><br><br>
+	</c:forEach>
+	<h1>Attended events</h1>
+	<c:forEach var="attended" items="${sessionScope.newUser.attendedEvents}">
+		<h3>${attended.event.eventName}</h3><br>
+		<p>${attended.event.description}</p><br>
+		<p>${attended.event.eventDate}</p><br>
+		<c:choose>
+			<c:when test="${attend.attend}">
+				<p>Attended Event: Yes! Good Job!</p>
+			</c:when>
+			<c:otherwise>
+				<p>Attended Event: Nope. So Sad!</p>
+			</c:otherwise>
+		</c:choose>
+		<br><br><br>
+	</c:forEach>
+		<h1>Hosted Events</h1>
+	<c:forEach var="hosted" items="${sessionScope.newUser.hostedEvents}">
+		<h3>${hosted.eventName}</h3><br>
+		<p>${hosted.description}</p><br>
+		<p>${hosted.eventDate}</p><br>
+	</c:forEach>
 	<br>
 	<a href="http://localhost:8090/">Home</a>
 	<br>
