@@ -215,15 +215,16 @@ public class Event {
 		super();
 	}
 
-//	@Override
-//	public String toString() {
-//		return "Event [id=" + id + ", location=" + location + ", host=" + host + ", eventName=" + eventName
-//				+ ", description=" + description + ", eventDate=" + eventDate + ", startTime=" + startTime
-//				+ ", endTime=" + endTime + ", peopleNeeded=" + peopleNeeded + ", dateCreated=" + dateCreated
-//				+ ", photoUrl=" + photoUrl + ", pointOfContact=" + pointOfContact + ", pocPhone=" + pocPhone
-//				+ ", pocEmail=" + pocEmail + ", categories=" + categories + ", messBoards=" + messBoards + ", users="
-//				+ users + "]";
-//	}
+
+
+	@Override
+	public String toString() {
+		return "Event [id=" + id + ", location=" + location + ", host=" + host + ", eventName=" + eventName
+				+ ", description=" + description + ", eventDate=" + eventDate + ", startTime=" + startTime
+				+ ", endTime=" + endTime + ", peopleNeeded=" + peopleNeeded + ", dateCreated=" + dateCreated
+				+ ", photoUrl=" + photoUrl + ", pointOfContact=" + pointOfContact + ", pocPhone=" + pocPhone
+				+ ", pocEmail=" + pocEmail + "]";
+	}
 
 	@Override
 	public int hashCode() {

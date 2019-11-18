@@ -46,6 +46,10 @@
 		<input type="submit" class="btn btn-primary" value="List Events" />
 	</form>
 	<br>
+	<form action="updateEvent.do" method="POST">
+		<input type="submit" class="btn btn-primary" value="Update Event" />
+	</form>
+	<br>
 
 	<form action="findOrgById.do" method="GET">
 		<input class="form-control" type="number" min="0" required="required"
