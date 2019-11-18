@@ -63,8 +63,8 @@ public class EventController {
 		User newUser = (User) session.getAttribute("newUser");
 		model.addAttribute("newEvent", eventDAO.addEvent(event, newUser));
 		newUser = userDAO.getUserById(newUser.getId());
-		session.removeAttribute("newUser");
-		session.setAttribute("newUser", newUser);
+//		session.removeAttribute("newUser");
+//		session.setAttribute("newUser", newUser);
 
 		return "result";
 	}
