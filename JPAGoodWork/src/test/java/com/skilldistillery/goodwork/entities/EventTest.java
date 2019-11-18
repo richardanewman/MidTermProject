@@ -173,6 +173,15 @@ class EventTest {
 		assertEquals("Bobby", event.getUsers().get(0).getUser().getFirstName());
 		
 	}
+	@Test
+	@DisplayName("testing location")
+	void test19() {
+		assertNotNull(event);
+		assertEquals("FL", event.getLocation().getState());
+		assertEquals("1255 Crocodile Lane", event.getLocation().getAddress());
+		
+		// need to test setters...event doesn't seem to map setting location fields
+	}
 
 
 }

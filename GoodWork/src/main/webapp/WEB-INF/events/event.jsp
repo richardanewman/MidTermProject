@@ -25,24 +25,109 @@
 				</h3>
 				<ul style="list-style: none">
 					<li>Event Id: ${event.id}</li>
+					<li>Date Created: ${event.dateCreated }</li>
 					<li>Event Name: ${event.eventName}</li>
 					<%-- <li>Host: ${event.user}</li> --%>
-					<li>${event.location.address}</li>
-					<li>${event.location.address2}</li>
-					<li>${event.location.city}</li>
-					<li>${event.location.state}</li>
-					<li>${event.location.zipCode}</li>
+					<li>Address: ${event.location.address}</li>
+					<li>Address: ${event.location.address2}</li>
+					<li>City: ${event.location.city}</li>
+					<li>State: ${event.location.state}</li>
+					<li>Zip Code: ${event.location.zipCode}</li>
 					<li>Event Date: ${event.eventDate}</li>
 					<li>Start Time: ${event.startTime}</li>
 					<li>End Time: ${event.endTime}</li>
 					<li>People Needed: ${event.peopleNeeded}</li>
 					<li>Date Created: ${event.dateCreated}</li>
+					<li>Point of Contact: ${event.pointOfContact }</li>
 					<li>POC Phone: ${event.pocPhone}
 					<li>POC Email: ${event.pocEmail }
 					<li>Description: ${event.description }
 					<li>${event.photoUrl}</li>
 				</ul>
 				<hr>
+				<br>
+				<!-- <form action="updateEvent.do" method="POST">
+					<input type="submit" class="btn btn-primary" value="Update Event" />
+				</form> -->
+				<br>
+				<div>
+					<h2 align="center">Update an Event</h2>
+					<br>
+
+					<div class=" container form-goup jumbotron">
+						<form action="updateEvent.do" method="POST">
+							<!-- modelAttribute="event" -->
+							<label for="eventId" value="${event.id }">Editing
+								${event.eventName}</label> <input type="hidden" value="${event.id }"
+								name="id" />
+							<!--  -->
+							<label for="eventId">Event Id</label> <input type="text"
+								value="${event.id }" name="eventID" disabled="disabled" />
+							<!-- //////////////////////////DATE///////////////////////////////// -->
+							 
+							<%-- <label for="dateCreated">Date Created</label> <input type="datetime"
+								value="${event.dateCreated}" name="dateCreated"
+								/> --%>
+							<!-- ///////////////////////////////DATE/////////////////////////////////////// -->
+							<label for="eventName">Event Title</label> <input type="text"
+								class="form-control" name="eventName" value="${event.eventName}" /><br>
+							<!--  -->
+							<label for="description">Event Description</label> <input
+								type="text" class="form-control" name="description"
+								value="${event.description}" /><br>
+							<!--  -->
+							<label for="location.address">Event Address</label> <input
+								type="text" class="form-control" name="location.address"
+								value="${event.location.address}" /><br>
+							<!--  -->
+							<label for="location.address2">Event Address 2</label> <input
+								type="text" class="form-control" name="location.address2"
+								value="${event.location.address2}" /><br>
+							<!--  -->
+							<label for="location.city">Event City</label> <input type="text"
+								value="${event.location.city}" class="form-control"
+								name="location.city" /><br>
+							<!--  -->
+							<label for="location.state">Event State</label> <input
+								type="text" class="form-control" name="location.state"
+								value="${event.location.state}" /><br>
+							<!--  -->
+							<label for="location.zipCode">Event Zip Code</label> <input
+								type="text" class="form-control" name="location.zipCode"
+								value="${event.location.zipCode}" /><br>
+							<!--  -->
+							<label for="eventDate">Event Date</label> <input type="text"
+								class="form-control" name="eventDate" value="${event.eventDate}" /><br>
+							<!--  -->
+							<label for="eventDate">Start Time</label> <input type="text"
+								class="form-control" name="startTime" value="${event.startTime}" /><br>
+							<!--  -->
+							<label for="endTime">End Time</label> <input type="text"
+								value="${event.endTime}" class="form-control" name="endTime" /><br>
+							<!--  -->
+							<label for="peopleNeeded">Number of people needed</label> <input
+								type="number" class="form-control" name="peopleNeeded"
+								value="${event.peopleNeeded}" /><br>
+							<!--  -->
+							<label for="pointOfContact">Point of Contact</label> <input
+								type="text" class="form-control" name="pointOfContact"
+								value="${event.pointOfContact }" /><br>
+							<!--  -->
+							<label for="pocPhone">POC Phone Number</label> <input
+								type="number" class="form-control" name="pocPhone"
+								value="${event.pocPhone}" /><br>
+							<!--  -->
+							<label for="pocEmail">POC Email</label> <input type="text"
+								value="${event.pocEmail }" class="form-control" name="pocEmail" /><br>
+							<!--  -->
+							<label for="photoUrl">POC Email</label> <input type="text"
+								value="${event.photoUrl }" class="form-control" name="photoUrl" /><br>
+							<br>
+
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</form>
+					</div>
+				</div>
 				<!-- <div></div> -->
 				<!-- Modal Testing Begin -->
 				<!-- Button trigger modal -->
@@ -50,9 +135,8 @@
 					data-target="#deleteEvent">Delete Event</button>
 
 				<!-- Modal -->
-				<div class="modal fade" id="deleteEvent" tabindex="-1"
-					role="dialog" aria-labelledby="deleteEventLabel"
-					aria-hidden="true">
+				<div class="modal fade" id="deleteEvent" tabindex="-1" role="dialog"
+					aria-labelledby="deleteEventLabel" aria-hidden="true">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
@@ -84,6 +168,8 @@
 				</div>
 
 				<!-- Modal Testing End -->
+
+
 			</c:when>
 			<c:otherwise>
 				<h4 align="center">Event Not Found</h4>
@@ -100,7 +186,7 @@
 			</div>
 		</div>
 	</footer>
-	
+
 	<script
 		src="https://cdn.jsdelivr.net/webjars/org.webjars.bower/jquery/3.3.1/dist/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
