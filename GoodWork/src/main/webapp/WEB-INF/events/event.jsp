@@ -27,7 +27,6 @@
 					<li>Event Id: ${event.id}</li>
 					<li>Date Created: ${event.dateCreated }</li>
 					<li>Event Name: ${event.eventName}</li>
-					<%-- <li>Host: ${event.user}</li> --%>
 					<li>Address: ${event.location.address}</li>
 					<li>Address: ${event.location.address2}</li>
 					<li>City: ${event.location.city}</li>
@@ -46,6 +45,7 @@
 				</ul>
 				<hr>
 				<br>
+				<!--  -->
 				<!-- <form action="updateEvent.do" method="POST">
 					<input type="submit" class="btn btn-primary" value="Update Event" />
 				</form> -->
@@ -63,12 +63,7 @@
 							<!--  -->
 							<label for="eventId">Event Id</label> <input type="text"
 								value="${event.id }" name="eventID" disabled="disabled" />
-							<!-- //////////////////////////DATE///////////////////////////////// -->
-							 
-							<%-- <label for="dateCreated">Date Created</label> <input type="datetime"
-								value="${event.dateCreated}" name="dateCreated"
-								/> --%>
-							<!-- ///////////////////////////////DATE/////////////////////////////////////// -->
+							<!--  -->
 							<label for="eventName">Event Title</label> <input type="text"
 								class="form-control" name="eventName" value="${event.eventName}" /><br>
 							<!--  -->
