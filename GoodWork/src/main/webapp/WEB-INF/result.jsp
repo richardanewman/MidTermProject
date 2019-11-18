@@ -38,7 +38,7 @@ ${org.website}<br>
 				<br>
 			</c:forEach>
 		</c:if>
-
+</div>
 
 		<c:if test="${! empty org}">
 			<h1>Found it!</h1>
@@ -86,7 +86,7 @@ ${user.userName}<br>
 		<br>
 		
 		<c:if test="${! empty events}">
-			<h1>All Organizations:</h1>
+			<h1>All Events:</h1>
 			<c:forEach items="${events}" var="event">
 ${event.eventName}<br>
 				<br>
