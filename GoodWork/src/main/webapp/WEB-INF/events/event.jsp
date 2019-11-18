@@ -25,6 +25,7 @@
 				</h3>
 				<ul style="list-style: none">
 					<li>Event Id: ${event.id}</li>
+					<li>Date Created: ${event.dateCreated }</li>
 					<li>Event Name: ${event.eventName}</li>
 					<%-- <li>Host: ${event.user}</li> --%>
 					<li>Address: ${event.location.address}</li>
@@ -54,78 +55,73 @@
 					<br>
 
 					<div class=" container form-goup jumbotron">
-						<form action="updateEvent.do" method="POST" ><!-- modelAttribute="event" -->
+						<form action="updateEvent.do" method="POST">
+							<!-- modelAttribute="event" -->
 							<!--  -->
-							<label for="eventId" value="${event.id }">Editing ${event.eventName}</label>
-								<input type="hidden" value="${event.id }" name="id"/>
-								<!--  -->
-								<label for="eventId">Event Id</label> <input type="text" value="${event.id }" name="eventID"
-								disabled="disabled" /> <label for="eventName">Event Title</label> <input type="text"
-									class="form-control" name="eventName"
-									value="${event.eventName}"  /><br>
-								<!--  -->
-								<label for="description">Event Description</label> <input
-									type="text" class="form-control" name="description"
-									value="${event.description}"  /><br>
-								<!--  -->
-								<label for="address">Event Address</label> <input type="text"
-									class="form-control" name="address"
-									value="${event.location.address}"
-									 /><br>
-								<!--  -->
-								<label for="address2">Event Address 2</label> <input type="text"
-									class="form-control" name="address2"
-									value="${event.location.address2}"
-									  /><br>
-								<!--  -->
-								<label for="city">Event City</label> <input type="text"
-									value="${event.location.city}" class="form-control" name="city"
-									 /><br>
-								<!--  -->
-								<label for="state">Event State</label> <input type="text"
-									class="form-control" name="state"
-									value="${event.location.state}"
-									 /><br>
-								<!--  -->
-								<label for="zipCode">Event Zip Code</label> <input type="text"
-									class="form-control" name="zipCode"
-									value="${event.location.zipCode}"
-									 /><br>
-								<!--  -->
-								<label for="eventDate">Event Date</label> <input type="text"
-									class="form-control" name="eventDate"
-									value="${event.eventDate}"  /><br>
-								<!--  -->
-								<label for="eventDate">Start Time</label> <input type="text"
-									class="form-control" name="startTime"
-									value="${event.startTime}"  /><br>
-								<!--  -->
-								<label for="endTime">End Time</label> <input type="text"
-									value="${event.endTime}" class="form-control" name="endTime"
-									 /><br>
-								<!--  -->
-								<label for="peopleNeeded">Number of people needed</label> <input
-									type="number" class="form-control" name="peopleNeeded"
-									value="${event.peopleNeeded}"
-									 /><br>
-								<!--  -->
-								<label for="pointOfContact">Point of Contact</label> <input
-									type="text" class="form-control" name="pointOfContact"
-									value="${event.pointOfContact }"
-									 /><br>
-								<!--  -->
-								<label for="pocPhone">POC Phone Number</label> <input
-									type="number" class="form-control" name="pocPhone"
-									value="${event.pocPhone}"  /><br>
-								<!--  -->
-								<label for="pocEmail">POC Email</label> <input type="text"
-									value="${event.pocEmail }" class="form-control" name="pocEmail"
-									 /><br>
-								<!--  -->
-								<label for="photoUrl">POC Email</label> <input type="text"
-									value="${event.photoUrl }" class="form-control" name="photoUrl"
-									 /><br><br>
-							
+							<label for="eventId" value="${event.id }">Editing
+								${event.eventName}</label> <input type="hidden" value="${event.id }"
+								name="id" />
+							<!--  -->
+							<label for="dateCreated" value="${event.dateCreated }"></label>
+							<input type="text" value="${event.dateCreated }" name="dateCreated" disabled="disabled"/>
+							<!--  -->
+							<label for="eventId">Event Id</label> <input type="text"
+								value="${event.id }" name="eventID" disabled="disabled" /> <label
+								for="eventName">Event Title</label> <input type="text"
+								class="form-control" name="eventName" value="${event.eventName}" /><br>
+							<!--  -->
+							<label for="description">Event Description</label> <input
+								type="text" class="form-control" name="description"
+								value="${event.description}" /><br>
+							<!--  -->
+							<label for="location.address">Event Address</label> <input
+								type="text" class="form-control" name="location.address"
+								value="${event.location.address}" /><br>
+							<!--  -->
+							<label for="location.address2">Event Address 2</label> <input
+								type="text" class="form-control" name="location.address2"
+								value="${event.location.address2}" /><br>
+							<!--  -->
+							<label for="location.city">Event City</label> <input type="text"
+								value="${event.location.city}" class="form-control"
+								name="location.city" /><br>
+							<!--  -->
+							<label for="location.state">Event State</label> <input
+								type="text" class="form-control" name="location.state"
+								value="${event.location.state}" /><br>
+							<!--  -->
+							<label for="location.zipCode">Event Zip Code</label> <input
+								type="text" class="form-control" name="location.zipCode"
+								value="${event.location.zipCode}" /><br>
+							<!--  -->
+							<label for="eventDate">Event Date</label> <input type="text"
+								class="form-control" name="eventDate" value="${event.eventDate}" /><br>
+							<!--  -->
+							<label for="eventDate">Start Time</label> <input type="text"
+								class="form-control" name="startTime" value="${event.startTime}" /><br>
+							<!--  -->
+							<label for="endTime">End Time</label> <input type="text"
+								value="${event.endTime}" class="form-control" name="endTime" /><br>
+							<!--  -->
+							<label for="peopleNeeded">Number of people needed</label> <input
+								type="number" class="form-control" name="peopleNeeded"
+								value="${event.peopleNeeded}" /><br>
+							<!--  -->
+							<label for="pointOfContact">Point of Contact</label> <input
+								type="text" class="form-control" name="pointOfContact"
+								value="${event.pointOfContact }" /><br>
+							<!--  -->
+							<label for="pocPhone">POC Phone Number</label> <input
+								type="number" class="form-control" name="pocPhone"
+								value="${event.pocPhone}" /><br>
+							<!--  -->
+							<label for="pocEmail">POC Email</label> <input type="text"
+								value="${event.pocEmail }" class="form-control" name="pocEmail" /><br>
+							<!--  -->
+							<label for="photoUrl">POC Email</label> <input type="text"
+								value="${event.photoUrl }" class="form-control" name="photoUrl" /><br>
+							<br>
+
 							<button type="submit" class="btn btn-primary">Submit</button>
 						</form>
 					</div>

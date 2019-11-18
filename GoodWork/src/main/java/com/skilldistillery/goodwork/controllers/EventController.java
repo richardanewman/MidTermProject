@@ -1,5 +1,6 @@
 package com.skilldistillery.goodwork.controllers;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -56,7 +57,7 @@ public class EventController {
 
 	@RequestMapping(path = "updateEvent.do", method = RequestMethod.POST)
 	public String updateEvent(Model model, Event updatedEvent, Integer id) {
-		System.err.println("In controller************"+id);
+		System.err.println("In controller************"+id+ " " + updatedEvent);
 		System.err.println();
 		Event event = eventDAO.updateEvent(updatedEvent, id);
 		model.addAttribute("updateEvent", event);

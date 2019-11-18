@@ -49,7 +49,8 @@ public class EventDAOImpl implements EventDAO {
 	@Override
 	public Event updateEvent(Event updatedEvent, int eventId) {
 		Event managed = em.find(Event.class, eventId);
-
+//		managed.setDateCreated(updatedEvent.getDateCreated());
+//		managed.setDateCreated(LocalDate.now());
 		System.err.println("In method******************************" + updatedEvent);
 		System.out.println("updated event");
 		System.out.println(managed);
