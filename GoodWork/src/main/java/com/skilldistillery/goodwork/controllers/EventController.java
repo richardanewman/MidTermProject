@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.goodwork.data.EventDAO;
 import com.skilldistillery.goodwork.entities.Event;
@@ -17,6 +18,7 @@ public class EventController {
 
 	@Autowired
 	private EventDAO eventDAO;
+//	private Integer eventId;
 	
 	@RequestMapping(path = "/", method = RequestMethod.GET)
 	public String index(Model model) {
@@ -48,13 +50,23 @@ public class EventController {
 	public String addEvent(Event event, Model model) {
 		System.err.println("createEvent.do in controller ************" + event);
 		model.addAttribute("newEvent", eventDAO.addEvent(event));
-		return "result";
+		return "event";
 	}
 
 	@RequestMapping(path = "updateEvent.do", method = RequestMethod.POST)
-	public String updateEvent(Model model, Event updatedEvent, Integer id) {
-		model.addAttribute("event", eventDAO.updateEvent(updatedEvent, id));
-		return "result";
+	public ModelAndView updateEvent(Event updatedEvent, Integer id) {
+//		System.err.println("In controller************");
+//		System.out.println(event);
+//		eventId = id;
+//		Event updatedE = eventDAO.updateEvent(event, eventId);
+//		model.addAttribute("event", updatedE);
+//		return "event";
+		System.out.println("update event id: " + id);
+		ModelAndView mv = new ModelAndView();
+		Event event =eventDAO.updateEvent(updatedEvent, id);
+		mv.addObject("event", event);
+		mv.setViewName("result");
+		return mv;
 	}
 
 	@RequestMapping(path = "deleteEvent.do", method = RequestMethod.POST)
