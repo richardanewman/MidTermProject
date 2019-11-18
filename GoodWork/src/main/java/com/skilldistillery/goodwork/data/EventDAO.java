@@ -3,6 +3,7 @@ package com.skilldistillery.goodwork.data;
 import java.util.List;
 
 import com.skilldistillery.goodwork.entities.Event;
+import com.skilldistillery.goodwork.entities.Location;
 
 public interface EventDAO {
 		
