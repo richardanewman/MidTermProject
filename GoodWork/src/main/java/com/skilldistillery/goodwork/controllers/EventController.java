@@ -2,6 +2,7 @@ package com.skilldistillery.goodwork.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,15 +12,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.skilldistillery.goodwork.data.EventDAO;
+import com.skilldistillery.goodwork.data.UserDAO;
 import com.skilldistillery.goodwork.entities.Event;
 import com.skilldistillery.goodwork.entities.Location;
 import com.skilldistillery.goodwork.entities.Organization;
+import com.skilldistillery.goodwork.entities.User;
 
 @Controller
 public class EventController {
 
 	@Autowired
 	private EventDAO eventDAO;
+	@Autowired
+	private UserDAO userDAO;
 //	private int eventId;
 
 	@RequestMapping(path = "/", method = RequestMethod.GET)
@@ -33,10 +38,10 @@ public class EventController {
 		return "events/event";
 
 	}
-	
-	@RequestMapping(path="keyword.do")
+
+	@RequestMapping(path = "keyword.do")
 	public String searchOrgs(@Valid String keyword, Model model) {
-		List<Event> eventSearch =  eventDAO.findByKeyword(keyword);
+		List<Event> eventSearch = eventDAO.findByKeyword(keyword);
 		model.addAttribute("displayAll", eventSearch);
 		return "result";
 	}
@@ -51,10 +56,16 @@ public class EventController {
 	}
 
 	@RequestMapping(path = "createEvent.do", method = RequestMethod.POST)
-	public String addEvent(Event event, Model model, Location location) {
+	public String addEvent(Event event, Model model, Location location, HttpSession session) {
 		System.out.println(event);
 		System.out.println(location);
-		model.addAttribute("newEvent", eventDAO.addEvent(event));
+		// session code for create event 
+		User newUser = (User) session.getAttribute("newUser");
+		model.addAttribute("newEvent", eventDAO.addEvent(event, newUser));
+		newUser = userDAO.getUserById(newUser.getId());
+		session.removeAttribute("newUser");
+		session.setAttribute("newUser", newUser);
+
 		return "result";
 	}
 
