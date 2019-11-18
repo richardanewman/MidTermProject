@@ -2,6 +2,8 @@ package com.skilldistillery.goodwork.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.skilldistillery.goodwork.data.EventDAO;
 import com.skilldistillery.goodwork.entities.Event;
 import com.skilldistillery.goodwork.entities.Location;
+import com.skilldistillery.goodwork.entities.Organization;
 
 @Controller
 public class EventController {
@@ -29,6 +32,13 @@ public class EventController {
 		model.addAttribute("event", eventDAO.findEventById(id));
 		return "events/event";
 
+	}
+	
+	@RequestMapping(path="keyword.do")
+	public String searchOrgs(@Valid String keyword, Model model) {
+		List<Event> eventSearch =  eventDAO.findByKeyword(keyword);
+		model.addAttribute("displayAll", eventSearch);
+		return "result";
 	}
 
 	@RequestMapping(path = "getEventList.do", method = RequestMethod.GET)
@@ -65,16 +75,6 @@ public class EventController {
 		Event event = eventDAO.updateEvent(updatedEvent, id);
 		model.addAttribute("updateEvent", event);
 		return "events/event";
-//		if (eventDAO.findEventById(id) == null) {
-//			model.addAttribute("Something wrong, try again");
-//			return "/";
-//		}
-//		else {
-//			Event updatedEvent = eventDAO.findEventById(id);
-//			model.addAttribute("updatedEvent", updatedEvent);
-//			eventId = id;
-//			return "events/event";
-//		}
 	}
 
 	@RequestMapping(path = "deleteEvent.do", method = RequestMethod.POST)
