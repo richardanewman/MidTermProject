@@ -72,7 +72,7 @@ public class UserController {
 	@RequestMapping(path="search.do", method = RequestMethod.GET)
 	public String navSearch(Model model, @RequestParam("keyword") String keyword) {
 		if (keyword == null | keyword.equals("")){
-			model.addAttribute("oops", "Looks like we didn't find anything. Please try anothe keyword.");
+			model.addAttribute("oops", "Looks like we didn't find anything. Please try another keyword.");
 			return "fail";
 		} else {
 			List<User> users = dao.getAllUsersByKeyword(keyword);

@@ -79,7 +79,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public List<User> getAllUsersByKeyword(String keyword) {
 		List<User> users = null;
-		String sql = "SELECT user FROM User user WHERE user.userName LIKE :keyword";
+		String sql = "SELECT user FROM User user WHERE user.userName LIKE :keyword OR user.firstName LIKE :keyword OR user.lastName LIKE :keyword";
 		
 		users = em.createQuery(sql, User.class).setParameter("keyword", "%" + keyword + "%").getResultList();
 		
