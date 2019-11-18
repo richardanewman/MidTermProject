@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.skilldistillery.goodwork.entities.Event;
 import com.skilldistillery.goodwork.entities.Location;
 import com.skilldistillery.goodwork.entities.Organization;
+import com.skilldistillery.goodwork.entities.User;
 
 @Transactional // Spring automatically start a transaction for each DAO method
 @Service // allow Spring Boot to create the D A O bean
@@ -40,12 +41,15 @@ public class EventDAOImpl implements EventDAO {
 	}
 
 	@Override
-	public Event addEvent(Event event) { // issue with location id coming in Null
+	public Event addEvent(Event event, User user) { // issue with location id coming in Null
 		event.setDateCreated(LocalDate.now());
+		user = em.find(User.class, user.getId());
+		user.addHostedEvent(event);
 		System.err.println("In event creation " + event);
-		Location eventsLocation = new Location();
+//		Location eventsLocation = new Location();
 //		eventsLocation.setAddress(address);
 //		event.setLocation(event.getLocation());
+		em.persist(user);
 		em.persist(event);
 		em.flush();
 		return event;
