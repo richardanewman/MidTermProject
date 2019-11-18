@@ -53,14 +53,14 @@ class OrganizationTest {
 	void testNameAndType() {
 		assertEquals("Mamma's Helpers", org.getOrgName());
 		assertEquals("Group", org.getOrgType());
-		assertEquals(null, org.getOrgNum());
+		assertEquals("12345", org.getOrgNum());
 	}
 
 	@Test
 	@DisplayName("Testing for correct id and website pulled from the database")
 	void testIdAndWeb() {
 		assertEquals(1, org.getId());
-		assertEquals(null, org.getWebsite());
+		assertEquals("Nope", org.getWebsite());
 	}
 
 	@Test

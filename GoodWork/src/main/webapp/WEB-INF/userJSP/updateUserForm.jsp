@@ -6,7 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Update User</title>
+<%@include file="/WEB-INF/nav.jsp"%>
 </head>
 <body>
 <form:form action="updateUser.do" method="POST" modelAttribute="user">
