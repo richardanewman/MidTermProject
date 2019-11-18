@@ -19,7 +19,12 @@ public class UserDAOImpl implements UserDAO {
 	
 	@Override
 	public User getUserById(int id) {
-		return em.find(User.class, id);
+		User user = em.find(User.class, id);
+		user.getAttendedEvents().size();
+		user.getHostedEvents().size();
+		user.getOrgs().size();		//forces java to remember the new list in the session, re-populates the list.
+		user.getMessBoards().size();
+		return user;
 	}
 	
 	public User updateUser(User user) {
