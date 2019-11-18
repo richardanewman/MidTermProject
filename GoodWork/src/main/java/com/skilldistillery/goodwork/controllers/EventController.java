@@ -34,8 +34,8 @@ public class EventController {
 
 	}
 	
-	@RequestMapping(path="keyword.do")
-	public String searchOrgs(@Valid String keyword, Model model) {
+	@RequestMapping(path="eventKeyword.do")
+	public String findByKeyword(@Valid String keyword, Model model) {
 		List<Event> eventSearch =  eventDAO.findByKeyword(keyword);
 		model.addAttribute("displayAll", eventSearch);
 		return "result";
