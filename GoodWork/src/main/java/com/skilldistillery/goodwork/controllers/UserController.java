@@ -41,7 +41,15 @@ public class UserController {
 	
 	@RequestMapping(path="updateUser.do", method = RequestMethod.POST)
 	public String updateUserPost(@Valid User user, Model model, HttpSession session) {
-		System.out.println(user);
+		if(user == null) {
+			model.addAttribute("oops", "Looks like something went wrong with updating your profile, try again later");
+			return "fail";
+		}
+		User upUser = dao.updateUser(user);
+		if(upUser == null) {
+			model.addAttribute("oops", "Looks like something went wrong with updating your profile, try again later");
+			return "fail";
+		}
 		session.setAttribute("newUser", dao.updateUser(user));
 		model.addAttribute("user", new User());
 		return "userJSP/profile";
@@ -56,8 +64,8 @@ public class UserController {
 			return "index";
 		}
 		delU = dao.getUserById(delU.getId());
-		model.addAttribute("user", new User());
-		return "userJSP/profile";
+		model.addAttribute("oops", "Looks like something went wrong, maybe its a wrong password?");
+		return "fail";
 	}
 	
 	@RequestMapping(path="logout.do", method = RequestMethod.GET)
