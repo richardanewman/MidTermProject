@@ -43,6 +43,7 @@ public class EventDAOImpl implements EventDAO {
 	@Override
 	public Event addEvent(Event event, User user) { // issue with location id coming in Null
 		event.setDateCreated(LocalDate.now());
+		// sessions 
 		user = em.find(User.class, user.getId());
 		user.addHostedEvent(event);
 		System.err.println("In event creation " + event);
