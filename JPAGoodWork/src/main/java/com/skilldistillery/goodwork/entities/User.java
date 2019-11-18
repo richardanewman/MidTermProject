@@ -31,13 +31,13 @@ public class User {
 	private String bio;
 	@Column(name = "photo_url")
 	private String photoURL;
-	@OneToMany(mappedBy = "user", cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "user", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	private List<MessageBoard> messBoards;
-	@OneToMany(mappedBy = "user", cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "user", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	private List<UserEvent> attendedEvents;
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, mappedBy="users", fetch=FetchType.EAGER)
 	private List<Organization> orgs;
-	@OneToMany(mappedBy = "host", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "host", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	private List<Event> hostedEvents;
 
 	public User(int id, String userName, String password, Boolean active, String firstName, String lastName,
