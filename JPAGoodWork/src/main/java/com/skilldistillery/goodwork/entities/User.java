@@ -33,9 +33,9 @@ public class User {
 	private String photoURL;
 	@OneToMany(mappedBy = "user", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	private List<MessageBoard> messBoards;
-	@OneToMany(mappedBy = "user", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+	@OneToMany(mappedBy = "user", cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, fetch=FetchType.EAGER)
 	private List<UserEvent> attendedEvents;
-	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, mappedBy="users", fetch=FetchType.EAGER)
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, mappedBy="users")
 	private List<Organization> orgs;
 	@OneToMany(mappedBy = "host", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	private List<Event> hostedEvents;
