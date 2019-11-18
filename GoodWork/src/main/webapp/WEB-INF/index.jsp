@@ -6,60 +6,54 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://cdn.jsdelivr.net/webjars/org.webjars/bootstrap/4.3.1/css/bootstrap.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet" type="text/css">
 <title>Home</title>
 <%@include file="/WEB-INF/nav.jsp"%>
 </head>
 <header>
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">Fluid jumbotron</h1>
-    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    <h1 class="display-4">goodWork</h1>
+    <h3 class="motto">Helping people help each other.</h3>
   </div>
 </div>
 </header>
 <body>
-	<form action="login.do" method="GET">
-		<input class="submit" type="submit" value="Login" />
-	</form>
-
-	<form action="getAllOrgs.do" method="GET">
-		<input class="submit" type="submit" value="List All Organizations" />
-	</form>
-	<form action="createOrgForm.do" method="GET">
-		<input class="submit" type="submit" value="Create Organization" />
-	</form>
-
-	<!-- Event By Id -->
-	<br>
-	<form action="getEvent.do" method="GET">
-		<input type="number" name="id" placeholder="enter event ID"
-			required="required" /> <input type="submit" value="Show Event" />
-	</form>
-	<!-- Create New Event -->
-	<br>
-	<form action="createEventForm.do" method="GET">
-		<input type="submit" value="Create Event" />
-	</form>
-	<br>
-	<!-- List of Events -->
-	<form action="getEventList.do" method="GET">
-		<input type="submit" class="btn btn-primary" value="List Events" />
-	</form>
-	<br>
-
-
-	<form action="findOrgById.do" method="GET">
-		<input class="form-control" type="number" min="0" required="required"
-			name="id" placeholder="Enter ID" /> <input
-			class="btn btn-dark btn-lg btn-block" type="submit"
-			value="Find Organization By ID" />
-	</form>
-	<form action="searchOrgs.do" method="GET">
-		<input class="form-control" type="text" required="required"
-			name="keyword" placeholder="Enter A Keyword" /> <input
-			class="btn btn-dark btn-lg btn-block" type="submit"
-			value="Search Organizations By Keyword" />
-	</form>
+<div class="card-deck">
+  <div class="card">
+    <span class="feather-card" data-feather="search"></span>
+    <div class="card-body">
+      <h5 class="card-title">Search Events By Keyword</h5>
+      <p class="card-text">Search event titles and descriptions by keyword.</p>
+      <form action="eventKeyword.do" method="GET" >
+		<input class="form-control" type="text" required="required" name="keyword" placeholder="Enter Keyword"/> 
+  		<input class="btn-lg btn-block btn btn-green" type="submit" value="Search Keyword" />
+		</form>
+    </div>
+  </div>
+  <div class="card">
+     <span class="feather-card" data-feather="hash"></span>
+    <div class="card-body">
+      <h5 class="card-title">Search Organizations By Keyword</h5>
+      <p class="card-text">Search organization names and descriptions by keyword.</p>
+      <form action="searchOrgs.do" method="GET" >
+		<input class="form-control" type="text" required="required" name="keyword" placeholder="Enter A Keyword" />
+ 		 <input class="btn btn-brown btn-lg btn-block" type="submit" value="Create Organization" />
+		</form>
+    </div>
+  </div>
+  <div class="card">
+    <span class="feather-card" data-feather="search"></span>
+    <div class="card-body">
+      <h5 class="card-title">Recent Events</h5>
+      <p class="card-text">Extra! Extra! Read all about our recent events.</p>
+      <form action="recentEvents.do" method="GET" >
+		<input class="form-control" type="text" required="required" name="keyword" placeholder="Enter Keyword"/> 
+  		<input class="btn btn-dark btn-lg btn-block" type="submit" value="Recent Events" />
+		</form>
+    </div>
+  </div>
+</div>
 
 	<hr>
 			<footer class="text-center">

@@ -1,0 +1,65 @@
+@charset "UTF-8";
+
+.jumbotron {
+	background: url("volunteer.png") no-repeat center center;
+	background-size: cover;
+	height: 100%;
+	width: auto;
+	padding: 0 20px 0 20px;
+}
+
+.display-4 {
+	font-size: 5em !important;
+	text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px
+		rgba(0, 0, 0, 0.1), 0px 18px 23px rgba(0, 0, 0, 0.1);
+}
+
+.motto {
+	text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px
+		rgba(0, 0, 0, 0.1), 0px 18px 23px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+	padding-left: 0;
+}
+
+.card-deck {
+	padding: 20px;
+}
+
+.btn-green {
+	color: #fff !important;
+	background-color: #b6c86f !important;
+	border-color: #b6c86f !important;
+}
+
+.btn-brown {
+	color: #fff !important;
+	background-color: #d2a880 !important;
+	border-color: #d2a880 !important;
+}
+
+.btn-green:hover {
+	color: #fff !important;
+	background-color: #9fb355 !important;
+	border-color: #9fb355 !important;
+}
+
+.btn-brown:hover {
+	color: #fff !important;
+	background-color: #be9371 !important;
+	border-color: #be9371 !important;
+}
+
+.form-control {
+	margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+}
