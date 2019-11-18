@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,13 +31,13 @@ public class User {
 	private String bio;
 	@Column(name = "photo_url")
 	private String photoURL;
-	@OneToMany(mappedBy = "user", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+	@OneToMany(mappedBy = "user", cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, fetch=FetchType.EAGER)
 	private List<MessageBoard> messBoards;
-	@OneToMany(mappedBy = "user", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+	@OneToMany(mappedBy = "user", cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, fetch=FetchType.EAGER)
 	private List<UserEvent> attendedEvents;
-	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, mappedBy="users")
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, mappedBy="users", fetch=FetchType.EAGER)
 	private List<Organization> orgs;
-	@OneToMany(mappedBy = "host", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@OneToMany(mappedBy = "host", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.EAGER)
 	private List<Event> hostedEvents;
 
 	public User(int id, String userName, String password, Boolean active, String firstName, String lastName,
