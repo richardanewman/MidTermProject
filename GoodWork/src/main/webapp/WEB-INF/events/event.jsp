@@ -45,132 +45,155 @@
 				</ul>
 				<hr>
 				<br>
-				<!--  -->
-				<!-- <form action="updateEvent.do" method="POST">
-					<input type="submit" class="btn btn-primary" value="Update Event" />
-				</form> -->
-				<br>
-				<div>
-					<h2 align="center">Update an Event</h2>
-					<br>
+				<c:choose>
+					<c:when test="${not empty newUser}">
+						<c:choose>
+							<c:when test="${newUser.id == event.host.id}">
+								<div>
+									<h2 align="center">Update an Event</h2>
+									<br>
 
-					<div class=" container form-goup jumbotron">
-						<form action="updateEvent.do" method="POST">
-							<!-- modelAttribute="event" -->
-							<label for="eventId" value="${event.id }">Editing
-								${event.eventName}</label> <input type="hidden" value="${event.id }"
-								name="id" />
-							<!--  -->
-							<label for="eventId">Event Id</label> <input type="text"
-								value="${event.id }" name="eventID" disabled="disabled" />
-							<!--  -->
-							<label for="eventName">Event Title</label> <input type="text"
-								class="form-control" name="eventName" value="${event.eventName}" /><br>
-							<!--  -->
-							<label for="description">Event Description</label> <input
-								type="text" class="form-control" name="description"
-								value="${event.description}" /><br>
-							<!--  -->
-							<label for="location.address">Event Address</label> <input
-								type="text" class="form-control" name="location.address"
-								value="${event.location.address}" /><br>
-							<!--  -->
-							<label for="location.address2">Event Address 2</label> <input
-								type="text" class="form-control" name="location.address2"
-								value="${event.location.address2}" /><br>
-							<!--  -->
-							<label for="location.city">Event City</label> <input type="text"
-								value="${event.location.city}" class="form-control"
-								name="location.city" /><br>
-							<!--  -->
-							<label for="location.state">Event State</label> <input
-								type="text" class="form-control" name="location.state"
-								value="${event.location.state}" /><br>
-							<!--  -->
-							<label for="location.zipCode">Event Zip Code</label> <input
-								type="text" class="form-control" name="location.zipCode"
-								value="${event.location.zipCode}" /><br>
-							<!--  -->
-							<label for="eventDate">Event Date</label> <input type="text"
-								class="form-control" name="eventDate" value="${event.eventDate}" /><br>
-							<!--  -->
-							<label for="eventDate">Start Time</label> <input type="text"
-								class="form-control" name="startTime" value="${event.startTime}" /><br>
-							<!--  -->
-							<label for="endTime">End Time</label> <input type="text"
-								value="${event.endTime}" class="form-control" name="endTime" /><br>
-							<!--  -->
-							<label for="peopleNeeded">Number of people needed</label> <input
-								type="number" class="form-control" name="peopleNeeded"
-								value="${event.peopleNeeded}" /><br>
-							<!--  -->
-							<label for="pointOfContact">Point of Contact</label> <input
-								type="text" class="form-control" name="pointOfContact"
-								value="${event.pointOfContact }" /><br>
-							<!--  -->
-							<label for="pocPhone">POC Phone Number</label> <input
-								type="number" class="form-control" name="pocPhone"
-								value="${event.pocPhone}" /><br>
-							<!--  -->
-							<label for="pocEmail">POC Email</label> <input type="text"
-								value="${event.pocEmail }" class="form-control" name="pocEmail" /><br>
-							<!--  -->
-							<label for="photoUrl">POC Email</label> <input type="text"
-								value="${event.photoUrl }" class="form-control" name="photoUrl" /><br>
-							<br>
+									<div class=" container form-goup jumbotron">
+										<form action="updateEvent.do" method="POST">
+											<!-- modelAttribute="event" -->
+											<label for="eventId" value="${event.id }">Editing
+												${event.eventName}</label> <input type="hidden" value="${event.id }"
+												name="id" />
+											<!--  -->
+											<label for="eventId">Event Id</label> <input type="text"
+												value="${event.id }" name="eventID" disabled="disabled" />
+											<!--  -->
+											<label for="eventName">Event Title</label> <input type="text"
+												class="form-control" name="eventName"
+												value="${event.eventName}" /><br>
+											<!--  -->
+											<label for="description">Event Description</label> <input
+												type="text" class="form-control" name="description"
+												value="${event.description}" /><br>
+											<!--  -->
+											<label for="location.address">Event Address</label> <input
+												type="text" class="form-control" name="location.address"
+												value="${event.location.address}" /><br>
+											<!--  -->
+											<label for="location.address2">Event Address 2</label> <input
+												type="text" class="form-control" name="location.address2"
+												value="${event.location.address2}" /><br>
+											<!--  -->
+											<label for="location.city">Event City</label> <input
+												type="text" value="${event.location.city}"
+												class="form-control" name="location.city" /><br>
+											<!--  -->
+											<label for="location.state">Event State</label> <input
+												type="text" class="form-control" name="location.state"
+												value="${event.location.state}" /><br>
+											<!--  -->
+											<label for="location.zipCode">Event Zip Code</label> <input
+												type="text" class="form-control" name="location.zipCode"
+												value="${event.location.zipCode}" /><br>
+											<!--  -->
+											<label for="eventDate">Event Date</label> <input type="text"
+												class="form-control" name="eventDate"
+												value="${event.eventDate}" /><br>
+											<!--  -->
+											<label for="eventDate">Start Time</label> <input type="text"
+												class="form-control" name="startTime"
+												value="${event.startTime}" /><br>
+											<!--  -->
+											<label for="endTime">End Time</label> <input type="text"
+												value="${event.endTime}" class="form-control" name="endTime" /><br>
+											<!--  -->
+											<label for="peopleNeeded">Number of people needed</label> <input
+												type="number" class="form-control" name="peopleNeeded"
+												value="${event.peopleNeeded}" /><br>
+											<!--  -->
+											<label for="pointOfContact">Point of Contact</label> <input
+												type="text" class="form-control" name="pointOfContact"
+												value="${event.pointOfContact }" /><br>
+											<!--  -->
+											<label for="pocPhone">POC Phone Number</label> <input
+												type="number" class="form-control" name="pocPhone"
+												value="${event.pocPhone}" /><br>
+											<!--  -->
+											<label for="pocEmail">POC Email</label> <input type="text"
+												value="${event.pocEmail }" class="form-control"
+												name="pocEmail" /><br>
+											<!--  -->
+											<label for="photoUrl">POC Email</label> <input type="text"
+												value="${event.photoUrl }" class="form-control"
+												name="photoUrl" /><br> <br>
 
-							<button type="submit" class="btn btn-primary">Submit</button>
-						</form>
-					</div>
-				</div>
-				<!-- <div></div> -->
-				<!-- Modal Testing Begin -->
-				<!-- Button trigger modal -->
-				<button type="button" class="btn btn-danger" data-toggle="modal"
-					data-target="#deleteEvent">Delete Event</button>
+											<button type="submit" class="btn btn-primary">Submit</button>
+										</form>
+									</div>
+								</div>
+								<!-- <div></div> -->
+								<!-- Modal Testing Begin -->
+								<!-- Button trigger modal -->
+								<button type="button" class="btn btn-danger" data-toggle="modal"
+									data-target="#deleteEvent">Delete Event</button>
 
-				<!-- Modal -->
-				<div class="modal fade" id="deleteEvent" tabindex="-1" role="dialog"
-					aria-labelledby="deleteEventLabel" aria-hidden="true">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="deleteEventLabel">Delete
-									Confirmation</h5>
-								<button type="button" class="close" data-dismiss="modal"
-									aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								<strong>Are you sure that you'd like to delete the
-									selected Event?</strong>
-							</div>
+								<!-- Modal -->
+								<div class="modal fade" id="deleteEvent" tabindex="-1"
+									role="dialog" aria-labelledby="deleteEventLabel"
+									aria-hidden="true">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title" id="deleteEventLabel">Delete
+													Confirmation</h5>
+												<button type="button" class="close" data-dismiss="modal"
+													aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+											<div class="modal-body">
+												<strong>Are you sure that you'd like to delete the
+													selected Event?</strong>
+											</div>
 
-							<div class="modal-footer">
-								<form action="deleteEvent.do" method="POST">
-									<input type="hidden" value="${event.id}" name="id">
-									<button class="btn btn-danger" type="submit">Delete
-										Event</button>
-								</form>
-								<button type="button" class="btn btn-secondary"
-									data-dismiss="modal">Close</button>
-								<!-- <button type="button" class="btn btn-primary">Save
+											<div class="modal-footer">
+												<form action="deleteEvent.do" method="POST">
+													<input type="hidden" value="${event.id}" name="id">
+													<button class="btn btn-danger" type="submit">Delete
+														Event</button>
+												</form>
+												<button type="button" class="btn btn-secondary"
+													data-dismiss="modal">Close</button>
+												<!-- <button type="button" class="btn btn-primary">Save
 									changes</button>  -->
-							</div>
-						</div>
-					</div>
-				</div>
+											</div>
+										</div>
+									</div>
+								</div>
 
-				<!-- Modal Testing End -->
-
-
+								<!-- Modal Testing End -->
+							</c:when>
+							<c:otherwise>
+								<c:forEach var="vol" items="${event.users}">
+									<c:choose>
+										<c:when test="${vol.user.id == newUser.id}">
+											<a href="http://localhost:8090/">Already signed up</a>
+										</c:when>
+									</c:choose>
+								</c:forEach>
+								<a href="http://localhost:8090/">Not signed Up</a>
+							</c:otherwise>
+						</c:choose>
+					</c:when>
+					<c:otherwise>
+						<h2>Must be a registered user to sign up for events, just do
+							it its Free.</h2>
+					</c:otherwise>
+				</c:choose>
 			</c:when>
-			<c:otherwise>
-				<h4 align="center">Event Not Found</h4>
-			</c:otherwise>
 		</c:choose>
 	</div>
+	<!--  -->
+	<!-- <form action="updateEvent.do" method="POST">
+					<input type="submit" class="btn btn-primary" value="Update Event" />
+				</form> -->
+	<br>
+
 	<hr>
 	<footer class="text-center">
 		<div class="container">
