@@ -10,6 +10,8 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.goodwork.entities.Event;
+import com.skilldistillery.goodwork.entities.Location;
+import com.skilldistillery.goodwork.entities.Organization;
 
 @Transactional // Spring automatically start a transaction for each DAO method
 @Service // allow Spring Boot to create the D A O bean
@@ -30,14 +32,16 @@ public class EventDAOImpl implements EventDAO {
 
 	@Override
 	public List<Event> findByKeyword(String keyword) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "select events from Event events where events.description like :keyword or events.eventName like :keyword";
+		List<Event> eventSearch = em.createQuery(sql, Event.class).setParameter("keyword", "%" + keyword + "%")
+				.getResultList();
+		return eventSearch;
 	}
 
 	@Override
 	public Event addEvent(Event event) { // issue with location id coming in Null
 		event.setDateCreated(LocalDate.now());
-		event.setLocation(event.getLocation());
+//		event.setLocation(event.getLocation());
 		em.persist(event);
 		return event;
 	}
@@ -45,12 +49,10 @@ public class EventDAOImpl implements EventDAO {
 	@Override
 	public Event updateEvent(Event updatedEvent, int eventId) {
 		Event managed = em.find(Event.class, eventId);
-//		Event managed = em.find(Event.class, updatedEvent.getId());
-		
-		System.err.println("In method******************************"+updatedEvent);
+
+		System.err.println("In method******************************" + updatedEvent);
 		System.out.println("updated event");
 		System.out.println(managed);
-
 		managed.getLocation().setAddress(updatedEvent.getLocation().getAddress());
 		managed.getLocation().setAddress(updatedEvent.getLocation().getAddress2());
 		managed.getLocation().setCity(updatedEvent.getLocation().getCity());
@@ -66,7 +68,8 @@ public class EventDAOImpl implements EventDAO {
 		managed.setPointOfContact(updatedEvent.getPointOfContact());
 		managed.setPocPhone(updatedEvent.getPocPhone());
 		managed.setPocEmail(updatedEvent.getPocEmail());
-
+		em.persist(managed);
+		em.flush();
 		return managed;
 	}
 
@@ -75,7 +78,7 @@ public class EventDAOImpl implements EventDAO {
 		Event deleteEvent = em.find(Event.class, id);
 		em.remove(deleteEvent);
 		return (em.find(Event.class, id) == null);
-		
+
 	}
 
 }
