@@ -6,6 +6,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+	href="https://cdn.jsdelivr.net/webjars/org.webjars/bootstrap/4.3.1/css/bootstrap.css"
+	rel="stylesheet">
 <title>Login</title>
 <%@include file="/WEB-INF/nav.jsp"%>
 </head>
@@ -15,17 +20,19 @@
 		<form:input path="userName" />
 		<form:errors path="userName" />
 		<form:label path="password" style="color:Blue;">Password: </form:label>
-		<form:input path="password"/>
-		<form:errors path="password"/>
+		<form:input path="password" />
+		<form:errors path="password" />
 		<input type="submit" value="Login" class="btn btn-outline-primary"
 			role="button" aria-disabled="true" />
 		<br>
-		
+
 	</form:form>
 	<form:form action="register.do" method="GET" modelAttribute="user">
 		<input type="submit" value="Register" class="btn btn-outline-primary"
 			role="button" aria-disabled="true" />
 	</form:form>
+
+	<!-- BootStrap Script Below -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>
