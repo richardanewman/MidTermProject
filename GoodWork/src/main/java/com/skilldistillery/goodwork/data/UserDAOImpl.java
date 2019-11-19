@@ -1,5 +1,6 @@
 package com.skilldistillery.goodwork.data;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -8,7 +9,10 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.goodwork.entities.Event;
 import com.skilldistillery.goodwork.entities.User;
+import com.skilldistillery.goodwork.entities.UserEvent;
+import com.skilldistillery.goodwork.entities.UserEventId;
 
 @Transactional
 @Service
@@ -89,6 +93,32 @@ public class UserDAOImpl implements UserDAO {
 		users = em.createQuery(sql, User.class).setParameter("keyword", "%" + keyword + "%").getResultList();
 		
 		return users;
+	}
+
+	@Override
+	public boolean signedUpForEvent(Event event, User user) {
+		UserEventId signedUp = new UserEventId(user.getId(), event.getId());
+		UserEvent eventSignedUp = new UserEvent();
+		user = em.find(User.class, user.getId());
+		event = em.find(Event.class, event.getId());
+		
+		eventSignedUp.setId(signedUp);
+		eventSignedUp.setActive(true);
+		eventSignedUp.setAttended(true);
+		eventSignedUp.setDateSignedUp(LocalDate.now());
+		eventSignedUp.setRole("Helper");
+		
+		event.addUserEvent(eventSignedUp);
+		user.addUserEvent(eventSignedUp);
+		em.persist(eventSignedUp);
+		em.persist(user);
+		em.persist(event);
+		em.flush();
+		
+		if(user.getAttendedEvents().contains(eventSignedUp) && event.getUsers().contains(eventSignedUp)) {
+			return true;
+		}
+		return false;
 	}
 	
 

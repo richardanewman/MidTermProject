@@ -7,11 +7,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://cdn.jsdelivr.net/webjars/org.webjars/bootstrap/4.3.1/css/bootstrap.css" rel="stylesheet">
 <link href="css/main.css" rel="stylesheet" type="text/css">
-<title>Home</title>
+<title>goodWork</title>
 <%@include file="/WEB-INF/nav.jsp"%>
 </head>
 <header>
-<div class="jumbotron jumbotron-fluid">
+<div class="jumbotron jumbotron-fluid img-fluid">
   <div class="container">
     <h1 class="display-4">goodWork</h1>
     <h3 class="motto">Helping people help each other.</h3>
@@ -54,8 +54,24 @@
     </div>
   </div>
 </div>
+<!-- Call-to-Action -->
+<div class="card mb-3 card-pad">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="css/help.png" class="card-img" alt="Helping people help each other.">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h1 class="card-title">Join Us!</h1>
+        <p class="card-text">Sign up for your free goodWork account today. We do not bill for any of our services, and we will never sell your information.</p>
+        <p class="card-text">Our goal is simple: we want to help you help others. Find a volunteer event to join or create your own.</p>
+        <a class="btn btn-blue btn-lg" href="register.do" role="button">Sign Up!</a>
+      </div>
+    </div>
+  </div>
+</div>
 <!--Google map-->
-<div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 500px">
+<div class="map-container" style="height: 400px">
   <iframe src="https://maps.google.com/maps?q=denver&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
     style="border:0" allowfullscreen></iframe>
 </div>

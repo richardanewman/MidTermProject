@@ -23,8 +23,9 @@
 					<span class="sr-only">(current)</span>
 			</a></li>
 			<li class="nav-item"><a class="nav-link" href="login.do">Profile</a></li>
-			<li class="nav-item"><form action="createEvent.do" method="POST">Create Event</form></li>
+			<li class="nav-item"><a class="nav-link" href="createEventForm.do">Create Event</a></li>
 			<li class="nav-item"><a class="nav-link" href="getEventList.do">Events</a></li>
+			<li class="nav-item"><a class="nav-link" href="getAllOrgs.do">Organizations</a></li>
 			<li class="nav-item"><a class="nav-link" href="contact.do">Contact</a></li>
 		</ul>
 		<form action="search.do" class="form-inline my-2 my-lg-0" method="GET">
@@ -54,6 +55,7 @@
 					<span class="sr-only">(current)</span>
 			</a></li>
 			<li class="nav-item"><a class="nav-link" href="getEventList.do">Events</a></li>
+			<li class="nav-item"><a class="nav-link" href="getAllOrgs.do">Organizations</a></li>
 			<li class="nav-item"><a class="nav-link" href="contact.do">Contact</a></li>
 		</ul>
 		<form action="search.do" class="form-inline my-2 my-lg-0" method="GET">
@@ -63,8 +65,7 @@
 			<ul class="navbar-nav mr-auto">
 			<li class="nav-item"><a class="nav-link" href="login.do">Log In</a></li>
 			<li class="nav-item"><a class="nav-link" href="register.do">Register</a></li>
-			</ul>
-		</form>
+			</ul></form>
 	</div>
 </nav>
 
