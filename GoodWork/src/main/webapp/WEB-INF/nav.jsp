@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +23,7 @@
 					<span class="sr-only">(current)</span>
 			</a></li>
 			<li class="nav-item"><a class="nav-link" href="login.do">Profile</a></li>
-			<li class="nav-item"><a class="nav-link" href="createEvent.do">Create Event</a></li>
+			<li class="nav-item"><form action="createEvent.do" method="POST">Create Event</form></li>
 			<li class="nav-item"><a class="nav-link" href="getEventList.do">Events</a></li>
 			<li class="nav-item"><a class="nav-link" href="contact.do">Contact</a></li>
 		</ul>
