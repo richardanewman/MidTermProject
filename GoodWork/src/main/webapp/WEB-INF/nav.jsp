@@ -40,7 +40,7 @@
 </nav>
 </c:when>
 <c:otherwise>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light nav-bottom">
 	<a class="navbar-brand" href="/">goodWork</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#navbarSupportedContent"
