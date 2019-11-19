@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -7,9 +6,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link
-	href="https://cdn.jsdelivr.net/webjars/org.webjars/bootstrap/4.3.1/css/bootstrap.css"
-	rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/webjars/org.webjars/bootstrap/4.3.1/css/bootstrap.css" rel="stylesheet">
 <title>Result</title>
 <%@include file="/WEB-INF/nav.jsp"%>
 </head>
@@ -18,7 +15,7 @@
 		<c:if test="${! empty displayAll}">
 			<h1>All Organizations:</h1>
 			<c:forEach items="${displayAll}" var="org">
-${org.orgName}<br>
+<a href="findOrgById.do?id=${org.id}">${org.orgName}</a><br>
 				<br>
 ${org.orgDescription}<br>
 				<br>

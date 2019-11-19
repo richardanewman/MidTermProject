@@ -30,19 +30,19 @@
 						type="text" class="form-control" name="description"
 						placeholder="enter description of event" required="required" /><br>
 					<!--  -->
-					<select name ="categories">
+					<select name ="name">
 						<option value="Clean-Up">Clean-Up</option>
 						<option value="Technology">Technology</option>
-						<option value="Children and Youth">Children and Youth</option>
+						<option value="Children & Youth">Children & Youth</option>
 						<option value="Animals">Animals</option>
-						<option value="Arts and Culture">Arts and Culture</option>
+						<option value="Arts & Culture">Arts & Culture</option>
 						<option value="Community">Community</option>
 						<option value="Education">Education</option>
-						<option value="Health and Medicine">Health and Medicine</option>
+						<option value="Health & Medicine">Health & Medicine</option>
 						<option value="Seniors">Seniors</option>
 						<option value="Disaster Relief">Disaster Relief</option>
 						<option value="Hunger">Hunger</option>
-						<option value="Veterans and Military Families">Veterans and Military Families</option>
+						<option value="Veterans & Military Families">Veterans & Military Families</option>
 						<option value="Disabilities">Disabilities</option>
 						<option value="Other">Other</option>
 					</select><br>
