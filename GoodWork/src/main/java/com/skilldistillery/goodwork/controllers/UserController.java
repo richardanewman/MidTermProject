@@ -86,14 +86,18 @@ public class UserController {
 			List<User> users = dao.getAllUsersByKeyword(keyword);
 			List<Organization> orgs = orgDAO.searchByKeyword(keyword);
 			List<Event> events = eventDAO.findByKeyword(keyword);
+			List<Event> eventCat = eventDAO.findByCategory(keyword);
 			if(users != null) {
-			model.addAttribute("users", users);
+				model.addAttribute("users", users);
 			}
 			if(orgs != null) {
-			model.addAttribute("displayAll", orgs);
+				model.addAttribute("displayAll", orgs);
 			}
 			if(events != null) {
-			model.addAttribute("events", events);
+				model.addAttribute("events", events);
+			}
+			if(eventCat != null) {
+				model.addAttribute("eventByCat", eventCat);
 			}
 		return "result";
 			
@@ -108,7 +112,8 @@ public class UserController {
 			user = dao.getUserById(user.getId());
 			session.removeAttribute("newUser");
 			session.setAttribute("newUser", user);
-			return "profile";
+			model.addAttribute("user", new User());
+			return "userJSP/profile";
 		}
 		model.addAttribute("oops", "Looks like something went wrong when signing up for this event, please try again later.");
 		return "fail";

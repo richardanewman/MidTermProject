@@ -82,107 +82,41 @@
 					<p class="card-text">Our goal is simple: we want to help you
 						help others. Find a volunteer event to join or create your own.</p>
 					<!-- <a class="btn btn-blue btn-lg" href="register.do" role="button">Sign Up!</a> -->
+					<a class="btn btn-blue btn-lg" data-toggle="modal"
+						data-target="#modalRegisterForm">Sign Up</a>
 
-					<!-- ///////////////////////////REGISTRATION MODAL TOP/////////////////////////// -->
+				</div>
+			</div>
+		</div>
 
-					<div class="modal fade" id="modalRegisterForm" tabindex="-1"
-						role="dialog" aria-labelledby="Register" aria-hidden="true">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content">
-								<div class="modal-header text-center mb-0">
-									<h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
-									<button type="button" class="close" data-dismiss="modal"
-										aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<form action="addNewUser.do" method="POST" modelAttribute="user">
+		<hr>
+		<!--Google map-->
+		<div class="map-container" style="height: 400px">
+			<iframe
+				src="https://maps.google.com/maps?q=denver&t=&z=13&ie=UTF8&iwloc=&output=embed"
+				frameborder="0" style="border: 0" allowfullscreen></iframe>
+		</div>
 
-									<div class="modal-body mx-3">
-										<!--  -->
-										<div class="md-form mb-4">
-											<input type="text" name="firstName" required="required"
-												class="form-control form-control-lg rounded-0"
-												placeholder="First Name"> <label for="firstName"></label>
-										</div>
-										<!--  -->
-										<div class="md-form mb-4">
-											<input type="text" name="lastName" required="required"
-												class="form-control form-control-lg rounded-0"
-												placeholder="Last Name"><label name="lastName"></label>
-										</div>
-										<!--  -->
-										<div class="md-form mb-4">
-											<input type="text" name="userName" required="required"
-												class="form-control form-control-lg rounded-0"
-												placeholder="Desired Username"> <label
-												name="userName"></label>
-										</div>
-										<!--  -->
-										<div class="md-form mb-4">
-											<input type="password" name="password" required="required"
-												class="form-control form-control-lg rounded-0"
-												placeholder="Desired Password"> <label
-												name="password"></label>
-										</div>
-										<!--  -->
-										<div class="md-form mb-4">
-											<input type="email" name="email" required="required"
-												class="form-control form-control-lg rounded-0"
-												placeholder="Email Address"> <label name="email"></label>
-										</div>
-										<!--  -->
-									</div>
-									<div class="modal-footer d-flex justify-content-center">
-										<button type="submit" value="Register"
-											class="btn btn-lg btn-primary btn-block text-uppercase">Sign
-											up</button>
-									</div>
-								</form>
-							</div>
-						</div>
+		<!--Google Maps-->
+
+		<!--Google Maps-->
+		<hr>
+		<footer class="text-center">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<p>Copyright © FluffyCarnage. All rights reserved.</p>
 					</div>
 				</div>
-				<!-- Modal Pop-up button below. Model form above -->
-				<div class="text-center">
-					<a href="" class="btn btn-blue btn-lg"
-						data-toggle="modal" data-target="#modalRegisterForm">Sign Up</a>
-				</div>
-
-				<!-- ////////////////////////////REGISTRATION MODAL BOTTOM////////////////////////// -->
-
 			</div>
-		</div>
-	</div>
-	<!-- </div> -->
-	<hr>
-	<!--Google map-->
-	<div class="map-container" style="height: 400px">
-		<iframe
-			src="https://maps.google.com/maps?q=denver&t=&z=13&ie=UTF8&iwloc=&output=embed"
-			frameborder="0" style="border: 0" allowfullscreen></iframe>
-	</div>
-
-	<!--Google Maps-->
-
-	<!--Google Maps-->
-	<hr>
-	<footer class="text-center">
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<p>Copyright © FluffyCarnage. All rights reserved.</p>
-				</div>
-			</div>
-		</div>
-	</footer>
-	<!-- js files for bootstap -->
-	<script
-		src="https://cdn.jsdelivr.net/webjars/org.webjars.bower/jquery/3.3.1/dist/jquery.min.js"></script>
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script
-		src="https://cdn.jsdelivr.net/webjars/org.webjars/popper.js/1.15.0/popper.min.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/webjars/org.webjars/bootstrap/4.3.1/js/bootstrap.js"></script>
+		</footer>
+		<!-- js files for bootstap -->
+		<script
+			src="https://cdn.jsdelivr.net/webjars/org.webjars.bower/jquery/3.3.1/dist/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script
+			src="https://cdn.jsdelivr.net/webjars/org.webjars/popper.js/1.15.0/popper.min.js"></script>
+		<script
+			src="https://cdn.jsdelivr.net/webjars/org.webjars/bootstrap/4.3.1/js/bootstrap.js"></script>
 </body>
 </html>

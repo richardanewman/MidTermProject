@@ -42,7 +42,7 @@ public class Organization {
 	private String website;
 	private boolean active;
 	
-	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@ManyToMany(cascade = {CascadeType.PERSIST})
 	@JoinTable(name = "organization_has_user", joinColumns = @JoinColumn(name = "organization_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
 	private List<User> users;
 

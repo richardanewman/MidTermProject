@@ -69,7 +69,7 @@ public class EventController {
 		Category category = eventDAO.findCategoryByName(cat);
 		// session code for create event
 		User newUser = (User) session.getAttribute("newUser");
-		model.addAttribute("newEvent", eventDAO.addEvent(event, newUser, category));
+		model.addAttribute("event", eventDAO.addEvent(event, newUser, category));
 		newUser = userDAO.getUserById(newUser.getId());
 		session.removeAttribute("newUser");
 		session.setAttribute("newUser", newUser);
@@ -90,6 +90,7 @@ public class EventController {
 //		LocalDate date = updatedEvent.getDateCreated();
 //		updatedEvent.setDateCreated(date);
 		Event event = eventDAO.updateEvent(updatedEvent, id, cat);
+		event = eventDAO.findEventById(event.getId());
 		model.addAttribute("updateEvent", event);
 		return "events/event";
 	}
