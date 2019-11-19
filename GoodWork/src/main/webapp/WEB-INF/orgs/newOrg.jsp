@@ -23,11 +23,11 @@
 		<form:errors path="orgDescription" />
 		<br />
 		<form:label path="location.address" >Address:</form:label><br>
-		<form:input class="input" path="location.address" required="required" type="text" placeholder="Street Address"/>
+		<form:input class="input" path="location.address" type="text" placeholder="Street Address"/>
 		<form:errors path="location.address" />
 		<br />
 		<form:label path="location.address2" >Address 2:</form:label><br>
-		<form:input class="input" path="location.address2" required="required" type="text" placeholder="Suite Number"/>
+		<form:input class="input" path="location.address2" type="text" placeholder="Suite Number"/>
 		<form:errors path="location.address2" />
 		<br />
 		<form:label path="location.city" >City:</form:label><br>
@@ -39,7 +39,7 @@
 		<form:errors path="location.state" />
 		<br />
 		<form:label path="location.zipCode" >Zip Code:</form:label><br>
-		<form:input class="input" path="location.zipCode" required="required" min="0" type="number" placeholder="Zip Code"/>
+		<form:input class="input" path="location.zipCode" min="0" type="number" placeholder="Zip Code"/>
 		<form:errors path="location.zipCode" />
 		<br />
 		<form:label path="orgType">Organizaton Type:</form:label><br>
@@ -47,15 +47,15 @@
 		<form:errors path="orgType" />
 		<br />
 		<form:label path="orgNum">Organizaton Number:</form:label><br>
-		<form:input class="input" path="orgNum" type="text" required="required" placeholder="Non-Profit 503c, TaxID Number" />
+		<form:input class="input" path="orgNum" type="text" placeholder="Non-Profit 503c, TaxID Number" />
 		<form:errors path="orgNum" />
 		<br />
 		<form:label path="logoURL">Logo URL:</form:label><br>
-		<form:input class="input" path="logoURL" type="text" required="required" placeholder="Please enter your logo URL" />
+		<form:input class="input" path="logoURL" type="text" placeholder="Please enter your logo URL" />
 		<form:errors path="logoURL" />
 		<br />
 		<form:label path="website">Website URL:</form:label><br>
-		<form:input class="input" path="website" type="text" required="required" placeholder="Please enter your website URL" />
+		<form:input class="input" path="website" type="text" placeholder="Please enter your website URL" />
 		<form:errors path="website" />
 		<br />
 	    <input class="submit" type="submit" value="Submit" />

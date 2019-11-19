@@ -27,7 +27,7 @@
       <p class="card-text">Search event titles and descriptions by keyword.</p>
       <form action="eventKeyword.do" method="GET" >
 		<input class="form-control" type="text" required="required" name="keyword" placeholder="Enter Keyword"/> 
-  		<input class="btn-lg btn-block btn btn-green" type="submit" value="Search Keyword" />
+  		<input class="btn-lg btn-block btn btn-green" type="submit" value="Search Events" />
 		</form>
     </div>
   </div>
@@ -38,7 +38,7 @@
       <p class="card-text">Search organization names and descriptions by keyword.</p>
       <form action="searchOrgs.do" method="GET" >
 		<input class="form-control" type="text" required="required" name="keyword" placeholder="Enter A Keyword" />
- 		 <input class="btn btn-brown btn-lg btn-block" type="submit" value="Create Organization" />
+ 		 <input class="btn btn-brown btn-lg btn-block" type="submit" value="Search Organizations" />
 		</form>
     </div>
   </div>

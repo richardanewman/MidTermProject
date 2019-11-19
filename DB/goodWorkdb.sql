@@ -294,7 +294,20 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `goodWorkdb`;
-INSERT INTO `category` (`id`, `name`) VALUES (1, 'Community');
+INSERT INTO `category` (`id`, `name`) VALUES (1, 'Clean-Up');
+INSERT INTO `category` (`id`, `name`) VALUES (2, 'Technology');
+INSERT INTO `category` (`id`, `name`) VALUES (3, 'Children & Youth');
+INSERT INTO `category` (`id`, `name`) VALUES (4, 'Animals');
+INSERT INTO `category` (`id`, `name`) VALUES (5, 'Arts & Culture');
+INSERT INTO `category` (`id`, `name`) VALUES (6, 'Community');
+INSERT INTO `category` (`id`, `name`) VALUES (7, 'Education');
+INSERT INTO `category` (`id`, `name`) VALUES (8, 'Health & Medicine');
+INSERT INTO `category` (`id`, `name`) VALUES (9, 'Seniors');
+INSERT INTO `category` (`id`, `name`) VALUES (10, 'Disaster Relief');
+INSERT INTO `category` (`id`, `name`) VALUES (11, 'Hunger');
+INSERT INTO `category` (`id`, `name`) VALUES (12, 'Veterans & Military Families');
+INSERT INTO `category` (`id`, `name`) VALUES (13, 'Disabilities');
+INSERT INTO `category` (`id`, `name`) VALUES (14, 'Other');
 
 COMMIT;
 
