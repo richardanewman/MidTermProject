@@ -38,9 +38,13 @@
 					<li>People Needed: ${event.peopleNeeded}</li>
 					<li>Date Created: ${event.dateCreated}</li>
 					<li>Point of Contact: ${event.pointOfContact }</li>
-					<li>POC Phone: ${event.pocPhone}
-					<li>POC Email: ${event.pocEmail }
-					<li>Description: ${event.description }
+					<li>POC Phone: ${event.pocPhone}</li>
+					<li>POC Email: ${event.pocEmail }</li>
+					<li>Description: ${event.description }</li>
+					<c:forEach var="cat" items="${event.categories}">
+					<li>Category:
+						cat</li>
+					</c:forEach>
 					<li>${event.photoUrl}</li>
 				</ul>
 				<hr>
