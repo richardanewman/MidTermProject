@@ -83,6 +83,7 @@ public class EventController {
 //		LocalDate date = updatedEvent.getDateCreated();
 //		updatedEvent.setDateCreated(date);
 		Event event = eventDAO.updateEvent(updatedEvent, id, cat);
+		event = eventDAO.findEventById(event.getId());
 		model.addAttribute("updateEvent", event);
 		return "events/event";
 	}

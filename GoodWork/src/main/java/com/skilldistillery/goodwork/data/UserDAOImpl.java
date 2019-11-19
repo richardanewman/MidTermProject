@@ -107,6 +107,8 @@ public class UserDAOImpl implements UserDAO {
 		eventSignedUp.setAttended(true);
 		eventSignedUp.setDateSignedUp(LocalDate.now());
 		eventSignedUp.setRole("Helper");
+//		eventSignedUp.setEvent(event);
+//		eventSignedUp.setUser(user);
 		
 		event.addUserEvent(eventSignedUp);
 		user.addUserEvent(eventSignedUp);

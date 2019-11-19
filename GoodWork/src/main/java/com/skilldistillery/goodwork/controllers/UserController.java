@@ -108,7 +108,8 @@ public class UserController {
 			user = dao.getUserById(user.getId());
 			session.removeAttribute("newUser");
 			session.setAttribute("newUser", user);
-			return "profile";
+			model.addAttribute("user", new User());
+			return "userJSP/profile";
 		}
 		model.addAttribute("oops", "Looks like something went wrong when signing up for this event, please try again later.");
 		return "fail";

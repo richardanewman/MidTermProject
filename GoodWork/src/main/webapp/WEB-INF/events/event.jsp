@@ -17,9 +17,6 @@
 
 	<br>
 	<div class=" container form-goup jumbotron">
-		<c:choose>
-			<c:when test="${not empty event}">
-
 				<h3>
 					<strong>Event</strong>
 				</h3>
@@ -224,8 +221,6 @@
 							it its Free.</h2>
 					</c:otherwise>
 				</c:choose>
-			</c:when>
-		</c:choose>
 	</div>
 	<!--  -->
 	<!-- <form action="updateEvent.do" method="POST">
