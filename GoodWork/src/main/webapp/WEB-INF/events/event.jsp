@@ -176,7 +176,9 @@
 										</c:when>
 									</c:choose>
 								</c:forEach>
-								<a href="http://localhost:8090/">Not signed Up</a>
+								<form action="signUpForEvent.do" method="GET">
+									<input type="submit" value="Sign Up" />
+								</form>
 							</c:otherwise>
 						</c:choose>
 					</c:when>
