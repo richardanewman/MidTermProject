@@ -15,7 +15,8 @@
 <%@include file="/WEB-INF/nav.jsp"%>
 </head>
 <body>
-	<div class="container-fluid jumbotron" style="background-color: #0f2862" align="center">
+	<div class="container-fluid jumbotron"
+		style="background-color: #0f2862" align="center">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
@@ -36,7 +37,7 @@
 										<form:label path="password"></form:label>
 										<form:input path="password"
 											class="form-control form-control-lg rounded-0"
-											placeholder="password" type="password"/>
+											placeholder="password" type="password" />
 										<form:errors path="password" />
 									</div>
 									<br>
@@ -48,16 +49,83 @@
 
 								<hr class="my-4">
 
-								<form:form action="register.do" method="GET"
-									modelAttribute="user">
-									<!-- <input type="submit" value="Register"
-									class="btn btn-outline-primary" role="button"
-									aria-disabled="true" /> -->
-									<button value="Register"
-										class="btn btn-lg btn-primary btn-block text-uppercase"
-										type="submit">Register</button>
-								</form:form>
-								<!-- <button class="btn btn-lg btn-google btn-block text-uppercase"
+								<!-- ///////////////////////////MODAL TOP/////////////////////////// -->
+
+								<div class="modal fade" id="modalRegisterForm" tabindex="-1"
+									role="dialog" aria-labelledby="Register" aria-hidden="true">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<div class="modal-header text-center mb-0">
+												<h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
+												<button type="button" class="close" data-dismiss="modal"
+													aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+											<form action="addNewUser.do" method="POST"
+												modelAttribute="user">
+
+												<div class="modal-body mx-3">
+													<!--  -->
+													<div class="md-form mb-5">
+														<input type="text" name="firstName" required="required"
+															class="form-control form-control-lg rounded-0"
+															placeholder="First Name"> <label for="firstName"></label>
+													</div>
+													<!--  -->
+													<div class="md-form mb-5">
+														<input type="text" name="lastName" required="required"
+															class="form-control form-control-lg rounded-0"
+															placeholder="Last Name"><label name="lastName"></label>
+													</div>
+													<!--  -->
+													<div class="md-form mb-4">
+														<input type="text" name="userName" required="required"
+															class="form-control form-control-lg rounded-0"
+															placeholder="Desired Username"> <label
+															name="userName"></label>
+													</div>
+													<!--  -->
+													<div class="md-form mb-4">
+														<input type="password" name="password" required="required"
+															class="form-control form-control-lg rounded-0"
+															placeholder="Desired Password"> <label
+															name="password"></label>
+													</div>
+													<!--  -->
+													<div class="md-form mb-4">
+														<input type="email" name="email" required="required"
+															class="form-control form-control-lg rounded-0"
+															placeholder="Email Address"> <label name="email"></label>
+													</div>
+													<!--  -->
+												</div>
+												<div class="modal-footer d-flex justify-content-center">
+													<button type="submit" value="Register"
+														class="btn btn-lg btn-primary btn-block text-uppercase">Sign
+														up</button>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- Modal Pop-up button below. Model form above -->
+							<div class="text-center">
+								<a href=""
+									class="btn btn-lg btn-primary btn-block text-uppercase"
+									data-toggle="modal" data-target="#modalRegisterForm">Register</a>
+							</div>
+
+							<!-- ////////////////////////////MODAL BOTTOM////////////////////////// -->
+
+							<%-- <form:form action="register.do" method="GET"
+								modelAttribute="user">
+								<button value="Register"
+									class="btn btn-lg btn-primary btn-block text-uppercase"
+									type="submit">Register</button>
+							</form:form> --%>
+							<!-- <button class="btn btn-lg btn-google btn-block text-uppercase"
 								type="submit">
 								<i class="fab fa-google mr-2"></i> Sign in with Google
 							</button>
@@ -66,12 +134,12 @@
 								<i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook
 							</button> -->
 
-							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 	<!-- Original Below -->
 	<!-- <div> -->
