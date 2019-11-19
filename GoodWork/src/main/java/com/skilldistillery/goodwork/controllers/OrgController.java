@@ -69,7 +69,8 @@ public class OrgController {
 	public String addOrg(@Valid Organization newOrg, Model model, HttpSession session) {
 		User newUser = (User) session.getAttribute("newUser");
 		model.addAttribute("newOrg", orgDAO.addNewOrg(newOrg, newUser));
-	
+		session.removeAttribute("newUser");
+		session.setAttribute("newUser", newUser);
 
 		return "orgs/org";
 
