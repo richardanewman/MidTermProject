@@ -42,7 +42,7 @@ public class OrgController {
 
 			model.addAttribute("org", orgDAO.findById(id));
 
-			return "result";
+			return "orgs/orgProfile";
 		}
 	}
 	
@@ -68,9 +68,10 @@ public class OrgController {
 	@RequestMapping(path = "addNewOrg.do", method = RequestMethod.POST)
 	public String addOrg(@Valid Organization newOrg, Model model, HttpSession session) {
 		User newUser = (User) session.getAttribute("newUser");
-		model.addAttribute("newOrg", orgDAO.addNewOrg(newOrg, newUser));
+		model.addAttribute("orgData", orgDAO.addNewOrg(newOrg, newUser));
 		session.removeAttribute("newUser");
 		session.setAttribute("newUser", newUser);
+
 
 		return "orgs/org";
 
