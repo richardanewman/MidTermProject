@@ -38,9 +38,13 @@
 					<li>People Needed: ${event.peopleNeeded}</li>
 					<li>Date Created: ${event.dateCreated}</li>
 					<li>Point of Contact: ${event.pointOfContact }</li>
-					<li>POC Phone: ${event.pocPhone}
-					<li>POC Email: ${event.pocEmail }
-					<li>Description: ${event.description }
+					<li>POC Phone: ${event.pocPhone}</li>
+					<li>POC Email: ${event.pocEmail }</li>
+					<li>Description: ${event.description }</li>
+					<c:forEach var="cat" items="${event.categories}">
+					<li>Category:
+						cat</li>
+					</c:forEach>
 					<li>${event.photoUrl}</li>
 				</ul>
 				<hr>
@@ -169,16 +173,27 @@
 								<!-- Modal Testing End -->
 							</c:when>
 							<c:otherwise>
+							    <c:set var="isSignedUp" value="false"/>
 								<c:forEach var="vol" items="${event.users}">
+								  <c:if test="${vol.user.id == newUser.id}">
+							    	<c:set var="isSignedUp" value="true"/>
+								  </c:if>
+								</c:forEach>
 									<c:choose>
-										<c:when test="${vol.user.id == newUser.id}">
+										<c:when test="${isSignedUp == true}">
 											<a href="http://localhost:8090/">Already signed up</a>
 										</c:when>
+										<c:otherwise>
+											<form:form action="signUpForEvent.do" method="GET"
+												modelAttribute="event">
+												<form:label path="id" value="${event.id}"></form:label>
+												<form:hidden path="id" value="${event.id}" />
+												<form:errors path="id" value="${event.id}" />
+												<input type="submit" value="Sign Up" />
+												<br />
+											</form:form>
+										</c:otherwise>
 									</c:choose>
-								</c:forEach>
-								<form action="signUpForEvent.do" method="GET">
-									<input type="submit" value="Sign Up" />
-								</form>
 							</c:otherwise>
 						</c:choose>
 					</c:when>
