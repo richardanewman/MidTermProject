@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.goodwork.entities.Category;
 import com.skilldistillery.goodwork.entities.Event;
 import com.skilldistillery.goodwork.entities.User;
 
@@ -38,10 +39,12 @@ public class EventDAOImpl implements EventDAO {
 	}
 
 	@Override
-	public Event addEvent(Event event, User user) { // issue with location id coming in Null
+	public Event addEvent(Event event, User user, Category category) { // issue with location id coming in Null
 		event.setDateCreated(LocalDate.now());
 		// sessions 
 		user = em.find(User.class, user.getId());
+		category = em.find(Category.class, category.getId());
+		category.addEvent(event);
 		user.addHostedEvent(event);
 		System.err.println("In event creation " + event);
 //		Location eventsLocation = new Location();
@@ -49,6 +52,7 @@ public class EventDAOImpl implements EventDAO {
 //		event.setLocation(event.getLocation());
 		em.persist(user);
 		em.persist(event);
+		em.persist(category);
 		em.flush();
 		return event;
 	}
@@ -89,6 +93,19 @@ public class EventDAOImpl implements EventDAO {
 		em.remove(deleteEvent);
 		return (em.find(Event.class, id) == null);
 
+	}
+
+	@Override
+	public Category findCategoryByName(String name) {
+		List<Category> catList = null;
+		Category cat = null;
+		String sql = "SELECT cat FROM Category cat WHERE cat.name = :name";
+		catList = em.createQuery(sql, Category.class).setParameter("name", name).getResultList();
+		if(catList != null && catList.size() == 1) {
+			cat = catList.get(0);
+			return cat;
+		}
+		return cat;
 	}
 
 }

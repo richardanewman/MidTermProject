@@ -10,9 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.skilldistillery.goodwork.data.EventDAO;
 import com.skilldistillery.goodwork.data.UserDAO;
+import com.skilldistillery.goodwork.entities.Category;
 import com.skilldistillery.goodwork.entities.Event;
 import com.skilldistillery.goodwork.entities.Location;
 import com.skilldistillery.goodwork.entities.User;
@@ -55,11 +57,12 @@ public class EventController {
 	}
 
 	@RequestMapping(path = "createEvent.do", method = RequestMethod.POST)
-	public String addEvent(Event event, Model model, HttpSession session) {
+	public String addEvent(Event event, Model model, HttpSession session, @RequestParam("name") String cat) {
 		System.out.println(event);
+		Category category = eventDAO.findCategoryByName(cat);
 		// session code for create event
 		User newUser = (User) session.getAttribute("newUser");
-		model.addAttribute("newEvent", eventDAO.addEvent(event, newUser));
+		model.addAttribute("newEvent", eventDAO.addEvent(event, newUser, category));
 		newUser = userDAO.getUserById(newUser.getId());
 		session.removeAttribute("newUser");
 		session.setAttribute("newUser", newUser);
