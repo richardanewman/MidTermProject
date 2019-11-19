@@ -62,7 +62,7 @@ public class EventController {
 		Category category = eventDAO.findCategoryByName(cat);
 		// session code for create event
 		User newUser = (User) session.getAttribute("newUser");
-		model.addAttribute("newEvent", eventDAO.addEvent(event, newUser, category));
+		model.addAttribute("event", eventDAO.addEvent(event, newUser, category));
 		newUser = userDAO.getUserById(newUser.getId());
 		session.removeAttribute("newUser");
 		session.setAttribute("newUser", newUser);
