@@ -55,9 +55,8 @@ public class EventController {
 	}
 
 	@RequestMapping(path = "createEvent.do", method = RequestMethod.POST)
-	public String addEvent(Event event, Model model, Location location, HttpSession session) {
+	public String addEvent(Event event, Model model, HttpSession session) {
 		System.out.println(event);
-		System.out.println(location);
 		// session code for create event
 		User newUser = (User) session.getAttribute("newUser");
 		model.addAttribute("newEvent", eventDAO.addEvent(event, newUser));
