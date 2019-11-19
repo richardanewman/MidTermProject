@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://cdn.jsdelivr.net/webjars/org.webjars/bootstrap/4.3.1/css/bootstrap.css" rel="stylesheet">
 <link href="css/main.css" rel="stylesheet" type="text/css">
-<title>Home</title>
+<title>goodWork</title>
 <%@include file="/WEB-INF/nav.jsp"%>
 </head>
 <header>
