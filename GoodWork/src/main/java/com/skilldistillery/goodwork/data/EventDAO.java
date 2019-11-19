@@ -21,5 +21,7 @@ public interface EventDAO {
 	public boolean deleteEvent(int id, Event event);
 	
 	public Category findCategoryByName(String name);
+	
+	public List<Event> findByCategory(String keyword);
 
 }
