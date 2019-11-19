@@ -15,7 +15,8 @@
 <%@include file="/WEB-INF/nav.jsp"%>
 </head>
 <body>
-	<div class="container-fluid jumbotron" style="background-color: #0f2862" align="center">
+	<div class="container-fluid jumbotron"
+		style="background-color: #0f2862" align="center">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
@@ -36,7 +37,7 @@
 										<form:label path="password"></form:label>
 										<form:input path="password"
 											class="form-control form-control-lg rounded-0"
-											placeholder="password" type="password"/>
+											placeholder="password" type="password" />
 										<form:errors path="password" />
 									</div>
 									<br>
@@ -48,23 +49,13 @@
 
 								<hr class="my-4">
 
-								<form:form action="register.do" method="GET"
-									modelAttribute="user">
-									<!-- <input type="submit" value="Register"
-									class="btn btn-outline-primary" role="button"
-									aria-disabled="true" /> -->
-									<button value="Register"
+								<!-- Modal Pop-up button below. Model form above -->
+								<div class="text-center">
+									<a href=""
 										class="btn btn-lg btn-primary btn-block text-uppercase"
-										type="submit">Register</button>
-								</form:form>
-								<!-- <button class="btn btn-lg btn-google btn-block text-uppercase"
-								type="submit">
-								<i class="fab fa-google mr-2"></i> Sign in with Google
-							</button>
-							<button class="btn btn-lg btn-facebook btn-block text-uppercase"
-								type="submit">
-								<i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook
-							</button> -->
+										data-toggle="modal" data-target="#modalRegisterForm">Register</a>
+								</div>
+
 
 							</div>
 						</div>
@@ -73,25 +64,7 @@
 			</div>
 		</div>
 	</div>
-	<!-- Original Below -->
-	<!-- <div> -->
-	<%-- 		<form:form action="enter.do" method="GET" modelAttribute="user">
-			<form:label path="userName" style="color:Blue;">User Name: </form:label>
-			<form:input path="userName" />
-			<form:errors path="userName" />
-			<form:label path="password" style="color:Blue;">Password: </form:label>
-			<form:input path="password" />
-			<form:errors path="password" />
-			<input type="submit" value="Login" class="btn btn-outline-primary"
-				role="button" aria-disabled="true" />
-			<br>
 
-		</form:form> --%>
-	<%-- <form:form action="register.do" method="GET" modelAttribute="user">
-			<input type="submit" value="Register" class="btn btn-outline-primary"
-				role="button" aria-disabled="true" />
-		</form:form> --%>
-	<!-- </div> -->
 	<footer class="text-center">
 		<div class="container">
 			<div class="row">
