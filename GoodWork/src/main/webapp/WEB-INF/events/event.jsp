@@ -43,7 +43,7 @@
 					<li>Description: ${event.description }</li>
 					<c:forEach var="cat" items="${event.categories}">
 					<li>Category:
-						cat</li>
+						${cat.name}</li>
 					</c:forEach>
 					<li>${event.photoUrl}</li>
 				</ul>
@@ -74,6 +74,28 @@
 											<label for="description">Event Description</label> <input
 												type="text" class="form-control" name="description"
 												value="${event.description}" /><br>
+											<!--  -->
+											<c:set var="cat" value="nothing"/>
+											<c:forEach var="category" items="${event.categories}">
+												<c:set var="cat" value="${category.name}"></c:set>
+											</c:forEach>
+											<select name ="name">
+												<option value="${cat}">${cat}</option>
+												<option value="Clean-Up">Clean-Up</option>
+												<option value="Technology">Technology</option>
+												<option value="Children & Youth">Children & Youth</option>
+												<option value="Animals">Animals</option>
+												<option value="Arts & Culture">Arts & Culture</option>
+												<option value="Community">Community</option>
+												<option value="Education">Education</option>
+												<option value="Health & Medicine">Health & Medicine</option>
+												<option value="Seniors">Seniors</option>
+												<option value="Disaster Relief">Disaster Relief</option>
+												<option value="Hunger">Hunger</option>
+												<option value="Veterans & Military Families">Veterans & Military Families</option>
+												<option value="Disabilities">Disabilities</option>
+												<option value="Other">Other</option>
+											</select><br>
 											<!--  -->
 											<label for="location.address">Event Address</label> <input
 												type="text" class="form-control" name="location.address"

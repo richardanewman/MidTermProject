@@ -58,16 +58,12 @@ public class EventDAOImpl implements EventDAO {
 	}
 
 	@Override
-	public Event updateEvent(Event updatedEvent, int eventId) {
+	public Event updateEvent(Event updatedEvent, int eventId, Category category) {
 		Event managed = em.find(Event.class, eventId);
-//		managed.setDateCreated(updatedEvent.getDateCreated());
-//		managed.setDateCreated(LocalDate.now());
-		System.err.println("In method******************************" + updatedEvent);
-		System.out.println("updated event");
-		System.out.println(managed);
-		System.out.println(managed.getLocation());
+		category = em.find(Category.class, category.getId());
 		managed.getLocation().setAddress(updatedEvent.getLocation().getAddress());
-
+		managed.removeCategory(managed.getCategories().get(0));
+		managed.addCategory(category);
 		managed.getLocation().setAddress(updatedEvent.getLocation().getAddress2());
 		managed.getLocation().setCity(updatedEvent.getLocation().getCity());
 		managed.getLocation().setState(updatedEvent.getLocation().getState());
@@ -83,6 +79,7 @@ public class EventDAOImpl implements EventDAO {
 		managed.setPocPhone(updatedEvent.getPocPhone());
 		managed.setPocEmail(updatedEvent.getPocEmail());
 		em.persist(managed);
+		em.persist(category);
 		em.flush();
 		return managed;
 	}

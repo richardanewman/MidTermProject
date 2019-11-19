@@ -16,7 +16,7 @@ public interface EventDAO {
 
 	public Event addEvent(Event event, User user, Category category);
 
-	public Event updateEvent(Event event, int eventId);
+	public Event updateEvent(Event event, int eventId, Category category);
 
 	public boolean deleteEvent(int id, Event event);
 	

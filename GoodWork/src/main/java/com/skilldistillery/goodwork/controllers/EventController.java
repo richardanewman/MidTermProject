@@ -76,15 +76,13 @@ public class EventController {
 	}
 
 	@RequestMapping(path = "updateEvent.do", method = RequestMethod.POST)
-	public String updateEvent(Model model, Event updatedEvent, Integer id) {
-		System.err.println("In controller************" + id + " " + updatedEvent);
+	public String updateEvent(Model model, Event updatedEvent, Integer id, @RequestParam("name") String catName) {
+		Category cat = eventDAO.findCategoryByName(catName);
 		Event originalEventForDate = eventDAO.findEventById(id);
 		updatedEvent.setDateCreated(originalEventForDate.getDateCreated()); // passing date issues works
-		System.out.println("GIVE ME THE DATESSSSS" + originalEventForDate);
-		System.err.println();
 //		LocalDate date = updatedEvent.getDateCreated();
 //		updatedEvent.setDateCreated(date);
-		Event event = eventDAO.updateEvent(updatedEvent, id);
+		Event event = eventDAO.updateEvent(updatedEvent, id, cat);
 		model.addAttribute("updateEvent", event);
 		return "events/event";
 	}
