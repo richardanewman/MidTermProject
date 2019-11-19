@@ -49,7 +49,7 @@
 
 								<hr class="my-4">
 
-								<!-- ///////////////////////////MODAL TOP/////////////////////////// -->
+								<!-- ///////////////////////////REGISTRATION MODAL TOP/////////////////////////// -->
 
 								<div class="modal fade" id="modalRegisterForm" tabindex="-1"
 									role="dialog" aria-labelledby="Register" aria-hidden="true">
@@ -67,13 +67,13 @@
 
 												<div class="modal-body mx-3">
 													<!--  -->
-													<div class="md-form mb-5">
+													<div class="md-form mb-4">
 														<input type="text" name="firstName" required="required"
 															class="form-control form-control-lg rounded-0"
 															placeholder="First Name"> <label for="firstName"></label>
 													</div>
 													<!--  -->
-													<div class="md-form mb-5">
+													<div class="md-form mb-4">
 														<input type="text" name="lastName" required="required"
 															class="form-control form-control-lg rounded-0"
 															placeholder="Last Name"><label name="lastName"></label>
@@ -117,7 +117,7 @@
 									data-toggle="modal" data-target="#modalRegisterForm">Register</a>
 							</div>
 
-							<!-- ////////////////////////////MODAL BOTTOM////////////////////////// -->
+							<!-- ////////////////////////////REGISTRATION MODAL BOTTOM////////////////////////// -->
 
 							<%-- <form:form action="register.do" method="GET"
 								modelAttribute="user">
