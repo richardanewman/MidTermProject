@@ -41,7 +41,7 @@ public class EventDAOImpl implements EventDAO {
 	@Override
 	public Event addEvent(Event event, User user, Category category) { // issue with location id coming in Null
 		event.setDateCreated(LocalDate.now());
-		// sessions 
+		// sessions
 		user = em.find(User.class, user.getId());
 		category = em.find(Category.class, category.getId());
 		category.addEvent(event);
@@ -98,11 +98,19 @@ public class EventDAOImpl implements EventDAO {
 		Category cat = null;
 		String sql = "SELECT cat FROM Category cat WHERE cat.name = :name";
 		catList = em.createQuery(sql, Category.class).setParameter("name", name).getResultList();
-		if(catList != null && catList.size() == 1) {
+		if (catList != null && catList.size() == 1) {
 			cat = catList.get(0);
 			return cat;
 		}
 		return cat;
+	}
+
+	@Override
+	public List<Event> findByCategory(String keyword) {
+		String sql = "select events from Event events where events.category like :keyword";
+		List<Event> catSearch = em.createQuery(sql, Event.class).setParameter("keyword", "%" + keyword + "%")
+				.getResultList();
+		return catSearch;
 	}
 
 }
