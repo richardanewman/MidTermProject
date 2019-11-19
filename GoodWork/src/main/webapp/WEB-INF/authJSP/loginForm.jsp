@@ -15,13 +15,13 @@
 <%@include file="/WEB-INF/nav.jsp"%>
 </head>
 <body>
-	<div class="container jumbotron" align="center">
+	<div class="container-fluid jumbotron" style="background-color: #0f2862" align="center">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
 					<div class="card rounded shadow shadow-sm">
 						<div class="card-body">
-							<h5 class="card-title text-center">Sign In</h5>
+							<h5 class="card-title text-center mb-0">Sign In</h5>
 							<div class="form-label-group" align="center">
 								<form:form action="enter.do" method="GET" modelAttribute="user">
 									<div>
@@ -36,7 +36,7 @@
 										<form:label path="password"></form:label>
 										<form:input path="password"
 											class="form-control form-control-lg rounded-0"
-											placeholder="password" />
+											placeholder="password" type="password"/>
 										<form:errors path="password" />
 									</div>
 									<br>
