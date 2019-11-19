@@ -68,7 +68,7 @@ public class OrgController {
 	@RequestMapping(path = "addNewOrg.do", method = RequestMethod.POST)
 	public String addOrg(@Valid Organization newOrg, Model model, HttpSession session) {
 		User newUser = (User) session.getAttribute("newUser");
-		model.addAttribute("newOrg", orgDAO.addNewOrg(newOrg, newUser));
+		model.addAttribute("orgData", orgDAO.addNewOrg(newOrg, newUser));
 	
 
 		return "orgs/org";
