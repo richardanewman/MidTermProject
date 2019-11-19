@@ -2,6 +2,7 @@ package com.skilldistillery.goodwork.data;
 
 import java.util.List;
 
+import com.skilldistillery.goodwork.entities.Event;
 import com.skilldistillery.goodwork.entities.User;
 
 public interface UserDAO {
@@ -13,4 +14,5 @@ public interface UserDAO {
 	public List<User> getActiveUsers();
 	public User getUserByEmail(String email);
 	public List<User> getAllUsersByKeyword(String keyword);
+	public boolean signedUpForEvent(Event event, User user);
 }

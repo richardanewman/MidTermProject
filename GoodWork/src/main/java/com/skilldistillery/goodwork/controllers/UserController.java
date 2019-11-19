@@ -99,4 +99,18 @@ public class UserController {
 			
 		}
  	}
+	
+	@RequestMapping(path="signUpForEvent.do", method = RequestMethod.GET)
+	public String signUpForEvent(Event event, Model model, HttpSession session) {
+		User user = (User) session.getAttribute("newUser");
+		boolean success = dao.signedUpForEvent(event, user);
+		if(success) {
+			user = dao.getUserById(user.getId());
+			session.removeAttribute("newUser");
+			session.setAttribute("newUser", user);
+			return "profile";
+		}
+		model.addAttribute("oops", "Looks like something went wrong when signing up for this event, please try again later.");
+		return "fail";
+	}
 }
