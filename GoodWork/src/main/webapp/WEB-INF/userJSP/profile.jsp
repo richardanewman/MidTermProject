@@ -119,7 +119,9 @@
 		<c:if test="${! empty userProfile}">
       <h5 class="card-title">My Organizations</h5>
 			<c:forEach items="${userProfile.orgs}" var="org">
+			<c:if test="${org.active == true}">
 			<a href="findOrgById.do?id=${org.id}">${org.orgName}</a><br>
+			</c:if>
 			</c:forEach>
 		</c:if>
 		</div>

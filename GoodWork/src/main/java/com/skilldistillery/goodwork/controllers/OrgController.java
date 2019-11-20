@@ -21,6 +21,8 @@ public class OrgController {
 
 	@Autowired
 	private OrgDAO orgDAO;
+	@Autowired
+	private UserDAO userDAO;
 	private int orgId;
 
 	@RequestMapping(path = "getAllOrgs.do", method = RequestMethod.GET)
@@ -115,13 +117,17 @@ public class OrgController {
 	}
 
 	@RequestMapping(path = "updateOrg.do", method = RequestMethod.POST)
-	public String updateOrg(@Valid Organization orgData, Model model) {
+	public String updateOrg(@Valid Organization orgData, Model model, HttpSession session) {
 		try {
 			System.out.println(orgData);
+			User user = (User) session.getAttribute("newUser");
 			Organization updatedOrg = orgDAO.updateOrganization(orgData, orgId);
 			model.addAttribute("successfulUpdate", updatedOrg);
 			model.addAttribute("successful", "You successfully updated your organization!");
-
+			user = userDAO.getUserById(user.getId());
+			
+			session.removeAttribute("newUser");
+			session.setAttribute("newUser", user);
 			return "orgs/org";
 		} catch (Exception e) {
 			model.addAttribute("oops", "Looks like we had some trouble. Please try again.");
