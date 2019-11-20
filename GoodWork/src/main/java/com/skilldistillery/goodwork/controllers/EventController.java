@@ -46,6 +46,13 @@ public class EventController {
 		model.addAttribute("events", eventSearch);
 		return "result";
 	}
+	
+	@RequestMapping(path = "eventCategory.do")
+	public String findByCategory(@Valid String keyword, Model model) {
+		List<Event> catSearch = eventDAO.findByKeyword(keyword);
+		model.addAttribute("events", catSearch);
+		return "result";
+	}
 
 	@RequestMapping(path = "getEventList.do", method = RequestMethod.GET)
 	public String eventList(Model model) {
@@ -62,7 +69,7 @@ public class EventController {
 		Category category = eventDAO.findCategoryByName(cat);
 		// session code for create event
 		User newUser = (User) session.getAttribute("newUser");
-		model.addAttribute("newEvent", eventDAO.addEvent(event, newUser, category));
+		model.addAttribute("event", eventDAO.addEvent(event, newUser, category));
 		newUser = userDAO.getUserById(newUser.getId());
 		session.removeAttribute("newUser");
 		session.setAttribute("newUser", newUser);
@@ -79,11 +86,10 @@ public class EventController {
 	public String updateEvent(Model model, Event updatedEvent, Integer id, @RequestParam("name") String catName) {
 		Category cat = eventDAO.findCategoryByName(catName);
 		Event originalEventForDate = eventDAO.findEventById(id);
-		updatedEvent.setDateCreated(originalEventForDate.getDateCreated()); // passing date issues works
-//		LocalDate date = updatedEvent.getDateCreated();
-//		updatedEvent.setDateCreated(date);
+		updatedEvent.setDateCreated(originalEventForDate.getDateCreated());
 		Event event = eventDAO.updateEvent(updatedEvent, id, cat);
-		model.addAttribute("updateEvent", event);
+		event = eventDAO.findEventById(event.getId());
+		model.addAttribute("event", event);
 		return "events/event";
 	}
 
@@ -93,5 +99,11 @@ public class EventController {
 		return "index";
 
 	}
-
+	
+	@RequestMapping(path = "goToUpdateEvent.do", method = RequestMethod.GET)
+	public String goToUpdateForm(Event event, Model model) {
+		event = eventDAO.findEventById(event.getId());
+		model.addAttribute("event", event);
+		return "events/updateEvent";
+	}
 }
