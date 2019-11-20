@@ -74,7 +74,7 @@ public class EventController {
 		session.removeAttribute("newUser");
 		session.setAttribute("newUser", newUser);
 
-		return "result";
+		return "event";
 	}
 
 	@RequestMapping(path = "createEventForm.do", method = RequestMethod.GET)
