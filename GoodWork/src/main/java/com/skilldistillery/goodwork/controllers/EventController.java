@@ -86,12 +86,10 @@ public class EventController {
 	public String updateEvent(Model model, Event updatedEvent, Integer id, @RequestParam("name") String catName) {
 		Category cat = eventDAO.findCategoryByName(catName);
 		Event originalEventForDate = eventDAO.findEventById(id);
-		updatedEvent.setDateCreated(originalEventForDate.getDateCreated()); // passing date issues works
-//		LocalDate date = updatedEvent.getDateCreated();
-//		updatedEvent.setDateCreated(date);
+		updatedEvent.setDateCreated(originalEventForDate.getDateCreated());
 		Event event = eventDAO.updateEvent(updatedEvent, id, cat);
 		event = eventDAO.findEventById(event.getId());
-		model.addAttribute("updateEvent", event);
+		model.addAttribute("event", event);
 		return "events/event";
 	}
 
@@ -101,5 +99,11 @@ public class EventController {
 		return "index";
 
 	}
-
+	
+	@RequestMapping(path = "goToUpdateEvent.do", method = RequestMethod.GET)
+	public String goToUpdateForm(Event event, Model model) {
+		event = eventDAO.findEventById(event.getId());
+		model.addAttribute("event", event);
+		return "events/updateEvent";
+	}
 }
