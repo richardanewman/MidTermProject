@@ -44,6 +44,12 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="disableOrg.do">
+                  <span data-feather="edit-2"></span>
+                  Delete Organization
+                </a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="#recent-activity">
                   <span data-feather="database"></span>
                   Message Board
@@ -100,102 +106,14 @@
 			</c:forEach>
 		</c:if>
 </div>
-${userData.lastName}
+
 
     </div>
   </div>
 </div>
-<!-- End Card Deck -->
-<!-- Calendar -->
 
-<!-- End Calendar -->
 
-          <h2>Recent Activity</h2>
-          <div class="table-responsive">
-            <table class="table table-striped table-sm">
-              <thead>
-                <tr>
-                  <th>ID#</th>
-                  <th>Date</th>
-                  <th>Description</th>
-                  <th>Amount</th>
-                  <th>Balance</th>
-                </tr>
-              </thead>
-              <tbody id="recent-activity">
-                <tr>
-                  <td>${recent[0].id}</td>
-                  <td>${recent[0].txDate}</td>
-                  <td>${recent[0].description}</td>
-                  <td><fmt:formatNumber type="currency" value="${recent[0].amount}"/></td>
-                  <td><fmt:formatNumber type="currency" value="${recent[0].balance}"/></td>
-                </tr>
-                <tr>
-                  <td>${recent[1].id}</td>
-                  <td>${recent[1].txDate}</td>
-                  <td>${recent[1].description}</td>
-                  <td><fmt:formatNumber type="currency" value="${recent[1].amount}"/></td>
-                  <td><fmt:formatNumber type="currency" value="${recent[1].balance}"/></td>
-                </tr>
-                <tr>
-                  <td>${recent[2].id}</td>
-                  <td>${recent[2].txDate}</td>
-                  <td>${recent[2].description}</td>
-                  <td><fmt:formatNumber type="currency" value="${recent[2].amount}"/></td>
-                  <td><fmt:formatNumber type="currency" value="${recent[2].balance}"/></td>
-                </tr>
-                <tr>
-                  <td>${recent[3].id}</td>
-                  <td>${recent[3].txDate}</td>
-                  <td>${recent[3].description}</td>
-                  <td><fmt:formatNumber type="currency" value="${recent[3].amount}"/></td>
-                  <td><fmt:formatNumber type="currency" value="${recent[3].balance}"/></td>
-                </tr>
-                <tr>
-                  <td>${recent[4].id}</td>
-                  <td>${recent[4].txDate}</td>
-                  <td>${recent[4].description}</td>
-                  <td><fmt:formatNumber type="currency" value="${recent[4].amount}"/></td>
-                  <td><fmt:formatNumber type="currency" value="${recent[4].balance}"/></td>
-                </tr>
-                <tr>
-                  <td>${recent[5].id}</td>
-                  <td>${recent[5].txDate}</td>
-                  <td>${recent[5].description}</td>
-                  <td><fmt:formatNumber type="currency" value="${recent[5].amount}"/></td>
-                  <td><fmt:formatNumber type="currency" value="${recent[5].balance}"/></td>
-                </tr>
-                <tr>
-                  <td>${recent[6].id}</td>
-                  <td>${recent[6].txDate}</td>
-                  <td>${recent[6].description}</td>
-                  <td><fmt:formatNumber type="currency" value="${recent[6].amount}"/></td>
-                  <td><fmt:formatNumber type="currency" value="${recent[6].balance}"/></td>
-                </tr>
-                <tr>
-                  <td>${recent[7].id}</td>
-                  <td>${recent[7].txDate}</td>
-                  <td>${recent[7].description}</td>
-                  <td><fmt:formatNumber type="currency" value="${recent[7].amount}"/></td>
-                  <td><fmt:formatNumber type="currency" value="${recent[7].balance}"/></td>
-                </tr>
-                <tr>
-                  <td>${recent[8].id}</td>
-                  <td>${recent[8].txDate}</td>
-                  <td>${recent[8].description}</td>
-                  <td><fmt:formatNumber type="currency" value="${recent[8].amount}"/></td>
-                  <td><fmt:formatNumber type="currency" value="${recent[8].balance}"/></td>
-                </tr>
-                <tr>
-                  <td>${recent[9].id}</td>
-                  <td>${recent[9].txDate}</td>
-                  <td>${recent[9].description}</td>
-                  <td><fmt:formatNumber type="currency" value="${recent[9].amount}"/></td>
-                  <td><fmt:formatNumber type="currency" value="${recent[9].balance}"/></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+    
         </main>
       </div>
     </div>
@@ -216,6 +134,45 @@ ${userData.lastName}
        		<p>Good job! Your already signed up!</p>
        </c:otherwise>
      </c:choose>
+     
+     						<!-- Button trigger modal -->
+						<hr>
+						<button type="button" class="btn btn-danger" data-toggle="modal"
+							data-target="#deleteOrg">Delete Organization</button>
+
+						<!-- Modal -->
+						<div class="modal fade" id="deleteOrg" tabindex="-1"
+							role="dialog" aria-labelledby="deleteOrgLabel"
+							aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="deleteOrgLabel">Delete
+											Confirmation</h5>
+										<button type="button" class="close" data-dismiss="modal"
+											aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										<strong>Are you sure that you'd like to delete the
+											selected Organization?</strong>
+									</div>
+
+									<div class="modal-footer">
+										<form action="disableOrg.do" method="POST">
+											<input type="hidden" value="${org.id}" name="id">
+											<button class="btn btn-danger" type="submit">Delete
+												Event</button>
+										</form>
+										<button type="button" class="btn btn-secondary"
+											data-dismiss="modal">Close</button>
+										<!-- <button type="button" class="btn btn-primary">Save
+									changes</button>  -->
+									</div>
+								</div>
+							</div>
+						</div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
