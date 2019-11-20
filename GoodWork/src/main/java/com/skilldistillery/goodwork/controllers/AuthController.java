@@ -35,7 +35,6 @@ public class AuthController {
 		if (userLog == null) {
 			model.addAttribute("oops", "Invalid Username or Password, please try again or register.");
 			return "fail";
-//			return "authJSP/loginForm";
 		}
 		model.addAttribute("userProfile", userLog);
 		session.setAttribute("newUser", userLog);

@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.goodwork.entities.Event;
+import com.skilldistillery.goodwork.entities.Organization;
 import com.skilldistillery.goodwork.entities.User;
 import com.skilldistillery.goodwork.entities.UserEvent;
 import com.skilldistillery.goodwork.entities.UserEventId;
@@ -123,5 +124,21 @@ public class UserDAOImpl implements UserDAO {
 		return false;
 	}
 	
+	public boolean signedUpForOrg(Organization org, User user) {
+		user = em.find(User.class, user.getId());
+		org = em.find(Organization.class, org.getId());
+		
+		org.addUser(user);
+		user.addOrganization(org);
+		
+		em.persist(user);
+		em.persist(org);
+		em.flush();
+		
+		if(user.getOrgs().contains(org) && org.getUsers().contains(user)) {
+			return true;
+		}
+		return false;
+	}
 
 }

@@ -15,35 +15,164 @@
 </head>
 <body>
 
+
 	<br>
-	<div class=" container form-goup jumbotron">
-		<h3>
-			<strong>Event</strong>
-		</h3>
-		<ul style="list-style: none">
-			<li>Event Id: ${event.id}</li>
-			<li>Date Created: ${event.dateCreated }</li>
-			<li>Event Name: ${event.eventName}</li>
-			<li>Address: ${event.location.address}</li>
-			<li>Address: ${event.location.address2}</li>
-			<li>City: ${event.location.city}</li>
-			<li>State: ${event.location.state}</li>
-			<li>Zip Code: ${event.location.zipCode}</li>
-			<li>Event Date: ${event.eventDate}</li>
-			<li>Start Time: ${event.startTime}</li>
-			<li>End Time: ${event.endTime}</li>
-			<li>People Needed: ${event.peopleNeeded}</li>
-			<li>Date Created: ${event.dateCreated}</li>
-			<li>Point of Contact: ${event.pointOfContact }</li>
-			<li>POC Phone: ${event.pocPhone}</li>
-			<li>POC Email: ${event.pocEmail }</li>
-			<li>Description: ${event.description }</li>
-			<c:forEach var="cat" items="${event.categories}">
-				<li>Category: ${cat.name}</li>
-			</c:forEach>
-			<li>${event.photoUrl}</li>
-		</ul>
-		<hr>
+	<div>
+		<table class="container rounded" align="center" bgcolor="#9644E8"
+			border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td valign="middle"
+					style="text-align: center; padding: 40px; font-family: sans-serif; font-size: 35px; mso-height-rule: exactly; line-height: 40px; color: #ffffff;">
+					${event.eventName}</td>
+			</tr>
+			<tr>
+				<td valign="middle"
+					style="text-align: center; padding: 40px; font-family: sans-serif; font-size: 20px; mso-height-rule: exactly; line-height: 30px; color: #ffffff;">
+					${event.description }</td>
+			</tr>
+			<tr>
+				<td valign="middle"
+					style="text-align: center; padding: 40px; font-family: sans-serif; font-size: 20px; mso-height-rule: exactly; line-height: 30px; color: #ffffff;">
+					<strong>${event.eventDate }</strong>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="container form-goup jumbotron" align="center">
+		<div class="card-deck">
+			<div class="card">
+				<span class="feather-card" data-feather="search"></span>
+				<div class="card-body">
+					<h5 class="card-title"></h5>
+					<table class="table table-hover table-bordered table-light"
+						style="background-color: #EBE8F1">
+						<thread>
+						<tr>
+							<th scope="col">Event Information</th>
+							<th scope="col"></th>
+						</tr>
+						<tr>
+							<td>ID</td>
+							<td>${event.id}</td>
+						</tr>
+						<tr>
+							<td>Address</td>
+							<td>${event.location.address}</td>
+						</tr>
+						<tr>
+							<td>Address</td>
+							<td>${event.location.address2}</td>
+						</tr>
+						<tr>
+							<td>City</td>
+							<td>${event.location.city}</td>
+						</tr>
+						<tr>
+							<td>State</td>
+							<td>${event.location.state}</td>
+						</tr>
+						<tr>
+							<td>Zip Code</td>
+							<td>${event.location.zipCode}</td>
+						</tr>
+						<tr>
+							<td>Start Time</td>
+							<td>${event.startTime}</td>
+						</tr>
+						<tr>
+							<td>End Time</td>
+							<td>${event.endTime}</td>
+						</tr>
+						<tr>
+							<td>Number of People Need</td>
+							<td>${event.peopleNeeded}</td>
+						</tr>
+						<tr>
+							<td>Date Created</td>
+							<td>${event.dateCreated}</td>
+						</tr>
+						<tr>
+							<td>Point of Contact (POC)</td>
+							<td>${event.pointOfContact}</td>
+						</tr>
+						<tr>
+							<td>POC Phone</td>
+							<td>${event.pocPhone}</td>
+						</tr>
+						<tr>
+							<td>POC Email</td>
+							<td>${event.pocEmail}</td>
+						</tr>
+						<tr>
+							<td>Category</td>
+							<c:forEach var="cat" items="${event.categories}">
+								<td>${cat.name}</td>
+							</c:forEach>
+						</tr>
+						<tr>
+							<td>Photo Url</td>
+							<td>${event.photoUrl}</td>
+						</tr>
+
+						</thread>
+					</table>
+					<%-- 				<ul style="list-style: none">
+						<li>Event Id: ${event.id}</li>
+						<li>Date Created: ${event.dateCreated }</li>
+						<li>Event Name: ${event.eventName}</li>
+						<li>Address: ${event.location.address}</li>
+						<li>Address: ${event.location.address2}</li>
+						<li>City: ${event.location.city}</li>
+						<li>State: ${event.location.state}</li>
+						<li>Zip Code: ${event.location.zipCode}</li>
+						<li>Event Date: ${event.eventDate}</li>
+						<li>Start Time: ${event.startTime}</li>
+						<li>End Time: ${event.endTime}</li>
+						<li>People Needed: ${event.peopleNeeded}</li>
+						<li>Date Created: ${event.dateCreated}</li>
+						<li>Point of Contact: ${event.pointOfContact }</li>
+						<li>POC Phone: ${event.pocPhone}</li>
+						<li>POC Email: ${event.pocEmail }</li>
+						<li>Description: ${event.description }</li>
+						<c:forEach var="cat" items="${event.categories}">
+							<li>Category: ${cat.name}</li>
+						</c:forEach>
+						<li>${event.photoUrl}</li>
+					</ul>
+					<hr> --%>
+
+				</div>
+
+			</div>
+		</div>
+		<%-- <h3>
+				<strong><em>Event Details</em></strong>
+			</h3>
+			<ul style="list-style: none">
+				<li>Event Id: ${event.id}</li>
+				<li>Date Created: ${event.dateCreated }</li>
+				<li>Event Name: ${event.eventName}</li>
+				<li>Address: ${event.location.address}</li>
+				<li>Address: ${event.location.address2}</li>
+				<li>City: ${event.location.city}</li>
+				<li>State: ${event.location.state}</li>
+				<li>Zip Code: ${event.location.zipCode}</li>
+				<li>Event Date: ${event.eventDate}</li>
+				<li>Start Time: ${event.startTime}</li>
+				<li>End Time: ${event.endTime}</li>
+				<li>People Needed: ${event.peopleNeeded}</li>
+				<li>Date Created: ${event.dateCreated}</li>
+				<li>Point of Contact: ${event.pointOfContact }</li>
+				<li>POC Phone: ${event.pocPhone}</li>
+				<li>POC Email: ${event.pocEmail }</li>
+				<li>Description: ${event.description }</li>
+				<c:forEach var="cat" items="${event.categories}">
+					<li>Category: ${cat.name}</li>
+				</c:forEach>
+				<li>${event.photoUrl}</li>
+			</ul>
+			<hr>
+ --%>
 		<br>
 		<c:choose>
 			<c:when test="${not empty newUser}">
@@ -54,12 +183,12 @@
 							<form:label path="id" value="${event.id}"></form:label>
 							<form:hidden path="id" value="${event.id}" />
 							<form:errors path="id" value="${event.id}" />
-							<input type="submit" value="Update" />
+							<input type="submit" value="Update" class="btn btn-primary" />
 							<br />
 						</form:form>
-						<!-- <div></div> -->
-						<!-- Modal Testing Begin -->
+						<!--  -->
 						<!-- Button trigger modal -->
+						<hr>
 						<button type="button" class="btn btn-danger" data-toggle="modal"
 							data-target="#deleteEvent">Delete Event</button>
 
@@ -116,7 +245,7 @@
 									<form:label path="id" value="${event.id}"></form:label>
 									<form:hidden path="id" value="${event.id}" />
 									<form:errors path="id" value="${event.id}" />
-									<input type="submit" value="Sign Up" />
+									<input type="submit" value="Sign Up" class="btn btn-primary" />
 									<br />
 								</form:form>
 							</c:otherwise>

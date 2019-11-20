@@ -118,6 +118,24 @@ public class UserController {
 		model.addAttribute("oops", "Looks like something went wrong when signing up for this event, please try again later.");
 		return "fail";
 	}
+	
+	@RequestMapping(path="signUpForOrg.do", method = RequestMethod.GET)
+	public String signUpForOrg(Model model, HttpSession session, @RequestParam("oId") int orgId) {
+		User user = (User) session.getAttribute("newUser");
+		Organization org = orgDAO.findById(orgId);
+		boolean success = dao.signedUpForOrg(org, user);
+		if(success) {
+			user = dao.getUserById(user.getId());
+			session.removeAttribute("newUser");
+			session.setAttribute("newUser", user);
+			org = orgDAO.findById(orgId);
+			model.addAttribute("org", org);
+			return "orgs/orgProfile";
+		}
+		model.addAttribute("oops", "Looks like something went wrong when signing up for this organization, please try again later.");
+		return "fail";
+	}
+	
 	@RequestMapping(path = "findUserById.do", method = RequestMethod.GET)
 	public String diplayUser(int id, Model model) {
 		if (dao.getUserById(id) == null) {
