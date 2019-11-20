@@ -118,7 +118,7 @@
 		</c:if>
 	</c:forEach>
 	<c:choose>
-		<c:when test="isSignedUp == false">
+		<c:when test="${isSignedUp == false}">
 			<a class="nav-link" href="signUpForOrg.do?oId=${org.id}">
                   <span data-feather="plus-square"></span>
                   Sign Up
