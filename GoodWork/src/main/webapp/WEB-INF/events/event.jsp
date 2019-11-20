@@ -63,7 +63,7 @@
 						</tr>
 						<tr>
 							<td>City</td>
-							<td>$${event.location.city}</td>
+							<td>${event.location.city}</td>
 						</tr>
 						<tr>
 							<td>State</td>
