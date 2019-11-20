@@ -44,12 +44,6 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="disableOrg.do">
-                  <span data-feather="edit-2"></span>
-                  Delete Organization
-                </a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" href="#recent-activity">
                   <span data-feather="database"></span>
                   Message Board
@@ -135,44 +129,7 @@
        </c:otherwise>
      </c:choose>
      
-     						<!-- Button trigger modal -->
-						<hr>
-						<button type="button" class="btn btn-danger" data-toggle="modal"
-							data-target="#deleteOrg">Delete Organization</button>
-
-						<!-- Modal -->
-						<div class="modal fade" id="deleteOrg" tabindex="-1"
-							role="dialog" aria-labelledby="deleteOrgLabel"
-							aria-hidden="true">
-							<div class="modal-dialog" role="document">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="deleteOrgLabel">Delete
-											Confirmation</h5>
-										<button type="button" class="close" data-dismiss="modal"
-											aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body">
-										<strong>Are you sure that you'd like to delete the
-											selected Organization?</strong>
-									</div>
-
-									<div class="modal-footer">
-										<form action="disableOrg.do" method="POST">
-											<input type="hidden" value="${org.id}" name="id">
-											<button class="btn btn-danger" type="submit">Delete
-												Event</button>
-										</form>
-										<button type="button" class="btn btn-secondary"
-											data-dismiss="modal">Close</button>
-										<!-- <button type="button" class="btn btn-primary">Save
-									changes</button>  -->
-									</div>
-								</div>
-							</div>
-						</div>
+     				
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
