@@ -75,13 +75,6 @@
                   Reviews
                 </a>
               </li>
-       <form:form action="updateUserForm.do" method="GET"
-		modelAttribute="userProfile">
-		<form:label path="id" value="${sessionScope.newUser.id}"></form:label>
-		<form:hidden path="id" value="${sessionScope.newUser.id}" />
-		<form:errors path="id" value="${sessionScope.newUser.id}" />
-		<input type="submit" value="Update Profile" style="color: BLUE;" />
-	</form:form>
               <li class="nav-item">
                 <a class="nav-link" href="updateUserForm.do">
                   <span data-feather="settings"></span>

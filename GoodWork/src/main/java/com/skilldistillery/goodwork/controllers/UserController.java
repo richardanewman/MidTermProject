@@ -148,11 +148,7 @@ public class UserController {
 		return "fail";
 	}
 	
-	@RequestMapping(path="goToUnRegisterEvent.do", method = RequestMethod.GET)
-	public String unRegisterEvent(Event event, HttpSession session, Model model) {
-		User user = (User) session.getAttribute("newUser");
-		boolean success = dao.unRegisterFromEvent
-	}
+	
 	
 	@RequestMapping(path = "findUserById.do", method = RequestMethod.GET)
 	public String diplayUser(int id, Model model) {
