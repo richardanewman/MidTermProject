@@ -22,7 +22,7 @@
 			<ul class="fa-ul mb-4 ml-0">
 				<li id="mail-address">
 					<!--               Replace with your email address --> <i
-					class="fas fa-envelope-open mr-2 contact-icons"></i><a>goodworkinfo@mail.com</a>
+					class="fas fa-envelope-open mr-2 contact-icons"></i><a>jerryrogersfield@gmail.com</a>
 				</li>
 				<li><i class="fas fa-mobile-alt mr-2 contact-icons"></i>(303)
 					555-1212</li>
@@ -34,7 +34,7 @@
 				soon as possible.</p>
 
 			<form class="contact-form d-flex flex-column align-items-center"
-				action="https://formspree.io/goodworkinfo@mail.com"
+				action="https://formspree.io/jerryrogersfield@gmail.com"
 				method="POST">
 				<div class="form-group w-75">
 					<input type="name" class="form-control" placeholder="Name"
