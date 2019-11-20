@@ -162,14 +162,12 @@
 					value="${event.photoUrl }" class="form-control" name="photoUrl" /><br>
 				<br>
 
-				<button type="submit" class="btn btn-primary">Submit</button>
+				<button type="submit" class="btn btn-primary">Update</button>
 			</form>
 		</div>
 	</div>
 
 	<!-- Modal Testing End -->
-
-
 
 	<hr>
 	<footer class="text-center">
