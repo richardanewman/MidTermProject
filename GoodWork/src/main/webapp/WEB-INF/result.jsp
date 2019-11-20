@@ -14,38 +14,35 @@
 <%@include file="/WEB-INF/nav.jsp"%>
 </head>
 <body>
-	<!-- <div class="container jumbotron" align="center"> -->
-	<div class="displayResults">
-		<c:if test="${! empty displayAll}">
-			<h1>All Organizations:</h1>
-			<c:forEach items="${displayAll}" var="org">
-				<a href="findOrgById.do?id=${org.id}">${org.orgName}</a>
-				<br>
-				<br>
-${org.orgDescription}<br>
-				<br>
-${org.location.address}<br>
-				<br>
-${org.location.city}<br>
-				<br>
-${org.location.state}<br>
-				<br>
-${org.orgType}<br>
-				<br>
-${org.orgNum}<br>
-				<br>
-${org.logoURL}<br>
-				<br>
-${org.website}<br>
-				<br>
-			</c:forEach>
-		</c:if>
-	</div>
-	<!-- </div> -->
-
-	<!-- ////////// -->
-
 	<div class="container jumbotron" align="center">
+		<div class="displayResults">
+			<c:if test="${! empty displayAll}">
+				<h1>All Organizations:</h1>
+				<c:forEach items="${displayAll}" var="org">
+					<a href="findOrgById.do?id=${org.id}">${org.orgName}</a>
+					<br>
+					<br>
+${org.orgDescription}<br>
+					<br>
+${org.location.address}<br>
+					<br>
+${org.location.city}<br>
+					<br>
+${org.location.state}<br>
+					<br>
+${org.orgType}<br>
+					<br>
+${org.orgNum}<br>
+					<br>
+${org.logoURL}<br>
+					<br>
+${org.website}<br>
+					<br>
+				</c:forEach>
+			</c:if>
+		</div>
+		<!-- ////////// -->
+
 		<c:if test="${! empty org}">
 			<h1>Found it!</h1>
 ${org.orgName}<br>
@@ -66,11 +63,9 @@ ${org.website}<br>
 			<br>
 		</c:if>
 		<br>
-	</div>
 
-	<!-- ////////// -->
+		<!-- ////////// -->
 
-	<div class="container jumbotron" align="center">
 		<c:if test="${! empty users}">
 			<h1>All Users:</h1>
 			<c:forEach items="${users}" var="user">
@@ -82,11 +77,9 @@ ${user.userName}<br>
 				<br>
 			</c:forEach>
 		</c:if>
-	</div>
 
-	<!-- ////////// -->
+		<!-- ////////// -->
 
-	<div class="container jumbotron" align="center">
 		<c:if test="${! empty user}">
 			<h1>Found it!</h1>
 ${user.firstName}<br>
@@ -97,10 +90,10 @@ ${user.userName}<br>
 			<br>
 		</c:if>
 		<br>
-	</div>
-	<!-- ////////// -->
 
-	<div class="container jumbotron" align="center">
+		<!-- ////////// -->
+
+
 		<c:if test="${! empty events}">
 			<h1>All Events:</h1>
 			<c:forEach items="${events}" var="event">
@@ -118,11 +111,10 @@ ${event.peopleNeeded}<br>
 				<br>
 			</c:forEach>
 		</c:if>
-	</div>
 
-	<!-- ////////// -->
 
-	<div class="container jumbotron" align="center">
+		<!-- ////////// -->
+
 		<c:if test="${! empty event}">
 			<h1>Found it!</h1>
 ${event.eventName}<br>
@@ -139,11 +131,11 @@ ${event.peopleNeeded}<br>
 			<br>
 		</c:if>
 		<br>
-	</div>
 
-	<!-- ////////// -->
 
-	<div class="container jumbotron" align="center">
+		<!-- ////////// -->
+
+
 		<c:if test="${! empty eventByCat}">
 			<h1>All Events By Category:</h1>
 			<c:forEach items="${eventByCat}" var="event">
@@ -161,11 +153,11 @@ ${event.peopleNeeded}<br>
 				<br>
 			</c:forEach>
 		</c:if>
-	</div>
 
-	<!-- ////////// -->
 
-	<div class="container jumbotron" align="center">
+		<!-- ////////// -->
+
+
 		<c:if test="${! empty eventByCat}">
 			<h1>Found it!</h1>
 ${event.eventName}<br>
@@ -182,20 +174,20 @@ ${event.peopleNeeded}<br>
 			<br>
 		</c:if>
 		<br>
-	</div>
 
-	<!-- /////Org Delete///// -->
 
-	<div class="container jumbotron" align="center">
+		<!-- /////Org Delete///// -->
+
+
 		<c:if test="${! empty successfulDelete}">
 			<h1>Success!</h1>
 			<h3>${successfulDelete}</h3>
 		</c:if>
+
+
+		<!-- ////////// -->
+
 	</div>
-
-	<!-- ////////// -->
-
-
 	<hr>
 	<footer class="text-center">
 		<div class="container">
