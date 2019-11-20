@@ -73,7 +73,6 @@
             </ul>
           </div>
         </nav>
-
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
             <h4 class="h2">${org.orgName} Dashboard</h4>    
@@ -200,7 +199,23 @@ ${userData.lastName}
         </main>
       </div>
     </div>
-
+	<c:set var="isSignedUp" value="false" />
+	<c:forEach var="orgUser" items="${org.users}">
+		<c:if test="${orgUser.id == sessionScope.newUser.id}">
+			<c:set var="isSignedUp" value="true" />
+		</c:if>
+	</c:forEach>
+	<c:choose>
+		<c:when test="isSignedUp == false">
+			<a class="nav-link" href="signUpForOrg.do?oId=${org.id}">
+                  <span data-feather="plus-square"></span>
+                  Sign Up
+       		</a>
+       </c:when>
+       <c:otherwise>
+       		<p>Good job! Your already signed up!</p>
+       </c:otherwise>
+     </c:choose>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
