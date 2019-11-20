@@ -140,5 +140,10 @@ public class UserDAOImpl implements UserDAO {
 		}
 		return false;
 	}
+	
+	public UserEvent getUserEvent(UserEventId ueId) {
+		UserEvent ue = em.find(UserEvent.class, ueId);
+		return ue;
+	}
 
 }
