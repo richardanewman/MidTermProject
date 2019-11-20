@@ -17,7 +17,7 @@
       <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
           <div class="sidebar-sticky">
-          <img src="css/img_avatar.png" alt="Avatar" class="avatar">
+          <img src="${newUser.photoURL}" alt="Avatar" class="avatar">
             <ul class="nav flex-column">
               <li class="nav-item">
                 <a class="nav-link active" href="#">
@@ -94,10 +94,37 @@
     <div class="card-body">
       <div class="displayResults">
 		<c:if test="${! empty newUser}">
-      <h5 class="card-title">Organization Members</h5>
+      <h5 class="card-title">My Organizations</h5>
 			<c:forEach items="${newUser.orgs}" var="org">
 			<a href="findOrgById.do?id=${org.id}">${org.orgName}</a><br>
+			</c:forEach>
+		</c:if>
+</div>
 
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-body">
+      <div class="displayResults">
+		<c:if test="${! empty newUser}">
+      <h5 class="card-title">Hosted Events</h5>
+			<c:forEach items="${newUser.hostedEvents}" var="hosted">
+			<a href="getEvent.do?id=${hosted.id}">${hosted.eventName}</a><br>
+			</c:forEach>
+		</c:if>
+</div>
+
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-body">
+      <div class="displayResults">
+		<c:if test="${! empty newUser}">
+      <h5 class="card-title">Attended Events</h5>
+			<c:forEach items="${newUser.attendedEvents}" var="org">
+			<a href="findOrgById.do?id=${attendedEvents.id}">${attendedEvents.event}</a><br>
 			</c:forEach>
 		</c:if>
 </div>

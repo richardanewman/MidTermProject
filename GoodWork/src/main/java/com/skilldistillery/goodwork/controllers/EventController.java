@@ -16,7 +16,6 @@ import com.skilldistillery.goodwork.data.EventDAO;
 import com.skilldistillery.goodwork.data.UserDAO;
 import com.skilldistillery.goodwork.entities.Category;
 import com.skilldistillery.goodwork.entities.Event;
-import com.skilldistillery.goodwork.entities.Location;
 import com.skilldistillery.goodwork.entities.User;
 
 @Controller
@@ -65,16 +64,16 @@ public class EventController {
 
 	@RequestMapping(path = "createEvent.do", method = RequestMethod.POST)
 	public String addEvent(Event event, Model model, HttpSession session, @RequestParam("name") String cat) {
-		System.out.println(event);
-		Category category = eventDAO.findCategoryByName(cat);
-		// session code for create event
-		User newUser = (User) session.getAttribute("newUser");
-		model.addAttribute("event", eventDAO.addEvent(event, newUser, category));
-		newUser = userDAO.getUserById(newUser.getId());
-		session.removeAttribute("newUser");
-		session.setAttribute("newUser", newUser);
-
-		return "result";
+		if(session.getAttribute("newUser") != null) {
+			Category category = eventDAO.findCategoryByName(cat);
+			User newUser = (User) session.getAttribute("newUser");
+			model.addAttribute("event", eventDAO.addEvent(event, newUser, category));
+			newUser = userDAO.getUserById(newUser.getId());
+			session.removeAttribute("newUser");
+			session.setAttribute("newUser", newUser);
+			return "event";
+		}
+		return "index";
 	}
 
 	@RequestMapping(path = "createEventForm.do", method = RequestMethod.GET)
