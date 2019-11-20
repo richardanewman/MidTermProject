@@ -10,9 +10,10 @@
 <%@include file="/WEB-INF/nav.jsp"%>
 </head>
 <body>
+${userData.firstName}
 	${sessionScope.newUser}
 	<h5 class="card-title">Delete Your Profile</h5>
-	<form:form action="disableUser.do" method="POST" modelAttribute="user">
+	 <form:form action="disableUser.do" method="POST" modelAttribute="user">
 		<form:label path="id" value="${sessionScope.newUser.id}"></form:label>
 		<br>
 		<form:hidden path="id" value="${sessionScope.newUser.id}" />
