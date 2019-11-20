@@ -17,8 +17,8 @@
 
 	<br>
 	<div>
-		<table class="container" align="center" bgcolor="#57964" border="0"
-			cellpadding="0" cellspacing="0" width="100%">
+		<table class="container rounded" align="center" bgcolor="#9644E8"
+			border="0" cellpadding="0" cellspacing="0" width="100%">
 			<tr>
 				<td valign="middle"
 					style="text-align: center; padding: 40px; font-family: sans-serif; font-size: 35px; mso-height-rule: exactly; line-height: 40px; color: #ffffff;">
@@ -43,7 +43,8 @@
 				<span class="feather-card" data-feather="search"></span>
 				<div class="card-body">
 					<h5 class="card-title"></h5>
-					<table class="table table-hover table-bordered table-light">
+					<table class="table table-hover table-bordered table-light"
+						style="background-color: #EBE8F1">
 						<thread>
 						<tr>
 							<th scope="col">Event Information</th>
@@ -181,7 +182,7 @@
 							<form:label path="id" value="${event.id}"></form:label>
 							<form:hidden path="id" value="${event.id}" />
 							<form:errors path="id" value="${event.id}" />
-							<input type="submit" value="Update" class="btn btn-primary"/>
+							<input type="submit" value="Update" class="btn btn-primary" />
 							<br />
 						</form:form>
 						<!--  -->
@@ -243,7 +244,7 @@
 									<form:label path="id" value="${event.id}"></form:label>
 									<form:hidden path="id" value="${event.id}" />
 									<form:errors path="id" value="${event.id}" />
-									<input type="submit" value="Sign Up" class="btn btn-primary"/>
+									<input type="submit" value="Sign Up" class="btn btn-primary" />
 									<br />
 								</form:form>
 							</c:otherwise>
