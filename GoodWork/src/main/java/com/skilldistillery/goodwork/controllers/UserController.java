@@ -56,7 +56,7 @@ public class UserController {
 			return "fail";
 		}
 		session.setAttribute("newUser", dao.updateUser(user));
-		model.addAttribute("userProfile", new User());
+		model.addAttribute("userProfile", upUser);
 		return "userJSP/profile";
 	}
 	
@@ -151,7 +151,16 @@ public class UserController {
 	@RequestMapping(path="goToUnRegisterEvent.do", method = RequestMethod.GET)
 	public String unRegisterEvent(Event event, HttpSession session, Model model) {
 		User user = (User) session.getAttribute("newUser");
-		boolean success = dao.unRegisterFromEvent
+		boolean success = dao.unRegisterFromEvent(user, event);
+		if(success) {
+			user = dao.getUserById(user.getId());
+			session.removeAttribute("newUser");
+			session.setAttribute("newUser", user);
+			model.addAttribute("userProfile", user);
+			return "userJSP/profile";
+		}
+		model.addAttribute("oops", "Looks like something went wrong when un-registering from this event, please try again");
+		return "fail";
 	}
 	
 	@RequestMapping(path = "findUserById.do", method = RequestMethod.GET)

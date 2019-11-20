@@ -238,7 +238,7 @@
 						<c:choose>
 							<c:when test="${isSignedUp == true}">
 								<a href="http://localhost:8090/">Already signed up</a>
-								<form:form action="goToUnRegister.do" method="GET" modelAttribute="event">
+								<form:form action="goToUnRegisterEvent.do" method="GET" modelAttribute="event">
 									<form:label path="id" value="${event.id}"></form:label>
 									<form:hidden path="id" value="${event.id}" />
 									<form:errors path="id" value="${event.id}" />
