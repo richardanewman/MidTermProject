@@ -16,9 +16,12 @@ import com.skilldistillery.goodwork.data.AuthDAO;
 import com.skilldistillery.goodwork.data.EventDAO;
 import com.skilldistillery.goodwork.data.OrgDAO;
 import com.skilldistillery.goodwork.data.UserDAO;
+import com.skilldistillery.goodwork.data.UserEventDAO;
 import com.skilldistillery.goodwork.entities.Event;
 import com.skilldistillery.goodwork.entities.Organization;
 import com.skilldistillery.goodwork.entities.User;
+import com.skilldistillery.goodwork.entities.UserEvent;
+import com.skilldistillery.goodwork.entities.UserEventId;
 
 @Controller
 public class UserController {
@@ -31,6 +34,8 @@ public class UserController {
 	private OrgDAO orgDAO;
 	@Autowired
 	private EventDAO eventDAO;
+	@Autowired
+	private UserEventDAO ueDAO;
 	
 	@RequestMapping(path="updateUserForm.do", method = RequestMethod.GET)
 	public String updateUserGet(Model model, HttpSession session) {
@@ -109,10 +114,17 @@ public class UserController {
 		User user = (User) session.getAttribute("newUser");
 		boolean success = dao.signedUpForEvent(event, user);
 		if(success) {
+			UserEventId ueId = new UserEventId(user.getId(), event.getId());
+			UserEvent ue = dao.getUserEvent(ueId);
+			
+			ue.getEvent().getUsers().size();
+			ue.getEvent().getCategories().size();
+			ue.getEvent().getMessBoards().size();
+			
 			user = dao.getUserById(user.getId());
 			session.removeAttribute("newUser");
 			session.setAttribute("newUser", user);
-			model.addAttribute("user", new User());
+			model.addAttribute("userProfile", user);
 			return "userJSP/profile";
 		}
 		model.addAttribute("oops", "Looks like something went wrong when signing up for this event, please try again later.");
