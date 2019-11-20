@@ -13,29 +13,33 @@
 </head>
 <body>
 
-
-
-	<section class="resume-section p-4 p-lg-5 text-center" id="contact">
+	<section class="resume-section p-4 p-lg-5 text-center jumbotron"
+		id="contact">
 		<div class="my-auto">
-			<h2 class="mb-4">Contact Information</h2>
+			<h2 class="mb-4">Hey You...</h2>
+			<h4 class="mb-4">
+				<strong><a
+					href="mailto:goodWorkDenver@gmail.com?subject=Hello goodWork Denver">goodWork</a></strong>
+				looks forward to hearing from you!
+			</h4>
 
 			<ul class="fa-ul mb-4 ml-0">
 				<li id="mail-address">
 					<!--               Replace with your email address --> <i
-					class="fas fa-envelope-open mr-2 contact-icons"></i><a>jerryrogersfield@gmail.com</a>
+					class="fas fa-envelope-open mr-2 contact-icons"></i><a
+					href="mailto:goodWorkDenver@gmail.com?subject=Hello goodWork Denver">goodWorkDenver@gmail.com</a>
 				</li>
 				<li><i class="fas fa-mobile-alt mr-2 contact-icons"></i>(303)
-					555-1212</li>
+					302-5234</li>
 				<li><i class="fas fa-map-marker-alt mr-2 contact-icons"></i>Denver,
 					CO</li>
 			</ul>
 
-			<p>...or leave your message below and I will be back to you as
-				soon as possible.</p>
+			<p>...or leave your message below and a member of our team will
+				be back to you as soon as possible.</p>
 
 			<form class="contact-form d-flex flex-column align-items-center"
-				action="https://formspree.io/jerryrogersfield@gmail.com"
-				method="POST">
+				action="https://formspree.io/goodWorkDenver@gmail.com" method="POST">
 				<div class="form-group w-75">
 					<input type="name" class="form-control" placeholder="Name"
 						name="name" required />
@@ -55,7 +59,15 @@
 		</div>
 	</section>
 
-
+	<footer class="text-center">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<p>Copyright © FluffyCarnage. All rights reserved.</p>
+				</div>
+			</div>
+		</div>
+	</footer>
 	<!-- bootstrap script -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
