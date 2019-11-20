@@ -48,7 +48,7 @@
 	</c:when>
 	<c:otherwise>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light nav-bottom">
-			<a class="navbar-brand" href="/">goodWork</a>
+			<a class="navbar-brand" href="/"><strong>goodWork</strong></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarSupportedContent"
 				aria-controls="navbarSupportedContent" aria-expanded="false"

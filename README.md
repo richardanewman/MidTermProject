@@ -1,5 +1,5 @@
-### goodWork
-
+# goodWork
+![Image description](GoodWork/src/main/webapp/css/volunteer.png)
 (link to site)
 
 ## Mid-term Team Project for Skill Distillery
@@ -8,7 +8,7 @@ Team Members and Roles:
 
 * David Norris (Developer, Scrum Master)
 * Jerry Rogers (Developer, Software Maintainer)
-* Richard Newman (Developer, DBA)
+* Richard Newman (Developer, Database Administrator)
 
 ### Overview
 

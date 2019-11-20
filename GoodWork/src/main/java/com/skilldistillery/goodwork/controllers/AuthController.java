@@ -32,7 +32,7 @@ public class AuthController {
 	public String loginUser(User user, Model model, HttpSession session) {
 		User userLog = dao.loginUser(user.getUserName(), user.getPassword());
 		if (userLog == null) {
-			model.addAttribute("oops", "Invalid Username or Password, please try again");
+			model.addAttribute("oops", "Invalid Username or Password, please try again or register.");
 			return "fail";
 //			return "authJSP/loginForm";
 		}
