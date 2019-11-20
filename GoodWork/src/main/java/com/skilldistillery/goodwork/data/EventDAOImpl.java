@@ -107,7 +107,7 @@ public class EventDAOImpl implements EventDAO {
 
 	@Override
 	public List<Event> findByCategory(String keyword) {
-		String sql = "select events from Event events where events.category like :keyword";
+		String sql = "SELECT events FROM Event events WHERE events.category like :keyword";
 		List<Event> catSearch = em.createQuery(sql, Event.class).setParameter("keyword", "%" + keyword + "%")
 				.getResultList();
 		return catSearch;
