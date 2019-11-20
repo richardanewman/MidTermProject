@@ -34,9 +34,10 @@
                 </a>
               </li>
               <li class="nav-item">
-                  <span data-feather="activity"></span>
-                    ${userProfile.bio}
-                </a>
+                    ${userProfile.bio}<br><br>
+             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+              <span>Command Deck</span>
+            </h6>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="displayAll.do">
@@ -58,19 +59,10 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#recent-activity">
-                  <span data-feather="database"></span>
+                  <span data-feather="message-circle"></span>
                   Message Board
                 </a>
               </li>
-            </ul>
-
-            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-              <span>Past Events</span>
-              <a class="d-flex align-items-center text-muted" href="#">
-                <span data-feather="plus-circle"></span>
-              </a>
-            </h6>
-            <ul class="nav flex-column mb-2">
               <li class="nav-item">
                 <a class="nav-link" href="#">
                   <span data-feather="file-text"></span>
@@ -81,6 +73,19 @@
                 <a class="nav-link" href="#">
                   <span data-feather="file-text"></span>
                   Reviews
+                </a>
+              </li>
+       <form:form action="updateUserForm.do" method="GET"
+		modelAttribute="userProfile">
+		<form:label path="id" value="${sessionScope.newUser.id}"></form:label>
+		<form:hidden path="id" value="${sessionScope.newUser.id}" />
+		<form:errors path="id" value="${sessionScope.newUser.id}" />
+		<input type="submit" value="Update Profile" style="color: BLUE;" />
+	</form:form>
+              <li class="nav-item">
+                <a class="nav-link" href="updateUserForm.do">
+                  <span data-feather="settings"></span>
+                    Edit Profile
                 </a>
               </li>
             </ul>
@@ -112,7 +117,6 @@
   </div> 
 <!-- Begin Card Deck -->
 <div class="card-deck">
-
   <div class="card">
     <div class="card-body">
       <div class="displayResults">
@@ -151,32 +155,13 @@
 		</div>
  	</div>
 </div>
+</div>
 </main>
   </div>
     </div>
-	<h5 class="card-title">Delete Your Profile</h5>
-	 <form:form action="disableUser.do" method="POST" modelAttribute="userProfile">
-		<form:label path="id" value="${sessionScope.newUser.id}"></form:label>
-		<br>
-		<form:hidden path="id" value="${sessionScope.newUser.id}" />
-		<form:errors path="id" value="${sessionScope.newUser.id}" />
-		<br />
-		<form:label path="password" value="Enter Password">Password:</form:label>
-		<br>
-		<form:input class="input" path="password" value="Enter Password"
-			required="required" type="text" placeholder="Enter Password" />
-		<form:errors path="password" value="Enter Password" />
-		<input type="submit" value="Delete Profile" />
-		<br />
-	</form:form>
+	
 
-	<form:form action="updateUserForm.do" method="GET"
-		modelAttribute="userProfile">
-		<form:label path="id" value="${sessionScope.newUser.id}"></form:label>
-		<form:hidden path="id" value="${sessionScope.newUser.id}" />
-		<form:errors path="id" value="${sessionScope.newUser.id}" />
-		<input type="submit" value="Update Profile" style="color: BLUE;" />
-	</form:form>
+	
 	<h1>Organizations</h1>
 	<c:forEach var="org" items="${sessionScope.newUser.orgs}">
 		<h3>${org.orgName}</h3><br>
