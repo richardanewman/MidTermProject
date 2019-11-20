@@ -122,6 +122,46 @@ ${event.peopleNeeded}<br>
 ${successfulDelete}
 </c:if>
 
+		<c:if test="${! empty eventByCat}">
+			<h1>All Events By Category:</h1>
+			<c:forEach items="${eventByCat}" var="event">
+${event.eventName}<br>
+				<br>
+${event.description}<br>
+				<br>
+${event.eventDate}<br>
+				<br>
+${event.startTime}<br>
+				<br>
+${event.endTime}<br>
+				<br>
+${event.peopleNeeded}<br>
+				<br>
+			</c:forEach>
+		</c:if>
+
+
+		<c:if test="${! empty eventByCat}">
+			<h1>Found it!</h1>
+${event.eventName}<br>
+			<br>
+${event.description}<br>
+			<br>
+${event.eventDate}<br>
+			<br>
+${event.startTime}<br>
+			<br>
+${event.endTime}<br>
+			<br>
+${event.peopleNeeded}<br>
+			<br>
+		</c:if>
+		<br>
+		<c:if test="${! empty successfulDelete}">
+			<h1>Success!</h1>
+${successfulDelete}
+</c:if>
+
 		<hr>
 		<footer class="text-center">
 			<div class="container">
