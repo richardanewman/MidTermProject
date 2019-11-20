@@ -27,12 +27,12 @@ public class UserEvent {
 	@Column(name = "review_description")
 	private String review;
 	
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@ManyToOne(cascade = {CascadeType.PERSIST})
 	@JoinColumn(name = "user_id")
 	@MapsId(value = "userId")
 	private User user;
 	
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@ManyToOne(cascade = {CascadeType.PERSIST})
 	@JoinColumn(name = "event_id")
 	@MapsId(value = "eventId")
 	private Event event;

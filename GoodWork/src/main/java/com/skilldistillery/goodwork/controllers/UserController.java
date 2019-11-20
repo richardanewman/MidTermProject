@@ -40,7 +40,7 @@ public class UserController {
 	@RequestMapping(path="updateUserForm.do", method = RequestMethod.GET)
 	public String updateUserGet(Model model, HttpSession session) {
 		User old = (User) session.getAttribute("newUser");
-		model.addAttribute("user", old);
+		model.addAttribute("userProfile", old);
 		return "userJSP/updateUserForm";
 	}
 	
@@ -56,7 +56,7 @@ public class UserController {
 			return "fail";
 		}
 		session.setAttribute("newUser", dao.updateUser(user));
-		model.addAttribute("user", new User());
+		model.addAttribute("userProfile", new User());
 		return "userJSP/profile";
 	}
 	
@@ -146,6 +146,12 @@ public class UserController {
 		}
 		model.addAttribute("oops", "Looks like something went wrong when signing up for this organization, please try again later.");
 		return "fail";
+	}
+	
+	@RequestMapping(path="goToUnRegisterEvent.do", method = RequestMethod.GET)
+	public String unRegisterEvent(Event event, HttpSession session, Model model) {
+		User user = (User) session.getAttribute("newUser");
+		boolean success = dao.unRegisterFromEvent
 	}
 	
 	@RequestMapping(path = "findUserById.do", method = RequestMethod.GET)
