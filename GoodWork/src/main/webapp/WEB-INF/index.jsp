@@ -41,8 +41,7 @@
 			<span class="feather-card" data-feather="hash"></span>
 			<div class="card-body">
 				<h5 class="card-title">Search Organizations By Keyword</h5>
-				<p class="card-text">Search organization names and descriptions
-					by keyword.</p>
+				<p class="card-text">Search organizations by name or description.</p>
 				<form action="searchOrgs.do" method="GET">
 					<input class="form-control" type="text" required="required"
 						name="keyword" placeholder="Enter A Keyword" /> <input
