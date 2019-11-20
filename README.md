@@ -8,7 +8,7 @@ Team Members and Roles:
 
 * David Norris (Developer, Scrum Master)
 * Jerry Rogers (Developer, Software Maintainer)
-* Richard Newman (Developer, DBA)
+* Richard Newman (Developer, Database Administrator)
 
 ### Overview
 
