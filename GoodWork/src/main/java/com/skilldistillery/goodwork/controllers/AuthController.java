@@ -21,7 +21,8 @@ public class AuthController {
 	@RequestMapping(path = "login.do", method = RequestMethod.GET)
 	public String loginForm(Model model, HttpSession session) {
 		if (session.getAttribute("newUser") != null) {
-			model.addAttribute("user", new User());
+			model.addAttribute("userProfile", (User) session.getAttribute("newUser"));
+			
 			return "userJSP/profile";
 		}
 		model.addAttribute("user", new User());
@@ -35,7 +36,7 @@ public class AuthController {
 			model.addAttribute("oops", "Invalid Username or Password, please try again or register.");
 			return "fail";
 		}
-		model.addAttribute("user", new User());
+		model.addAttribute("userProfile", userLog);
 		session.setAttribute("newUser", userLog);
 		return "userJSP/profile";
 	}

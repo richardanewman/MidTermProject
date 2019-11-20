@@ -13,16 +13,29 @@
 <title>goodWork Dashboard</title>
 </head>
 <body>
-<div class="container-fluid">
+<c:choose>
+
+
+<c:when test="${not empty newUser}">
+
+	<c:choose>
+	
+		<c:when test="${newUser.id == userProfile.id}">
+		<div class="container-fluid">
       <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
           <div class="sidebar-sticky">
-          <img src="${newUser.photoURL}" alt="Avatar" class="avatar">
+          <img src="${userProfile.photoURL}" alt="Avatar" class="avatar">
             <ul class="nav flex-column">
               <li class="nav-item">
                 <a class="nav-link active" href="#">
                   <span data-feather="home"></span>
-                  Dashboard <span class="sr-only">(current)</span>
+                   ${userProfile.firstName} ${userProfile.lastName} <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                  <span data-feather="activity"></span>
+                    ${userProfile.bio}
                 </a>
               </li>
               <li class="nav-item">
@@ -76,176 +89,71 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-            <h4 class="h2">${newUser.firstName}'s Dashboard</h4>    
-            <div class="btn-toolbar mb-2 mb-md-0">
-              <div class="btn-group mr-2">
-                <button class="btn btn-sm btn-outline-secondary">Share</button>
-                <button class="btn btn-sm btn-outline-secondary">Export</button>
-              </div>
-              <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                <span data-feather="calendar"></span>
-                This week
-              </button>
-            </div>
+            <h4 class="h2">${userProfile.firstName}'s Dashboard</h4>    
           </div>
+<div class="card">
+    <div class="card-body">
+      <div class="displayResults">
+		<c:if test="${! empty userProfile}">
+      <h5 class="card-title">My Hosted Events</h5>
+			<c:forEach items="${userProfile.hostedEvents}" var="hosted">
+			<a href="getEvent.do?id=${hosted.id}">${hosted.eventName}</a><br>
+			<p>People Needed: ${hosted.peopleNeeded}</p>
+			<strong>Volunteers Signed Up:</strong><br>
+			<c:forEach items="${hosted.users}" var="userEvent">
+			<a href="findUserById.do?id=${userEvent.user.id}">${userEvent.user.firstName} ${userEvent.user.lastName}</a><br>
+			
+			</c:forEach>
+			<hr>
+			</c:forEach>
+		</c:if>
+		</div>
+    </div>
+  </div> 
 <!-- Begin Card Deck -->
 <div class="card-deck">
+
   <div class="card">
     <div class="card-body">
       <div class="displayResults">
-		<c:if test="${! empty newUser}">
+		<c:if test="${! empty userProfile}">
       <h5 class="card-title">My Organizations</h5>
-			<c:forEach items="${newUser.orgs}" var="org">
+			<c:forEach items="${userProfile.orgs}" var="org">
 			<a href="findOrgById.do?id=${org.id}">${org.orgName}</a><br>
 			</c:forEach>
 		</c:if>
-</div>
-
+		</div>
     </div>
   </div>
-  
   <div class="card">
     <div class="card-body">
       <div class="displayResults">
-		<c:if test="${! empty newUser}">
-      <h5 class="card-title">Hosted Events</h5>
-			<c:forEach items="${newUser.hostedEvents}" var="hosted">
-			<a href="getEvent.do?id=${hosted.id}">${hosted.eventName}</a><br>
+		<c:if test="${! empty userProfile}">
+      <h5 class="card-title">My Events Joined</h5>
+			<c:forEach items="${userProfile.attendedEvents}" var="added">
+			<a href="getEvent.do?id=${added.event.id}">${added.event.eventName}</a><br>
 			</c:forEach>
 		</c:if>
+		</div>
+ 	</div>
 </div>
-
-    </div>
-  </div>
-  
   <div class="card">
     <div class="card-body">
       <div class="displayResults">
-		<c:if test="${! empty newUser}">
-      <h5 class="card-title">Attended Events</h5>
-			<c:forEach items="${newUser.attendedEvents}" var="org">
-			<a href="findOrgById.do?id=${attendedEvents.id}">${attendedEvents.event}</a><br>
+		<c:if test="${! empty userProfile}">
+      <h5 class="card-title">My Events Joined</h5>
+			<c:forEach items="${userProfile.attendedEvents}" var="added">
+			<a href="getEvent.do?id=${added.event.id}">${added.event.eventName}</a><br>
 			</c:forEach>
 		</c:if>
+		</div>
+ 	</div>
 </div>
-
-    </div>
+</main>
   </div>
-</div>
-<!-- End Card Deck -->
-<!-- Calendar -->
-
-<!-- End Calendar -->
-
-          <h2>Recent Activity</h2>
-          <div class="table-responsive">
-            <table class="table table-striped table-sm">
-              <thead>
-                <tr>
-                  <th>ID#</th>
-                  <th>Date</th>
-                  <th>Description</th>
-                  <th>Amount</th>
-                  <th>Balance</th>
-                </tr>
-              </thead>
-              <tbody id="recent-activity">
-                <tr>
-                  <td>${recent[0].id}</td>
-                  <td>${recent[0].txDate}</td>
-                  <td>${recent[0].description}</td>
-                  <td><fmt:formatNumber type="currency" value="${recent[0].amount}"/></td>
-                  <td><fmt:formatNumber type="currency" value="${recent[0].balance}"/></td>
-                </tr>
-                <tr>
-                  <td>${recent[1].id}</td>
-                  <td>${recent[1].txDate}</td>
-                  <td>${recent[1].description}</td>
-                  <td><fmt:formatNumber type="currency" value="${recent[1].amount}"/></td>
-                  <td><fmt:formatNumber type="currency" value="${recent[1].balance}"/></td>
-                </tr>
-                <tr>
-                  <td>${recent[2].id}</td>
-                  <td>${recent[2].txDate}</td>
-                  <td>${recent[2].description}</td>
-                  <td><fmt:formatNumber type="currency" value="${recent[2].amount}"/></td>
-                  <td><fmt:formatNumber type="currency" value="${recent[2].balance}"/></td>
-                </tr>
-                <tr>
-                  <td>${recent[3].id}</td>
-                  <td>${recent[3].txDate}</td>
-                  <td>${recent[3].description}</td>
-                  <td><fmt:formatNumber type="currency" value="${recent[3].amount}"/></td>
-                  <td><fmt:formatNumber type="currency" value="${recent[3].balance}"/></td>
-                </tr>
-                <tr>
-                  <td>${recent[4].id}</td>
-                  <td>${recent[4].txDate}</td>
-                  <td>${recent[4].description}</td>
-                  <td><fmt:formatNumber type="currency" value="${recent[4].amount}"/></td>
-                  <td><fmt:formatNumber type="currency" value="${recent[4].balance}"/></td>
-                </tr>
-                <tr>
-                  <td>${recent[5].id}</td>
-                  <td>${recent[5].txDate}</td>
-                  <td>${recent[5].description}</td>
-                  <td><fmt:formatNumber type="currency" value="${recent[5].amount}"/></td>
-                  <td><fmt:formatNumber type="currency" value="${recent[5].balance}"/></td>
-                </tr>
-                <tr>
-                  <td>${recent[6].id}</td>
-                  <td>${recent[6].txDate}</td>
-                  <td>${recent[6].description}</td>
-                  <td><fmt:formatNumber type="currency" value="${recent[6].amount}"/></td>
-                  <td><fmt:formatNumber type="currency" value="${recent[6].balance}"/></td>
-                </tr>
-                <tr>
-                  <td>${recent[7].id}</td>
-                  <td>${recent[7].txDate}</td>
-                  <td>${recent[7].description}</td>
-                  <td><fmt:formatNumber type="currency" value="${recent[7].amount}"/></td>
-                  <td><fmt:formatNumber type="currency" value="${recent[7].balance}"/></td>
-                </tr>
-                <tr>
-                  <td>${recent[8].id}</td>
-                  <td>${recent[8].txDate}</td>
-                  <td>${recent[8].description}</td>
-                  <td><fmt:formatNumber type="currency" value="${recent[8].amount}"/></td>
-                  <td><fmt:formatNumber type="currency" value="${recent[8].balance}"/></td>
-                </tr>
-                <tr>
-                  <td>${recent[9].id}</td>
-                  <td>${recent[9].txDate}</td>
-                  <td>${recent[9].description}</td>
-                  <td><fmt:formatNumber type="currency" value="${recent[9].amount}"/></td>
-                  <td><fmt:formatNumber type="currency" value="${recent[9].balance}"/></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </main>
-      </div>
     </div>
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-    <!-- Icons -->
-    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
-    <script>
-      feather.replace()
-    </script>
-    
-   <!--  LOGGED-IN USER -->
-
-${userData.firstName}
-	${sessionScope.newUser}
 	<h5 class="card-title">Delete Your Profile</h5>
-	 <form:form action="disableUser.do" method="POST" modelAttribute="user">
+	 <form:form action="disableUser.do" method="POST" modelAttribute="userProfile">
 		<form:label path="id" value="${sessionScope.newUser.id}"></form:label>
 		<br>
 		<form:hidden path="id" value="${sessionScope.newUser.id}" />
@@ -261,7 +169,7 @@ ${userData.firstName}
 	</form:form>
 
 	<form:form action="updateUserForm.do" method="GET"
-		modelAttribute="user">
+		modelAttribute="userProfile">
 		<form:label path="id" value="${sessionScope.newUser.id}"></form:label>
 		<form:hidden path="id" value="${sessionScope.newUser.id}" />
 		<form:errors path="id" value="${sessionScope.newUser.id}" />
@@ -309,6 +217,175 @@ ${userData.firstName}
 	<form action="logout.do" method="GET">
 		<input class="submit" type="submit" value="Logout" />
 	</form>
-	<!-- END LOGGED-IN USER -->
+		</c:when>
+		
+
+
+		
+		
+		
+<c:otherwise>
+			<div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+          <img src="${userProfile.photoURL}" alt="Avatar" class="avatar">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" href="#">
+                  <span data-feather="home"></span>
+                   ${userProfile.firstName} ${userProfile.lastName} <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                  <span data-feather="activity"></span>
+                   ${userProfile.bio}
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+            <h4 class="h2">${userProfile.firstName}'s Dashboard</h4>    
+          </div>
+<div class="card">
+    <div class="card-body">
+      <div class="displayResults">
+		<c:if test="${! empty userProfile}">
+      <h5 class="card-title">${userProfile.firstName}'s Hosted Events</h5>
+			<c:forEach items="${userProfile.hostedEvents}" var="hosted">
+			<a href="getEvent.do?id=${hosted.id}">${hosted.eventName}</a><br>
+			<p>People Needed: ${hosted.peopleNeeded}</p>
+			<strong>Volunteers Signed Up:</strong><br>
+			<c:forEach items="${hosted.users}" var="userEvent">
+			<a href="findUserById.do?id=${userEvent.user.id}">${userEvent.user.firstName} ${userEvent.user.lastName}</a><br>
+			
+			</c:forEach>
+			<hr>
+			</c:forEach>
+		</c:if>
+		</div>
+    </div>
+  </div> 
+<!-- Begin Card Deck -->
+<div class="card-deck">
+
+  <div class="card">
+    <div class="card-body">
+      <div class="displayResults">
+		<c:if test="${! empty userProfile}">
+      <h5 class="card-title">${userProfile.firstName}'s Organizations</h5>
+			<c:forEach items="${userProfile.orgs}" var="org">
+			<a href="findOrgById.do?id=${org.id}">${org.orgName}</a><br>
+			</c:forEach>
+		</c:if>
+		</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <div class="displayResults">
+		<c:if test="${! empty userProfile}">
+      <h5 class="card-title">${userProfile.firstName}'s Events Joined</h5>
+			<c:forEach items="${userProfile.attendedEvents}" var="added">
+			<a href="getEvent.do?id=${added.event.id}">${added.event.eventName}</a><br>
+			</c:forEach>
+		</c:if>
+		</div>
+ 	</div>
+</div>
+  <div class="card">
+    <div class="card-body">
+      <div class="displayResults">
+		<c:if test="${! empty userProfile}">
+      <h5 class="card-title">Events Joined</h5>
+			<c:forEach items="${userProfile.attendedEvents}" var="added">
+			<a href="getEvent.do?id=${added.event.id}">${added.event.eventName}</a><br>
+			</c:forEach>
+		</c:if>
+		</div>
+ 	</div>
+</div>
+</main>			
+			
+			</c:otherwise>
+	
+	</c:choose>
+		
+
+
+
+
+
+</c:when>
+
+
+
+
+
+
+
+
+
+<c:otherwise>
+<div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+          <img src="${userProfile.photoURL}" alt="Avatar" class="avatar">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" href="#">
+                  <span data-feather="home"></span>
+                  ${userProfile.firstName} ${userProfile.lastName} <span class="sr-only">(current)</span>
+                </a>
+              <li class="nav-item">
+                  <span data-feather="activity"></span>
+                  ${userProfile.bio}
+                </a>
+              </li>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+        <div class="card">
+    <div class="card-body">
+      <div class="displayResults">
+		<c:if test="${! empty userProfile}">
+      <h5 class="card-title">${userProfile.firstName}'s Hosted Events</h5>
+			<c:forEach items="${userProfile.hostedEvents}" var="hosted">
+			<a href="getEvent.do?id=${hosted.id}">${hosted.eventName}</a><br>
+			<p>People Needed: ${hosted.peopleNeeded}</p>
+			<strong>Volunteers Signed Up:</strong><br>
+			<c:forEach items="${hosted.users}" var="userEvent">
+			<a href="findUserById.do?id=${userEvent.user.id}">${userEvent.user.firstName} ${userEvent.user.lastName}</a><br>
+			</c:forEach>
+			<hr>
+			</c:forEach>
+		</c:if>
+		</div>
+    </div>
+  </div> 
+         
+</main>
+
+</c:otherwise>	
+</c:choose>
+ <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script>
+      feather.replace()
+    </script>
 </body>
 </html>
