@@ -42,8 +42,8 @@ public class EventController {
 	@RequestMapping(path = "eventKeyword.do")
 	public String findByKeyword(@Valid String keyword, Model model) {
 		List<Event> eventSearch = eventDAO.findByKeyword(keyword);
-		model.addAttribute("events", eventSearch);
-		return "result";
+		model.addAttribute("eventList", eventSearch);
+		return "events/eventList";
 	}
 	
 	@RequestMapping(path = "eventCategory.do")

@@ -82,7 +82,7 @@ ${org.website}<br>
 
 
 
-			<!-- ////////// -->
+			<!-- /////Single Org///// -->
 
 			<c:if test="${! empty org}">
 				<h1>Found it!</h1>
@@ -105,7 +105,7 @@ ${org.website}<br>
 			</c:if>
 			<br>
 
-			<!-- ////////// -->
+			<!-- /////List of Users///// -->
 
 			<c:if test="${! empty users}">
 				<h1>All Users:</h1>
@@ -119,7 +119,7 @@ ${user.userName}<br>
 				</c:forEach>
 			</c:if>
 
-			<!-- ////////// -->
+			<!-- /////Single User///// -->
 
 			<c:if test="${! empty user}">
 				<h1>Found it!</h1>
