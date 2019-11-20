@@ -71,7 +71,7 @@ public class EventController {
 			newUser = userDAO.getUserById(newUser.getId());
 			session.removeAttribute("newUser");
 			session.setAttribute("newUser", newUser);
-			return "event";
+			return "events/event";
 		}
 		return "index";
 	}
@@ -82,14 +82,23 @@ public class EventController {
 	}
 
 	@RequestMapping(path = "updateEvent.do", method = RequestMethod.POST)
-	public String updateEvent(Model model, Event updatedEvent, Integer id, @RequestParam("name") String catName) {
-		Category cat = eventDAO.findCategoryByName(catName);
-		Event originalEventForDate = eventDAO.findEventById(id);
-		updatedEvent.setDateCreated(originalEventForDate.getDateCreated());
-		Event event = eventDAO.updateEvent(updatedEvent, id, cat);
-		event = eventDAO.findEventById(event.getId());
-		model.addAttribute("event", event);
-		return "events/event";
+	public String updateEvent(Model model, Event updatedEvent, Integer id, @RequestParam("name") String catName, HttpSession session) {
+		if(session.getAttribute("newUser") != null) {
+			Category cat = eventDAO.findCategoryByName(catName);
+			Event originalEventForDate = eventDAO.findEventById(id);
+			User user = (User) session.getAttribute("newUser");
+			
+			updatedEvent.setDateCreated(originalEventForDate.getDateCreated());
+			Event event = eventDAO.updateEvent(updatedEvent, id, cat);
+			event = eventDAO.findEventById(event.getId());
+			user = userDAO.getUserById(user.getId());
+			
+			session.removeAttribute("newUser");
+			session.setAttribute("newUser", user);
+			model.addAttribute("event", event);
+			return "events/event";
+		}
+		return "index";
 	}
 
 	@RequestMapping(path = "deleteEvent.do", method = RequestMethod.POST)

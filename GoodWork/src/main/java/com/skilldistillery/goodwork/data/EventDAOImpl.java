@@ -64,7 +64,7 @@ public class EventDAOImpl implements EventDAO {
 		managed.getLocation().setAddress(updatedEvent.getLocation().getAddress());
 		managed.removeCategory(managed.getCategories().get(0));
 		managed.addCategory(category);
-		managed.getLocation().setAddress(updatedEvent.getLocation().getAddress2());
+		managed.getLocation().setAddress2(updatedEvent.getLocation().getAddress2());
 		managed.getLocation().setCity(updatedEvent.getLocation().getCity());
 		managed.getLocation().setState(updatedEvent.getLocation().getState());
 		managed.setEventName(updatedEvent.getEventName());
