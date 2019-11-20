@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.skilldistillery.goodwork.data.OrgDAO;
+import com.skilldistillery.goodwork.data.UserDAO;
 import com.skilldistillery.goodwork.entities.Organization;
 import com.skilldistillery.goodwork.entities.User;
 
@@ -129,5 +130,6 @@ public class OrgController {
 		}
 
 	}
+	
 
 }

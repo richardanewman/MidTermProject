@@ -118,4 +118,18 @@ public class UserController {
 		model.addAttribute("oops", "Looks like something went wrong when signing up for this event, please try again later.");
 		return "fail";
 	}
+	@RequestMapping(path = "findUserById.do", method = RequestMethod.GET)
+	public String diplayUser(int id, Model model) {
+		if (dao.getUserById(id) == null) {
+			model.addAttribute("oops", "Looks like something went wrong. Please check your ID number and try again.");
+			return "fail";
+		} else {
+
+	
+			model.addAttribute("user", dao.getUserById(id));
+
+			return "userJSP/profile";
+		}
+	}
+	
 }
