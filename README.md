@@ -1,5 +1,5 @@
 ### goodWork
-
+![Image description](GoodWork/src/main/webapp/css/volunteer.png)
 (link to site)
 
 ## Mid-term Team Project for Skill Distillery
