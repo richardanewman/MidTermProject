@@ -86,14 +86,18 @@ public class UserController {
 			List<User> users = dao.getAllUsersByKeyword(keyword);
 			List<Organization> orgs = orgDAO.searchByKeyword(keyword);
 			List<Event> events = eventDAO.findByKeyword(keyword);
+			List<Event> eventCat = eventDAO.findByCategory(keyword);
 			if(users != null) {
-			model.addAttribute("users", users);
+				model.addAttribute("users", users);
 			}
 			if(orgs != null) {
-			model.addAttribute("displayAll", orgs);
+				model.addAttribute("displayAll", orgs);
 			}
 			if(events != null) {
-			model.addAttribute("events", events);
+				model.addAttribute("events", events);
+			}
+			if(eventCat != null) {
+				model.addAttribute("eventByCat", eventCat);
 			}
 		return "result";
 			
