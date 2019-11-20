@@ -144,7 +144,8 @@ public class UserController {
 		} else {
 
 	
-			model.addAttribute("user", dao.getUserById(id));
+			model.addAttribute("userProfile", dao.getUserById(id));
+
 
 			return "userJSP/profile";
 		}

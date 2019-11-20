@@ -1,11 +1,10 @@
 package com.skilldistillery.goodwork.data;
 
-import java.util.List;
-
 import com.skilldistillery.goodwork.entities.UserEvent;
 
 public interface UserEventDAO {
 	
-	UserEvent findByUserID(int userId);
+	UserEvent findByUserAndEventId(int userId, int eventId);
+	public UserEvent userAttended(int userId, int eventId);
 
 }

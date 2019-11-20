@@ -16,12 +16,22 @@ public class UserEventDAOImpl implements UserEventDAO {
 	private EntityManager em;
 
 	@Override
-	public UserEvent findByUserID(int userId) {
+	public UserEvent findByUserAndEventId(int userId, int eventId) {
 		UserEvent userEvent = em.find(UserEvent.class, userId);
 		return userEvent;
 	}
 
-	
+	public UserEvent userAttended(int userId, int eventId) {
+		UserEvent userEvent = findByUserAndEventId(userId, eventId);
+		userEvent.setAttended(true);
+		
+		
+		
+		
+		return userEvent;
+		
+		
+	}
 	
 	
 

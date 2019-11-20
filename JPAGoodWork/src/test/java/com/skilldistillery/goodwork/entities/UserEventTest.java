@@ -75,4 +75,6 @@ class UserEventTest {
 		assertNull(userEvent.getRating());
 		assertEquals("host", userEvent.getRole());
 	}
+	
+
 }
