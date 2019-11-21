@@ -71,6 +71,8 @@ public class OrgDAOImpl implements OrgDAO {
 		updateData.setOrgNum(orgData.getOrgNum());
 		updateData.setLogoURL(orgData.getLogoURL());
 		updateData.setWebsite(orgData.getWebsite());
+		em.persist(updateData);
+		em.flush();
 		return updateData;
 
 	}
