@@ -39,6 +39,7 @@ public class EventController {
 	public String getEvent(Model model, int id) {
 		model.addAttribute("event", eventDAO.findEventById(id));
 		model.addAttribute("messages", messDAO.findMessagesByEventId(id));
+		model.addAttribute("userMessage", new User());
 		return "events/event";
 
 	}
