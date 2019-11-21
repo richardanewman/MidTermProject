@@ -16,46 +16,17 @@
 <body>
 	<br>
 	<div class="container jumbotron">
-		<%-- 		<div class="displayResults">
-			<c:if test="${! empty displayAll}">
-				<h1>All Organizations:</h1>
-				<c:forEach items="${displayAll}" var="org">
-					<a href="findOrgById.do?id=${org.id}">${org.orgName}</a>
-					<br>
 
-					<br>
-${org.orgDescription}<br>
-					<br>
-${org.location.address}<br>
-					<br>
-${org.location.city}<br>
-					<br>
-${org.location.state}<br>
-					<br>
-${org.orgType}<br>
-					<br>
-${org.orgNum}<br>
-					<br>
-${org.logoURL}<br>
-					<br>
-${org.website}<br>
-					<br>
-				</c:forEach>
-			</c:if>
-		</div>
-	</div> --%>
 		<!-- ////////// -->
 		<h1>
 			Organizations Currently Helping Others with <strong>goodWork</strong>
 		</h1>
 
 		<br>
-		<div class="row" align="left">
+		<!-- <div class="row" align="left"> -->
 			<div class="displayResults">
 				<c:if test="${! empty displayAll}">
 					<c:forEach items="${displayAll}" var="org">
-
-
 						<%-- <a href="findOrgById.do?id=${org.id}">${org.orgName}</a> --%>
 						<div>
 							<hr>
@@ -75,71 +46,62 @@ ${org.website}<br>
 					</c:forEach>
 				</c:if>
 			</div>
-			<!-- 	</div>
-				</div>
-			</div> -->
-
-
-
-
-
 
 			<!-- /////Single Org///// -->
-
-			<c:if test="${! empty org}">
-				<h1>Found it!</h1>
+			<div>
+				<c:if test="${! empty org}">
+					<h1>Found it!</h1>
 ${org.orgName}<br>
-				<br>
+					<br>
 ${org.location.address}<br>
-				<br>
+					<br>
 ${org.location.city}<br>
-				<br>
+					<br>
 ${org.location.state}<br>
-				<br>
+					<br>
 ${org.orgType}<br>
-				<br>
+					<br>
 ${org.orgNum}<br>
-				<br>
+					<br>
 ${org.logoURL}<br>
-				<br>
+					<br>
 ${org.website}<br>
-				<br>
-			</c:if>
+					<br>
+				</c:if>
+			</div>
 			<br>
 
 			<!-- /////List of Users///// -->
-
-			<c:if test="${! empty users}">
-				<h1>All Users:</h1>
-				<c:forEach items="${users}" var="user">
+			<div>
+				<c:if test="${! empty users}">
+					<h1>All Users:</h1>
+					<c:forEach items="${users}" var="user">
 ${user.firstName}<br>
-					<br>
+						<br>
 ${user.lastName}<br>
-					<br>
+						<br>
 ${user.userName}<br>
-					<br>
-				</c:forEach>
-			</c:if>
-
+						<br>
+					</c:forEach>
+				</c:if>
+			</div>
 			<!-- /////Single User///// -->
-
-			<c:if test="${! empty user}">
-				<h1>Found it!</h1>
+			<div>
+				<c:if test="${! empty user}">
+					<h1>Found it!</h1>
 ${user.firstName}<br>
-				<br>
+					<br>
 ${user.lastName}<br>
-				<br>
+					<br>
 ${user.userName}<br>
+					<br>
+				</c:if>
 				<br>
-			</c:if>
-			<br>
-
+			</div>
 			<!-- ////////// -->
-
-
-			<%-- 			<c:if test="${! empty events}">
-				<h1>All Events:</h1>
-				<c:forEach items="${events}" var="event">
+			<div>
+				<c:if test="${! empty event}">
+					<h1>Found it!</h1>
 ${event.eventName}<br>
 					<br>
 ${event.description}<br>
@@ -152,85 +114,62 @@ ${event.endTime}<br>
 					<br>
 ${event.peopleNeeded}<br>
 					<br>
-				</c:forEach>
-			</c:if> --%>
-
-
-			<!-- ////////// -->
-
-			<c:if test="${! empty event}">
-				<h1>Found it!</h1>
-${event.eventName}<br>
-				<br>
-${event.description}<br>
-				<br>
-${event.eventDate}<br>
-				<br>
-${event.startTime}<br>
-				<br>
-${event.endTime}<br>
-				<br>
-${event.peopleNeeded}<br>
-				<br>
-			</c:if>
+				</c:if>
+			</div>
 			<br>
 
 
 			<!-- ////////// -->
 
-
-			<c:if test="${! empty eventByCat}">
-				<h1>All Events By Category:</h1>
-				<c:forEach items="${eventByCat}" var="event">
+			<div>
+				<c:if test="${! empty eventByCat}">
+					<h1>All Events By Category:</h1>
+					<c:forEach items="${eventByCat}" var="event">
 ${event.eventName}<br>
-					<br>
+						<br>
 ${event.description}<br>
-					<br>
+						<br>
 ${event.eventDate}<br>
-					<br>
+						<br>
 ${event.startTime}<br>
-					<br>
+						<br>
 ${event.endTime}<br>
-					<br>
+						<br>
 ${event.peopleNeeded}<br>
-					<br>
-				</c:forEach>
-			</c:if>
-
-
+						<br>
+					</c:forEach>
+				</c:if>
+			</div>
 			<!-- ////////// -->
-
-
-			<c:if test="${! empty eventByCat}">
-				<h1>Found it!</h1>
+			<div>
+				<c:if test="${! empty eventByCat}">
+					<h1>Found it!</h1>
 ${event.eventName}<br>
-				<br>
+					<br>
 ${event.description}<br>
-				<br>
+					<br>
 ${event.eventDate}<br>
-				<br>
+					<br>
 ${event.startTime}<br>
-				<br>
+					<br>
 ${event.endTime}<br>
-				<br>
+					<br>
 ${event.peopleNeeded}<br>
-				<br>
-			</c:if>
+					<br>
+				</c:if>
+			</div>
 			<br>
-
-
 			<!-- /////Org Delete///// -->
+			<div>
+				<c:if test="${! empty successfulDelete}">
+					<h1>Success!</h1>
+					<h3>${successfulDelete}</h3>
+				</c:if>
 
-
-			<c:if test="${! empty successfulDelete}">
-				<h1>Success!</h1>
-				<h3>${successfulDelete}</h3>
-			</c:if>
-
-
+			</div>
 			<!-- ////////// -->
 		</div>
-	</div>
+	<!-- </div> -->
 	<hr>
 	<footer class="text-center">
 		<div class="container">
