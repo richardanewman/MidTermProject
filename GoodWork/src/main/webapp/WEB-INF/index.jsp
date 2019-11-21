@@ -30,8 +30,8 @@
 				<p class="card-text">Search event titles and descriptions by
 					keyword.</p>
 				<form action="eventKeyword.do" method="GET">
-					<input class="form-control" type="text" required="required"
-						name="keyword" placeholder="Enter Keyword" /> <input
+					<input class="form-control input-pad" type="text" required="required"
+						name="keyword" placeholder="Enter Keyword" /><input
 						class="btn-lg btn-block btn btn-green" type="submit"
 						value="Search Events" />
 				</form>
@@ -41,9 +41,9 @@
 			<span class="feather-card" data-feather="hash"></span>
 			<div class="card-body">
 				<h5 class="card-title">Search Organizations By Keyword</h5>
-				<p class="card-text">Search organizations by name or description.</p>
+				<p class="card-text">Search group's name or description.</p>
 				<form action="searchOrgs.do" method="GET">
-					<input class="form-control" type="text" required="required"
+					<input class="form-control input-pad" type="text" required="required"
 						name="keyword" placeholder="Enter A Keyword" /> <input
 						class="btn btn-brown btn-lg btn-block" type="submit"
 						value="Search Organizations" />
@@ -57,7 +57,7 @@
 				<p class="card-text">Extra! Extra! Read all about our recent
 					events.</p>
 				<form action="recentEvents.do" method="GET">
-					<input class="form-control" type="text" required="required"
+					<input class="form-control input-pad" type="text" required="required"
 						name="keyword" placeholder="Enter Keyword" /> <input
 						class="btn btn-dark btn-lg btn-block" type="submit"
 						value="Recent Events" />
@@ -87,7 +87,7 @@
 				</div>
 			</div>
 		</div>
-
+	</div>
 		<hr>
 		<!--Google map-->
 		<div class="map-container" style="height: 400px">
