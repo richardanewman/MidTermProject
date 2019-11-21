@@ -132,7 +132,7 @@
 							<br>
 							<!--  -->
 							<label for="event.location.zipCode">Event Zip Code</label> <input
-								type="text" class="form-control" name="location.zipCode"
+								type="text" class="form-control" name="location.zipCode"/>
 							<form:errors path="location.zipCode"
 								placeholder="enter zip code of event" />
 							<br>
@@ -140,17 +140,11 @@
 							<label for="eventDate">Event Date</label> <input type="date"
 								class="form-control" name="eventDate"
 								placeholder="enter event date" required="required" /><br>
-=======
-								type="text" class="form-control"
-								pattern="^\s*?\d{5}(?:[-\s]\d{4})?\s*?$"
-								title="Zip Code format 12345 or 12345-1234"
-								name="location.zipCode" value="${event.location.zipCode }"
-								placeholder="enter zip code of event" /><br>
+						
 							<!--  -->
 							<label for="eventDate">Event Date</label> <input type="date"
 								class="form-control" name="eventDate"
 								placeholder="enter event date" required="required"/><br>
->>>>>>> 24ca50a26e6d8f0b24fa1f152216226a680cd8c0
 							<!--  -->
 							<label for="eventDate">Start Time</label> <input type="time"
 								class="form-control" name="startTime"
