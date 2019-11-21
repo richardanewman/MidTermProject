@@ -98,7 +98,7 @@
 
 		<!--Google Maps-->
 
-		<!--Google Maps-->
+
 		<hr>
 		<footer class="text-center">
 			<div class="container">
