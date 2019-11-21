@@ -294,14 +294,14 @@
 </c:if>
  </div>
 <c:if test="${not empty newUser }">
-<form:form action="reply.do" method="POST" modelAttribute="userMessage">
-		<form:label path="id" value="${sessionScope.newUser.id}"></form:label>
-		<form:hidden path="id" value="${sessionScope.newUser.id}" />
-		<form:errors path="id" value="${sessionScope.newUser.id}" />
-		<form:label path="MessageBoard.content" value="Reply">Reply:</form:label>
-		<form:input class="input" path="MessageBoard.content" value="Enter Reply"
+<form:form action="reply.do?eId=${event.id}" method="POST" modelAttribute="userMessage">
+		<form:label path="user.id" value="${sessionScope.newUser.id}"></form:label>
+		<form:hidden path="user.id" value="${sessionScope.newUser.id}" />
+		<form:errors path="user.id" value="${sessionScope.newUser.id}" />
+		<form:label path="content" value="Reply">Reply:</form:label>
+		<form:input class="input" path="content" value="Enter Reply"
 			required="required" type="text" placeholder="Enter Reply" />
-		<form:errors path="MessageBoard.content" value="Enter Reply" />
+		<form:errors path="content" value="Enter Reply" />
 		<input type="submit" value="Reply" />
 	</form:form>
 </c:if>

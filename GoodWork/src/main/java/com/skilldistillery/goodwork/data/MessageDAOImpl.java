@@ -8,8 +8,8 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.goodwork.entities.Event;
 import com.skilldistillery.goodwork.entities.MessageBoard;
-import com.skilldistillery.goodwork.entities.Organization;
 import com.skilldistillery.goodwork.entities.User;
 
 @Service
@@ -29,10 +29,15 @@ public class MessageDAOImpl implements MessageDAO {
 	
 	@Override
 	public MessageBoard addNewMessage(MessageBoard message, int id) {
-		User user = em.find(User.class, id);
-		message.setUser(user);;
+		User user = em.find(User.class, message.getUser().getId());
+		Event event = em.find(Event.class, id);
+		
+		message.setUser(user);
 		message.setEvent(message.getEvent());
+		event.addMessageBoard(message);
+		user.addMessageBoard(message);
 		em.persist(user);
+		em.persist(event);
 		em.persist(message);
 		em.flush();
 		return message;
