@@ -21,4 +21,5 @@ public interface UserDAO {
 	public boolean signedUpForOrg(Organization org, User user);
 	public UserEvent getUserEvent(UserEventId ueId);
 	public boolean unRegisterFromEvent(User user, Event event);
+	public boolean unRegisterFromOrg(User user, Organization org);
 }
