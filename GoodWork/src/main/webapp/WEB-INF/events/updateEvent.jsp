@@ -23,11 +23,12 @@
 		<div class=" container form-goup jumbotron">
 			<form action="updateEvent.do" method="POST">
 				<!-- modelAttribute="event" -->
-				<label for="eventId" value="${event.id }"></label> <input type="hidden" value="${event.id }"
-					name="id" />
+				<label for="eventId" value="${event.id }"></label> <input
+					type="hidden" value="${event.id }" name="id" />
 				<!--  -->
 				<label for="eventId">Event Id</label> <input type="text"
-					value="${event.id }" name="eventID" disabled="disabled" class="form-control"/><br>
+					value="${event.id }" name="eventID" disabled="disabled"
+					class="form-control" /><br>
 				<!--  -->
 				<label for="eventName">Event Title</label> <input type="text"
 					class="form-control" name="eventName" value="${event.eventName}" /><br>
@@ -132,7 +133,9 @@
 				</select> <br>
 				<!--  -->
 				<label for="location.zipCode">Event Zip Code</label> <input
-					type="text" class="form-control" name="location.zipCode"
+					type="text" class="form-control"
+					pattern="^\s*?\d{5}(?:[-\s]\d{4})?\s*?$"
+					title="Zip Code format 12345 or 12345-1234" name="location.zipCode"
 					value="${event.location.zipCode}" /><br>
 				<!--  -->
 				<label for="eventDate">Event Date</label> <input type="date"
