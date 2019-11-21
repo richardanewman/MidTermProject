@@ -23,7 +23,7 @@
 		<form:form action="updateOrg.do" method="POST"
 			modelAttribute="orgData">
 			<form:label path="id" default="${orgData.id}">
-				<h1>Editing Org ID ${orgData.id}</h1>
+				<h3>Editing Org ID ${orgData.id}</h3>
 			</form:label>
 			<br>
 			<form:label path="orgName">Organization Name: </form:label>
@@ -61,10 +61,67 @@
 			<form:errors path="location.city" />
 			<br />
 			<form:label path="location.state">State: </form:label>
-			<br>
+			<%-- <br>
 			<form:input class="form-control" path="location.state"
 				value="${orgData.location.state}"
 				placeholder="${orgData.location.state}" />
+				<form :label path="location.state">State</form:label> --%>
+			<br>
+			<form:select class="form-control" path="location.state" required="required">
+				<form:option value="${orgData.location.state}" label="${orgData.location.state}" />
+				<form:option value="AK" label="Alaska" />
+				<form:option value="AL" label="Alabama" />
+				<form:option value="AR" label="Arkansas" />
+				<form:option value="AZ" label="Arizona" />
+				<form:option value="CA" label="California" />
+				<form:option value="CO" label="Colorado" />
+				<form:option value="CT" label="Connecticut" />
+				<form:option value="DC" label="District of Columbia" />
+				<form:option value="DE" label="Delaware" />
+				<form:option value="FL" label="Florida" />
+				<form:option value="GA" label="Georgia" />
+				<form:option value="HI" label="Hawaii" />
+				<form:option value="IA" label="Iowa" />
+				<form:option value="ID" label="Idaho" />
+				<form:option value="IL" label="Illinois" />
+				<form:option value="IN" label="Indiana" />
+				<form:option value="KS" label="Kansas" />
+				<form:option value="KY" label="Kentucky" />
+				<form:option value="LA" label="Louisiana" />
+				<form:option value="MA" label="Massachusetts" />
+				<form:option value="MD" label="Maryland" />
+				<form:option value="ME" label="Maine" />
+				<form:option value="MI" label="Michigan" />
+				<form:option value="MN" label="Minnesota" />
+				<form:option value="MO" label="Missouri" />
+				<form:option value="MS" label="Mississippi" />
+				<form:option value="MT" label="Montana" />
+				<form:option value="NC" label="North Carolina" />
+				<form:option value="ND" label="North Dakota" />
+				<form:option value="NE" label="Nebraska" />
+				<form:option value="NH" label="New Hampshire" />
+				<form:option value="NJ" label="New Jersey" />
+				<form:option value="NM" label="New Mexico" />
+				<form:option value="NV" label="Nevada" />
+				<form:option value="NY" label="New York" />
+				<form:option value="OH" label="Ohio" />
+				<form:option value="OK" label="Oklahoma" />
+				<form:option value="OR" label="Oregon" />
+				<form:option value="PA" label="Pennsylvania" />
+				<form:option value="PR" label="Puerto Rico" />
+				<form:option value="RI" label="Rhode Island" />
+				<form:option value="SC" label="South Carolina" />
+				<form:option value="SD" label="South Dakota" />
+				<form:option value="TN" label="Tennessee" />
+				<form:option value="TX" label="Texas" />
+				<form:option value="UT" label="Utah" />
+				<form:option value="VA" label="Virginia" />
+				<form:option value="VT" label="Vermont" />
+				<form:option value="WA" label="Washington" />
+				<form:option value="WI" label="Wisconsin" />
+				<form:option value="WV" label="West Virginia" />
+				<form:option value="WY" label="Wyoming" />
+			</form:select>
 			<form:errors path="location.state" />
 			<br />
 			<form:label path="location.zipCode">Zip Code: </form:label>
@@ -76,8 +133,14 @@
 			<br />
 			<form:label path="orgType">Organization Type: </form:label>
 			<br>
-			<form:input class="form-control" path="orgType"
-				value="${orgData.orgType}" placeholder="${orgData.orgType}" />
+			<%-- <form:input class="form-control" path="orgType"
+				value="${orgData.orgType}" placeholder="${orgData.orgType}" /> --%>
+			<form:select class="form-control" path="orgType" required="required">
+				<form:option value="${orgData.orgType}" label="${orgData.orgType}"/>
+				<form:option value="non-profit" label="Non-Profit" />
+				<form:option value="for-profit" label="For-Profit" />
+				<form:option value="private-group" label="Private Group" />
+			</form:select>
 			<form:errors path="orgType" />
 			<br />
 			<form:label path="orgNum">Organization Number: </form:label>
