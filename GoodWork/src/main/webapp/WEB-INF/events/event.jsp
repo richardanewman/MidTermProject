@@ -17,8 +17,16 @@
 
 
 	<br>
-	<div>
-		<table class="container rounded" align="center" bgcolor="#9644E8"
+	<div class="container rounded" align="center">
+			<p><strong>lets put event img up here</strong></p>
+	</div>
+	<div class="container form-goup jumbotron" align="center">
+		<div class="card-deck">
+			<div class="card">
+				<span class="feather-card" data-feather="search"></span>
+				<div class="card-body">
+					<h5 class="card-title"></h5>
+					<table class="container rounded" align="center" bgcolor="#9644E8"
 			border="0" cellpadding="0" cellspacing="0" width="100%">
 			<tr>
 				<td valign="middle"
@@ -37,13 +45,6 @@
 				</td>
 			</tr>
 		</table>
-	</div>
-	<div class="container form-goup jumbotron" align="center">
-		<div class="card-deck">
-			<div class="card">
-				<span class="feather-card" data-feather="search"></span>
-				<div class="card-body">
-					<h5 class="card-title"></h5>
 					<table class="table table-hover table-bordered table-light"
 						style="background-color: #EBE8F1">
 						<thread>
@@ -277,7 +278,6 @@
             			</form> -->
 
 <div class="container form-goup jumbotron message">
-<% response.setIntHeader("Refresh", 3);%>
 <h1>${event.eventName} Message Board</h1>
 	<c:if test="${not empty messages}">
  <c:forEach items="${messages}" var="message">
