@@ -12,6 +12,7 @@
 <title>Event</title>
 <%@include file="/WEB-INF/nav.jsp"%>
 </head>
+
 <body>
 
 
@@ -271,8 +272,12 @@
 	<!--  -->
 	<!-- <form action="updateEvent.do" method="POST">
 					<input type="submit" class="btn btn-primary" value="Update Event" />
-				</form> -->
+
+            // Set refresh, autoload time as 5 seconds
+            			</form> -->
+
 <div class="container form-goup jumbotron message">
+<% response.setIntHeader("Refresh", 3);%>
 <h1>${event.eventName} Message Board</h1>
 	<c:if test="${not empty messages}">
  <c:forEach items="${messages}" var="message">
@@ -292,7 +297,9 @@
   </div>
  </c:forEach>
 </c:if>
+
  </div>
+ 
 <c:if test="${not empty newUser }">
 <form:form action="reply.do?eId=${event.id}" method="POST" modelAttribute="userMessage">
 		<form:label path="user.id" value="${sessionScope.newUser.id}"></form:label>
