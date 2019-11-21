@@ -172,16 +172,7 @@
 			</ul>
 			<hr>
  --%>
- <br>
- <div class="message">
- <c:if test="${not empty messages}">
- <c:forEach items="${messages}" var="message">
- <img src="${message.user.photoURL}" alt="Avatar" class="avatar">
- <strong>${message.user.firstName}:</strong>
- ${message.content}<br>
- </c:forEach>
- </c:if>
-  </div>
+
  
  
 		<br>
@@ -272,8 +263,8 @@
 				</c:choose>
 			</c:when>
 			<c:otherwise>
-				<h2>Must be a registered user to sign up for events, just do it
-					its Free.</h2>
+				<h5 class="finePrint">Must be a registered user to sign up for events. Just do it!
+					It's Free.</h5>
 			</c:otherwise>
 		</c:choose>
 	</div>
@@ -281,8 +272,39 @@
 	<!-- <form action="updateEvent.do" method="POST">
 					<input type="submit" class="btn btn-primary" value="Update Event" />
 				</form> -->
-	<br>
-
+<div class="container form-goup jumbotron message">
+<h1>${event.eventName} Message Board</h1>
+	<c:if test="${not empty messages}">
+ <c:forEach items="${messages}" var="message">
+  <div class="card mb-3 message">
+   <div class="row no-gutters">
+    <div class="col-md-1 align-self-center">
+     <img src="${message.user.photoURL}" class="avatar" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">${message.user.firstName} ${message.user.lastName}</h5>
+        <p class="card-text">${message.content}</p>
+        <p class="card-text"><small class="text-muted">${message.datePosted}</small></p>
+      </div>
+    </div>
+   </div>
+  </div>
+ </c:forEach>
+</c:if>
+ </div>
+<c:if test="${not empty newUser }">
+<form:form action="reply.do" method="POST" modelAttribute="userMessage">
+		<form:label path="id" value="${sessionScope.newUser.id}"></form:label>
+		<form:hidden path="id" value="${sessionScope.newUser.id}" />
+		<form:errors path="id" value="${sessionScope.newUser.id}" />
+		<form:label path="MessageBoard.content" value="Reply">Reply:</form:label>
+		<form:input class="input" path="MessageBoard.content" value="Enter Reply"
+			required="required" type="text" placeholder="Enter Reply" />
+		<form:errors path="MessageBoard.content" value="Enter Reply" />
+		<input type="submit" value="Reply" />
+	</form:form>
+</c:if>
 	<hr>
 	<footer class="text-center">
 		<div class="container">
