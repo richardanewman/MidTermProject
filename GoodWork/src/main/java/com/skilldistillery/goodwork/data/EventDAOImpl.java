@@ -111,7 +111,7 @@ public class EventDAOImpl implements EventDAO {
 		List<Category> cat = null;
 		Category category = null;
 		List<Event> catSearch = null;
-		cat = em.createQuery(catSql, Category.class).setParameter("keyword", keyword).getResultList();
+		cat = em.createQuery(catSql, Category.class).setParameter("keyword", "%" + keyword + "%").getResultList();
 		
 		if(cat != null && cat.size() > 0) {
 			category = cat.get(0);
