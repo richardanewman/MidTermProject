@@ -131,6 +131,21 @@ public class UserController {
 		return "fail";
 	}
 	
+	@RequestMapping(path="goToUnRegisterEvent.do", method = RequestMethod.GET)
+	public String unRegisterEvent(Event event, HttpSession session, Model model) {
+		User user = (User) session.getAttribute("newUser");
+		boolean success = dao.unRegisterFromEvent(user, event);
+		if(success) {
+			user = dao.getUserById(user.getId());
+			session.removeAttribute("newUser");
+			session.setAttribute("newUser", user);
+			model.addAttribute("userProfile", user);
+			return "userJSP/profile";
+		}
+		model.addAttribute("oops", "Looks like something went wrong when un-registering from this event, please try again");
+		return "fail";
+	}
+	
 	@RequestMapping(path="signUpForOrg.do", method = RequestMethod.GET)
 	public String signUpForOrg(Model model, HttpSession session, @RequestParam("oId") int orgId) {
 		User user = (User) session.getAttribute("newUser");
@@ -148,10 +163,11 @@ public class UserController {
 		return "fail";
 	}
 	
-	@RequestMapping(path="goToUnRegisterEvent.do", method = RequestMethod.GET)
-	public String unRegisterEvent(Event event, HttpSession session, Model model) {
+	@RequestMapping(path = "goToUnRegisterOrg.do", method = RequestMethod.GET)
+	public String unRegisterOrg(@RequestParam("oId") int orgId, HttpSession session, Model model) {
 		User user = (User) session.getAttribute("newUser");
-		boolean success = dao.unRegisterFromEvent(user, event);
+		Organization org = orgDAO.findById(orgId);
+		boolean success = dao.unRegisterFromOrg(user, org);
 		if(success) {
 			user = dao.getUserById(user.getId());
 			session.removeAttribute("newUser");
@@ -159,7 +175,7 @@ public class UserController {
 			model.addAttribute("userProfile", user);
 			return "userJSP/profile";
 		}
-		model.addAttribute("oops", "Looks like something went wrong when un-registering from this event, please try again");
+		model.addAttribute("oops", "Looks like something went wrong when un-registering from this organization, please try again later");
 		return "fail";
 	}
 	
