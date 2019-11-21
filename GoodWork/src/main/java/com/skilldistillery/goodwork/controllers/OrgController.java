@@ -76,7 +76,7 @@ public class OrgController {
 		session.setAttribute("newUser", newUser);
 
 
-		return "orgs/org";
+		return "orgs/orgProfile";
 
 	}
 
