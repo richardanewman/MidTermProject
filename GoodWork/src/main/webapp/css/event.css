@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+.avatar {
+  vertical-align: middle;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.message {
+	text-align: left;
+}

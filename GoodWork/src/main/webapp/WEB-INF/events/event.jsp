@@ -7,9 +7,8 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link
-	href="https://cdn.jsdelivr.net/webjars/org.webjars/bootstrap/4.3.1/css/bootstrap.css"
-	rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/webjars/org.webjars/bootstrap/4.3.1/css/bootstrap.css" rel="stylesheet">
+ <link rel="stylesheet" type="text/css" href="css/event.css">
 <title>Event</title>
 <%@include file="/WEB-INF/nav.jsp"%>
 </head>
@@ -173,6 +172,18 @@
 			</ul>
 			<hr>
  --%>
+ <br>
+ <div class="message">
+ <c:if test="${not empty messages}">
+ <c:forEach items="${messages}" var="message">
+ <img src="${message.user.photoURL}" alt="Avatar" class="avatar">
+ <strong>${message.user.firstName}:</strong>
+ ${message.content}<br>
+ </c:forEach>
+ </c:if>
+  </div>
+ 
+ 
 		<br>
 		<c:choose>
 			<c:when test="${not empty newUser}">
