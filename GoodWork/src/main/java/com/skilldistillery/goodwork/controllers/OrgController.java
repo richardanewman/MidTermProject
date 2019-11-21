@@ -70,14 +70,17 @@ public class OrgController {
 
 	@RequestMapping(path = "addNewOrg.do", method = RequestMethod.POST)
 	public String addOrg(@Valid Organization newOrg, Model model, HttpSession session) {
-		User newUser = (User) session.getAttribute("newUser");
-		model.addAttribute("orgData", orgDAO.addNewOrg(newOrg, newUser));
-		session.removeAttribute("newUser");
-		session.setAttribute("newUser", newUser);
-
-
-		return "orgs/orgProfile";
-
+		if(session.getAttribute("newUser") != null) {
+			User newUser = (User) session.getAttribute("newUser");
+			Organization orgData = orgDAO.addNewOrg(newOrg, newUser);
+			orgData = orgDAO.findById(orgData.getId());
+			model.addAttribute("org", orgData);
+			session.removeAttribute("newUser");
+			session.setAttribute("newUser", newUser);
+			return "orgs/orgProfile";
+		}
+		model.addAttribute("oops", "Looks like something went wrong creating this Organization, please try again later.");
+		return "fail";
 	}
 
 ///////////////////////////////////////////////////////////////////////
