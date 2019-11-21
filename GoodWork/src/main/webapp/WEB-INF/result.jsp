@@ -17,11 +17,9 @@
 	<br>
 	<div class="container jumbotron">
 
-		<!-- ////////// -->
-
+		<!-- ///// ORG LIST ///// Working -->
 
 		<br>
-		<!-- <div class="row" align="left"> -->
 		<div class="displayResults">
 			<c:if test="${! empty displayAll}">
 				<h1>
@@ -42,13 +40,13 @@
 						<br> <small class="text-muted"><a
 							href="${org.website}" target="_blank">${org.website}</a></small>
 					</div>
-
 				</c:forEach>
 			</c:if>
 		</div>
 		<br>
 		<!-- /////Single Org///// -->
-		<div>
+		<!-- ****** COMMENTED OUT: DONT THINK IT'S GETTING HIT ANYWHERE ????????? -->
+		<%-- <div>
 			<c:if test="${! empty org}">
 				<h1>Found it!</h1>
 ${org.orgName}<br>
@@ -68,24 +66,11 @@ ${org.logoURL}<br>
 ${org.website}<br>
 				<br>
 			</c:if>
-		</div>
-		<br>
-
-		<!-- /////List of Users///// -->
-		<%-- 		<div>
-			<c:if test="${! empty users}">
-				<h1>All Users:</h1>
-				<c:forEach items="${users}" var="user">
-${user.firstName}<br>
-					<br>
-${user.lastName}<br>
-					<br>
-${user.userName}<br>
-					<br>
-				</c:forEach>
-			</c:if>
 		</div> --%>
 		<br>
+
+		<!-- /////List of Users///// working -->
+
 		<div>
 			<c:if test="${! empty users}">
 				<h1>
@@ -112,10 +97,14 @@ ${user.userName}<br>
 				</table>
 			</c:if>
 		</div>
-		<!-- /////Single User///// -->
-		<div>
+
+		<!-- ///// Single User ///// -->
+		<!-- ****** COMMENTED OUT: DONT THINK IT'S GETTING HIT ANYWHERE ????????? -->
+		<%-- 		<div>
+		
 			<c:if test="${! empty user}">
-				<h1>Found it!</h1>
+				<h1>Hopefully this is the user you were looking for, otherwise
+					please try again...</h1>
 ${user.firstName}<br>
 				<br>
 ${user.lastName}<br>
@@ -125,9 +114,12 @@ ${user.userName}<br>
 			</c:if>
 			<br>
 		</div>
-		<br>
-		<!-- ////////// -->
-		<div>
+		<br> --%>
+
+		<!-- /////////  EVENT ////////// -->
+		<!-- ****** COMMENTED OUT: DONT THINK IT'S GETTING HIT ANYWHERE ????????? -->
+
+		<%-- 		<div>
 			<c:if test="${! empty event}">
 				<h1>Found it!</h1>
 ${event.eventName}<br>
@@ -144,40 +136,46 @@ ${event.peopleNeeded}<br>
 				<br>
 			</c:if>
 		</div>
-		<br>
+		<br> --%>
 
 
-		<!-- ////////// -->
-
+		<!-- ***********    NEED TO LOOK AT LINKING/ROUTING OF CATAGORY SEARCH *********** -->
+		<!-- ***********    CURRENTLY JUST LEAVING AS IS FOR A PLACE HOLDER    *********** -->
 		<div>
-
 			<c:if test="${! empty eventByCat}">
-				<h1>All Events By Category:</h1>
-				<c:forEach items="${eventByCat}" var="event">
-${event.eventName}<br>
-					<br>
-${event.description}<br>
-					<br>
-${event.eventDate}<br>
-					<br>
-${event.startTime}<br>
-					<br>
-${event.endTime}<br>
-					<br>
-${event.peopleNeeded}<br>
-					<br>
-				</c:forEach>
+				<h1>
+					Events by Category with <strong>goodWork</strong>
+				</h1>
+				<table class="table table-hover table-bordered table-secondary">
+					<thead>
+						<tr>
+							<th scope="col">ID</th>
+							<th scope="col">Title</th>
+							<th scope="col">Description</th>
+							<th scope="col">Event Date</th>
+						</tr>
+					</thead>
+					<c:forEach var="event" items="${eventByCat}">
+						<tbody>
+							<tr>
+								<th scope="row">${eventByCat.id}</th>
+								<td><a href="getEvent.do?id=${eventByCat.id}">${eventByCat.eventName}</a></td>
+								<td>${eventByCat.description}</td>
+								<td>${eventByCat.eventDate}</td>
+							</tr>
+						</tbody>
+					</c:forEach>
+				</table>
 			</c:if>
 		</div>
-
+		<br>
 		<div>
-			<h1>
-				Events by Category with <strong>goodWork</strong>
-			</h1>
 			<c:if test="${! empty eventByCat}">
+				<hr>
+				<h1>
+					Events by Category with <strong>goodWork</strong>
+				</h1>
 				<c:forEach items="${eventByCat}" var="event">
-					<%-- <a href="findOrgById.do?id=${org.id}">${org.orgName}</a> --%>
-
 					<hr>
 					<h4 class="mb-1">
 						<a href="findEventByCategory.do?id=${event.id}">${event.eventName}</a>
@@ -189,33 +187,14 @@ ${event.peopleNeeded}<br>
 					<br>
 					<small class="text-muted">${event.eventDate}</small>
 					<br>
-
-
-
 				</c:forEach>
 			</c:if>
 		</div>
 	</div>
-	<!-- ////////// -->
-	<%-- 		<div>
-			<c:if test="${! empty eventByCat}">
-				<h1>Found it!</h1>
-${event.eventName}<br>
-				<br>
-${event.description}<br>
-				<br>
-${event.eventDate}<br>
-				<br>
-${event.startTime}<br>
-				<br>
-${event.endTime}<br>
-				<br>
-${event.peopleNeeded}<br>
-				<br>
-			</c:if>
-		</div> --%>
 	<br>
-	<!-- /////Org Delete///// -->
+
+	<!-- /////Org Delete///// working -->
+
 	<div>
 		<c:if test="${! empty successfulDelete}">
 			<h1>Success!</h1>
@@ -223,9 +202,9 @@ ${event.peopleNeeded}<br>
 		</c:if>
 
 	</div>
-	<!-- ////////// -->
 
-	<!-- </div> -->
+	<!-- /////Footer///// -->
+
 	<hr>
 	<footer class="text-center">
 		<div class="container">
