@@ -60,7 +60,13 @@ class OrganizationTest {
 	@DisplayName("Testing for correct id and website pulled from the database")
 	void testIdAndWeb() {
 		assertEquals(1, org.getId());
-		assertEquals("Nope", org.getWebsite());
+		assertEquals("http://google.com", org.getWebsite());
+	}
+	@Test
+	@DisplayName("Testing url")
+	void testURL() {
+		assertEquals(1, org.getId());
+		assertEquals("https://i.imgflip.com/d0vts.jpg", org.getLogoURL());
 	}
 
 	@Test

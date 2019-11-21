@@ -13,83 +13,75 @@
 <title>goodWork Dashboard</title>
 </head>
 <body>
-<div class="container-fluid">
+
+<c:choose>
+
+
+<c:when test="${not empty sessionScope.newUser}">
+
+	<c:set var="isMember" value="false" />
+						<c:forEach var="user" items="${org.users}">
+							<c:if test="${user.id == sessionScope.newUser.id}">
+								<c:set var="isMember" value="true" />
+							</c:if>
+						</c:forEach>
+	<c:choose>
+	
+		<c:when test="${isMember == true}">
+	
+		<div class="container-fluid">
       <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
           <div class="sidebar-sticky">
-          <img src="css/img_avatar.png" alt="Avatar" class="avatar">
+          <img src="${org.logoURL}" alt="Avatar" class="avatar">
             <ul class="nav flex-column">
+              <li class="nav-item user-name">
+                  <strong>${org.orgName}</strong>  <span class="sr-only">(current)</span>
+              </li>
+              <br>
               <li class="nav-item">
-                <a class="nav-link active" href="#">
-                  <span data-feather="home"></span>
-                  Dashboard <span class="sr-only">(current)</span>
-                </a>
+                    ${org.orgDescription}<br><br>
+              <li class="nav-item user-name">
+                  <strong>Website:<br> ${org.website}</strong>  <span class="sr-only">(current)</span>
+              </li>
+              <li class="nav-item user-name">
+                  <strong>Established As:<br>${org.orgType}</strong>  <span class="sr-only">(current)</span>
+              </li>
+              <li class="nav-item user-name">
+                  <strong>TAX ID:<br>${org.orgNum}</strong>  <span class="sr-only">(current)</span>
+              </li>
+             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+              <span>Command Deck</span>
+            </h6>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="displayAll.do">
-                  <span data-feather="activity"></span>
-                  My Events
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="getNewTxForm.do">
+                <a class="nav-link" href="createEventForm.do">
                   <span data-feather="plus-square"></span>
                   Create New Event
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#modify">
-                  <span data-feather="edit-2"></span>
-                  Edit Event
+                <a class="nav-link" href="createOrgForm.do">
+                  <span data-feather="plus-circle"></span>
+                  Create Organization
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#recent-activity">
-                  <span data-feather="database"></span>
-                  Message Board
-                </a>
-              </li>
-            </ul>
-
-            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-              <span>Past Events</span>
-              <a class="d-flex align-items-center text-muted" href="#">
-                <span data-feather="plus-circle"></span>
-              </a>
-            </h6>
-            <ul class="nav flex-column mb-2">
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  Users Attended
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  Reviews
+                <a class="nav-link" href="updateOrgForm.do?id=${org.id}">
+                  <span data-feather="settings"></span>
+                    Edit Organization
                 </a>
               </li>
             </ul>
           </div>
         </nav>
+
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-            <h4 class="h2">${org.orgName} Dashboard</h4>    
-            <div class="btn-toolbar mb-2 mb-md-0">
-              <div class="btn-group mr-2">
-                <button class="btn btn-sm btn-outline-secondary">Share</button>
-                <button class="btn btn-sm btn-outline-secondary">Export</button>
-              </div>
-              <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                <span data-feather="calendar"></span>
-                This week
-              </button>
-            </div>
+            <h4 class="h2">${org.orgName}'s Dashboard</h4>    
           </div>
-<!-- Begin Card Deck -->
 <div class="card-deck">
-  <div class="card">
+<div class="card">
     <div class="card-body">
       <div class="displayResults">
 		<c:if test="${! empty org}">
@@ -99,42 +91,129 @@
 
 			</c:forEach>
 		</c:if>
-</div>
-
-
+		</div>
     </div>
+  </div> 
+</div>
+		
+
+</main>
   </div>
-</div>
-
-
-    
-        </main>
-      </div>
     </div>
-	<c:set var="isSignedUp" value="false" />
-	<c:forEach var="orgUser" items="${org.users}">
-		<c:if test="${orgUser.id == sessionScope.newUser.id}">
-			<c:set var="isSignedUp" value="true" />
+		</c:when>
+
+
+		
+<c:otherwise>
+			<div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+          <img src="${org.logoURL}" alt="Avatar" class="avatar">
+            <ul class="nav flex-column">
+              <li class="nav-item user-name">
+                  <strong>${org.orgName}</strong>  <span class="sr-only">(current)</span>
+              </li>
+              <li class="nav-item">
+                  <span data-feather="activity"></span>
+                    ${org.orgDescription}<br><br>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+            <h4 class="h2">${org.orgName}'s Activity</h4>    
+          </div>
+<div class="card-deck">
+<div class="card">
+    <div class="card-body">
+      <div class="displayResults">
+		<c:if test="${! empty org}">
+      <h5 class="card-title">Organization Members</h5>
+			<c:forEach items="${org.users}" var="user">
+			<a href="findUserById.do?id=${user.id}">${user.firstName} ${user.lastName}</a><br>
+
+			</c:forEach>
 		</c:if>
-	</c:forEach>
-	<c:choose>
-		<c:when test="${isSignedUp == false}">
-			<a class="nav-link" href="signUpForOrg.do?oId=${org.id}">
-                  <span data-feather="plus-square"></span>
-                  Sign Up
-       		</a>
-       </c:when>
-       <c:otherwise>
-       		<p>Good job! Your already signed up!</p>
-       		<a class="nav-link" href="goToUnRegisterOrg.do?oId=${org.id}">
-       			<span data-feather="plus-square"></span>
-       			Un-Register
-       		</a>
-       </c:otherwise>
-     </c:choose>
-     
-     				
-    <!-- Bootstrap core JavaScript
+		</div>
+    </div>
+  </div> 
+ </main>			
+</div>
+</div>
+			</c:otherwise>
+	
+	</c:choose>
+		
+
+
+
+
+
+</c:when>
+
+
+
+
+
+
+
+
+
+<c:otherwise>
+<div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+          <img src="${org.logoURL}" alt="Avatar" class="avatar">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                  <strong>${org.orgName}</strong>  <span class="sr-only">(current)</span>
+               
+              <li class="nav-item">
+                  <span data-feather="activity"></span>
+                    ${org.orgDescription}<br><br>
+           
+              </li>
+           
+            </ul>
+          </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+        
+  <div class="card mb-3 card-pad">
+		<div class="row no-gutters">
+			<div class="col-md-4">
+				<img src="css/crosswalk.png" class="card-img"
+					alt="Helping people help each other.">
+			</div>
+			<div class="col-md-8">
+				<div class="card-body">
+					<h1 class="card-title">Hello!</h1>
+					<p class="card-text">I see you're having a look around. 
+					${userProfile.firstName} could use some help. Sign up for your free goodWork 
+					account today and join ${userProfile.firstName}'s group. 
+					We do not bill for any of our services, and we will never
+					sell your information.</p><br>
+					<p class="card-text">Our goal is simple: we want to help you
+						help others. Find a volunteer event to join or create your own.</p>
+					<!-- <a class="btn btn-blue btn-lg" href="register.do" role="button">Sign Up!</a> -->
+					<a class="btn btn-blue2 btn-lg" data-toggle="modal"
+						data-target="#modalRegisterForm">Sign Up</a>
+
+				</div>
+			</div>
+		</div>
+	</div>
+         
+</main>
+
+</c:otherwise>	
+</c:choose>
+ <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -146,6 +225,5 @@
     <script>
       feather.replace()
     </script>
-
 </body>
 </html>
