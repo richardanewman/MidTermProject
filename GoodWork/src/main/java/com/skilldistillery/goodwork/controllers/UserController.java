@@ -88,28 +88,51 @@ public class UserController {
 			model.addAttribute("oops", "Looks like we didn't find anything. Please try another keyword.");
 			return "fail";
 		} else {
+			
 			List<User> users = dao.getAllUsersByKeyword(keyword);
 			List<Organization> orgs = orgDAO.searchByKeyword(keyword);
 			List<Event> events = eventDAO.findByKeyword(keyword);
 			List<Event> eventCat = eventDAO.findByCategory(keyword);
 			
-			if(users != null) {
-				model.addAttribute("users", users);
+			if(users == null & events == null & orgs == null & eventCat == null) {
+				model.addAttribute("oops", "Looks like we couldn't find anything matching that keyword, please try another");
+				return "fail";
+			} else {
+				if(users != null) {
+					model.addAttribute("users", users);
+				}
+				if(orgs != null) {
+					model.addAttribute("displayAll", orgs);
+				}
+				if(events != null) {
+					model.addAttribute("events", events);
+				}
+				if(eventCat != null) {
+					model.addAttribute("eventsByCat", eventCat);
+				}
+				return "result";
 			}
-			if(orgs != null) {
-				model.addAttribute("displayAll", orgs);
-			}
-			if(events != null) {
-				model.addAttribute("events", events);
-			}
-			if(eventCat != null) {
-//				model.addAttribute("eventByCat", eventCat);
-				model.addAttribute("events", eventCat);
-			}
-		return "result";
 			
 		}
  	}
+	
+	@RequestMapping(path = "", method = RequestMethod.GET)
+	public String categorySearch(Model model, @RequestParam("Keyword") String keyword) {
+		if (keyword == null | keyword.equals("")) {
+			model.addAttribute("oops", "Looks like we didnt find anything. Please try another keyword.");
+			return "fail";
+		}
+		
+		List<Event> eventCat = eventDAO.findByCategory(keyword);
+		
+		if(eventCat != null) {
+			model.addAttribute("eventByCat", eventCat);
+			return "result";
+		}
+		
+		model.addAttribute("oops", "Looks like we couldn't find any events matching that category search, please try another keyword or try again later");
+		return "fail";
+	}
 	
 	@RequestMapping(path="signUpForEvent.do", method = RequestMethod.GET)
 	public String signUpForEvent(Event event, Model model, HttpSession session) {
