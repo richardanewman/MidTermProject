@@ -14,8 +14,8 @@
 <%@include file="/WEB-INF/nav.jsp"%>
 </head>
 <body>
-<br>
-	<div class="container jumbotron" >
+	<br>
+	<div class="container jumbotron">
 		<%-- 		<div class="displayResults">
 			<c:if test="${! empty displayAll}">
 				<h1>All Organizations:</h1>
@@ -51,40 +51,31 @@ ${org.website}<br>
 
 		<br>
 		<div class="row" align="left">
-			<!-- <div class="list-group">
-				<div class="d-flex w-100 justify-content-between">
-					<div class="displayResults"> -->
-						<c:if test="${! empty displayAll}">
-							<c:forEach items="${displayAll}" var="org">
-								<div class="columns">
-								<!-- 	<div class="card-deck">
-										<div class="card"> -->
-											<!-- <span class="feather-card" data-feather="search"></span>
-											<div class="card-body"> -->
-												<p class="thumbnail_align">
-													<img
-														src="file:///untitled 1/Users/jerryrogers/Library/Application Support/Adobe/Dreamweaver CC 2019/en_US/Configuration/Temp/Assets/eam3c9d306e.TMP/images/bkg_06.jpg"
-														alt="" class="thumbnail" />
-												</p>
-												<%-- <a href="findOrgById.do?id=${org.id}">${org.orgName}</a> --%>
-												<h4 class="mb-1">
-													<a href="findOrgById.do?id=${org.id}">${org.orgName}</a>
-												</h4>
-												<br>
-												<p>
-													<small class="text-muted">${org.orgDescription}</small>
-												</p>
-												<br> <small class="text-muted">${org.location.city},
-													${org.location.state}</small> <br> <small class="text-muted">${org.orgType}</small>
-												<br> <small class="text-muted"><a
-													href="${org.website}" target="_blank">${org.website}</a></small>
-											</div>
-										<!-- </div>
-									</div>
-								</div> -->
-							</c:forEach>
-						</c:if>
-				<!-- 	</div>
+			<div class="displayResults">
+				<c:if test="${! empty displayAll}">
+					<c:forEach items="${displayAll}" var="org">
+
+
+						<%-- <a href="findOrgById.do?id=${org.id}">${org.orgName}</a> --%>
+						<div>
+							<hr>
+							<h4 class="mb-1">
+								<a href="findOrgById.do?id=${org.id}">${org.orgName}</a>
+							</h4>
+							<br>
+							<p>
+								<small class="text-muted">${org.orgDescription}</small>
+							</p>
+							<br> <small class="text-muted">${org.location.city},
+								${org.location.state}</small> <br> <small class="text-muted">${org.orgType}</small>
+							<br> <small class="text-muted"><a
+								href="${org.website}" target="_blank">${org.website}</a></small>
+						</div>
+
+					</c:forEach>
+				</c:if>
+			</div>
+			<!-- 	</div>
 				</div>
 			</div> -->
 
