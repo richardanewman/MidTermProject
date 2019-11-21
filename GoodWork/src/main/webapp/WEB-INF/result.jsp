@@ -46,7 +46,7 @@
 					</c:forEach>
 				</c:if>
 			</div>
-
+			<br>
 			<!-- /////Single Org///// -->
 			<div>
 				<c:if test="${! empty org}">
@@ -85,6 +85,7 @@ ${user.userName}<br>
 					</c:forEach>
 				</c:if>
 			</div>
+			<br>
 			<!-- /////Single User///// -->
 			<div>
 				<c:if test="${! empty user}">
@@ -98,6 +99,7 @@ ${user.userName}<br>
 				</c:if>
 				<br>
 			</div>
+			<br>
 			<!-- ////////// -->
 			<div>
 				<c:if test="${! empty event}">
