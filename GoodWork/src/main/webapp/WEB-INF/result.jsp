@@ -14,7 +14,8 @@
 <%@include file="/WEB-INF/nav.jsp"%>
 </head>
 <body>
-	<div class="container jumbotron" align="center">
+<br>
+	<div class="container jumbotron" >
 		<%-- 		<div class="displayResults">
 			<c:if test="${! empty displayAll}">
 				<h1>All Organizations:</h1>
@@ -49,33 +50,43 @@ ${org.website}<br>
 		</h1>
 
 		<br>
-
-		<div class="list-group">
-			<div class="d-flex w-100 justify-content-between">
-				<div class="displayResults">
-					<c:if test="${! empty displayAll}">
-						<c:forEach items="${displayAll}" var="org">
-							<div class="card-deck">
-								<div class="card">
-									<span class="feather-card" data-feather="search"></span>
-									<div class="card-body">
-										<%-- <a href="findOrgById.do?id=${org.id}">${org.orgName}</a> --%>
-										<h5 class="mb-1">
-											<a href="findOrgById.do?id=${org.id}">${org.orgName}</a>
-										</h5>
-										<br> <small class="text-muted">${org.orgDescription}</small>
-										<br> <small class="text-muted">${org.location.city},
-											${org.location.state}</small> <br> <small class="text-muted">${org.orgType}</small>
-										<br> <small class="text-muted"><a
-											href="${org.website}" target="_blank">${org.website}</a></small>
+		<div class="row" align="left">
+			<!-- <div class="list-group">
+				<div class="d-flex w-100 justify-content-between">
+					<div class="displayResults"> -->
+						<c:if test="${! empty displayAll}">
+							<c:forEach items="${displayAll}" var="org">
+								<div class="columns">
+								<!-- 	<div class="card-deck">
+										<div class="card"> -->
+											<!-- <span class="feather-card" data-feather="search"></span>
+											<div class="card-body"> -->
+												<p class="thumbnail_align">
+													<img
+														src="file:///untitled 1/Users/jerryrogers/Library/Application Support/Adobe/Dreamweaver CC 2019/en_US/Configuration/Temp/Assets/eam3c9d306e.TMP/images/bkg_06.jpg"
+														alt="" class="thumbnail" />
+												</p>
+												<%-- <a href="findOrgById.do?id=${org.id}">${org.orgName}</a> --%>
+												<h4 class="mb-1">
+													<a href="findOrgById.do?id=${org.id}">${org.orgName}</a>
+												</h4>
+												<br>
+												<p>
+													<small class="text-muted">${org.orgDescription}</small>
+												</p>
+												<br> <small class="text-muted">${org.location.city},
+													${org.location.state}</small> <br> <small class="text-muted">${org.orgType}</small>
+												<br> <small class="text-muted"><a
+													href="${org.website}" target="_blank">${org.website}</a></small>
+											</div>
+										<!-- </div>
 									</div>
-								</div>
-							</div>
-						</c:forEach>
-					</c:if>
+								</div> -->
+							</c:forEach>
+						</c:if>
+				<!-- 	</div>
 				</div>
-			</div>
-
+			</div> -->
 
 
 
@@ -135,7 +146,7 @@ ${user.userName}<br>
 			<!-- ////////// -->
 
 
-			<c:if test="${! empty events}">
+			<%-- 			<c:if test="${! empty events}">
 				<h1>All Events:</h1>
 				<c:forEach items="${events}" var="event">
 ${event.eventName}<br>
@@ -151,7 +162,7 @@ ${event.endTime}<br>
 ${event.peopleNeeded}<br>
 					<br>
 				</c:forEach>
-			</c:if>
+			</c:if> --%>
 
 
 			<!-- ////////// -->
