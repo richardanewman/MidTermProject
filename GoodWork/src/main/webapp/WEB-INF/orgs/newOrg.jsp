@@ -108,7 +108,11 @@
 			<form:label path="location.zipCode">Zip Code</form:label>
 			<br>
 			<form:input class="form-control" path="location.zipCode" min="0"
+<<<<<<< HEAD
 				type="text" placeholder="Zip Code" />
+=======
+				type="text" pattern="^\s*?\d{5}(?:[-\s]\d{4})?\s*?$" title="Zip Code format 12345 or 12345-1234" placeholder="Zip Code"/>
+>>>>>>> 24ca50a26e6d8f0b24fa1f152216226a680cd8c0
 			<form:errors path="location.zipCode" />
 			<br />
 			<form:label path="orgType">Organizaton Type</form:label>
@@ -140,8 +144,8 @@
 				placeholder="Please enter your website URL" />
 			<form:errors path="website" />
 			<br />
-			<input class="submit" type="submit" value="Submit" />
-			<!-- <input type="submit" value="Submit" class="btn btn-primary" /> -->
+			<!-- <input class="submit" type="submit" value="Submit" /> -->
+			<input type="submit" value="Submit" class="btn btn-primary" />
 		</form:form>
 	</div>
 	<hr>

@@ -17,8 +17,8 @@
 
 
 	<br>
-	<div class="container rounded">
-			<p> lets put event img up here</p>
+	<div class="container rounded" align="center">
+			<p><strong>lets put event img up here</strong></p>
 	</div>
 	<div class="container form-goup jumbotron" align="center">
 		<div class="card-deck">
@@ -278,7 +278,6 @@
             			</form> -->
 
 <div class="container form-goup jumbotron message">
-<% response.setIntHeader("Refresh", 3);%>
 <h1>${event.eventName} Message Board</h1>
 	<c:if test="${not empty messages}">
  <c:forEach items="${messages}" var="message">

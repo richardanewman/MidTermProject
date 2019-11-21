@@ -74,6 +74,8 @@ public class EventController {
 			Category category = eventDAO.findCategoryByName(cat);
 			User newUser = (User) session.getAttribute("newUser");
 			model.addAttribute("event", eventDAO.addEvent(event, newUser, category));
+		
+			model.addAttribute("userMessage", new MessageBoard());
 			newUser = userDAO.getUserById(newUser.getId());
 			session.removeAttribute("newUser");
 			session.setAttribute("newUser", newUser);
@@ -98,7 +100,8 @@ public class EventController {
 			Event event = eventDAO.updateEvent(updatedEvent, id, cat);
 			event = eventDAO.findEventById(event.getId());
 			user = userDAO.getUserById(user.getId());
-			
+			model.addAttribute("userMessage", new MessageBoard());
+			model.addAttribute("messages", event.getMessBoards());
 			session.removeAttribute("newUser");
 			session.setAttribute("newUser", user);
 			model.addAttribute("event", event);

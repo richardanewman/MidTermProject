@@ -44,6 +44,7 @@ public class OrgController {
 		} else {
 
 			model.addAttribute("org", orgDAO.findById(id));
+			
 
 			return "orgs/orgProfile";
 		}
@@ -125,13 +126,13 @@ public class OrgController {
 			System.out.println(orgData);
 			User user = (User) session.getAttribute("newUser");
 			Organization updatedOrg = orgDAO.updateOrganization(orgData, orgId);
-			model.addAttribute("successfulUpdate", updatedOrg);
+			model.addAttribute("org", updatedOrg);
 			model.addAttribute("successful", "You successfully updated your organization!");
 			user = userDAO.getUserById(user.getId());
 			
 			session.removeAttribute("newUser");
 			session.setAttribute("newUser", user);
-			return "orgs/org";
+			return "orgs/orgProfile";
 		} catch (Exception e) {
 			model.addAttribute("oops", "Looks like we had some trouble. Please try again.");
 			e.printStackTrace();
