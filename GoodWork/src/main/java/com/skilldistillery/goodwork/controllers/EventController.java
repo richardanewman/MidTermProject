@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.skilldistillery.goodwork.data.EventDAO;
+import com.skilldistillery.goodwork.data.MessageDAO;
 import com.skilldistillery.goodwork.data.UserDAO;
 import com.skilldistillery.goodwork.entities.Category;
 import com.skilldistillery.goodwork.entities.Event;
@@ -25,6 +26,8 @@ public class EventController {
 	private EventDAO eventDAO;
 	@Autowired
 	private UserDAO userDAO;
+	@Autowired 
+	private MessageDAO messDAO;
 //	private int eventId;
 
 	@RequestMapping(path = "/", method = RequestMethod.GET)
@@ -35,6 +38,7 @@ public class EventController {
 	@RequestMapping(path = "getEvent.do", method = RequestMethod.GET)
 	public String getEvent(Model model, int id) {
 		model.addAttribute("event", eventDAO.findEventById(id));
+		model.addAttribute("messages", messDAO.findMessagesByEventId(id));
 		return "events/event";
 
 	}

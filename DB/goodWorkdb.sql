@@ -162,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `message_board` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `event_id` INT NOT NULL,
   `user_id` INT NOT NULL,
-  `date_posted` DATETIME NOT NULL,
+  `date_posted` DATETIME NULL,
   `content` TEXT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_event_message_user_idx` (`user_id` ASC),
@@ -345,6 +345,9 @@ COMMIT;
 START TRANSACTION;
 USE `goodWorkdb`;
 INSERT INTO `message_board` (`id`, `event_id`, `user_id`, `date_posted`, `content`) VALUES (1, 1, 1, '2019-11-14-17-33-00', 'Somebody better sign up and help me clean. Please.');
+INSERT INTO `message_board` (`id`, `event_id`, `user_id`, `date_posted`, `content`) VALUES (2, 1, 2, '2019-11-14-18-00-00', 'I\'ll come help you clean up, Bobby. Don\'t worry bro!');
+INSERT INTO `message_board` (`id`, `event_id`, `user_id`, `date_posted`, `content`) VALUES (3, 1, 3, '2019-11-14-19-30-00', 'Sorry I can\'t make it. I wish I could but going out of town. Next time though.');
+INSERT INTO `message_board` (`id`, `event_id`, `user_id`, `date_posted`, `content`) VALUES (4, 1, 4, '2019-11-14-19-20-00', 'I should be able to make it. I\'ll let you know by Saturday.');
 
 COMMIT;
 

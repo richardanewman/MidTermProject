@@ -79,4 +79,12 @@ class MessageBoardTest {
 		
 	}
 	
+	@Test
+	@DisplayName("Testing MessageBoard entity getContent")
+	void test6() {
+		assertNotNull(mb);
+		assertEquals(1, mb.getEvent().getId());
+		
+	}
+	
 }
