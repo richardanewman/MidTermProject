@@ -17,8 +17,16 @@
 
 
 	<br>
-	<div>
-		<table class="container rounded" align="center" bgcolor="#9644E8"
+	<div class="container rounded">
+			<p> lets put event img up here</p>
+	</div>
+	<div class="container form-goup jumbotron" align="center">
+		<div class="card-deck">
+			<div class="card">
+				<span class="feather-card" data-feather="search"></span>
+				<div class="card-body">
+					<h5 class="card-title"></h5>
+					<table class="container rounded" align="center" bgcolor="#9644E8"
 			border="0" cellpadding="0" cellspacing="0" width="100%">
 			<tr>
 				<td valign="middle"
@@ -37,13 +45,6 @@
 				</td>
 			</tr>
 		</table>
-	</div>
-	<div class="container form-goup jumbotron" align="center">
-		<div class="card-deck">
-			<div class="card">
-				<span class="feather-card" data-feather="search"></span>
-				<div class="card-body">
-					<h5 class="card-title"></h5>
 					<table class="table table-hover table-bordered table-light"
 						style="background-color: #EBE8F1">
 						<thread>
