@@ -195,8 +195,8 @@ ${event.peopleNeeded}<br>
 		<br> --%>
 
 
-	<!-- ***********    NEED TO LOOK AT LINKING/ROUTING OF CATAGORY SEARCH *********** -->
-	<!-- ***********    CURRENTLY JUST LEAVING AS IS FOR A PLACE HOLDER    *********** -->
+	<!-- EVENT BY CAT -->
+
 	<div>
 		<c:if test="${! empty eventsByCat}">
 			<div class="container">

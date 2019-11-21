@@ -16,7 +16,7 @@
 		<form:errors path="userName" />
 		<br />
 		<form:label path="password" >Password:</form:label><br>
-		<form:input class="input" path="password" required="required" type="text" placeholder="Password"/>
+		<form:input class="input" path="password" required="required" type="password" placeholder="Password"/>
 		<form:errors path="password" />
 		<br />
 		<form:label path="firstName" >First Name:</form:label><br>
