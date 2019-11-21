@@ -14,87 +14,40 @@
 <%@include file="/WEB-INF/nav.jsp"%>
 </head>
 <body>
-<br>
-	<div class="container jumbotron" >
-		<%-- 		<div class="displayResults">
-			<c:if test="${! empty displayAll}">
-				<h1>All Organizations:</h1>
+	<br>
+	<!-- ///// ORG LIST ///// Working -->
+
+	<br>
+	<div class="displayResults">
+		<c:if test="${! empty displayAll}">
+
+			<div class="container jumbotron">
+				<h1>
+					Organizations Currently Helping Others with <strong>goodWork</strong>
+				</h1>
 				<c:forEach items="${displayAll}" var="org">
-					<a href="findOrgById.do?id=${org.id}">${org.orgName}</a>
-					<br>
-
-					<br>
-${org.orgDescription}<br>
-					<br>
-${org.location.address}<br>
-					<br>
-${org.location.city}<br>
-					<br>
-${org.location.state}<br>
-					<br>
-${org.orgType}<br>
-					<br>
-${org.orgNum}<br>
-					<br>
-${org.logoURL}<br>
-					<br>
-${org.website}<br>
-					<br>
+					<div>
+						<hr>
+						<h4 class="mb-1">
+							<a href="findOrgById.do?id=${org.id}">${org.orgName}</a>
+						</h4>
+						<br>
+						<p>
+							<small class="text-muted">${org.orgDescription}</small>
+						</p>
+						<br> <small class="text-muted">${org.location.city},
+							${org.location.state}</small> <br> <small class="text-muted">${org.orgType}</small>
+						<br> <small class="text-muted"><a
+							href="${org.website}" target="_blank">${org.website}</a></small>
+					</div>
 				</c:forEach>
-			</c:if>
-		</div>
-	</div> --%>
-		<!-- ////////// -->
-		<h1>
-			Organizations Currently Helping Others with <strong>goodWork</strong>
-		</h1>
+			</div>
 
-		<br>
-		<div class="row" align="left">
-			<!-- <div class="list-group">
-				<div class="d-flex w-100 justify-content-between">
-					<div class="displayResults"> -->
-						<c:if test="${! empty displayAll}">
-							<c:forEach items="${displayAll}" var="org">
-								<div class="columns">
-								<!-- 	<div class="card-deck">
-										<div class="card"> -->
-											<!-- <span class="feather-card" data-feather="search"></span>
-											<div class="card-body"> -->
-												<p class="thumbnail_align">
-													<img
-														src="file:///untitled 1/Users/jerryrogers/Library/Application Support/Adobe/Dreamweaver CC 2019/en_US/Configuration/Temp/Assets/eam3c9d306e.TMP/images/bkg_06.jpg"
-														alt="" class="thumbnail" />
-												</p>
-												<%-- <a href="findOrgById.do?id=${org.id}">${org.orgName}</a> --%>
-												<h4 class="mb-1">
-													<a href="findOrgById.do?id=${org.id}">${org.orgName}</a>
-												</h4>
-												<br>
-												<p>
-													<small class="text-muted">${org.orgDescription}</small>
-												</p>
-												<br> <small class="text-muted">${org.location.city},
-													${org.location.state}</small> <br> <small class="text-muted">${org.orgType}</small>
-												<br> <small class="text-muted"><a
-													href="${org.website}" target="_blank">${org.website}</a></small>
-											</div>
-										<!-- </div>
-									</div>
-								</div> -->
-							</c:forEach>
-						</c:if>
-				<!-- 	</div>
-				</div>
-			</div> -->
-
-
-
-
-
-
-			<!-- /////Single Org///// -->
-
+		</c:if>
+	</div>
+	<br>
+	<!-- /////Single Org///// -->
+	<%-- 		<div>
 			<c:if test="${! empty org}">
 				<h1>Found it!</h1>
 ${org.orgName}<br>
@@ -114,26 +67,100 @@ ${org.logoURL}<br>
 ${org.website}<br>
 				<br>
 			</c:if>
-			<br>
+		</div> --%>
+	<br>
+	<div>
+		<c:if test="${! empty org}">
+			<div class="container">
+				<table class="table table-hover table-bordered table-light">
+					<tr>
+						<th scope="col">Org Information</th>
+						<th scope="col"></th>
+					</tr>
+					<tr>
+						<td>ORG</td>
+						<td>${org.orgName}</td>
+					</tr>
+					<tr>
+						<td>Address</td>
+						<td>${org.location.address}</td>
+					</tr>
+					<tr>
+						<td>Address</td>
+						<td>${org.location.address2}</td>
+					</tr>
+					<tr>
+						<td>City</td>
+						<td>${org.location.city}</td>
+					</tr>
+					<tr>
+						<td>State</td>
+						<td>${org.location.state}</td>
+					</tr>
+					<tr>
+						<td>Zip Code</td>
+						<td>${org.location.zipCode}</td>
+					</tr>
+					<tr>
+						<td>Org Type</td>
+						<td>${org.orgType}</td>
+					</tr>
+					<tr>
+						<td>Org Number</td>
+						<td>${org.orgNum}</td>
+					</tr>
+					<tr>
+						<td>Org Website</td>
+						<td>${org.website}</td>
+					</tr>
+					<tr>
+						<td>Org Logo</td>
+						<td>${org.orgURL}</td>
+					</tr>
 
-			<!-- /////List of Users///// -->
+				</table>
+			</div>
+		</c:if>
+	</div>
 
-			<c:if test="${! empty users}">
-				<h1>All Users:</h1>
-				<c:forEach items="${users}" var="user">
-${user.firstName}<br>
-					<br>
-${user.lastName}<br>
-					<br>
-${user.userName}<br>
-					<br>
-				</c:forEach>
-			</c:if>
+	<!-- /////List of Users///// working -->
 
-			<!-- /////Single User///// -->
+	<div>
+		<c:if test="${! empty users}">
+			<div class="container">
+				<h1>
+					Users Currently Helping Others with <strong>goodWork</strong>
+				</h1>
+				<hr>
+				<table class="table table-hover table-bordered table-secondary">
+					<thead>
+						<tr>
+							<th scope="col">First Name</th>
+							<th scope="col">Last Name</th>
+							<th scope="col">User Name</th>
+						</tr>
+					</thead>
+					<c:forEach items="${users}" var="user">
+						<tbody>
+							<tr>
+								<td>${user.firstName}</td>
+								<td>${user.lastName}</td>
+								<td>${user.userName}</td>
+							</tr>
+						</tbody>
+					</c:forEach>
+				</table>
+			</div>
+		</c:if>
+	</div>
 
+	<!-- ///// Single User ///// -->
+	<!-- ****** COMMENTED OUT: DONT THINK IT'S GETTING HIT ANYWHERE ????????? -->
+	<%-- 		<div>
+		
 			<c:if test="${! empty user}">
-				<h1>Found it!</h1>
+				<h1>Hopefully this is the user you were looking for, otherwise
+					please try again...</h1>
 ${user.firstName}<br>
 				<br>
 ${user.lastName}<br>
@@ -142,31 +169,13 @@ ${user.userName}<br>
 				<br>
 			</c:if>
 			<br>
+		</div>
+		<br> --%>
 
-			<!-- ////////// -->
+	<!-- /////////  EVENT ////////// -->
+	<!-- ****** COMMENTED OUT: DONT THINK IT'S GETTING HIT ANYWHERE ????????? -->
 
-
-			<%-- 			<c:if test="${! empty events}">
-				<h1>All Events:</h1>
-				<c:forEach items="${events}" var="event">
-${event.eventName}<br>
-					<br>
-${event.description}<br>
-					<br>
-${event.eventDate}<br>
-					<br>
-${event.startTime}<br>
-					<br>
-${event.endTime}<br>
-					<br>
-${event.peopleNeeded}<br>
-					<br>
-				</c:forEach>
-			</c:if> --%>
-
-
-			<!-- ////////// -->
-
+	<%-- 		<div>
 			<c:if test="${! empty event}">
 				<h1>Found it!</h1>
 ${event.eventName}<br>
@@ -182,64 +191,79 @@ ${event.endTime}<br>
 ${event.peopleNeeded}<br>
 				<br>
 			</c:if>
-			<br>
+		</div>
+		<br> --%>
 
 
-			<!-- ////////// -->
-
-
-			<c:if test="${! empty eventByCat}">
-				<h1>All Events By Category:</h1>
+	<!-- ***********    NEED TO LOOK AT LINKING/ROUTING OF CATAGORY SEARCH *********** -->
+	<!-- ***********    CURRENTLY JUST LEAVING AS IS FOR A PLACE HOLDER    *********** -->
+	<div>
+		<c:if test="${! empty eventByCat}">
+			<div class="container">
+				<h1>
+					Events by Category with <strong>goodWork</strong>
+				</h1>
+				<table class="table table-hover table-bordered table-secondary">
+					<thead>
+						<tr>
+							<th scope="col">ID</th>
+							<th scope="col">Title</th>
+							<th scope="col">Description</th>
+							<th scope="col">Event Date</th>
+						</tr>
+					</thead>
+					<c:forEach var="event" items="${eventByCat}">
+						<tbody>
+							<tr>
+								<th scope="row">${eventByCat.id}</th>
+								<td><a href="getEvent.do?id=${eventByCat.id}">${eventByCat.eventName}</a></td>
+								<td>${eventByCat.description}</td>
+								<td>${eventByCat.eventDate}</td>
+							</tr>
+						</tbody>
+					</c:forEach>
+				</table>
+			</div>
+		</c:if>
+	</div>
+	<br>
+	<div>
+		<c:if test="${! empty eventByCat}">
+			<div class="container">
+				<h1>
+					Events by Category with <strong>goodWork</strong>
+				</h1>
 				<c:forEach items="${eventByCat}" var="event">
-${event.eventName}<br>
+					<hr>
+					<h4 class="mb-1">
+						<a href="findEventByCategory.do?id=${event.id}">${event.eventName}</a>
+					</h4>
 					<br>
-${event.description}<br>
+					<p>
+						<small class="text-muted">${event.description}</small>
+					</p>
 					<br>
-${event.eventDate}<br>
-					<br>
-${event.startTime}<br>
-					<br>
-${event.endTime}<br>
-					<br>
-${event.peopleNeeded}<br>
+					<small class="text-muted">${event.eventDate}</small>
 					<br>
 				</c:forEach>
-			</c:if>
-
-
-			<!-- ////////// -->
-
-
-			<c:if test="${! empty eventByCat}">
-				<h1>Found it!</h1>
-${event.eventName}<br>
-				<br>
-${event.description}<br>
-				<br>
-${event.eventDate}<br>
-				<br>
-${event.startTime}<br>
-				<br>
-${event.endTime}<br>
-				<br>
-${event.peopleNeeded}<br>
-				<br>
-			</c:if>
-			<br>
-
-
-			<!-- /////Org Delete///// -->
-
-
-			<c:if test="${! empty successfulDelete}">
-				<h1>Success!</h1>
-				<h3>${successfulDelete}</h3>
-			</c:if>
-
-
-			<!-- ////////// -->
-		</div>
+			</div>
+		</c:if>
 	</div>
+
+	<br>
+
+	<!-- /////Org Delete///// working -->
+
+	<div class="container">
+		<c:if test="${! empty successfulDelete}">
+			<h1>Success!</h1>
+			<h3>${successfulDelete}</h3>
+		</c:if>
+
+	</div>
+
+	<!-- /////Footer///// -->
+
 	<hr>
 	<footer class="text-center">
 		<div class="container">

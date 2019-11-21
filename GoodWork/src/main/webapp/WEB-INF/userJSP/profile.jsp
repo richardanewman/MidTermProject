@@ -63,6 +63,7 @@
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
             <h4 class="h2">${userProfile.firstName}'s Dashboard</h4>    
           </div>
+<div class="card-deck">
 <div class="card">
     <div class="card-body">
       <div class="displayResults">
@@ -82,6 +83,7 @@
 		</div>
     </div>
   </div> 
+</div>
 <!-- Begin Card Deck -->
 <div class="card-deck">
   <div class="card">
@@ -125,16 +127,12 @@
           <div class="sidebar-sticky">
           <img src="${userProfile.photoURL}" alt="Avatar" class="avatar">
             <ul class="nav flex-column">
-              <li class="nav-item">
-                <a class="nav-link active" href="#">
-                  <span data-feather="home"></span>
-                   ${userProfile.firstName} ${userProfile.lastName} <span class="sr-only">(current)</span>
-                </a>
+              <li class="nav-item user-name">
+                 <strong>${userProfile.firstName} ${userProfile.lastName}</strong>  <span class="sr-only">(current)</span>
               </li>
               <li class="nav-item">
                   <span data-feather="activity"></span>
                    ${userProfile.bio}
-                </a>
               </li>
             </ul>
           </div>
@@ -142,8 +140,9 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-            <h4 class="h2">${userProfile.firstName}'s Dashboard</h4>    
+            <h4 class="h2">${userProfile.firstName}'s Activity</h4>    
           </div>
+<div class="card-deck">
 <div class="card">
     <div class="card-body">
       <div class="displayResults">
@@ -163,6 +162,7 @@
 		</div>
     </div>
   </div> 
+</div>
 <!-- Begin Card Deck -->
 <div class="card-deck">
 
@@ -183,18 +183,6 @@
       <div class="displayResults">
 		<c:if test="${! empty userProfile}">
       <h5 class="card-title">${userProfile.firstName}'s Events Joined</h5>
-			<c:forEach items="${userProfile.attendedEvents}" var="added">
-			<a href="getEvent.do?id=${added.event.id}">${added.event.eventName}</a><br>
-			</c:forEach>
-		</c:if>
-		</div>
- 	</div>
-</div>
-  <div class="card">
-    <div class="card-body">
-      <div class="displayResults">
-		<c:if test="${! empty userProfile}">
-      <h5 class="card-title">Events Joined</h5>
 			<c:forEach items="${userProfile.attendedEvents}" var="added">
 			<a href="getEvent.do?id=${added.event.id}">${added.event.eventName}</a><br>
 			</c:forEach>
@@ -231,10 +219,8 @@
           <img src="${userProfile.photoURL}" alt="Avatar" class="avatar">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" href="#">
-                  <span data-feather="home"></span>
-                  ${userProfile.firstName} ${userProfile.lastName} <span class="sr-only">(current)</span>
-                </a>
+               <strong>${userProfile.firstName} ${userProfile.lastName}</strong>  <span class="sr-only">(current)</span>
+               
               <li class="nav-item">
                   <span data-feather="activity"></span>
                   ${userProfile.bio}
@@ -264,6 +250,30 @@
 		</div>
     </div>
   </div> 
+  <div class="card mb-3 card-pad">
+		<div class="row no-gutters">
+			<div class="col-md-4">
+				<img src="css/crosswalk.png" class="card-img"
+					alt="Helping people help each other.">
+			</div>
+			<div class="col-md-8">
+				<div class="card-body">
+					<h1 class="card-title">Hello!</h1>
+					<p class="card-text">I see you're having a look around. 
+					${userProfile.firstName} could use some help. Sign up for your free goodWork 
+					account today and join ${userProfile.firstName}'s group. 
+					We do not bill for any of our services, and we will never
+					sell your information.</p><br>
+					<p class="card-text">Our goal is simple: we want to help you
+						help others. Find a volunteer event to join or create your own.</p>
+					<!-- <a class="btn btn-blue btn-lg" href="register.do" role="button">Sign Up!</a> -->
+					<a class="btn btn-blue2 btn-lg" data-toggle="modal"
+						data-target="#modalRegisterForm">Sign Up</a>
+
+				</div>
+			</div>
+		</div>
+	</div>
          
 </main>
 

@@ -92,6 +92,7 @@ public class UserController {
 			List<Organization> orgs = orgDAO.searchByKeyword(keyword);
 			List<Event> events = eventDAO.findByKeyword(keyword);
 			List<Event> eventCat = eventDAO.findByCategory(keyword);
+			
 			if(users != null) {
 				model.addAttribute("users", users);
 			}
@@ -102,7 +103,8 @@ public class UserController {
 				model.addAttribute("events", events);
 			}
 			if(eventCat != null) {
-				model.addAttribute("eventByCat", eventCat);
+//				model.addAttribute("eventByCat", eventCat);
+				model.addAttribute("events", eventCat);
 			}
 		return "result";
 			
