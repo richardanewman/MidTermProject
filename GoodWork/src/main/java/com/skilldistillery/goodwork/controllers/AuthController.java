@@ -21,7 +21,8 @@ public class AuthController {
 	@RequestMapping(path = "login.do", method = RequestMethod.GET)
 	public String loginForm(Model model, HttpSession session) {
 		if (session.getAttribute("newUser") != null) {
-			model.addAttribute("user", new User());
+			model.addAttribute("userProfile", (User) session.getAttribute("newUser"));
+			
 			return "userJSP/profile";
 		}
 		model.addAttribute("user", new User());
@@ -32,11 +33,10 @@ public class AuthController {
 	public String loginUser(User user, Model model, HttpSession session) {
 		User userLog = dao.loginUser(user.getUserName(), user.getPassword());
 		if (userLog == null) {
-			model.addAttribute("oops", "Invalid Username or Password, please try again");
+			model.addAttribute("oops", "Invalid Username or Password, please try again or register.");
 			return "fail";
-//			return "authJSP/loginForm";
 		}
-		model.addAttribute("user", new User());
+		model.addAttribute("userProfile", userLog);
 		session.setAttribute("newUser", userLog);
 		return "userJSP/profile";
 	}
@@ -55,7 +55,7 @@ public class AuthController {
 		}
 		User u = dao.registerUser(newUser);
 		session.setAttribute("newUser", u);
-		model.addAttribute("user", new User());
+		model.addAttribute("userProfile", u);
 		return "userJSP/profile";
 	}
 

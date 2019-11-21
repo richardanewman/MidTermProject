@@ -36,6 +36,11 @@
 	background-color: #6dbddb !important;
 	border-color: #6dbddb !important;
 }
+.btn-blue2 {
+	color: #fff !important;
+	background-color: #2f58a8 !important;
+	border-color: #2f58a8 !important;
+}
 
 .btn-brown {
 	color: #fff !important;
@@ -52,6 +57,11 @@
 	color: #fff !important;
 	background-color: #5ba9c8 !important;
 	border-color: #5ba9c8 !important;
+}
+.btn-blue2:hover {
+	color: #fff !important;
+	background-color: #264c97 !important;
+	border-color: #264c97 !important;
 }
 
 .btn-brown:hover {
@@ -76,6 +86,26 @@ position:absolute;
 }
 .card-pad {
 	padding: 20px 100px;
+}
+
+.nav-bottom {
+	border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+.avatar {
+  vertical-align: middle;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.user-name {
+	text-align: center;
+	color: #284275;
+}
+.input-pad {
+	margin-bottom: 5px !important;
 }
 
 

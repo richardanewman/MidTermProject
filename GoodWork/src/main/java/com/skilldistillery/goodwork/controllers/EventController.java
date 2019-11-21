@@ -10,11 +10,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.skilldistillery.goodwork.data.EventDAO;
+import com.skilldistillery.goodwork.data.MessageDAO;
 import com.skilldistillery.goodwork.data.UserDAO;
+import com.skilldistillery.goodwork.entities.Category;
 import com.skilldistillery.goodwork.entities.Event;
-import com.skilldistillery.goodwork.entities.Location;
+import com.skilldistillery.goodwork.entities.MessageBoard;
 import com.skilldistillery.goodwork.entities.User;
 
 @Controller
@@ -24,6 +27,8 @@ public class EventController {
 	private EventDAO eventDAO;
 	@Autowired
 	private UserDAO userDAO;
+	@Autowired 
+	private MessageDAO messDAO;
 //	private int eventId;
 
 	@RequestMapping(path = "/", method = RequestMethod.GET)
@@ -34,6 +39,8 @@ public class EventController {
 	@RequestMapping(path = "getEvent.do", method = RequestMethod.GET)
 	public String getEvent(Model model, int id) {
 		model.addAttribute("event", eventDAO.findEventById(id));
+		model.addAttribute("messages", messDAO.findMessagesByEventId(id));
+		model.addAttribute("userMessage", new MessageBoard());
 		return "events/event";
 
 	}
@@ -41,7 +48,14 @@ public class EventController {
 	@RequestMapping(path = "eventKeyword.do")
 	public String findByKeyword(@Valid String keyword, Model model) {
 		List<Event> eventSearch = eventDAO.findByKeyword(keyword);
-		model.addAttribute("events", eventSearch);
+		model.addAttribute("eventList", eventSearch);
+		return "events/eventList";
+	}
+	
+	@RequestMapping(path = "eventCategory.do")
+	public String findByCategory(@Valid String keyword, Model model) {
+		List<Event> catSearch = eventDAO.findByCategory(keyword);
+		model.addAttribute("events", catSearch);
 		return "result";
 	}
 
@@ -55,16 +69,17 @@ public class EventController {
 	}
 
 	@RequestMapping(path = "createEvent.do", method = RequestMethod.POST)
-	public String addEvent(Event event, Model model, HttpSession session) {
-		System.out.println(event);
-		// session code for create event
-		User newUser = (User) session.getAttribute("newUser");
-		model.addAttribute("newEvent", eventDAO.addEvent(event, newUser));
-		newUser = userDAO.getUserById(newUser.getId());
-		session.removeAttribute("newUser");
-		session.setAttribute("newUser", newUser);
-
-		return "result";
+	public String addEvent(Event event, Model model, HttpSession session, @RequestParam("name") String cat) {
+		if(session.getAttribute("newUser") != null) {
+			Category category = eventDAO.findCategoryByName(cat);
+			User newUser = (User) session.getAttribute("newUser");
+			model.addAttribute("event", eventDAO.addEvent(event, newUser, category));
+			newUser = userDAO.getUserById(newUser.getId());
+			session.removeAttribute("newUser");
+			session.setAttribute("newUser", newUser);
+			return "events/event";
+		}
+		return "index";
 	}
 
 	@RequestMapping(path = "createEventForm.do", method = RequestMethod.GET)
@@ -73,17 +88,23 @@ public class EventController {
 	}
 
 	@RequestMapping(path = "updateEvent.do", method = RequestMethod.POST)
-	public String updateEvent(Model model, Event updatedEvent, Integer id) {
-		System.err.println("In controller************" + id + " " + updatedEvent);
-		Event originalEventForDate = eventDAO.findEventById(id);
-		updatedEvent.setDateCreated(originalEventForDate.getDateCreated()); // passing date issues works
-		System.out.println("GIVE ME THE DATESSSSS" + originalEventForDate);
-		System.err.println();
-//		LocalDate date = updatedEvent.getDateCreated();
-//		updatedEvent.setDateCreated(date);
-		Event event = eventDAO.updateEvent(updatedEvent, id);
-		model.addAttribute("updateEvent", event);
-		return "events/event";
+	public String updateEvent(Model model, Event updatedEvent, Integer id, @RequestParam("name") String catName, HttpSession session) {
+		if(session.getAttribute("newUser") != null) {
+			Category cat = eventDAO.findCategoryByName(catName);
+			Event originalEventForDate = eventDAO.findEventById(id);
+			User user = (User) session.getAttribute("newUser");
+			
+			updatedEvent.setDateCreated(originalEventForDate.getDateCreated());
+			Event event = eventDAO.updateEvent(updatedEvent, id, cat);
+			event = eventDAO.findEventById(event.getId());
+			user = userDAO.getUserById(user.getId());
+			
+			session.removeAttribute("newUser");
+			session.setAttribute("newUser", user);
+			model.addAttribute("event", event);
+			return "events/event";
+		}
+		return "index";
 	}
 
 	@RequestMapping(path = "deleteEvent.do", method = RequestMethod.POST)
@@ -92,5 +113,11 @@ public class EventController {
 		return "index";
 
 	}
-
+	
+	@RequestMapping(path = "goToUpdateEvent.do", method = RequestMethod.GET)
+	public String goToUpdateForm(Event event, Model model) {
+		event = eventDAO.findEventById(event.getId());
+		model.addAttribute("event", event);
+		return "events/updateEvent";
+	}
 }

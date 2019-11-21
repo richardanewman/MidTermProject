@@ -7,210 +7,311 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link
-	href="https://cdn.jsdelivr.net/webjars/org.webjars/bootstrap/4.3.1/css/bootstrap.css"
-	rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/webjars/org.webjars/bootstrap/4.3.1/css/bootstrap.css" rel="stylesheet">
+ <link rel="stylesheet" type="text/css" href="css/event.css">
 <title>Event</title>
 <%@include file="/WEB-INF/nav.jsp"%>
 </head>
+
 <body>
 
+
 	<br>
-	<div class=" container form-goup jumbotron">
+	<div>
+		<table class="container rounded" align="center" bgcolor="#9644E8"
+			border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td valign="middle"
+					style="text-align: center; padding: 40px; font-family: sans-serif; font-size: 35px; mso-height-rule: exactly; line-height: 40px; color: #ffffff;">
+					${event.eventName}</td>
+			</tr>
+			<tr>
+				<td valign="middle"
+					style="text-align: center; padding: 40px; font-family: sans-serif; font-size: 20px; mso-height-rule: exactly; line-height: 30px; color: #ffffff;">
+					${event.description }</td>
+			</tr>
+			<tr>
+				<td valign="middle"
+					style="text-align: center; padding: 40px; font-family: sans-serif; font-size: 20px; mso-height-rule: exactly; line-height: 30px; color: #ffffff;">
+					<strong>${event.eventDate }</strong>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="container form-goup jumbotron" align="center">
+		<div class="card-deck">
+			<div class="card">
+				<span class="feather-card" data-feather="search"></span>
+				<div class="card-body">
+					<h5 class="card-title"></h5>
+					<table class="table table-hover table-bordered table-light"
+						style="background-color: #EBE8F1">
+						<thread>
+						<tr>
+							<th scope="col">Event Information</th>
+							<th scope="col"></th>
+						</tr>
+						<tr>
+							<td>ID</td>
+							<td>${event.id}</td>
+						</tr>
+						<tr>
+							<td>Address</td>
+							<td>${event.location.address}</td>
+						</tr>
+						<tr>
+							<td>Address</td>
+							<td>${event.location.address2}</td>
+						</tr>
+						<tr>
+							<td>City</td>
+							<td>${event.location.city}</td>
+						</tr>
+						<tr>
+							<td>State</td>
+							<td>${event.location.state}</td>
+						</tr>
+						<tr>
+							<td>Zip Code</td>
+							<td>${event.location.zipCode}</td>
+						</tr>
+						<tr>
+							<td>Start Time</td>
+							<td>${event.startTime}</td>
+						</tr>
+						<tr>
+							<td>End Time</td>
+							<td>${event.endTime}</td>
+						</tr>
+						<tr>
+							<td>Number of People Need</td>
+							<td>${event.peopleNeeded}</td>
+						</tr>
+						<tr>
+							<td>Date Created</td>
+							<td>${event.dateCreated}</td>
+						</tr>
+						<tr>
+							<td>Point of Contact (POC)</td>
+							<td>${event.pointOfContact}</td>
+						</tr>
+						<tr>
+							<td>POC Phone</td>
+							<td>${event.pocPhone}</td>
+						</tr>
+						<tr>
+							<td>POC Email</td>
+							<td>${event.pocEmail}</td>
+						</tr>
+						<tr>
+							<td>Category</td>
+							<c:forEach var="cat" items="${event.categories}">
+								<td>${cat.name}</td>
+							</c:forEach>
+						</tr>
+						<tr>
+							<td>Photo Url</td>
+							<td>${event.photoUrl}</td>
+						</tr>
+
+						</thread>
+					</table>
+					<%-- 				<ul style="list-style: none">
+						<li>Event Id: ${event.id}</li>
+						<li>Date Created: ${event.dateCreated }</li>
+						<li>Event Name: ${event.eventName}</li>
+						<li>Address: ${event.location.address}</li>
+						<li>Address: ${event.location.address2}</li>
+						<li>City: ${event.location.city}</li>
+						<li>State: ${event.location.state}</li>
+						<li>Zip Code: ${event.location.zipCode}</li>
+						<li>Event Date: ${event.eventDate}</li>
+						<li>Start Time: ${event.startTime}</li>
+						<li>End Time: ${event.endTime}</li>
+						<li>People Needed: ${event.peopleNeeded}</li>
+						<li>Date Created: ${event.dateCreated}</li>
+						<li>Point of Contact: ${event.pointOfContact }</li>
+						<li>POC Phone: ${event.pocPhone}</li>
+						<li>POC Email: ${event.pocEmail }</li>
+						<li>Description: ${event.description }</li>
+						<c:forEach var="cat" items="${event.categories}">
+							<li>Category: ${cat.name}</li>
+						</c:forEach>
+						<li>${event.photoUrl}</li>
+					</ul>
+					<hr> --%>
+
+				</div>
+
+			</div>
+		</div>
+		<%-- <h3>
+				<strong><em>Event Details</em></strong>
+			</h3>
+			<ul style="list-style: none">
+				<li>Event Id: ${event.id}</li>
+				<li>Date Created: ${event.dateCreated }</li>
+				<li>Event Name: ${event.eventName}</li>
+				<li>Address: ${event.location.address}</li>
+				<li>Address: ${event.location.address2}</li>
+				<li>City: ${event.location.city}</li>
+				<li>State: ${event.location.state}</li>
+				<li>Zip Code: ${event.location.zipCode}</li>
+				<li>Event Date: ${event.eventDate}</li>
+				<li>Start Time: ${event.startTime}</li>
+				<li>End Time: ${event.endTime}</li>
+				<li>People Needed: ${event.peopleNeeded}</li>
+				<li>Date Created: ${event.dateCreated}</li>
+				<li>Point of Contact: ${event.pointOfContact }</li>
+				<li>POC Phone: ${event.pocPhone}</li>
+				<li>POC Email: ${event.pocEmail }</li>
+				<li>Description: ${event.description }</li>
+				<c:forEach var="cat" items="${event.categories}">
+					<li>Category: ${cat.name}</li>
+				</c:forEach>
+				<li>${event.photoUrl}</li>
+			</ul>
+			<hr>
+ --%>
+
+ 
+ 
+		<br>
 		<c:choose>
-			<c:when test="${not empty event}">
-
-				<h3>
-					<strong>Event</strong>
-				</h3>
-				<ul style="list-style: none">
-					<li>Event Id: ${event.id}</li>
-					<li>Date Created: ${event.dateCreated }</li>
-					<li>Event Name: ${event.eventName}</li>
-					<li>Address: ${event.location.address}</li>
-					<li>Address: ${event.location.address2}</li>
-					<li>City: ${event.location.city}</li>
-					<li>State: ${event.location.state}</li>
-					<li>Zip Code: ${event.location.zipCode}</li>
-					<li>Event Date: ${event.eventDate}</li>
-					<li>Start Time: ${event.startTime}</li>
-					<li>End Time: ${event.endTime}</li>
-					<li>People Needed: ${event.peopleNeeded}</li>
-					<li>Date Created: ${event.dateCreated}</li>
-					<li>Point of Contact: ${event.pointOfContact }</li>
-					<li>POC Phone: ${event.pocPhone}</li>
-					<li>POC Email: ${event.pocEmail }</li>
-					<li>Description: ${event.description }</li>
-					<c:forEach var="cat" items="${event.categories}">
-					<li>Category:
-						cat</li>
-					</c:forEach>
-					<li>${event.photoUrl}</li>
-				</ul>
-				<hr>
-				<br>
+			<c:when test="${not empty newUser}">
 				<c:choose>
-					<c:when test="${not empty newUser}">
-						<c:choose>
-							<c:when test="${newUser.id == event.host.id}">
-								<div>
-									<h2 align="center">Update an Event</h2>
-									<br>
+					<c:when test="${newUser.id == event.host.id}">
+						<form:form action="goToUpdateEvent.do" method="GET"
+							modelAttribute="event">
+							<form:label path="id" value="${event.id}"></form:label>
+							<form:hidden path="id" value="${event.id}" />
+							<form:errors path="id" value="${event.id}" />
+							<input type="submit" value="Update" class="btn btn-primary" />
+							<br />
+						</form:form>
+						<!--  -->
+						<!-- Button trigger modal -->
+						<hr>
+						<button type="button" class="btn btn-danger" data-toggle="modal"
+							data-target="#deleteEvent">Delete Event</button>
 
-									<div class=" container form-goup jumbotron">
-										<form action="updateEvent.do" method="POST">
-											<!-- modelAttribute="event" -->
-											<label for="eventId" value="${event.id }">Editing
-												${event.eventName}</label> <input type="hidden" value="${event.id }"
-												name="id" />
-											<!--  -->
-											<label for="eventId">Event Id</label> <input type="text"
-												value="${event.id }" name="eventID" disabled="disabled" />
-											<!--  -->
-											<label for="eventName">Event Title</label> <input type="text"
-												class="form-control" name="eventName"
-												value="${event.eventName}" /><br>
-											<!--  -->
-											<label for="description">Event Description</label> <input
-												type="text" class="form-control" name="description"
-												value="${event.description}" /><br>
-											<!--  -->
-											<label for="location.address">Event Address</label> <input
-												type="text" class="form-control" name="location.address"
-												value="${event.location.address}" /><br>
-											<!--  -->
-											<label for="location.address2">Event Address 2</label> <input
-												type="text" class="form-control" name="location.address2"
-												value="${event.location.address2}" /><br>
-											<!--  -->
-											<label for="location.city">Event City</label> <input
-												type="text" value="${event.location.city}"
-												class="form-control" name="location.city" /><br>
-											<!--  -->
-											<label for="location.state">Event State</label> <input
-												type="text" class="form-control" name="location.state"
-												value="${event.location.state}" /><br>
-											<!--  -->
-											<label for="location.zipCode">Event Zip Code</label> <input
-												type="text" class="form-control" name="location.zipCode"
-												value="${event.location.zipCode}" /><br>
-											<!--  -->
-											<label for="eventDate">Event Date</label> <input type="text"
-												class="form-control" name="eventDate"
-												value="${event.eventDate}" /><br>
-											<!--  -->
-											<label for="eventDate">Start Time</label> <input type="text"
-												class="form-control" name="startTime"
-												value="${event.startTime}" /><br>
-											<!--  -->
-											<label for="endTime">End Time</label> <input type="text"
-												value="${event.endTime}" class="form-control" name="endTime" /><br>
-											<!--  -->
-											<label for="peopleNeeded">Number of people needed</label> <input
-												type="number" class="form-control" name="peopleNeeded"
-												value="${event.peopleNeeded}" /><br>
-											<!--  -->
-											<label for="pointOfContact">Point of Contact</label> <input
-												type="text" class="form-control" name="pointOfContact"
-												value="${event.pointOfContact }" /><br>
-											<!--  -->
-											<label for="pocPhone">POC Phone Number</label> <input
-												type="number" class="form-control" name="pocPhone"
-												value="${event.pocPhone}" /><br>
-											<!--  -->
-											<label for="pocEmail">POC Email</label> <input type="text"
-												value="${event.pocEmail }" class="form-control"
-												name="pocEmail" /><br>
-											<!--  -->
-											<label for="photoUrl">POC Email</label> <input type="text"
-												value="${event.photoUrl }" class="form-control"
-												name="photoUrl" /><br> <br>
+						<!-- Modal -->
+						<div class="modal fade" id="deleteEvent" tabindex="-1"
+							role="dialog" aria-labelledby="deleteEventLabel"
+							aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="deleteEventLabel">Delete
+											Confirmation</h5>
+										<button type="button" class="close" data-dismiss="modal"
+											aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										<strong>Are you sure that you'd like to delete the
+											selected Event?</strong>
+									</div>
 
-											<button type="submit" class="btn btn-primary">Submit</button>
+									<div class="modal-footer">
+										<form action="deleteEvent.do" method="POST">
+											<input type="hidden" value="${event.id}" name="id">
+											<button class="btn btn-danger" type="submit">Delete
+												Event</button>
 										</form>
-									</div>
-								</div>
-								<!-- <div></div> -->
-								<!-- Modal Testing Begin -->
-								<!-- Button trigger modal -->
-								<button type="button" class="btn btn-danger" data-toggle="modal"
-									data-target="#deleteEvent">Delete Event</button>
-
-								<!-- Modal -->
-								<div class="modal fade" id="deleteEvent" tabindex="-1"
-									role="dialog" aria-labelledby="deleteEventLabel"
-									aria-hidden="true">
-									<div class="modal-dialog" role="document">
-										<div class="modal-content">
-											<div class="modal-header">
-												<h5 class="modal-title" id="deleteEventLabel">Delete
-													Confirmation</h5>
-												<button type="button" class="close" data-dismiss="modal"
-													aria-label="Close">
-													<span aria-hidden="true">&times;</span>
-												</button>
-											</div>
-											<div class="modal-body">
-												<strong>Are you sure that you'd like to delete the
-													selected Event?</strong>
-											</div>
-
-											<div class="modal-footer">
-												<form action="deleteEvent.do" method="POST">
-													<input type="hidden" value="${event.id}" name="id">
-													<button class="btn btn-danger" type="submit">Delete
-														Event</button>
-												</form>
-												<button type="button" class="btn btn-secondary"
-													data-dismiss="modal">Close</button>
-												<!-- <button type="button" class="btn btn-primary">Save
+										<button type="button" class="btn btn-secondary"
+											data-dismiss="modal">Close</button>
+										<!-- <button type="button" class="btn btn-primary">Save
 									changes</button>  -->
-											</div>
-										</div>
 									</div>
 								</div>
+							</div>
+						</div>
 
-								<!-- Modal Testing End -->
-							</c:when>
-							<c:otherwise>
-							    <c:set var="isSignedUp" value="false"/>
-								<c:forEach var="vol" items="${event.users}">
-								  <c:if test="${vol.user.id == newUser.id}">
-							    	<c:set var="isSignedUp" value="true"/>
-								  </c:if>
-								</c:forEach>
-									<c:choose>
-										<c:when test="${isSignedUp == true}">
-											<a href="http://localhost:8090/">Already signed up</a>
-										</c:when>
-										<c:otherwise>
-											<form:form action="signUpForEvent.do" method="GET"
-												modelAttribute="event">
-												<form:label path="id" value="${event.id}"></form:label>
-												<form:hidden path="id" value="${event.id}" />
-												<form:errors path="id" value="${event.id}" />
-												<input type="submit" value="Sign Up" />
-												<br />
-											</form:form>
-										</c:otherwise>
-									</c:choose>
-							</c:otherwise>
-						</c:choose>
+						<!-- Modal Testing End -->
 					</c:when>
 					<c:otherwise>
-						<h2>Must be a registered user to sign up for events, just do
-							it its Free.</h2>
+						<c:set var="isSignedUp" value="false" />
+						<c:forEach var="vol" items="${event.users}">
+							<c:if test="${vol.user.id == newUser.id}">
+								<c:set var="isSignedUp" value="true" />
+							</c:if>
+						</c:forEach>
+						<c:choose>
+							<c:when test="${isSignedUp == true}">
+								<a href="http://localhost:8090/">Already signed up</a>
+								<form:form action="goToUnRegisterEvent.do" method="GET" modelAttribute="event">
+									<form:label path="id" value="${event.id}"></form:label>
+									<form:hidden path="id" value="${event.id}" />
+									<form:errors path="id" value="${event.id}" />
+									<input type="submit" value="Un-Register" class="btn btn-primary" />
+									<br />
+								</form:form>
+							</c:when>
+							<c:otherwise>
+								<form:form action="signUpForEvent.do" method="GET"
+									modelAttribute="event">
+									<form:label path="id" value="${event.id}"></form:label>
+									<form:hidden path="id" value="${event.id}" />
+									<form:errors path="id" value="${event.id}" />
+									<input type="submit" value="Sign Up" class="btn btn-primary" />
+									<br />
+								</form:form>
+							</c:otherwise>
+						</c:choose>
 					</c:otherwise>
 				</c:choose>
 			</c:when>
+			<c:otherwise>
+				<h5 class="finePrint">Must be a registered user to sign up for events. Just do it!
+					It's Free.</h5>
+			</c:otherwise>
 		</c:choose>
 	</div>
 	<!--  -->
 	<!-- <form action="updateEvent.do" method="POST">
 					<input type="submit" class="btn btn-primary" value="Update Event" />
-				</form> -->
-	<br>
 
+            // Set refresh, autoload time as 5 seconds
+            			</form> -->
+
+<div class="container form-goup jumbotron message">
+<% response.setIntHeader("Refresh", 3);%>
+<h1>${event.eventName} Message Board</h1>
+	<c:if test="${not empty messages}">
+ <c:forEach items="${messages}" var="message">
+  <div class="card mb-3 message">
+   <div class="row no-gutters">
+    <div class="col-md-1 align-self-center">
+     <img src="${message.user.photoURL}" class="avatar" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">${message.user.firstName} ${message.user.lastName}</h5>
+        <p class="card-text">${message.content}</p>
+        <p class="card-text"><small class="text-muted">${message.datePosted}</small></p>
+      </div>
+    </div>
+   </div>
+  </div>
+ </c:forEach>
+</c:if>
+
+ </div>
+ 
+<c:if test="${not empty newUser }">
+<form:form action="reply.do?eId=${event.id}" method="POST" modelAttribute="userMessage">
+		<form:label path="user.id" value="${sessionScope.newUser.id}"></form:label>
+		<form:hidden path="user.id" value="${sessionScope.newUser.id}" />
+		<form:errors path="user.id" value="${sessionScope.newUser.id}" />
+		<form:label path="content" value="Reply">Reply:</form:label>
+		<form:input class="input" path="content" value="Enter Reply"
+			required="required" type="text" placeholder="Enter Reply" />
+		<form:errors path="content" value="Enter Reply" />
+		<input type="submit" value="Reply" />
+	</form:form>
+</c:if>
 	<hr>
 	<footer class="text-center">
 		<div class="container">

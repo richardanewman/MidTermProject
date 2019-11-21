@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.goodwork.entities.Event;
+import com.skilldistillery.goodwork.entities.Organization;
 import com.skilldistillery.goodwork.entities.User;
 import com.skilldistillery.goodwork.entities.UserEvent;
 import com.skilldistillery.goodwork.entities.UserEventId;
@@ -107,6 +108,8 @@ public class UserDAOImpl implements UserDAO {
 		eventSignedUp.setAttended(true);
 		eventSignedUp.setDateSignedUp(LocalDate.now());
 		eventSignedUp.setRole("Helper");
+//		eventSignedUp.setEvent(event);
+//		eventSignedUp.setUser(user);
 		
 		event.addUserEvent(eventSignedUp);
 		user.addUserEvent(eventSignedUp);
@@ -121,5 +124,63 @@ public class UserDAOImpl implements UserDAO {
 		return false;
 	}
 	
+	public boolean unRegisterFromEvent(User user, Event event) {
+		UserEventId ueId = new UserEventId(user.getId(), event.getId());
+		UserEvent unRegister = em.find(UserEvent.class, ueId);
+		user = em.find(User.class, user.getId());
+		event = em.find(Event.class, event.getId());
+		
+		user.removeUserEvent(unRegister);
+		event.removeUserEvent(unRegister);
+		em.remove(unRegister);
+		
+		em.persist(user);
+		em.persist(event);
+		em.flush();
+		
+		if(user.getAttendedEvents().contains(unRegister) && event.getUsers().contains(unRegister)) {
+			return false;
+		}
+		return true;
+	}
+	
+	public boolean signedUpForOrg(Organization org, User user) {
+		user = em.find(User.class, user.getId());
+		org = em.find(Organization.class, org.getId());
+		
+		org.addUser(user);
+		user.addOrganization(org);
+		
+		em.persist(user);
+		em.persist(org);
+		em.flush();
+		
+		if(user.getOrgs().contains(org) && org.getUsers().contains(user)) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean unRegisterFromOrg(User user, Organization org) {
+		user = em.find(User.class, user.getId());
+		org = em.find(Organization.class, org.getId());
+		
+		org.removeUser(user);
+		user.removeOrganization(org);
+		
+		em.persist(user);
+		em.persist(org);
+		em.flush();
+		
+		if(user.getOrgs().contains(org) && org.getUsers().contains(user)) {
+			return false;
+		}
+		return true;
+	}
+	
+	public UserEvent getUserEvent(UserEventId ueId) {
+		UserEvent ue = em.find(UserEvent.class, ueId);
+		return ue;
+	}
 
 }

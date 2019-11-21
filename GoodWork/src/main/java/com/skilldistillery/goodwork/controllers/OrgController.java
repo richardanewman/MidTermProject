@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.skilldistillery.goodwork.data.OrgDAO;
+import com.skilldistillery.goodwork.data.UserDAO;
 import com.skilldistillery.goodwork.entities.Organization;
 import com.skilldistillery.goodwork.entities.User;
 
@@ -20,6 +21,8 @@ public class OrgController {
 
 	@Autowired
 	private OrgDAO orgDAO;
+	@Autowired
+	private UserDAO userDAO;
 	private int orgId;
 
 	@RequestMapping(path = "getAllOrgs.do", method = RequestMethod.GET)
@@ -67,14 +70,17 @@ public class OrgController {
 
 	@RequestMapping(path = "addNewOrg.do", method = RequestMethod.POST)
 	public String addOrg(@Valid Organization newOrg, Model model, HttpSession session) {
-		User newUser = (User) session.getAttribute("newUser");
-		model.addAttribute("orgData", orgDAO.addNewOrg(newOrg, newUser));
-		session.removeAttribute("newUser");
-		session.setAttribute("newUser", newUser);
-
-
-		return "orgs/org";
-
+		if(session.getAttribute("newUser") != null) {
+			User newUser = (User) session.getAttribute("newUser");
+			Organization orgData = orgDAO.addNewOrg(newOrg, newUser);
+			orgData = orgDAO.findById(orgData.getId());
+			model.addAttribute("org", orgData);
+			session.removeAttribute("newUser");
+			session.setAttribute("newUser", newUser);
+			return "orgs/orgProfile";
+		}
+		model.addAttribute("oops", "Looks like something went wrong creating this Organization, please try again later.");
+		return "fail";
 	}
 
 ///////////////////////////////////////////////////////////////////////
@@ -114,13 +120,17 @@ public class OrgController {
 	}
 
 	@RequestMapping(path = "updateOrg.do", method = RequestMethod.POST)
-	public String updateOrg(@Valid Organization orgData, Model model) {
+	public String updateOrg(@Valid Organization orgData, Model model, HttpSession session) {
 		try {
 			System.out.println(orgData);
+			User user = (User) session.getAttribute("newUser");
 			Organization updatedOrg = orgDAO.updateOrganization(orgData, orgId);
 			model.addAttribute("successfulUpdate", updatedOrg);
 			model.addAttribute("successful", "You successfully updated your organization!");
-
+			user = userDAO.getUserById(user.getId());
+			
+			session.removeAttribute("newUser");
+			session.setAttribute("newUser", user);
 			return "orgs/org";
 		} catch (Exception e) {
 			model.addAttribute("oops", "Looks like we had some trouble. Please try again.");
@@ -129,5 +139,6 @@ public class OrgController {
 		}
 
 	}
+	
 
 }

@@ -16,9 +16,12 @@ import com.skilldistillery.goodwork.data.AuthDAO;
 import com.skilldistillery.goodwork.data.EventDAO;
 import com.skilldistillery.goodwork.data.OrgDAO;
 import com.skilldistillery.goodwork.data.UserDAO;
+import com.skilldistillery.goodwork.data.UserEventDAO;
 import com.skilldistillery.goodwork.entities.Event;
 import com.skilldistillery.goodwork.entities.Organization;
 import com.skilldistillery.goodwork.entities.User;
+import com.skilldistillery.goodwork.entities.UserEvent;
+import com.skilldistillery.goodwork.entities.UserEventId;
 
 @Controller
 public class UserController {
@@ -31,11 +34,13 @@ public class UserController {
 	private OrgDAO orgDAO;
 	@Autowired
 	private EventDAO eventDAO;
+	@Autowired
+	private UserEventDAO ueDAO;
 	
 	@RequestMapping(path="updateUserForm.do", method = RequestMethod.GET)
 	public String updateUserGet(Model model, HttpSession session) {
 		User old = (User) session.getAttribute("newUser");
-		model.addAttribute("user", old);
+		model.addAttribute("userProfile", old);
 		return "userJSP/updateUserForm";
 	}
 	
@@ -51,7 +56,7 @@ public class UserController {
 			return "fail";
 		}
 		session.setAttribute("newUser", dao.updateUser(user));
-		model.addAttribute("user", new User());
+		model.addAttribute("userProfile", upUser);
 		return "userJSP/profile";
 	}
 	
@@ -86,14 +91,20 @@ public class UserController {
 			List<User> users = dao.getAllUsersByKeyword(keyword);
 			List<Organization> orgs = orgDAO.searchByKeyword(keyword);
 			List<Event> events = eventDAO.findByKeyword(keyword);
+			List<Event> eventCat = eventDAO.findByCategory(keyword);
+			
 			if(users != null) {
-			model.addAttribute("users", users);
+				model.addAttribute("users", users);
 			}
 			if(orgs != null) {
-			model.addAttribute("displayAll", orgs);
+				model.addAttribute("displayAll", orgs);
 			}
 			if(events != null) {
-			model.addAttribute("events", events);
+				model.addAttribute("events", events);
+			}
+			if(eventCat != null) {
+//				model.addAttribute("eventByCat", eventCat);
+				model.addAttribute("events", eventCat);
 			}
 		return "result";
 			
@@ -105,12 +116,84 @@ public class UserController {
 		User user = (User) session.getAttribute("newUser");
 		boolean success = dao.signedUpForEvent(event, user);
 		if(success) {
+			UserEventId ueId = new UserEventId(user.getId(), event.getId());
+			UserEvent ue = dao.getUserEvent(ueId);
+			
+			ue.getEvent().getUsers().size();
+			ue.getEvent().getCategories().size();
+			ue.getEvent().getMessBoards().size();
+			
 			user = dao.getUserById(user.getId());
 			session.removeAttribute("newUser");
 			session.setAttribute("newUser", user);
-			return "profile";
+			model.addAttribute("userProfile", user);
+			return "userJSP/profile";
 		}
 		model.addAttribute("oops", "Looks like something went wrong when signing up for this event, please try again later.");
 		return "fail";
 	}
+	
+	@RequestMapping(path="goToUnRegisterEvent.do", method = RequestMethod.GET)
+	public String unRegisterEvent(Event event, HttpSession session, Model model) {
+		User user = (User) session.getAttribute("newUser");
+		boolean success = dao.unRegisterFromEvent(user, event);
+		if(success) {
+			user = dao.getUserById(user.getId());
+			session.removeAttribute("newUser");
+			session.setAttribute("newUser", user);
+			model.addAttribute("userProfile", user);
+			return "userJSP/profile";
+		}
+		model.addAttribute("oops", "Looks like something went wrong when un-registering from this event, please try again");
+		return "fail";
+	}
+	
+	@RequestMapping(path="signUpForOrg.do", method = RequestMethod.GET)
+	public String signUpForOrg(Model model, HttpSession session, @RequestParam("oId") int orgId) {
+		User user = (User) session.getAttribute("newUser");
+		Organization org = orgDAO.findById(orgId);
+		boolean success = dao.signedUpForOrg(org, user);
+		if(success) {
+			user = dao.getUserById(user.getId());
+			session.removeAttribute("newUser");
+			session.setAttribute("newUser", user);
+			org = orgDAO.findById(orgId);
+			model.addAttribute("org", org);
+			return "orgs/orgProfile";
+		}
+		model.addAttribute("oops", "Looks like something went wrong when signing up for this organization, please try again later.");
+		return "fail";
+	}
+	
+	@RequestMapping(path = "goToUnRegisterOrg.do", method = RequestMethod.GET)
+	public String unRegisterOrg(@RequestParam("oId") int orgId, HttpSession session, Model model) {
+		User user = (User) session.getAttribute("newUser");
+		Organization org = orgDAO.findById(orgId);
+		boolean success = dao.unRegisterFromOrg(user, org);
+		if(success) {
+			user = dao.getUserById(user.getId());
+			session.removeAttribute("newUser");
+			session.setAttribute("newUser", user);
+			model.addAttribute("userProfile", user);
+			return "userJSP/profile";
+		}
+		model.addAttribute("oops", "Looks like something went wrong when un-registering from this organization, please try again later");
+		return "fail";
+	}
+
+	@RequestMapping(path = "findUserById.do", method = RequestMethod.GET)
+	public String diplayUser(int id, Model model) {
+		if (dao.getUserById(id) == null) {
+			model.addAttribute("oops", "Looks like something went wrong. Please check your ID number and try again.");
+			return "fail";
+		} else {
+
+	
+			model.addAttribute("userProfile", dao.getUserById(id));
+
+
+			return "userJSP/profile";
+		}
+	}
+	
 }

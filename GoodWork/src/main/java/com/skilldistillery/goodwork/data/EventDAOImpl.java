@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.goodwork.entities.Category;
 import com.skilldistillery.goodwork.entities.Event;
 import com.skilldistillery.goodwork.entities.User;
 
@@ -38,10 +39,12 @@ public class EventDAOImpl implements EventDAO {
 	}
 
 	@Override
-	public Event addEvent(Event event, User user) { // issue with location id coming in Null
+	public Event addEvent(Event event, User user, Category category) { // issue with location id coming in Null
 		event.setDateCreated(LocalDate.now());
-		// sessions 
+		// sessions
 		user = em.find(User.class, user.getId());
+		category = em.find(Category.class, category.getId());
+		category.addEvent(event);
 		user.addHostedEvent(event);
 		System.err.println("In event creation " + event);
 //		Location eventsLocation = new Location();
@@ -49,22 +52,19 @@ public class EventDAOImpl implements EventDAO {
 //		event.setLocation(event.getLocation());
 		em.persist(user);
 		em.persist(event);
+		em.persist(category);
 		em.flush();
 		return event;
 	}
 
 	@Override
-	public Event updateEvent(Event updatedEvent, int eventId) {
+	public Event updateEvent(Event updatedEvent, int eventId, Category category) {
 		Event managed = em.find(Event.class, eventId);
-//		managed.setDateCreated(updatedEvent.getDateCreated());
-//		managed.setDateCreated(LocalDate.now());
-		System.err.println("In method******************************" + updatedEvent);
-		System.out.println("updated event");
-		System.out.println(managed);
-		System.out.println(managed.getLocation());
+		category = em.find(Category.class, category.getId());
 		managed.getLocation().setAddress(updatedEvent.getLocation().getAddress());
-
-		managed.getLocation().setAddress(updatedEvent.getLocation().getAddress2());
+		managed.removeCategory(managed.getCategories().get(0));
+		managed.addCategory(category);
+		managed.getLocation().setAddress2(updatedEvent.getLocation().getAddress2());
 		managed.getLocation().setCity(updatedEvent.getLocation().getCity());
 		managed.getLocation().setState(updatedEvent.getLocation().getState());
 		managed.setEventName(updatedEvent.getEventName());
@@ -79,6 +79,7 @@ public class EventDAOImpl implements EventDAO {
 		managed.setPocPhone(updatedEvent.getPocPhone());
 		managed.setPocEmail(updatedEvent.getPocEmail());
 		em.persist(managed);
+		em.persist(category);
 		em.flush();
 		return managed;
 	}
@@ -89,6 +90,36 @@ public class EventDAOImpl implements EventDAO {
 		em.remove(deleteEvent);
 		return (em.find(Event.class, id) == null);
 
+	}
+
+	@Override
+	public Category findCategoryByName(String name) {
+		List<Category> catList = null;
+		Category cat = null;
+		String sql = "SELECT cat FROM Category cat WHERE cat.name = :name";
+		catList = em.createQuery(sql, Category.class).setParameter("name", name).getResultList();
+		if (catList != null && catList.size() == 1) {
+			cat = catList.get(0);
+			return cat;
+		}
+		return cat;
+	}
+
+	@Override
+	public List<Event> findByCategory(String keyword) {
+		String catSql = "SELECT cat FROM Category cat WHERE cat.name LIKE :keyword";
+		List<Category> cat = null;
+		Category category = null;
+		List<Event> catSearch = null;
+		cat = em.createQuery(catSql, Category.class).setParameter("keyword", keyword).getResultList();
+		
+		if(cat != null && cat.size() > 0) {
+			category = cat.get(0);
+			String sql = "SELECT events FROM Event events WHERE :category MEMBER OF events.categories";
+			catSearch = em.createQuery(sql, Event.class).setParameter("category", category).getResultList();
+		}
+		
+		return catSearch;
 	}
 
 }

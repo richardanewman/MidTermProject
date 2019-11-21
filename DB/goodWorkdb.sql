@@ -43,8 +43,8 @@ CREATE TABLE IF NOT EXISTS `location` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `address` VARCHAR(100) NULL,
   `address2` VARCHAR(100) NULL,
-  `city` VARCHAR(100) NOT NULL,
-  `state` CHAR(2) NOT NULL,
+  `city` VARCHAR(100) NOT NULL DEFAULT 'Denver',
+  `state` CHAR(2) NOT NULL DEFAULT 'CO',
   `zip_code` INT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `event` (
   `start_time` VARCHAR(45) NULL,
   `end_time` VARCHAR(45) NULL,
   `people_needed` INT NULL DEFAULT 1,
-  `date_created` DATETIME NOT NULL,
+  `date_created` DATETIME NULL,
   `photo_url` TEXT NULL,
   `point_of_contact` VARCHAR(100) NULL,
   `poc_phone` VARCHAR(45) NULL,
@@ -162,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `message_board` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `event_id` INT NOT NULL,
   `user_id` INT NOT NULL,
-  `date_posted` DATETIME NOT NULL,
+  `date_posted` DATETIME NULL,
   `content` TEXT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_event_message_user_idx` (`user_id` ASC),
@@ -243,7 +243,16 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `goodWorkdb`;
-INSERT INTO `user` (`id`, `username`, `password`, `active`, `first_name`, `last_name`, `email`, `bio`, `photo_url`) VALUES (1, 'waterboy', '12345', 1, 'Bobby', 'Bushay', 'bobbyB@gmail.com', 'Serving drinks and kicking ass.', 'https://miro.medium.com/max/1914/1*nPRQgbNeVv1PqgXV-HibXg.jpeg');
+INSERT INTO `user` (`id`, `username`, `password`, `active`, `first_name`, `last_name`, `email`, `bio`, `photo_url`) VALUES (1, 'waterboy', '123', 1, 'Bobby', 'Bushay', 'bobbyB@gmail.com', 'Serving drinks and kicking ass.', 'https://miro.medium.com/max/1914/1*nPRQgbNeVv1PqgXV-HibXg.jpeg');
+INSERT INTO `user` (`id`, `username`, `password`, `active`, `first_name`, `last_name`, `email`, `bio`, `photo_url`) VALUES (2, 'david', '123', 1, 'David', 'Norris', 'dn@gmail.com', 'Drinking monster, writing code, and kicking ass.', 'https://trello-avatars.s3.amazonaws.com/5a6958e584c07bee62f2d218d99b93c5/original.png');
+INSERT INTO `user` (`id`, `username`, `password`, `active`, `first_name`, `last_name`, `email`, `bio`, `photo_url`) VALUES (3, 'jerry', '123', 1, 'Jerry', 'Rogers', 'jr@gmail.com', 'Riding motorcycles, coding java, and kicking ass. Oh and volunteeing.', 'https://avatars2.githubusercontent.com/u/43429899?s=460&v=4');
+INSERT INTO `user` (`id`, `username`, `password`, `active`, `first_name`, `last_name`, `email`, `bio`, `photo_url`) VALUES (4, 'rick', '123', 1, 'Rick', 'Newman', 'rn@gmail.com', 'Drinking coffee, writing code, and kicking ass. ', 'https://avatars3.githubusercontent.com/u/17536735?s=400&v=4');
+INSERT INTO `user` (`id`, `username`, `password`, `active`, `first_name`, `last_name`, `email`, `bio`, `photo_url`) VALUES (5, 'adam', '123', 1, 'Adam', 'Onwan', 'ao@gmail.com', 'Learning full stack!', 'https://avatars0.githubusercontent.com/u/51185732?s=400&v=4');
+INSERT INTO `user` (`id`, `username`, `password`, `active`, `first_name`, `last_name`, `email`, `bio`, `photo_url`) VALUES (6, 'colt', '123', 1, 'Colt', 'Looper', 'cl@gmail.com', 'Full stack java mofo!', 'https://avatars2.githubusercontent.com/u/48541678?s=400&v=4');
+INSERT INTO `user` (`id`, `username`, `password`, `active`, `first_name`, `last_name`, `email`, `bio`, `photo_url`) VALUES (7, 'cesar', '123', 1, 'Cesar', 'Moreno', 'cm@gmail.com', 'Drinking beer, kicking ass, and taking name.', 'https://avatars2.githubusercontent.com/u/54081564?s=400&v=4');
+INSERT INTO `user` (`id`, `username`, `password`, `active`, `first_name`, `last_name`, `email`, `bio`, `photo_url`) VALUES (8, 'jacob', '123', 1, 'Jacob', 'Shorter-Ivey', 'js@gmail.com', 'Coding video games allday everyday.', 'https://avatars2.githubusercontent.com/u/54083792?s=400&v=4');
+INSERT INTO `user` (`id`, `username`, `password`, `active`, `first_name`, `last_name`, `email`, `bio`, `photo_url`) VALUES (9, 'jared', '123', 1, 'Jared', 'McGowan', 'jm@gmail.com', 'Drinking java, writing java, and flying airplanes.', 'https://avatars3.githubusercontent.com/u/29109079?s=400&v=4');
+INSERT INTO `user` (`id`, `username`, `password`, `active`, `first_name`, `last_name`, `email`, `bio`, `photo_url`) VALUES (10, 'jesse', '123', 1, 'Jesse', 'Trew', 'jt@gmail.com', 'I like dinosaurs.', 'https://avatars1.githubusercontent.com/u/54376581?s=400&v=4');
 
 COMMIT;
 
@@ -255,6 +264,16 @@ START TRANSACTION;
 USE `goodWorkdb`;
 INSERT INTO `location` (`id`, `address`, `address2`, `city`, `state`, `zip_code`) VALUES (1, '1255 Crocodile Lane', NULL, 'Tallahassee', 'FL', 32301);
 INSERT INTO `location` (`id`, `address`, `address2`, `city`, `state`, `zip_code`) VALUES (2, '123 Main Street', NULL, 'Tallahassee', 'FL', 32301);
+INSERT INTO `location` (`id`, `address`, `address2`, `city`, `state`, `zip_code`) VALUES (3, '2660 Larimer Street', NULL, 'Denver', 'CO', 80205);
+INSERT INTO `location` (`id`, `address`, `address2`, `city`, `state`, `zip_code`) VALUES (4, '600 South Marion Parkway', NULL, 'Denver', 'CO', 80209);
+INSERT INTO `location` (`id`, `address`, `address2`, `city`, `state`, `zip_code`) VALUES (5, '3012 Sterling Circle', 'Suite #201', 'Boulder', 'CO', 80301);
+INSERT INTO `location` (`id`, `address`, `address2`, `city`, `state`, `zip_code`) VALUES (6, '105 South Aspen Ave', NULL, 'Lone Tree', 'CO', 80124);
+INSERT INTO `location` (`id`, `address`, `address2`, `city`, `state`, `zip_code`) VALUES (7, '7400 E. Orchard Road', NULL, 'Greenwood Village', 'CO', 80111);
+INSERT INTO `location` (`id`, `address`, `address2`, `city`, `state`, `zip_code`) VALUES (8, '555 Pine Street', NULL, 'Lone Tree', 'CO', 80124);
+INSERT INTO `location` (`id`, `address`, `address2`, `city`, `state`, `zip_code`) VALUES (9, '1130 Park Ave', NULL, 'Denver', 'CO', 80205);
+INSERT INTO `location` (`id`, `address`, `address2`, `city`, `state`, `zip_code`) VALUES (10, 'Sanderson Gulch Trail', NULL, 'Denver', 'CO', 80219);
+INSERT INTO `location` (`id`, `address`, `address2`, `city`, `state`, `zip_code`) VALUES (DEFAULT, NULL, NULL, DEFAULT, DEFAULT, NULL);
+INSERT INTO `location` (`id`, `address`, `address2`, `city`, `state`, `zip_code`) VALUES (DEFAULT, NULL, NULL, DEFAULT, DEFAULT, NULL);
 
 COMMIT;
 
@@ -265,6 +284,10 @@ COMMIT;
 START TRANSACTION;
 USE `goodWorkdb`;
 INSERT INTO `event` (`id`, `location_id`, `host_id`, `event_name`, `description`, `event_date`, `start_time`, `end_time`, `people_needed`, `date_created`, `photo_url`, `point_of_contact`, `poc_phone`, `poc_email`) VALUES (1, 1, 1, 'Neighborhood Clean-Up', 'Help Bobby Bushay clean up all the trash around 5th and Central Ave this Saturday.', '2019-11-16', '12:00:00', '14:00:00', 5, '2019-11-14-17-33-00', NULL, 'Mamma Bushay', '850-334-9876', 'mammasemail@gmail.com');
+INSERT INTO `event` (`id`, `location_id`, `host_id`, `event_name`, `description`, `event_date`, `start_time`, `end_time`, `people_needed`, `date_created`, `photo_url`, `point_of_contact`, `poc_phone`, `poc_email`) VALUES (2, 7, 2, 'Feed the students!', 'Join us at Skill Distillery and help feed the hungry aspiring software developers.', '2019-11-22', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `event` (`id`, `location_id`, `host_id`, `event_name`, `description`, `event_date`, `start_time`, `end_time`, `people_needed`, `date_created`, `photo_url`, `point_of_contact`, `poc_phone`, `poc_email`) VALUES (3, 8, 3, 'Neighborhood Knock', 'Going door to door in our neighborhood to assist the elderly with yardwork.', '2019-12-01', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `event` (`id`, `location_id`, `host_id`, `event_name`, `description`, `event_date`, `start_time`, `end_time`, `people_needed`, `date_created`, `photo_url`, `point_of_contact`, `poc_phone`, `poc_email`) VALUES (4, 9, 4, 'Help the Homeless', 'Join us at the Denver soup kitchen to help the homeless.', '2019-11-25', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `event` (`id`, `location_id`, `host_id`, `event_name`, `description`, `event_date`, `start_time`, `end_time`, `people_needed`, `date_created`, `photo_url`, `point_of_contact`, `poc_phone`, `poc_email`) VALUES (5, 10, 5, 'Clear the Trail', 'We love the outdoors and we love keeping them clean. Help us clean up different trails every weekend.', '2019-11-23', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 COMMIT;
 
@@ -285,6 +308,10 @@ COMMIT;
 START TRANSACTION;
 USE `goodWorkdb`;
 INSERT INTO `organization` (`id`, `location_id`, `org_name`, `description`, `org_type`, `org_number`, `logo_url`, `website`, `active`) VALUES (1, 2, 'Mamma\'s Helpers', 'Big Mamma\'s merry group of helpers.', 'Group', '12345', 'None', 'Nope', 1);
+INSERT INTO `organization` (`id`, `location_id`, `org_name`, `description`, `org_type`, `org_number`, `logo_url`, `website`, `active`) VALUES (2, 3, 'Volunteers of America', 'Volunteers of America is dedicated to supporting and empowering America\'s most vulnerable groups, including the hungry, the frail elderly, people with disabilities, at-risk youth, homeless individuals, women in need, and veterans and their families.', 'Non-Profit', 'Tax ID 13-1692595', 'https://voa-production.s3.amazonaws.com/uploads/affiliate_site/logo_image_color/15/affiliate-colorado-branch.png', 'https://www.voacolorado.org/', 1);
+INSERT INTO `organization` (`id`, `location_id`, `org_name`, `description`, `org_type`, `org_number`, `logo_url`, `website`, `active`) VALUES (3, 4, 'Volunteer For Outdoor Colorado', 'Since 1984, Volunteers for Outdoor Colorado (VOC) has been motivating and enabling people to become active stewards of Colorado’s natural resources.\n\nVOC works with conservation and land agencies and relies on thousands of people annually to provide a volunteer workforce for outdoor stewardship projects. These projects take place across Colorado – from city parks and open spaces, to grasslands and foothills, to alpine meadows and peaks.', 'Non-Profit', '(Tax ID #)74-2357211', 'https://www.voc.org/sites/default/files/VOC-logo-small.png', 'https://www.voc.org/', 1);
+INSERT INTO `organization` (`id`, `location_id`, `org_name`, `description`, `org_type`, `org_number`, `logo_url`, `website`, `active`) VALUES (4, 5, 'Wildlands Restoration Volunteers', 'Wildlands Restoration Volunteers is a nonprofit organization that provides an opportunity for people to come together, learn about their natural environment, and take direct action to restore and care for the land.', 'Non-Profit', '46-0505155', 'https://www.wlrv.org/wp-content/uploads/transparent-web-versian-longerer.png', 'https://www.wlrv.org/', 1);
+INSERT INTO `organization` (`id`, `location_id`, `org_name`, `description`, `org_type`, `org_number`, `logo_url`, `website`, `active`) VALUES (5, 6, 'Good Neighbors', 'Private group of neighbors who clean up and help the elderly in our community. ', 'Private Group', 'None', 'https://uwm.edu/neighborhoodhousing/wp-content/uploads/sites/149/2018/09/04-900x450.jpg', 'none', 1);
 
 COMMIT;
 
@@ -318,6 +345,9 @@ COMMIT;
 START TRANSACTION;
 USE `goodWorkdb`;
 INSERT INTO `message_board` (`id`, `event_id`, `user_id`, `date_posted`, `content`) VALUES (1, 1, 1, '2019-11-14-17-33-00', 'Somebody better sign up and help me clean. Please.');
+INSERT INTO `message_board` (`id`, `event_id`, `user_id`, `date_posted`, `content`) VALUES (2, 1, 2, '2019-11-14-18-00-00', 'I\'ll come help you clean up, Bobby. Don\'t worry bro!');
+INSERT INTO `message_board` (`id`, `event_id`, `user_id`, `date_posted`, `content`) VALUES (3, 1, 3, '2019-11-14-19-30-00', 'Sorry I can\'t make it. I wish I could but going out of town. Next time though.');
+INSERT INTO `message_board` (`id`, `event_id`, `user_id`, `date_posted`, `content`) VALUES (4, 1, 4, '2019-11-14-19-20-00', 'I should be able to make it. I\'ll let you know by Saturday.');
 
 COMMIT;
 
@@ -328,6 +358,10 @@ COMMIT;
 START TRANSACTION;
 USE `goodWorkdb`;
 INSERT INTO `event_has_category` (`event_id`, `category_id`) VALUES (1, 1);
+INSERT INTO `event_has_category` (`event_id`, `category_id`) VALUES (2, 11);
+INSERT INTO `event_has_category` (`event_id`, `category_id`) VALUES (3, 9);
+INSERT INTO `event_has_category` (`event_id`, `category_id`) VALUES (4, 6);
+INSERT INTO `event_has_category` (`event_id`, `category_id`) VALUES (5, 1);
 
 COMMIT;
 
@@ -338,6 +372,18 @@ COMMIT;
 START TRANSACTION;
 USE `goodWorkdb`;
 INSERT INTO `organization_has_user` (`organization_id`, `user_id`) VALUES (1, 1);
+INSERT INTO `organization_has_user` (`organization_id`, `user_id`) VALUES (2, 2);
+INSERT INTO `organization_has_user` (`organization_id`, `user_id`) VALUES (2, 10);
+INSERT INTO `organization_has_user` (`organization_id`, `user_id`) VALUES (3, 1);
+INSERT INTO `organization_has_user` (`organization_id`, `user_id`) VALUES (3, 5);
+INSERT INTO `organization_has_user` (`organization_id`, `user_id`) VALUES (3, 9);
+INSERT INTO `organization_has_user` (`organization_id`, `user_id`) VALUES (4, 8);
+INSERT INTO `organization_has_user` (`organization_id`, `user_id`) VALUES (4, 9);
+INSERT INTO `organization_has_user` (`organization_id`, `user_id`) VALUES (4, 10);
+INSERT INTO `organization_has_user` (`organization_id`, `user_id`) VALUES (5, 3);
+INSERT INTO `organization_has_user` (`organization_id`, `user_id`) VALUES (5, 4);
+INSERT INTO `organization_has_user` (`organization_id`, `user_id`) VALUES (5, 6);
+INSERT INTO `organization_has_user` (`organization_id`, `user_id`) VALUES (2, 7);
 
 COMMIT;
 
