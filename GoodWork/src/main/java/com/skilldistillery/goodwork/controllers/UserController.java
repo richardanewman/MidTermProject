@@ -103,7 +103,8 @@ public class UserController {
 				model.addAttribute("events", events);
 			}
 			if(eventCat != null) {
-				model.addAttribute("eventByCat", eventCat);
+//				model.addAttribute("eventByCat", eventCat);
+				model.addAttribute("events", eventCat);
 			}
 		return "result";
 			

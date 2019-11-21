@@ -20,7 +20,7 @@
 				<h2 align="center">
 					<strong><em>List of Events</em></strong>
 				</h2>
-				<table class="table table-hover table-bordered table-dark">
+				<table class="table table-hover table-bordered table-secondary">
 					<thead>
 						<tr>
 							<th scope="col">ID</th>

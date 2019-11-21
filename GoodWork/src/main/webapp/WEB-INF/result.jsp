@@ -18,16 +18,16 @@
 	<div class="container jumbotron">
 
 		<!-- ////////// -->
-		<h1>
-			Organizations Currently Helping Others with <strong>goodWork</strong>
-		</h1>
+
 
 		<br>
 		<!-- <div class="row" align="left"> -->
 		<div class="displayResults">
 			<c:if test="${! empty displayAll}">
+				<h1>
+					Organizations Currently Helping Others with <strong>goodWork</strong>
+				</h1>
 				<c:forEach items="${displayAll}" var="org">
-					<%-- <a href="findOrgById.do?id=${org.id}">${org.orgName}</a> --%>
 					<div>
 						<hr>
 						<h4 class="mb-1">
@@ -72,7 +72,7 @@ ${org.website}<br>
 		<br>
 
 		<!-- /////List of Users///// -->
-		<div>
+		<%-- 		<div>
 			<c:if test="${! empty users}">
 				<h1>All Users:</h1>
 				<c:forEach items="${users}" var="user">
@@ -84,8 +84,34 @@ ${user.userName}<br>
 					<br>
 				</c:forEach>
 			</c:if>
-		</div>
+		</div> --%>
 		<br>
+		<div>
+			<c:if test="${! empty users}">
+				<h1>
+					Users Currently Helping Others with <strong>goodWork</strong>
+				</h1>
+				<hr>
+				<table class="table table-hover table-bordered table-secondary">
+					<thead>
+						<tr>
+							<th scope="col">First Name</th>
+							<th scope="col">Last Name</th>
+							<th scope="col">User Name</th>
+						</tr>
+					</thead>
+					<c:forEach items="${users}" var="user">
+						<tbody>
+							<tr>
+								<td>${user.firstName}</td>
+								<td>${user.lastName}</td>
+								<td>${user.userName}</td>
+							</tr>
+						</tbody>
+					</c:forEach>
+				</table>
+			</c:if>
+		</div>
 		<!-- /////Single User///// -->
 		<div>
 			<c:if test="${! empty user}">
@@ -123,7 +149,7 @@ ${event.peopleNeeded}<br>
 
 		<!-- ////////// -->
 
-		<%-- 		<div>
+		<div>
 
 			<c:if test="${! empty eventByCat}">
 				<h1>All Events By Category:</h1>
@@ -142,7 +168,7 @@ ${event.peopleNeeded}<br>
 					<br>
 				</c:forEach>
 			</c:if>
-		</div> --%>
+		</div>
 
 		<div>
 			<h1>
@@ -151,24 +177,27 @@ ${event.peopleNeeded}<br>
 			<c:if test="${! empty eventByCat}">
 				<c:forEach items="${eventByCat}" var="event">
 					<%-- <a href="findOrgById.do?id=${org.id}">${org.orgName}</a> --%>
-					<div>
-						<hr>
-						<h4 class="mb-1">
-							<a href="findEventByCategory.do?id=${event.id}">${event.eventName}</a>
-						</h4>
-						<br>
-						<p>
-							<small class="text-muted">${event.description}</small>
-						</p>
-						<br> <small class="text-muted">${event.eventDate}</small> <br>
 
-					</div>
+					<hr>
+					<h4 class="mb-1">
+						<a href="findEventByCategory.do?id=${event.id}">${event.eventName}</a>
+					</h4>
+					<br>
+					<p>
+						<small class="text-muted">${event.description}</small>
+					</p>
+					<br>
+					<small class="text-muted">${event.eventDate}</small>
+					<br>
+
+
 
 				</c:forEach>
 			</c:if>
 		</div>
-		<!-- ////////// -->
-		<%-- 		<div>
+	</div>
+	<!-- ////////// -->
+	<%-- 		<div>
 			<c:if test="${! empty eventByCat}">
 				<h1>Found it!</h1>
 ${event.eventName}<br>
@@ -185,17 +214,17 @@ ${event.peopleNeeded}<br>
 				<br>
 			</c:if>
 		</div> --%>
-		<br>
-		<!-- /////Org Delete///// -->
-		<div>
-			<c:if test="${! empty successfulDelete}">
-				<h1>Success!</h1>
-				<h3>${successfulDelete}</h3>
-			</c:if>
+	<br>
+	<!-- /////Org Delete///// -->
+	<div>
+		<c:if test="${! empty successfulDelete}">
+			<h1>Success!</h1>
+			<h3>${successfulDelete}</h3>
+		</c:if>
 
-		</div>
-		<!-- ////////// -->
 	</div>
+	<!-- ////////// -->
+
 	<!-- </div> -->
 	<hr>
 	<footer class="text-center">
