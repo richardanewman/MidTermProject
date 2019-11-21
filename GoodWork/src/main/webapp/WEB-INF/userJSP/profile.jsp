@@ -27,12 +27,10 @@
           <div class="sidebar-sticky">
           <img src="${userProfile.photoURL}" alt="Avatar" class="avatar">
             <ul class="nav flex-column">
-              <li class="nav-item">
-                <a class="nav-link active" href="#">
-                  <span data-feather="home"></span>
-                   ${userProfile.firstName} ${userProfile.lastName} <span class="sr-only">(current)</span>
-                </a>
+              <li class="nav-item user-name">
+                  <strong>${userProfile.firstName} ${userProfile.lastName}</strong>  <span class="sr-only">(current)</span>
               </li>
+              <br>
               <li class="nav-item">
                     ${userProfile.bio}<br><br>
              <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
@@ -40,39 +38,15 @@
             </h6>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="displayAll.do">
-                  <span data-feather="activity"></span>
-                  My Events
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="getNewTxForm.do">
+                <a class="nav-link" href="createEventForm.do">
                   <span data-feather="plus-square"></span>
                   Create New Event
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#modify">
-                  <span data-feather="edit-2"></span>
-                  Edit Event
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#recent-activity">
-                  <span data-feather="message-circle"></span>
-                  Message Board
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  Users Attended
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  Reviews
+                <a class="nav-link" href="createOrgForm.do">
+                  <span data-feather="plus-circle"></span>
+                  Create Organization
                 </a>
               </li>
               <li class="nav-item">
@@ -136,73 +110,13 @@
 		</div>
  	</div>
 </div>
-  <div class="card">
-    <div class="card-body">
-      <div class="displayResults">
-		<c:if test="${! empty userProfile}">
-      <h5 class="card-title">My Events Joined</h5>
-			<c:forEach items="${userProfile.attendedEvents}" var="added">
-			<a href="getEvent.do?id=${added.event.id}">${added.event.eventName}</a><br>
-			</c:forEach>
-		</c:if>
-		</div>
- 	</div>
-</div>
+
 </div>
 </main>
   </div>
     </div>
-	
-
-	
-	<h1>Organizations</h1>
-	<c:forEach var="org" items="${sessionScope.newUser.orgs}">
-		<h3>${org.orgName}</h3><br>
-		<p>${org.orgDescription}</p><br>
-		<p>${org.orgType}</p><br>
-		<br><br><br>
-	</c:forEach>
-	<h1>Attended events</h1>
-	<c:forEach var="attended" items="${sessionScope.newUser.attendedEvents}">
-		<h3>${attended.event.eventName}</h3><br>
-		<p>${attended.event.description}</p><br>
-		<p>${attended.event.eventDate}</p><br>
-		<c:choose>
-			<c:when test="${attend.attend}">
-				<p>Attended Event: Yes! Good Job!</p>
-			</c:when>
-			<c:otherwise>
-				<p>Attended Event: Nope. So Sad!</p>
-			</c:otherwise>
-		</c:choose>
-		<br><br><br>
-	</c:forEach>
-		<h1>Hosted Events</h1>
-	<c:forEach var="hosted" items="${sessionScope.newUser.hostedEvents}">
-		<h3>${hosted.eventName}</h3><br>
-		<p>${hosted.description}</p><br>
-		<p>${hosted.eventDate}</p><br>
-	</c:forEach>
-	<br>
-	<a href="http://localhost:8090/">Home</a>
-	<br>
-	<form action="createEventForm.do" method="GET">
-		<input type="submit" value="Create Event" />
-	</form>
-	<br>
-	<form action="createOrgForm.do" method="GET">
-		<input class="submit" type="submit" value="Create Organization" />
-	</form>
-	<br>
-	<form action="logout.do" method="GET">
-		<input class="submit" type="submit" value="Logout" />
-	</form>
 		</c:when>
-		
 
-
-		
-		
 		
 <c:otherwise>
 			<div class="container-fluid">
