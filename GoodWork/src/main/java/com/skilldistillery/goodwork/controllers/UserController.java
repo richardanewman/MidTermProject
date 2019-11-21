@@ -178,7 +178,7 @@ public class UserController {
 		model.addAttribute("oops", "Looks like something went wrong when un-registering from this organization, please try again later");
 		return "fail";
 	}
-	
+
 	@RequestMapping(path = "findUserById.do", method = RequestMethod.GET)
 	public String diplayUser(int id, Model model) {
 		if (dao.getUserById(id) == null) {

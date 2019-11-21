@@ -10,7 +10,7 @@
 <%@include file="/WEB-INF/nav.jsp"%>
 </head>
 <body>
-<form:form action="updateUser.do" method="POST" modelAttribute="user">
+<form:form action="updateUser.do" method="POST" modelAttribute="userProfile">
 		<form:label path="userName">User Name:</form:label><br>
 		<form:input class="input" path="userName" required="required" type="text" value="${sessionScope.newUser.userName}" placeholder="${sessionScope.newUser.userName}"/>
 		<form:errors path="userName" />
@@ -46,6 +46,21 @@
 		<form:hidden path="id" value="${sessionScope.newUser.id}"/>
 		<form:errors path="id" value="${sessionScope.newUser.id}"/>
 	    <input class="submit" type="submit" value="Submit" />
+	</form:form>
+	<h5 class="card-title">Delete Your Profile</h5>
+	 <form:form action="disableUser.do" method="POST" modelAttribute="userProfile">
+		<form:label path="id" value="${sessionScope.newUser.id}"></form:label>
+		<br>
+		<form:hidden path="id" value="${sessionScope.newUser.id}" />
+		<form:errors path="id" value="${sessionScope.newUser.id}" />
+		<br />
+		<form:label path="password" value="Enter Password">Password:</form:label>
+		<br>
+		<form:input class="input" path="password" value="Enter Password"
+			required="required" type="text" placeholder="Enter Password" />
+		<form:errors path="password" value="Enter Password" />
+		<input type="submit" value="Delete Profile" />
+		<br />
 	</form:form>
 </body>
 </html>
