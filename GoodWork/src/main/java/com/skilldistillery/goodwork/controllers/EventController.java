@@ -17,6 +17,7 @@ import com.skilldistillery.goodwork.data.MessageDAO;
 import com.skilldistillery.goodwork.data.UserDAO;
 import com.skilldistillery.goodwork.entities.Category;
 import com.skilldistillery.goodwork.entities.Event;
+import com.skilldistillery.goodwork.entities.MessageBoard;
 import com.skilldistillery.goodwork.entities.User;
 
 @Controller
@@ -39,7 +40,7 @@ public class EventController {
 	public String getEvent(Model model, int id) {
 		model.addAttribute("event", eventDAO.findEventById(id));
 		model.addAttribute("messages", messDAO.findMessagesByEventId(id));
-		model.addAttribute("userMessage", new User());
+		model.addAttribute("userMessage", new MessageBoard());
 		return "events/event";
 
 	}
