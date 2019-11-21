@@ -126,6 +126,10 @@
        </c:when>
        <c:otherwise>
        		<p>Good job! Your already signed up!</p>
+       		<a class="nav-link" href="goToUnRegisterOrg.do?oId=${org.id}">
+       			<span data-feather="plus-square"></span>
+       			Un-Register
+       		</a>
        </c:otherwise>
      </c:choose>
      

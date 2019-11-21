@@ -161,6 +161,23 @@ public class UserDAOImpl implements UserDAO {
 		return false;
 	}
 	
+	public boolean unRegisterFromOrg(User user, Organization org) {
+		user = em.find(User.class, user.getId());
+		org = em.find(Organization.class, org.getId());
+		
+		org.removeUser(user);
+		user.removeOrganization(org);
+		
+		em.persist(user);
+		em.persist(org);
+		em.flush();
+		
+		if(user.getOrgs().contains(org) && org.getUsers().contains(user)) {
+			return false;
+		}
+		return true;
+	}
+	
 	public UserEvent getUserEvent(UserEventId ueId) {
 		UserEvent ue = em.find(UserEvent.class, ueId);
 		return ue;
