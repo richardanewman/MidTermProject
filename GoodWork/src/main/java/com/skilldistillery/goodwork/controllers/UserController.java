@@ -116,8 +116,8 @@ public class UserController {
 		}
  	}
 	
-	@RequestMapping(path = "", method = RequestMethod.GET)
-	public String categorySearch(Model model, @RequestParam("Keyword") String keyword) {
+	@RequestMapping(path = "categorySearch.do", method = RequestMethod.GET)
+	public String categorySearch(Model model, @RequestParam("keyword") String keyword) {
 		if (keyword == null | keyword.equals("")) {
 			model.addAttribute("oops", "Looks like we didnt find anything. Please try another keyword.");
 			return "fail";
@@ -126,7 +126,7 @@ public class UserController {
 		List<Event> eventCat = eventDAO.findByCategory(keyword);
 		
 		if(eventCat != null) {
-			model.addAttribute("eventByCat", eventCat);
+			model.addAttribute("eventsByCat", eventCat);
 			return "result";
 		}
 		
