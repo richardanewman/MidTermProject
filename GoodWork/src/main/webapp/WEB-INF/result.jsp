@@ -198,7 +198,7 @@ ${event.peopleNeeded}<br>
 	<!-- ***********    NEED TO LOOK AT LINKING/ROUTING OF CATAGORY SEARCH *********** -->
 	<!-- ***********    CURRENTLY JUST LEAVING AS IS FOR A PLACE HOLDER    *********** -->
 	<div>
-		<c:if test="${! empty eventByCat}">
+		<c:if test="${! empty eventsByCat}">
 			<div class="container">
 				<h1>
 					Events by Category with <strong>goodWork</strong>
@@ -212,13 +212,13 @@ ${event.peopleNeeded}<br>
 							<th scope="col">Event Date</th>
 						</tr>
 					</thead>
-					<c:forEach var="event" items="${eventByCat}">
+					<c:forEach var="eventCat" items="${eventsByCat}">
 						<tbody>
 							<tr>
-								<th scope="row">${eventByCat.id}</th>
-								<td><a href="getEvent.do?id=${eventByCat.id}">${eventByCat.eventName}</a></td>
-								<td>${eventByCat.description}</td>
-								<td>${eventByCat.eventDate}</td>
+								<th scope="row">${eventCat.id}</th>
+								<td><a href="getEvent.do?id=${eventCat.id}">${eventCat.eventName}</a></td>
+								<td>${eventCat.description}</td>
+								<td>${eventCat.eventDate}</td>
 							</tr>
 						</tbody>
 					</c:forEach>
@@ -228,22 +228,22 @@ ${event.peopleNeeded}<br>
 	</div>
 	<br>
 	<div>
-		<c:if test="${! empty eventByCat}">
+		<c:if test="${! empty eventsByCat}">
 			<div class="container">
 				<h1>
 					Events by Category with <strong>goodWork</strong>
 				</h1>
-				<c:forEach items="${eventByCat}" var="event">
+				<c:forEach items="${eventsByCat}" var="eventCat">
 					<hr>
 					<h4 class="mb-1">
-						<a href="findEventByCategory.do?id=${event.id}">${event.eventName}</a>
+						<a href="findEventByCategory.do?id=${eventCat.id}">${eventCat.eventName}</a>
 					</h4>
 					<br>
 					<p>
-						<small class="text-muted">${event.description}</small>
+						<small class="text-muted">${eventCat.description}</small>
 					</p>
 					<br>
-					<small class="text-muted">${event.eventDate}</small>
+					<small class="text-muted">${eventCat.eventDate}</small>
 					<br>
 				</c:forEach>
 			</div>

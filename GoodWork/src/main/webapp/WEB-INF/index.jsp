@@ -53,12 +53,27 @@
 		<div class="card">
 			<span class="feather-card" data-feather="search"></span>
 			<div class="card-body">
-				<h5 class="card-title">Recent Events</h5>
-				<p class="card-text">Extra! Extra! Read all about our recent
-					events.</p>
-				<form action="recentEvents.do" method="GET">
-					<input class="form-control input-pad" type="text" required="required"
-						name="keyword" placeholder="Enter Keyword" /> <input
+				<h5 class="card-title">Category Search</h5>
+				<p class="card-text">Search events by category</p>
+				<form action="categorySearch.do" method="GET">
+						<select class="form-control input-pad" name="keyword">
+							<option value="Clean-Up">Clean-Up</option>
+							<option value="Technology">Technology</option>
+							<option value="Children & Youth">Children & Youth</option>
+							<option value="Animals">Animals</option>
+							<option value="Arts & Culture">Arts & Culture</option>
+							<option value="Community">Community</option>
+							<option value="Education">Education</option>
+							<option value="Health & Medicine">Health & Medicine</option>
+							<option value="Seniors">Seniors</option>
+							<option value="Disaster Relief">Disaster Relief</option>
+							<option value="Hunger">Hunger</option>
+							<option value="Veterans & Military Families">Veterans &
+									Military Families</option>
+							<option value="Disabilities">Disabilities</option>
+							<option value="Other">Other</option>
+						</select>
+						<input
 						class="btn btn-dark btn-lg btn-block" type="submit"
 						value="Recent Events" />
 				</form>
