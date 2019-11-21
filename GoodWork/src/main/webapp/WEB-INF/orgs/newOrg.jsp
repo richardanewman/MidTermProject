@@ -108,7 +108,7 @@
 			<form:label path="location.zipCode">Zip Code</form:label>
 			<br>
 			<form:input class="form-control" path="location.zipCode" min="0"
-				type="text" placeholder="Zip Code" pattern="[0-9]*"/>
+				type="text" placeholder="Zip Code" />
 			<form:errors path="location.zipCode" />
 			<br />
 			<form:label path="orgType">Organizaton Type</form:label>
