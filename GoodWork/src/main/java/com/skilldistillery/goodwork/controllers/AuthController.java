@@ -55,7 +55,7 @@ public class AuthController {
 		}
 		User u = dao.registerUser(newUser);
 		session.setAttribute("newUser", u);
-		model.addAttribute("user", new User());
+		model.addAttribute("userProfile", u);
 		return "userJSP/profile";
 	}
 
