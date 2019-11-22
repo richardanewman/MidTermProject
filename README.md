@@ -1,15 +1,14 @@
 #  [goodWork](http://18.190.114.201:8080/GoodWork/index.do)
 ## Helping people help each other
 ![Image description](GoodWork/src/main/webapp/css/volunteer.png)
-(link to site)
 
-## Mid-term Team Project for Skill Distillery
+## Mid-term Team Project for Skill Distillery (Denver, Colorado)
 
 Team Members and Roles:
 
-* David Norris (Developer, Scrum Master)
-* Jerry Rogers (Developer, Software Maintainer)
-* Richard Newman (Developer, Database Administrator)
+* David Norris (Developer, Scrum Master) 
+* [Jerry Rogers (Developer, Software Maintainer)](https://www.linkedin.com/in/jerryrogersjr/)
+* [Richard Newman (Developer, Database Administrator)](https://www.linkedin.com/in/richard-n-01730b193/)
 
 ### Overview
 
@@ -25,9 +24,32 @@ Whether it's a neighborhood cleanup, helping an individual, or an
 an organization, **goodWork** is intended to be a place for the
 'community'.
 
+* Register User Account
+* Login to Account
+* View Events or List of Events
+* CRUD Events
+* CRUD Organizations
+* CRUD User Profile
+* Search site for Events by Category, Keyword, Id, etc.
+* Search site for Org's by Category, Keyword, Id, etc.
+* Search and locate users in the community
+* Register to Volunteer at an Event
+* Unregister from an Event
+* Leave Messages on the Event Message Board
+
 ### Implementation
 
-
+* Design
+* Database design
+* Database build
+* TDD
+* Agile
+* Stand up's
+* Programming
+* Continuous testing
+* Constant communication
+* EC2 deployment
+* Mid-term (project) presentation
 
 ERDiagram
 ![Image description](GoodWork/src/main/webapp/css/modelDB.jpg)
@@ -37,6 +59,7 @@ ERDiagram
 * Agile
 * MySQL
 * Java / JUnit
+* Jakarta Persistence (JPA)
 * HTML
 * CSS
 * Bootstrap
@@ -48,7 +71,6 @@ ERDiagram
 * Slack
 * Atom
 * MacBook Pro
-
 
 ### Lessons Learned
 
@@ -92,11 +114,16 @@ is up and deployed to AWS EC2.
 
 ### Stretch Goals
 
-* Implemented
+ **Implemented**
 
 
-* Not Implemented
+
+ **Not Implemented**
+
+
 
 ### How to Download and Run (developer)
+
+
 
 ### Resources
