@@ -7,11 +7,14 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
+import org.apache.jasper.tagplugins.jstl.core.ForEach;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.goodwork.entities.Category;
 import com.skilldistillery.goodwork.entities.Event;
+import com.skilldistillery.goodwork.entities.MessageBoard;
 import com.skilldistillery.goodwork.entities.User;
+import com.skilldistillery.goodwork.entities.UserEvent;
 
 @Transactional // Spring automatically start a transaction for each DAO method
 @Service // allow Spring Boot to create the D A O bean
@@ -41,6 +44,7 @@ public class EventDAOImpl implements EventDAO {
 	@Override
 	public Event addEvent(Event event, User user, Category category) { // issue with location id coming in Null
 		event.setDateCreated(LocalDate.now());
+		event.setActive(true);
 		// sessions
 		user = em.find(User.class, user.getId());
 		category = em.find(Category.class, category.getId());
@@ -87,8 +91,8 @@ public class EventDAOImpl implements EventDAO {
 	@Override
 	public boolean deleteEvent(int id, Event event) {
 		Event deleteEvent = em.find(Event.class, id);
-		em.remove(deleteEvent);
-		return (em.find(Event.class, id) == null);
+		deleteEvent.setActive(false);
+		return deleteEvent.getActive();
 
 	}
 
@@ -112,13 +116,13 @@ public class EventDAOImpl implements EventDAO {
 		Category category = null;
 		List<Event> catSearch = null;
 		cat = em.createQuery(catSql, Category.class).setParameter("keyword", "%" + keyword + "%").getResultList();
-		
-		if(cat != null && cat.size() > 0) {
+
+		if (cat != null && cat.size() > 0) {
 			category = cat.get(0);
 			String sql = "SELECT events FROM Event events WHERE :category MEMBER OF events.categories";
 			catSearch = em.createQuery(sql, Event.class).setParameter("category", category).getResultList();
 		}
-		
+
 		return catSearch;
 	}
 

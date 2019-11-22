@@ -337,10 +337,10 @@ public class User {
 		}
 	}
 
-	public void removeHostedEvent(MessageBoard messBoard) {
-		messBoard.setUser(null);
-		if (messBoards != null) {
-			messBoards.remove(messBoard);
+	public void removeHostedEvent(Event event) {
+			event.setHost(null);
+		if (hostedEvents != null) {
+			hostedEvents.remove(event);
 		}
 	}
 }
