@@ -213,14 +213,16 @@ ${event.peopleNeeded}<br>
 						</tr>
 					</thead>
 					<c:forEach var="eventCat" items="${eventsByCat}">
-						<tbody>
-							<tr>
-								<th scope="row">${eventCat.id}</th>
-								<td><a href="getEvent.do?id=${eventCat.id}">${eventCat.eventName}</a></td>
-								<td>${eventCat.description}</td>
-								<td>${eventCat.eventDate}</td>
-							</tr>
-						</tbody>
+						<c:if test="${eventList.active == true}">
+							<tbody>
+								<tr>
+									<th scope="row">${eventCat.id}</th>
+									<td><a href="getEvent.do?id=${eventCat.id}">${eventCat.eventName}</a></td>
+									<td>${eventCat.description}</td>
+									<td>${eventCat.eventDate}</td>
+								</tr>
+							</tbody>
+						</c:if>
 					</c:forEach>
 				</table>
 			</div>
@@ -234,6 +236,7 @@ ${event.peopleNeeded}<br>
 					Events by Category with <strong>goodWork</strong>
 				</h1>
 				<c:forEach items="${eventsByCat}" var="eventCat">
+				<c:if test="${eventList.active == true}">
 					<hr>
 					<h4 class="mb-1">
 						<a href="findEventByCategory.do?id=${eventCat.id}">${eventCat.eventName}</a>
@@ -245,6 +248,7 @@ ${event.peopleNeeded}<br>
 					<br>
 					<small class="text-muted">${eventCat.eventDate}</small>
 					<br>
+					</c:if>
 				</c:forEach>
 			</div>
 		</c:if>

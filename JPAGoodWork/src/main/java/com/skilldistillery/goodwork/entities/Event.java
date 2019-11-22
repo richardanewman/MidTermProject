@@ -35,6 +35,8 @@ public class Event {
 	@ManyToOne(cascade = { CascadeType.PERSIST})
 	@JoinColumn(name = "host_id")
 	private User host;
+	
+	private boolean active;
 
 	public User getHost() {
 		return host;
@@ -76,16 +78,24 @@ public class Event {
 	private String pocEmail;
 
 	@LazyCollection(LazyCollectionOption.FALSE)
-	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, mappedBy = "events")
+	@ManyToMany(cascade = { CascadeType.PERSIST}, mappedBy = "events")
 	private List<Category> categories;
 
 	@LazyCollection(LazyCollectionOption.FALSE)
-	@OneToMany(mappedBy = "event", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+	@OneToMany(mappedBy = "event", cascade = { CascadeType.PERSIST})
 	private List<MessageBoard> messBoards;
 
 	@LazyCollection(LazyCollectionOption.FALSE)
-	@OneToMany(mappedBy = "event", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+	@OneToMany(mappedBy = "event", cascade = { CascadeType.PERSIST})
 	private List<UserEvent> users;
+	
+	public boolean getActive() {
+		return active;
+	}
+	
+	public void setActive(boolean active) {
+		this.active = active;
+	}
 
 	public List<UserEvent> getUsers() {
 		return users;

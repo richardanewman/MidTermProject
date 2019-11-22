@@ -70,6 +70,7 @@
 		<c:if test="${! empty userProfile}">
       <h5 class="card-title">My Hosted Events</h5>
 			<c:forEach items="${userProfile.hostedEvents}" var="hosted">
+			<c:if test="${hosted.active == true}">
 			<a href="getEvent.do?id=${hosted.id}">${hosted.eventName}</a><br>
 			<p>People Needed: ${hosted.peopleNeeded}</p>
 			<strong>Volunteers Signed Up:</strong><br>
@@ -78,6 +79,7 @@
 			
 			</c:forEach>
 			<hr>
+			</c:if>
 			</c:forEach>
 		</c:if>
 		</div>
@@ -106,7 +108,9 @@
 		<c:if test="${! empty userProfile}">
       <h5 class="card-title">My Events Joined</h5>
 			<c:forEach items="${userProfile.attendedEvents}" var="added">
+			<c:if test="${added.event.active == true}">
 			<a href="getEvent.do?id=${added.event.id}">${added.event.eventName}</a><br>
+			</c:if>
 			</c:forEach>
 		</c:if>
 		</div>
@@ -149,6 +153,7 @@
 		<c:if test="${! empty userProfile}">
       <h5 class="card-title">${userProfile.firstName}'s Hosted Events</h5>
 			<c:forEach items="${userProfile.hostedEvents}" var="hosted">
+			<c:if test="${hosted.active == true}">
 			<a href="getEvent.do?id=${hosted.id}">${hosted.eventName}</a><br>
 			<p>People Needed: ${hosted.peopleNeeded}</p>
 			<strong>Volunteers Signed Up:</strong><br>
@@ -157,6 +162,7 @@
 			
 			</c:forEach>
 			<hr>
+			</c:if>
 			</c:forEach>
 		</c:if>
 		</div>
@@ -184,7 +190,9 @@
 		<c:if test="${! empty userProfile}">
       <h5 class="card-title">${userProfile.firstName}'s Events Joined</h5>
 			<c:forEach items="${userProfile.attendedEvents}" var="added">
+			<c:if test="${added.event.active == true}">
 			<a href="getEvent.do?id=${added.event.id}">${added.event.eventName}</a><br>
+			</c:if>
 			</c:forEach>
 		</c:if>
 		</div>
@@ -238,6 +246,7 @@
 		<c:if test="${! empty userProfile}">
       <h5 class="card-title">${userProfile.firstName}'s Hosted Events</h5>
 			<c:forEach items="${userProfile.hostedEvents}" var="hosted">
+			<c:if test="${hosted.active == true}">
 			<a href="getEvent.do?id=${hosted.id}">${hosted.eventName}</a><br>
 			<p>People Needed: ${hosted.peopleNeeded}</p>
 			<strong>Volunteers Signed Up:</strong><br>
@@ -245,6 +254,7 @@
 			<a href="findUserById.do?id=${userEvent.user.id}">${userEvent.user.firstName} ${userEvent.user.lastName}</a><br>
 			</c:forEach>
 			<hr>
+			</c:if>
 			</c:forEach>
 		</c:if>
 		</div>

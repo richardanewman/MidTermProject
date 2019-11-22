@@ -71,15 +71,16 @@
 							</tr>
 						</thead>
 						<c:forEach var="eventList" items="${eventList}">
-							<tbody>
-								<tr>
-									<th scope="row">${eventList.id}</th>
-									<td><a href="getEvent.do?id=${eventList.id}">${eventList.eventName}</a></td>
-									<td>${eventList.description}</td>
-									<td><small>${eventList.eventDate}</small></td>
-
-								</tr>
-							</tbody>
+							<c:if test="${eventList.active == true}">
+								<tbody>
+									<tr>
+										<th scope="row">${eventList.id}</th>
+										<td><a href="getEvent.do?id=${eventList.id}">${eventList.eventName}</a></td>
+										<td>${eventList.description}</td>
+										<td><small>${eventList.eventDate}</small></td>
+									</tr>
+								</tbody>
+							</c:if>
 						</c:forEach>
 					</table>
 				</div>
