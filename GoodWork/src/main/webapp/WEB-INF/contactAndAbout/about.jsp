@@ -50,7 +50,7 @@
 						style="width: 140px; height: 140px;" src="css/img_avatar.png"
 						data-holder-rendered="true">
 					<h3>David</h3>
-					<p>"say something here"</p>
+					<p>""</p> <!-- Personal quote -->
 				</div>
 				<div class="col-md-6 col-sm-12 text-center col-lg-4">
 					<a href="https://www.linkedin.com/in/richard-n-01730b193/"
@@ -58,7 +58,7 @@
 						style="width: 140px; height: 140px;" src="css/img_avatar.png"
 						data-holder-rendered="true">
 					<h3>Richard</h3>
-					<p>"say something here"</p>
+					<p>""</p> <!-- Personal quote -->
 				</div>
 				<div class="col-md-6 col-sm-12 text-center col-lg-4">
 					<a href="https://www.linkedin.com/in/jerryrogersjr/"
@@ -66,7 +66,7 @@
 						style="width: 140px; height: 140px;" src="css/img_avatar.png"
 						data-holder-rendered="true"></a>
 					<h3>Jerry</h3>
-					<p>"say something here"</p>
+					<p>""</p> <!-- Personal quote -->
 				</div>
 			</div>
 			<div class="row"></div>
