@@ -44,7 +44,7 @@
 			<br />
 			<form:label path="email">Email</form:label>
 			<br>
-			<form:input class="input" path="email" required="required"
+			<form:input class="form-control" path="email" required="required"
 				type="text" value="${sessionScope.newUser.email}"
 				placeholder="${sessionScope.newUser.email}" />
 			<form:errors path="email" />
