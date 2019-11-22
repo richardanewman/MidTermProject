@@ -89,16 +89,29 @@
 			</div>
 			<div class="col-md-8">
 				<div class="card-body">
-					<h1 class="card-title">Join Us!</h1>
-					<p class="card-text">Sign up for your free goodWork account
-						today. We do not bill for any of our services, and we will never
-						sell your information.</p>
-					<p class="card-text">Our goal is simple: we want to help you
-						help others. Find a volunteer event to join or create your own.</p>
-					<!-- <a class="btn btn-blue btn-lg" href="register.do" role="button">Sign Up!</a> -->
-					<a class="btn btn-blue btn-lg" data-toggle="modal"
-						data-target="#modalRegisterForm">Sign Up</a>
-
+					<c:choose>
+						<c:when test="${not empty newUser}">
+							<h1 class="card-title">Get Started!</h1>
+							<p class="card-text">Sign up for any number of events on our site. You'll
+							be doing great work helping others in need, and providing services that benefit
+							everyone!</p>
+							<p class="card-text">Our goal is simple: we want to help you
+								help others. Find a volunteer event to join or create your own.</p>
+							<!-- <a class="btn btn-blue btn-lg" href="register.do" role="button">Sign Up!</a> -->
+							<a class="btn btn-blue btn-lg" href = "getEventList.do">Events</a>
+						</c:when>
+						<c:otherwise>
+							<h1 class="card-title">Join Us!</h1>
+							<p class="card-text">Sign up for your free goodWork account
+								today. We do not bill for any of our services, and we will never
+								sell your information.</p>
+							<p class="card-text">Our goal is simple: we want to help you
+								help others. Find a volunteer event to join or create your own.</p>
+							<!-- <a class="btn btn-blue btn-lg" href="register.do" role="button">Sign Up!</a> -->
+							<a class="btn btn-blue btn-lg" data-toggle="modal"
+								data-target="#modalRegisterForm">Sign Up</a>
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</div>
 		</div>
