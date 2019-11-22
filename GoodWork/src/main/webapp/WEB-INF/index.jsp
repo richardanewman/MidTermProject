@@ -75,7 +75,7 @@
 						</select>
 						<input
 						class="btn btn-dark btn-lg btn-block" type="submit"
-						value="Recent Events" />
+						value="Search by Category" />
 				</form>
 			</div>
 		</div>
