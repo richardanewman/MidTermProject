@@ -48,7 +48,8 @@
 			<form:label path="location.state">State</form:label>
 			<br>
 			<%-- <form:input class="form-control" path="location.state" required="required" type="text" placeholder="State"/> --%>
-			<form:select class="form-control" path="location.state" required="required">
+			<form:select class="form-control" path="location.state"
+				required="required">
 				<form:option value="" label="  " />
 				<form:option value="AK" label="Alaska" />
 				<form:option value="AL" label="Alabama" />
@@ -108,14 +109,15 @@
 			<form:label path="location.zipCode">Zip Code</form:label>
 			<br>
 			<form:input class="form-control" path="location.zipCode" min="0"
-				type="text" pattern="^\s*?\d{5}(?:[-\s]\d{4})?\s*?$" title="Zip Code format 12345 or 12345-1234" placeholder="Zip Code"/>
+				type="text" pattern="^\s*?\d{5}(?:[-\s]\d{4})?\s*?$"
+				title="Zip Code format 12345 or 12345-1234" placeholder="Zip Code" />
 			<form:errors path="location.zipCode" />
 			<br />
 			<form:label path="orgType">Organizaton Type</form:label>
 			<br>
 			<%-- <form:input class="form-control" path="orgType" type="text" required="required" placeholder="Non-Profit, For-Profit, Private Group" /> --%>
 			<form:select class="form-control" path="orgType" required="required">
-				<form:option value="" label="select type"/>
+				<form:option value="" label="select type" />
 				<form:option value="non-profit" label="Non-Profit" />
 				<form:option value="for-profit" label="For-Profit" />
 				<form:option value="private-group" label="Private Group" />
