@@ -9,11 +9,11 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 @SpringBootApplication
 @EntityScan("com.skilldistillery.*")
 public class GoodWorkApplication extends SpringBootServletInitializer {
-	
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(GoodWorkApplication.class);
-	}
+	  @Override
+	  protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+	    return application.sources(GoodWorkApplication.class);
+	  }
+	  
 	public static void main(String[] args) {
 		SpringApplication.run(GoodWorkApplication.class, args);
 	}
