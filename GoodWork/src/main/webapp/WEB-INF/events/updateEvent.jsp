@@ -142,10 +142,12 @@
 					class="form-control" name="eventDate" value="${event.eventDate}" /><br>
 				<!--  -->
 				<label for="eventDate">Start Time</label> <input type="time"
-					class="form-control" name="startTime" value="${event.startTime}" /><br>
+					step="900" class="form-control" name="startTime"
+					placeholder="enter start time" value="${event.startTime}"/><br>
 				<!--  -->
 				<label for="endTime">End Time</label> <input type="time"
-					value="${event.endTime}" class="form-control" name="endTime" /><br>
+					step="900" class="form-control" name="endTime"
+					placeholder="enter end time" value="${event.endTime}"/><br>
 				<!--  -->
 				<label for="peopleNeeded">Number of people needed</label> <input
 					type="number" class="form-control" name="peopleNeeded"
