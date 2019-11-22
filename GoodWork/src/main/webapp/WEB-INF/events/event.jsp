@@ -35,7 +35,7 @@
 			
 			
 		</table>
-					<table class="table table-hover table-bordered table-light"
+					<table class="table table-responsive table-hover table-bordered table-light"
 						style="background-color: #EBE8F1">
 						<thread>
 						<tr>
@@ -107,66 +107,12 @@
 
 						</thread>
 					</table>
-					<%-- 				<ul style="list-style: none">
-						<li>Event Id: ${event.id}</li>
-						<li>Date Created: ${event.dateCreated }</li>
-						<li>Event Name: ${event.eventName}</li>
-						<li>Address: ${event.location.address}</li>
-						<li>Address: ${event.location.address2}</li>
-						<li>City: ${event.location.city}</li>
-						<li>State: ${event.location.state}</li>
-						<li>Zip Code: ${event.location.zipCode}</li>
-						<li>Event Date: ${event.eventDate}</li>
-						<li>Start Time: ${event.startTime}</li>
-						<li>End Time: ${event.endTime}</li>
-						<li>People Needed: ${event.peopleNeeded}</li>
-						<li>Date Created: ${event.dateCreated}</li>
-						<li>Point of Contact: ${event.pointOfContact }</li>
-						<li>POC Phone: ${event.pocPhone}</li>
-						<li>POC Email: ${event.pocEmail }</li>
-						<li>Description: ${event.description }</li>
-						<c:forEach var="cat" items="${event.categories}">
-							<li>Category: ${cat.name}</li>
-						</c:forEach>
-						<li>${event.photoUrl}</li>
-					</ul>
-					<hr> --%>
 
 				</div>
 
 			</div>
 		</div>
-		<%-- <h3>
-				<strong><em>Event Details</em></strong>
-			</h3>
-			<ul style="list-style: none">
-				<li>Event Id: ${event.id}</li>
-				<li>Date Created: ${event.dateCreated }</li>
-				<li>Event Name: ${event.eventName}</li>
-				<li>Address: ${event.location.address}</li>
-				<li>Address: ${event.location.address2}</li>
-				<li>City: ${event.location.city}</li>
-				<li>State: ${event.location.state}</li>
-				<li>Zip Code: ${event.location.zipCode}</li>
-				<li>Event Date: ${event.eventDate}</li>
-				<li>Start Time: ${event.startTime}</li>
-				<li>End Time: ${event.endTime}</li>
-				<li>People Needed: ${event.peopleNeeded}</li>
-				<li>Date Created: ${event.dateCreated}</li>
-				<li>Point of Contact: ${event.pointOfContact }</li>
-				<li>POC Phone: ${event.pocPhone}</li>
-				<li>POC Email: ${event.pocEmail }</li>
-				<li>Description: ${event.description }</li>
-				<c:forEach var="cat" items="${event.categories}">
-					<li>Category: ${cat.name}</li>
-				</c:forEach>
-				<li>${event.photoUrl}</li>
-			</ul>
-			<hr>
- --%>
 
- 
- 
 		<br>
 		<c:choose>
 			<c:when test="${not empty newUser}">

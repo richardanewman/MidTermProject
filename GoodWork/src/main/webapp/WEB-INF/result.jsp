@@ -46,33 +46,15 @@
 		</c:if>
 	</div>
 	<br>
+
 	<!-- /////Single Org///// -->
-	<%-- 		<div>
-			<c:if test="${! empty org}">
-				<h1>Found it!</h1>
-${org.orgName}<br>
-				<br>
-${org.location.address}<br>
-				<br>
-${org.location.city}<br>
-				<br>
-${org.location.state}<br>
-				<br>
-${org.orgType}<br>
-				<br>
-${org.orgNum}<br>
-				<br>
-${org.logoURL}<br>
-				<br>
-${org.website}<br>
-				<br>
-			</c:if>
-		</div> --%>
+
 	<br>
 	<div>
 		<c:if test="${! empty org}">
 			<div class="container">
-				<table class="table table-hover table-bordered table-light">
+				<table
+					class="table table-responsive table-responsive table-hover table-bordered table-light">
 					<tr>
 						<th scope="col">Org Information</th>
 						<th scope="col"></th>
@@ -132,7 +114,8 @@ ${org.website}<br>
 					Users Currently Helping Others with <strong>goodWork</strong>
 				</h1>
 				<hr>
-				<table class="table table-hover table-bordered table-secondary">
+				<table
+					class="table table-responsive table-hover table-bordered table-secondary">
 					<thead>
 						<tr>
 							<th scope="col">First Name</th>
@@ -154,47 +137,6 @@ ${org.website}<br>
 		</c:if>
 	</div>
 
-	<!-- ///// Single User ///// -->
-	<!-- ****** COMMENTED OUT: DONT THINK IT'S GETTING HIT ANYWHERE ????????? -->
-	<%-- 		<div>
-		
-			<c:if test="${! empty user}">
-				<h1>Hopefully this is the user you were looking for, otherwise
-					please try again...</h1>
-${user.firstName}<br>
-				<br>
-${user.lastName}<br>
-				<br>
-${user.userName}<br>
-				<br>
-			</c:if>
-			<br>
-		</div>
-		<br> --%>
-
-	<!-- /////////  EVENT ////////// -->
-	<!-- ****** COMMENTED OUT: DONT THINK IT'S GETTING HIT ANYWHERE ????????? -->
-
-	<%-- 		<div>
-			<c:if test="${! empty event}">
-				<h1>Found it!</h1>
-${event.eventName}<br>
-				<br>
-${event.description}<br>
-				<br>
-${event.eventDate}<br>
-				<br>
-${event.startTime}<br>
-				<br>
-${event.endTime}<br>
-				<br>
-${event.peopleNeeded}<br>
-				<br>
-			</c:if>
-		</div>
-		<br> --%>
-
-
 	<!-- EVENT BY CAT -->
 
 	<div>
@@ -203,7 +145,8 @@ ${event.peopleNeeded}<br>
 				<h1>
 					Events by Category with <strong>goodWork</strong>
 				</h1>
-				<table class="table table-hover table-bordered table-secondary">
+				<table
+					class="table table-responsive table-hover table-bordered table-secondary">
 					<thead>
 						<tr>
 							<th scope="col">ID</th>
@@ -229,7 +172,7 @@ ${event.peopleNeeded}<br>
 		</c:if>
 	</div>
 	<br>
-<%-- 	<div>
+	<%-- 	<div>
 		<c:if test="${! empty eventsByCat}">
 			<div class="container">
 				<h1>
