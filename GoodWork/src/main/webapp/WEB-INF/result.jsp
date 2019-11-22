@@ -213,7 +213,7 @@ ${event.peopleNeeded}<br>
 						</tr>
 					</thead>
 					<c:forEach var="eventCat" items="${eventsByCat}">
-						<c:if test="${eventList.active == true}">
+						<c:if test="${eventCat.active == true}">
 							<tbody>
 								<tr>
 									<th scope="row">${eventCat.id}</th>
@@ -229,14 +229,14 @@ ${event.peopleNeeded}<br>
 		</c:if>
 	</div>
 	<br>
-	<div>
+<%-- 	<div>
 		<c:if test="${! empty eventsByCat}">
 			<div class="container">
 				<h1>
 					Events by Category with <strong>goodWork</strong>
 				</h1>
 				<c:forEach items="${eventsByCat}" var="eventCat">
-				<c:if test="${eventList.active == true}">
+				<c:if test="${eventCat.active == true}">
 					<hr>
 					<h4 class="mb-1">
 						<a href="findEventByCategory.do?id=${eventCat.id}">${eventCat.eventName}</a>
@@ -254,7 +254,7 @@ ${event.peopleNeeded}<br>
 		</c:if>
 	</div>
 
-	<br>
+	<br> --%>
 
 	<!-- /////Org Delete///// working -->
 
