@@ -61,9 +61,13 @@ public class UserController {
 	}
 	
 	@RequestMapping(path="disableUser.do", method = RequestMethod.POST)
-	public String deleteUser(Model model, HttpSession session) {
+	public String deleteUser(@RequestParam("password") String password, Model model, HttpSession session) {
 		User delU = (User) session.getAttribute("newUser");
-		if(auth.validPassword(delU.getId(), delU.getPassword())) {
+		if(!password.equals(delU.getPassword())) {
+			model.addAttribute("oops", "Password entered is incorrect, please enter this profiles password to delete it.");
+			return "fail";
+		}
+		if(auth.validPassword(delU.getId(), password)) {
 			dao.deleteUser(delU.getId());
 			session.removeAttribute("newUser");
 			return "index";
