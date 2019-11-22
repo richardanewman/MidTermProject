@@ -45,7 +45,7 @@
 						List of Events
 					</h1>
 					<br>
-					<table class="table table-hover table-bordered table-secondary">
+					<table class="table table-responsive table-hover table-bordered table-secondary">
 						<thead>
 							<tr>
 								<th scope="col">ID</th>
