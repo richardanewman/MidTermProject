@@ -47,10 +47,10 @@
 				<div class="col-lg-4 col-md-6 col-sm-12 text-center">
 					<a href="https://www.linkedin.com/in/david-norris-354697198/"
 						target="_blank"></a> <img class="rounded-circle" alt="140x140"
-						style="width: 140px; height: 140px;" src="css/img_avatar.png"
+						style="width: 140px; height: 140px;" src="css/avatar3.jpg"
 						data-holder-rendered="true">
 					<h3>David</h3>
-					<p>""</p> <!-- Personal quote -->
+					<p></p> <!-- Personal quote -->
 				</div>
 				<div class="col-md-6 col-sm-12 text-center col-lg-4">
 					<a href="https://www.linkedin.com/in/richard-n-01730b193/"
@@ -58,15 +58,15 @@
 						style="width: 140px; height: 140px;" src="css/img_avatar.png"
 						data-holder-rendered="true">
 					<h3>Richard</h3>
-					<p>""</p> <!-- Personal quote -->
+					<p></p> <!-- Personal quote -->
 				</div>
 				<div class="col-md-6 col-sm-12 text-center col-lg-4">
 					<a href="https://www.linkedin.com/in/jerryrogersjr/"
 						target="_blank"><img class="rounded-circle" alt="140x140"
-						style="width: 140px; height: 140px;" src="css/img_avatar.png"
+						style="width: 140px; height: 140px;" src="css/avatar2.png"
 						data-holder-rendered="true"></a>
 					<h3>Jerry</h3>
-					<p>""</p> <!-- Personal quote -->
+					<p></p> <!-- Personal quote -->
 				</div>
 			</div>
 			<div class="row"></div>
