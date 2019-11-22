@@ -142,10 +142,6 @@
 								placeholder="enter event date" required="required" /><br>
 						
 							<!--  -->
-							<label for="eventDate">Event Date</label> <input type="date"
-								class="form-control" name="eventDate"
-								placeholder="enter event date" required="required"/><br>
-							<!--  -->
 							<label for="eventDate">Start Time</label> <input type="time"
 								class="form-control" name="startTime"
 								placeholder="enter start time" /><br>
