@@ -41,6 +41,7 @@ ERDiagram
 * CSS
 * Bootstrap
 * Git
+* AWS EC2
 * Spring Boot
 * MySQL Workbench
 * Trello
@@ -84,6 +85,9 @@ experiences. Some aspects required going back to previous materials,
 learing new techniques, and leaning into the abyss to try new things.
 I'd have to say that testing in the beginning was likely our best
 tool for success.
+
+Now that the project has met MVP and some stretch goals, our time
+is up and deployed to AWS EC2.
 
 
 ### Stretch Goals
