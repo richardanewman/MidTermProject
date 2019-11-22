@@ -132,7 +132,8 @@
 							<br>
 							<!--  -->
 							<label for="event.location.zipCode">Event Zip Code</label> <input
-								type="text" class="form-control" name="location.zipCode"/>
+								type="text" pattern="^\s*?\d{5}(?:[-\s]\d{4})?\s*?$"
+					title="Zip Code format 12345 or 12345-1234" class="form-control" name="location.zipCode"/>
 							<form:errors path="location.zipCode"
 								placeholder="enter zip code of event" />
 							<br>

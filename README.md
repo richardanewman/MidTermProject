@@ -6,7 +6,7 @@
 
 Team Members and Roles:
 
-* David Norris (Developer, Scrum Master) 
+* [David Norris (Developer, Scrum Master)](https://www.linkedin.com/in/david-norris-354697198/) 
 * [Jerry Rogers (Developer, Software Maintainer)](https://www.linkedin.com/in/jerryrogersjr/)
 * [Richard Newman (Developer, Database Administrator)](https://www.linkedin.com/in/richard-n-01730b193/)
 
