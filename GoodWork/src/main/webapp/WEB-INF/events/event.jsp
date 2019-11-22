@@ -297,21 +297,20 @@
   </div>
  </c:forEach>
 </c:if>
-
- </div>
- 
+<hr>
 <c:if test="${not empty newUser }">
 <form:form action="reply.do?eId=${event.id}" method="POST" modelAttribute="userMessage">
 		<form:label path="user.id" value="${sessionScope.newUser.id}"></form:label>
 		<form:hidden path="user.id" value="${sessionScope.newUser.id}" />
 		<form:errors path="user.id" value="${sessionScope.newUser.id}" />
-		<form:label path="content" value="Reply">Reply:</form:label>
-		<form:input class="input" path="content" value="Enter Reply"
+		<form:label path="content" value="Reply">Reply</form:label>
+		<form:input class="form-control" path="content" 
 			required="required" type="text" placeholder="Enter Reply" />
-		<form:errors path="content" value="Enter Reply" />
-		<input type="submit" value="Reply" />
+		<form:errors path="content" value="Enter Reply" /><br>
+		<input class="btn btn-primary" type="submit" value="Reply" />
 	</form:form>
 </c:if>
+ </div>
 	<hr>
 	<footer class="text-center">
 		<div class="container">
