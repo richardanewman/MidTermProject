@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.skilldistillery.goodwork.data.AuthDAO;
+import com.skilldistillery.goodwork.data.UserDAO;
 import com.skilldistillery.goodwork.entities.User;
 
 @Controller
@@ -17,10 +18,16 @@ public class AuthController {
 
 	@Autowired
 	private AuthDAO dao;
+	@Autowired
+	private UserDAO userDAO;
 
 	@RequestMapping(path = "login.do", method = RequestMethod.GET)
 	public String loginForm(Model model, HttpSession session) {
 		if (session.getAttribute("newUser") != null) {
+			User user = (User) session.getAttribute("newUser");
+			user = userDAO.getUserById(user.getId());
+			session.removeAttribute("newUser");
+			session.setAttribute("newUser", user);
 			model.addAttribute("userProfile", (User) session.getAttribute("newUser"));
 			
 			return "userJSP/profile";
