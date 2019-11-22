@@ -1,4 +1,5 @@
 # goodWork
+## Helping people help each other
 ![Image description](GoodWork/src/main/webapp/css/volunteer.png)
 (link to site)
 
@@ -16,14 +17,18 @@ Volunteer Connection Platform
 
 ### Description
 
-(how it works and what the user can do)
-(screenshot, etc)
-(login/registration instructions)
+With **goodWork**, the idea is to have a community based platform
+where individuals (or individuals from organizations) can reach
+out for help and/or help others in need.
+
+Whether it's a neighborhood cleanup, helping an individual, or an
+an organization, **goodWork** is intended to be a place for the
+'community'.
 
 ### Implementation
 
-(overall project structure)
-(ERDiagram)
+
+![Image description](GoodWork/src/main/webapp/css/modelDB.jpg)
 
 ### Technologies and Methodologies Used
 
