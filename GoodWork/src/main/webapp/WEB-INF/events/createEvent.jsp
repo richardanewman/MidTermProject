@@ -144,7 +144,7 @@
 						
 							<!--  -->
 							<label for="eventDate">Start Time</label> <input type="time"
-								class="form-control" name="startTime"
+								step="900" class="form-control" name="startTime"
 								placeholder="enter start time" /><br>
 							<!--  -->
 							<label for="endTime">End Time</label> <input type="time"
