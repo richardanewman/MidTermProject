@@ -72,6 +72,12 @@
                     Edit Organization
                 </a>
               </li>
+              <li class="nav-item">
+       			<a class="nav-link" href="goToUnRegisterOrg.do?oId=${org.id}">
+       				<span data-feather="plus-square"></span>
+       				Un-Register
+       			</a>
+              </li>
             </ul>
           </div>
         </nav>
@@ -118,6 +124,12 @@
                   <span data-feather="activity"></span>
                     ${org.orgDescription}<br><br>
               </li>
+              <li class="nav-item">
+              	<a class="nav-link" href="signUpForOrg.do?oId=${org.id}">
+              	    <span data-feather="plus-square"></span>
+               	   Sign Up
+       			</a>
+       		</li>
             </ul>
           </div>
         </nav>
