@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -117,13 +118,15 @@
 		</div>
 	</div>
 		<hr>
+		
 		<!--Google map-->
-		<div class="map-container" style="height: 400px">
+	<div class="map-container" style="height: 400px">
 			<iframe
 				src="https://maps.google.com/maps?q=denver&t=&z=13&ie=UTF8&iwloc=&output=embed"
 				frameborder="0" style="border: 0" allowfullscreen></iframe>
 		</div>
-
+	
+ 
 		<!--Google Maps-->
 
 

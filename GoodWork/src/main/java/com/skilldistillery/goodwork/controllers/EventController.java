@@ -29,7 +29,7 @@ public class EventController {
 	private UserDAO userDAO;
 	@Autowired 
 	private MessageDAO messDAO;
-//	private int eventId;
+
 
 
 	@RequestMapping(path = {"/", "index.do"}, method = RequestMethod.GET)
