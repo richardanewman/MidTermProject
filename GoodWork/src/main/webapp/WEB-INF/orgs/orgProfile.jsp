@@ -41,14 +41,14 @@
               <br>
               <li class="nav-item">
                     ${org.orgDescription}<br><br>
-              <li class="nav-item user-name">
-                  <strong>Website:<br> ${org.website}</strong>  <span class="sr-only">(current)</span>
+              <li class="nav-item">
+                 Website:<br> ${org.website}
               </li>
-              <li class="nav-item user-name">
-                  <strong>Established As:<br>${org.orgType}</strong>  <span class="sr-only">(current)</span>
+              <li class="nav-item">
+                 Established As:<br>${org.orgType}
               </li>
-              <li class="nav-item user-name">
-                  <strong>TAX ID:<br>${org.orgNum}</strong>  <span class="sr-only">(current)</span>
+              <li class="nav-item">
+                  TAX ID:<br>${org.orgNum}
               </li>
              <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
               <span>Command Deck</span>
