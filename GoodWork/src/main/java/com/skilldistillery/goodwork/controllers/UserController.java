@@ -84,30 +84,35 @@ public class UserController {
 	
 	@RequestMapping(path="search.do", method = RequestMethod.GET)
 	public String navSearch(Model model, @RequestParam("keyword") String keyword) {
+		List<User> users = null;
+		List<Organization> orgs = null;
+		List<Event> events = null;
+		List<Event> eventCat = null;
+		
 		if (keyword == null | keyword.equals("")){
 			model.addAttribute("oops", "Looks like we didn't find anything. Please try another keyword.");
 			return "fail";
 		} else {
 			
-			List<User> users = dao.getAllUsersByKeyword(keyword);
-			List<Organization> orgs = orgDAO.searchByKeyword(keyword);
-			List<Event> events = eventDAO.findByKeyword(keyword);
-			List<Event> eventCat = eventDAO.findByCategory(keyword);
+			users = dao.getAllUsersByKeyword(keyword);
+			orgs = orgDAO.searchByKeyword(keyword);
+			events = eventDAO.findByKeyword(keyword);
+			eventCat = eventDAO.findByCategory(keyword);
 			
 			if(users == null & events == null & orgs == null & eventCat == null) {
 				model.addAttribute("oops", "Looks like we couldn't find anything matching that keyword, please try another");
 				return "fail";
 			} else {
-				if(users != null) {
+				if(users != null && users.size() > 0) {
 					model.addAttribute("users", users);
 				}
-				if(orgs != null) {
+				if(orgs != null && orgs.size() > 0) {
 					model.addAttribute("displayAll", orgs);
 				}
-				if(events != null) {
+				if(events != null && events.size() > 0) {
 					model.addAttribute("events", events);
 				}
-				if(eventCat != null) {
+				if(eventCat != null && eventCat.size() > 0) {
 					model.addAttribute("eventsByCat", eventCat);
 				}
 				return "result";
@@ -125,7 +130,7 @@ public class UserController {
 		
 		List<Event> eventCat = eventDAO.findByCategory(keyword);
 		
-		if(eventCat != null) {
+		if(eventCat != null && eventCat.size() > 0) {
 			model.addAttribute("eventsByCat", eventCat);
 			return "result";
 		}
