@@ -6,7 +6,7 @@
 
 Team Members and Roles:
 
-* [David Norris (Developer, Scrum Master)](https://www.linkedin.com/in/david-norris-354697198/) 
+* [David Norris (Developer, Scrum Master)](https://www.linkedin.com/in/david-norris-354697198/)
 * [Jerry Rogers (Developer, Software Maintainer)](https://www.linkedin.com/in/jerryrogersjr/)
 * [Richard Newman (Developer, Database Administrator)](https://www.linkedin.com/in/richard-n-01730b193/)
 
@@ -116,14 +116,22 @@ is up and deployed to AWS EC2.
 
  **Implemented**
 
-
+* Event Categories
+* Message Board
 
  **Not Implemented**
 
-
-
-### How to Download and Run (developer)
-
-
+* User Reviews
+* Google Map API
+* Advanced Security
+* Recent / Past Event List
+* Admin Console
 
 ### Resources
+
+* Office Space
+* Coffee
+* Team Internal
+* Skill Distillery Learning Materials
+* Instructor Support
+* Google, etc.
