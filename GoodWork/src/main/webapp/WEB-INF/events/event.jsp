@@ -18,39 +18,29 @@
 
 	<br>
 	<div class="container rounded" align="center">
-			<p><strong>lets put event img up here</strong></p>
+			<h1>${event.eventName}</h1>
+			<h5>${event.eventDate}</h5>
 	</div>
 	<div class="container form-goup jumbotron" align="center">
 		<div class="card-deck">
 			<div class="card">
 				<span class="feather-card" data-feather="search"></span>
 				<div class="card-body">
-					<h5 class="card-title"></h5>
-					<table class="container rounded" align="center" bgcolor="#9644E8"
-			border="0" cellpadding="0" cellspacing="0" width="100%">
-			<tr>
-				<td valign="middle"
-					style="text-align: center; padding: 40px; font-family: sans-serif; font-size: 35px; mso-height-rule: exactly; line-height: 40px; color: #ffffff;">
-					${event.eventName}</td>
-			</tr>
-			<tr>
-				<td valign="middle"
-					style="text-align: center; padding: 40px; font-family: sans-serif; font-size: 20px; mso-height-rule: exactly; line-height: 30px; color: #ffffff;">
-					${event.description }</td>
-			</tr>
-			<tr>
-				<td valign="middle"
-					style="text-align: center; padding: 40px; font-family: sans-serif; font-size: 20px; mso-height-rule: exactly; line-height: 30px; color: #ffffff;">
-					<strong>${event.eventDate }</strong>
-				</td>
-			</tr>
+					<img alt="" src="${event.photoUrl}"  class="d-block w-100">
+					<c:if test="${empty event.photoUrl}">
+					<img alt="" src="css/bg.png" class="d-block w-100">
+					</c:if>
+					<table class="container rounded">
+			
+			
+			
 		</table>
 					<table class="table table-hover table-bordered table-light"
 						style="background-color: #EBE8F1">
 						<thread>
 						<tr>
 							<th scope="col">Event Information</th>
-							<th scope="col"></th>
+							<th scope="col">${event.description }</th>
 						</tr>
 						<tr>
 							<td>ID</td>
@@ -278,7 +268,7 @@
             			</form> -->
 
 <div class="container form-goup jumbotron message">
-<h1>${event.eventName} Message Board</h1>
+<h1 style="text-align: center;">${event.eventName} Message Board</h1>
 	<c:if test="${not empty messages}">
  <c:forEach items="${messages}" var="message">
   <div class="card mb-3 message">
