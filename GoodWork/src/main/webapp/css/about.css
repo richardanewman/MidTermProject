@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+.media-img {
+	height: 200px;
+	width: 200px;
+	margin-right: 25px;
+	margin-bottom: 25px;
+}
+
+.media-text {
+	font-size: 16;
+	
+}
