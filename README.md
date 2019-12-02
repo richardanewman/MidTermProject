@@ -4,6 +4,8 @@
 
 ## Mid-term Team Project for Skill Distillery (Denver, Colorado)
 
+This is a fork of our mid term project. The original repo can be found here: https://github.com/jerryrogersjr/MidTermProject
+
 Team Members and Roles:
 
 * [David Norris (Developer, Scrum Master)](https://www.linkedin.com/in/david-norris-354697198/)
