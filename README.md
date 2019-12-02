@@ -5,6 +5,7 @@
 ## Mid-term Team Project for Skill Distillery (Denver, Colorado)
 
 This is a fork of our mid term project. The original repo can be found here: https://github.com/jerryrogersjr/MidTermProject
+No additional work has been done to this fork since the project ended.
 
 Team Members and Roles:
 
